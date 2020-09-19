@@ -145,7 +145,8 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
 /* end sticky nav bar */
 .nav{
     height: 7.2rem;
-    display: flex;
+    /* display: flex; */
+    display: block;
     align-items: center;
     justify-content: center;
 }
