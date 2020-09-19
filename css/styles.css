@@ -69,6 +69,23 @@ header.sticky{
 header.sticky ul li a{
     color: #000;
 }
+header.sticky .container .nav .menu-toggle .new_menu .lin{
+    background: #000;
+} /* not working yet*/
+
+.header-title{
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.header-small{
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+    display: block;
+}
+
 /* header.sticky .logo{
     color: #000
 } */
