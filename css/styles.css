@@ -64,7 +64,7 @@ header{
 /* start sticky nav bar */
 header.sticky{
     padding: 5px 100px;
-    background: #ffffff;
+    background: #a08888;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5);
     /* margin: 10px;
     box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.8); */
@@ -209,7 +209,7 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     z-index: 2;
 }
 .lin{
-    width: 23px;
+    width: 25px;
     height: 4px;
     background: #fff;
     margin: 5px;
