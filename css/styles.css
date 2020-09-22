@@ -225,7 +225,8 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
 #menu_show{
     margin-top: -25px;
 }
-.open #menu_show,.open .new_menu{
+/* .open #menu_show, */
+.open .new_menu{
     display: none;
 }
 .open .fa-times{
