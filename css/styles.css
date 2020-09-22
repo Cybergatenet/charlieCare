@@ -27,7 +27,6 @@ body{
 /* still testing this shadow out, but it looks good in linux */
     margin: 10px;
     box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.8);
-
 }
 section{
     padding: 3.9rem 0;
@@ -75,18 +74,30 @@ header.sticky ul li a{
 header.sticky .container .nav .menu-toggle .new_menu .lin{
     background: #000;
 } /* working well now*/
-
+.main-header-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -80px;
+}
+.main-header-title a{
+    /* float: left; */
+    margin-left: -30px;
+}
 .header-title{
     font-size: 2rem;
     font-weight: 900;
     letter-spacing: 1.5px;
+    color: #111;
 }
 
 .header-small{
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: 400;
     letter-spacing: 1.2px;
     display: block;
+    color: #fff;
+    float: right;
 }
 
 /* header.sticky .logo{
@@ -549,11 +560,17 @@ footer{
 }
 /* media qureies start here */
 @media screen and (min-width: 900px){
-    /* body,
-    .container .clip{
+    body{
+        overflow-x: hidden;
+    /* still testing this shadow out, but it looks good in linux */
         margin: 10px;
         box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.8);
-    } */
+    }
+    .container .clip{
+        max-width: calc(100% - 20px);
+        margin: 10px;
+        box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.8);
+    }
     .container .clip.clip1{
         background: url("../img/nature.jpg");
         background-size: cover;
@@ -582,6 +599,7 @@ footer{
         display: none;
     }
     .nav{
+        display: flex;
         justify-content: space-between;
     }
     .nav-list{
