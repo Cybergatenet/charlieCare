@@ -14,6 +14,7 @@
     --body-font-color: #515151;
     --primary-font-color: rgb(7, 86, 160);
     --facebook-blue: #2196f3;
+    --fb-dark-blue: #054c86;
     --text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
 }
 html{
@@ -54,10 +55,10 @@ header{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
     transition: 0.6s;
     padding: 20px 100px;
+    z-index: 1000;
 }
 
 /* start sticky nav bar */
@@ -67,6 +68,7 @@ header.sticky{
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5);
     /* margin: 10px;
     box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.8); */
+    z-index: 1000;
 }
 header.sticky ul li a{
     color: #000;
@@ -99,12 +101,7 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     color: #fff;
     float: right;
 }
-
-/* header.sticky .logo{
-    color: #000
-} */
 /* jumbotron starts header */
-
 .container .clip{
     position: absolute;
     top: 0;
@@ -157,7 +154,6 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     bottom: 0;
     opacity: 1;
 }
-
 /* jumbotron ends here */
 /* end sticky nav bar */
 .nav{
@@ -187,13 +183,15 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     left: 0;
     width: 80%;
     height: 100vh;
-    background-color: var(--main-font-color-dark);
+    background-color: var(--fb-dark-blue);
+    /* background-color: var(--main-font-color-dark); */
     padding: 4.4rem;
+    margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     z-index: 1250;
-    transform: translateX(-100%);
+    transform: translateX(-105%);
     transition: transform 0.5s;
 }
 .nav::before{
@@ -213,7 +211,6 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
 .new_menu{
     position: absolute;
     cursor: pointer;
-    /* background: var(--facebook-blue); */
     right: 5%;
     top: 50%;
     transform: translate(-5%, -50%);
