@@ -90,9 +90,11 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     font-size: 2rem;
     font-weight: 900;
     letter-spacing: 1.5px;
+    color: #fff;
+}
+header.sticky .header-title{
     color: #111;
 }
-
 .header-small{
     font-size: 0.9rem;
     font-weight: 400;
@@ -100,6 +102,9 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     display: block;
     color: #fff;
     float: right;
+}
+header.sticky .header-small{
+    color: #111;
 }
 /* jumbotron starts header */
 .container .clip{
