@@ -27,6 +27,7 @@ body{
 /* still testing this shadow out, but it looks good in linux */
     margin: 10px;
     box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.8);
+    /* font-size: 14px; */
 }
 section{
     padding: 3.9rem 0;
@@ -40,7 +41,7 @@ a{
     text-decoration: none;
 }
 p{
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 }
 .container{
     width: 100%;
@@ -82,7 +83,10 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
 }
 .main-header-title a{
     /* float: left; */
-    /* margin-left: -30px; */
+    margin-left: -30px;
+    width: 70px;
+    /* max-width: 100%; */
+    /* min-width: 100%; */
 }
 .main-header-title .main-title{
     margin-left: 0;
@@ -220,6 +224,7 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     top: 50%;
     transform: translate(-5%, -50%);
     z-index: 2;
+    margin-top: -20px;
 }
 .lin{
     width: 25px;
@@ -245,7 +250,7 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     display: block;
     color: #fff;
     transform: scale(1.3);
-    /* margin-top: 5px; */
+    margin-top: -25px;
 }
 .open .nav-list{
     transform: translateX(0);
@@ -583,7 +588,7 @@ footer{
     .container .clip.clip2{
         background: url("../img/nature.jpg");
         background-size: cover;
-        /* border: 2px solid var(--love-color); */
+        border: 2px solid var(--love-color);
         clip-path: polygon(55% 0, 100% 0, 45% 100%, 20% 100%);
         /* margin: 3px; */
     }
