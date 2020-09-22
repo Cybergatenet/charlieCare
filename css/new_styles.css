@@ -295,3 +295,10 @@ img{
 		padding: 150px 20px 100px;
 	}
 }
+
+
+
+/* media qureies start here */
+@media screen and (min-width: 900px){
+
+}
