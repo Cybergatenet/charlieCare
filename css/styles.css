@@ -89,7 +89,8 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     font-weight: 900;
     letter-spacing: 1.5px;
     color: #111;
-}
+}/* should be white on nsticky */
+
 
 .header-small{
     font-size: 0.9rem;
@@ -292,12 +293,12 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
 }
 .first-letter{
     text-transform: uppercase;
-    font-size: 10.3rem;
+    font-size: 9.3rem;
     animation: chang 3s ease-in-out 0.1s infinite;
 }
 .headline{
     color: var(--love-color);
-    font-size: 3.7rem;
+    font-size: 2.5rem;
     font-family: var(--main-font);
     text-transform: uppercase;
     font-weight: 900;
