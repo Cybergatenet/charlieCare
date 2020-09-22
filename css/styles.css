@@ -277,11 +277,11 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     text-align: center;
 }
 .sub-headline{
-    font-size: 8.5rem;
+    font-size: 5rem;
     font-family: var(--secondary-font);
     color: #eee;
     font-weight: 100;
-    line-height: .4;
+    line-height: 0.4px;
     letter-spacing: 2px;
     opacity: 0;
     animation: fadeUp 0.5s forwards;
@@ -290,18 +290,18 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
 }
 .first-letter{
     text-transform: uppercase;
-    font-size: 10.3rem;
+    font-size: 8rem;
     animation: chang 3s ease-in-out 0.1s infinite;
 }
 .headline{
     color: var(--love-color);
-    font-size: 3.7rem;
+    font-size: 3rem;
     font-family: var(--main-font);
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: .5rem;
     margin-right: -.5rem;
-    margin-top: 10px;
+    margin-top: 20px;
     /* opacity: 0; */
     animation: scale 0.5s forwards;
     /* animation-delay: .5s; */
@@ -384,7 +384,6 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     color: var(--love-color);
     background-color: #fff;
 }
-
 /* Discover our story here */
 .global-headline{
     text-align: center;
@@ -470,7 +469,6 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     background-size: cover;
     background-attachment: fixed;
 }
-
 /* footer starts here */
 footer{
     padding: 7.9rem 0;
