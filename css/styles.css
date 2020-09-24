@@ -28,14 +28,8 @@ html{
 body{
     overflow-x: hidden;
 /* still testing this shadow out, but it looks good in linux */
-<<<<<<< HEAD
-    margin: 10px;
-    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.8);
-    /* font-size: 14px; */
-=======
     margin: 7px;
     box-shadow: var(--body-shadow);
->>>>>>> 6e4272b34e8178888014cb3494bd467ad8b5c081
 }
 section{
     padding: 3.9rem 0;
@@ -108,11 +102,7 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
 }
 header.sticky .header-title{
     color: #111;
-<<<<<<< HEAD
-}/* should be white on nsticky */
-=======
 }
->>>>>>> 6e4272b34e8178888014cb3494bd467ad8b5c081
 .header-small{
     font-size: 0.9rem;
     font-weight: 400;
@@ -322,20 +312,12 @@ header.sticky .header-small{
 }
 .first-letter{
     text-transform: uppercase;
-<<<<<<< HEAD
-    font-size: 9.3rem;
-=======
     font-size: 8rem;
->>>>>>> 6e4272b34e8178888014cb3494bd467ad8b5c081
     animation: chang 3s ease-in-out 0.1s infinite;
 }
 .headline{
     color: var(--love-color);
-<<<<<<< HEAD
-    font-size: 2.5rem;
-=======
     font-size: 3rem;
->>>>>>> 6e4272b34e8178888014cb3494bd467ad8b5c081
     font-family: var(--main-font);
     text-transform: uppercase;
     font-weight: 900;
