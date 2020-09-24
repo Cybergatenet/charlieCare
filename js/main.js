@@ -5,16 +5,19 @@ window.addEventListener("scroll", () => {
 })
 
 
-// Animations starts here
+// Animations starts here   ||  Navbar here
 const selectElement = function (element){
     return document.querySelector(element);
 };
 
 let menuToggler = selectElement('.menu-toggle');
 let body = selectElement('body');
+let header = selectElement('header');
 
 menuToggler.addEventListener('click', function() {
     body.classList.toggle('open');
+    header.classList.toggle('sticky');
+// bugs to be fixed || reverted no more bugs
 });
 
 // Scroll reveal libray animation
