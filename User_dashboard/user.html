@@ -13,9 +13,44 @@
     <!-- fontAwesome -->
     <link rel="stylesheet" href="../css/css/all.min.css">
     <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <div class="container">
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <div class="menu-toggle">
+                    <div class="new_menu">
+                        <div class="lin"></div>
+                        <div class="lin"></div>
+                        <div class="lin"></div>
+                    </div>
+                    <a href="#"><i class="fas fa-times"></i></a>
+                </div>
+                <div class="main-header-title">
+                    <a href="./index.html" class="logo"><img src="../img/charlyLogo3.png" alt="" width="70px"
+                            height="50px"></a>
+                    <div class="main-title">
+                        <h2 class="header-title">CharlyCareCla$ic</h2>
+                        <small class="header-small">Family Office</small>
+                    </div>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="./index.html" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">Log In</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- header ends here -->
+    <div class="container" style="margin-top: 70px;">
         <div class="profile-header">
             <div class="profile-img">
                 <img src="../img/user.png" width="200px" alt="">
@@ -92,6 +127,7 @@
 
 
     <!-- link jqery here -->
+    <script src="../js/main.js"></script>
     <script src="../js/user.js"></script>
 </body>
 </html>

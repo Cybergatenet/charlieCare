@@ -584,6 +584,7 @@ footer{
         margin: 10px;
         box-shadow: var(--body-shadow);
     }
+    
     .container .clip{
         max-width: calc(100% - 20px);
         margin: 10px;
