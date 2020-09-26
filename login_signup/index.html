@@ -5,17 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up | Log In</title>
+    <title>Sign Up | Log In | CharlyCareCla$ic</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
 <body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <div class="menu-toggle">
+                    <div class="new_menu">
+                        <div class="lin"></div>
+                        <div class="lin"></div>
+                        <div class="lin"></div>
+                    </div>
+                    <a href="#"><i class="fas fa-times"></i></a>
+                </div>
+                <div class="main-header-title">
+                    <a href="./index.html" class="logo"><img src="../img/charlyLogo22.png" alt="" width="70px"
+                            height="50px"></a>
+                    <div class="main-title">
+                        <h2 class="header-title">CharlyCareCla$ic</h2>
+                        <small class="header-small">Family Office</small>
+                    </div>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./index.html" onclick="alert('sorry, this app is under maintenance');" class="nav-link">Log In</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- header ends here -->
     <section>
         <div class="container">
             <div class="user signinBx">
                 <div class="imgBx"><img src="./img/bg_1.png" alt=""></div>
                 <div class="formBx">
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <form action="" method="">
                         <h2>Sign In</h2>
                         <input type="text" placeholder="Username">
                         <input type="password" placeholder="Password">
@@ -27,7 +62,7 @@
 
             <div class="user signupBx">
                 <div class="formBx">
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <form action="" method="">
                         <h2>Create an account</h2>
                         <!-- error msg here -->
                         <div class="alert alert-success">
@@ -49,6 +84,8 @@
 
     <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <!-- header js -->
+    <script src="../js/main.js"></script>
     <script src="./js/login.js"></script>
 </body>
 </html>

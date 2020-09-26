@@ -149,7 +149,7 @@ img{
 	letter-spacing: 2px;
 }
 .contactInfo{
-	min-width: 40%;
+	min-width: 50%;
 }
 .contactInfoBx{
 	position: relative;
@@ -158,6 +158,8 @@ img{
 	position: relative;
 	padding: 20px 0;
 	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .contactInfoBx .box .icon{
 	min-width: 40px;

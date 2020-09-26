@@ -1,4 +1,18 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200'); */
+:root{
+    --main-font: 'Source Sans Pro', sans-serif;
+    --secondary-font: 'Herr Van Muellerhoff', cursive;
+    --body-font: 'Cabin', sans-serif;
+    --main-font-color-dark: #252525;
+    --love-color: #f80606;
+    --body-font-color: #515151;
+    --primary-font-color: rgb(7, 86, 160);
+    --facebook-blue: #2196f3;
+    --fb-dark-blue: #054c86;
+    --text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
+    --body-shadow: 0px 10px 10px rgba(0, 0, 0, 0.8),
+                    0px 7px 7px rgba(0, 0, 0, 0.8);
+}
 *{
     margin: 0;
     padding: 0;
@@ -8,7 +22,7 @@
 section{
     position: relative;
     min-height: 100vh;
-    background: #fee648;
+    background: var(--fb-dark-blue);
     display: flex;
     justify-content: center;
     align-items: center;
