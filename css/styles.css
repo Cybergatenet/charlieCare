@@ -43,7 +43,7 @@ a{
     text-decoration: none;
 }
 p{
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 }
 .container{
     width: 100%;
@@ -82,15 +82,21 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -80px;
+    margin-left: -60px;
 }
 .main-header-title a{
     /* float: left; */
     margin-left: -30px;
+    width: 70px;
+    /* max-width: 100%; */
+    /* min-width: 100%; */
+}
+.main-header-title .main-title{
+    margin-left: 0;
 }
 .header-title{
-    font-size: 2rem;
-    font-weight: 900;
+    font-size: 1.6rem;
+    font-weight: 800;
     letter-spacing: 1.5px;
     color: #fff;
 }
@@ -100,7 +106,7 @@ header.sticky .header-title{
 .header-small{
     font-size: 0.9rem;
     font-weight: 400;
-    letter-spacing: 1.2px;
+    letter-spacing: 2px;
     display: block;
     color: #fff;
     float: right;
@@ -230,6 +236,7 @@ header.sticky .header-small{
     top: 50%;
     transform: translate(-5%, -50%);
     z-index: 2;
+    margin-top: -20px;
 }
 .lin{
     width: 25px;
@@ -256,7 +263,7 @@ header.sticky .header-small{
     display: block;
     color: #fff;
     transform: scale(1.3);
-    /* margin-top: 5px; */
+    margin-top: -25px;
 }
 .open .nav-list{
     transform: translateX(0);
@@ -480,7 +487,7 @@ header.sticky .header-small{
 /* THe perfect bland */
 
 .perfect-blend{
-    background: url("../img/nature3.jpg") center no-repeat;
+    background: url("../img/star.jpg") center no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -577,25 +584,32 @@ footer{
         margin: 10px;
         box-shadow: var(--body-shadow);
     }
+    
     .container .clip{
         max-width: calc(100% - 20px);
         margin: 10px;
         box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.8);
     }
     .container .clip.clip1{
-        background: url("../img/nature.jpg");
+        background: url("../img/nature-quotes.jpg");
         background-size: cover;
+        /* border: 1px solid var(--love-color); */
         clip-path: polygon(0 0, 55% 0, 20% 100%, 0% 100%);
+        /* margin-right: 3px; */
     }
     .container .clip.clip2{
-        background: url("../img/nature2.jpg");
-        background-size: cover;
-        clip-path: polygon(55% 0, 100% 0, 45% 100%, 20% 100%);
-    }
-    .container .clip.clip3{
         background: url("../img/nature.jpg");
         background-size: cover;
+        border: 2px solid var(--love-color);
+        clip-path: polygon(55% 0, 100% 0, 45% 100%, 20% 100%);
+        /* margin: 3px; */
+    }
+    .container .clip.clip3{
+        background: url("../img/nature-quotes.jpg");
+        background-size: cover;
+        /* border: 1px solid var(--love-color); */
         clip-path: polygon(100% 0, 100% 0, 100% 100%, 45% 100%);
+        /* margin-left: 3px; */
     }
     .container:hover .clip{
         clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
