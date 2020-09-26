@@ -1,5 +1,28 @@
-/* section{
+section{
 	padding: 100px;
+}
+/* .btn{
+	position: relative;
+	background-color: #2196f3;
+	display: inline-block;
+	color: #fff;
+	margin-top: 20px;
+	padding: 10px 30px;
+	font-size: 18px;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 2px;
+	font-weight: 500;
+} */
+/* .heading{
+	width: 100%;
+	text-align: center;
+	margin-bottom: 30px;
+	color: #111;
+}
+.heading h2{
+	font-weight: 600;
+	font-size: 30px;
 } */
 .content{
 	display: flex;
