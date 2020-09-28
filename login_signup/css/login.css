@@ -28,7 +28,7 @@ section{
     align-items: center;
     padding: 20px;
 }
-section .container{
+section .wrapper{
     position: relative;
     width: 800px;
     height: 500px;
@@ -36,7 +36,7 @@ section .container{
     box-shadow: 0 15px 50px rgba(0,0,0,0.1);
     overflow: hidden;
 }
-section .container .user{
+section .wrapper .user{
     position: absolute;
     top: 0;
     left: 0;
@@ -44,14 +44,14 @@ section .container .user{
     height: 100%;
     display: flex;
 }
-section .container .user .imgBx{
+section .wrapper .user .imgBx{
     position: relative;
     width: 50%;
     height: 100%;
     background: #ff0;
     transition: 0.5s;
 }
-section .container .user .imgBx img{
+section .wrapper .user .imgBx img{
     position: absolute;
     top: 0;
     left: 0;
@@ -59,7 +59,7 @@ section .container .user .imgBx img{
     height: 100%;
     object-fit: cover;
 }
-section .container .user .formBx{
+section .wrapper .user .formBx{
     position: relative;
     width: 50%;
     height: 100%;
@@ -70,7 +70,7 @@ section .container .user .formBx{
     padding: 40px;
     transition: 0.5s;
 }
-section .container .user .formBx form h2{
+section .wrapper .user .formBx form h2{
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
@@ -80,7 +80,7 @@ section .container .user .formBx form h2{
     margin-bottom: 10px;
     color: #555;
 }
-section .container .user .formBx form input{
+section .wrapper .user .formBx form input{
     position: relative;
     width: 100%;
     padding: 10px;
@@ -94,7 +94,7 @@ section .container .user .formBx form input{
     letter-spacing: 1px;
     font-weight: 300;
 }
-section .container .user .formBx form input[type="submit"]{
+section .wrapper .user .formBx form input[type="submit"]{
     max-width: 100px;
     background: #677eff;
     color: #fff;
@@ -104,7 +104,7 @@ section .container .user .formBx form input[type="submit"]{
     letter-spacing: 1px;
     transition: 0.5s;
 }
-section .container .user .formBx form .signup{
+section .wrapper .user .formBx form .signup{
     position: relative;
     margin-top: 20px;
     font-size: 12px;
@@ -113,40 +113,40 @@ section .container .user .formBx form .signup{
     text-transform: uppercase;
     font-weight: 300;
 }
-section .container .user .formBx form .signup a{
+section .wrapper .user .formBx form .signup a{
     font-weight: 600;
     text-decoration: none;
     color: #677eff;
 }
-section .container .signupBx{
+section .wrapper .signupBx{
     pointer-events: none;
 }
-section .container.activeForm .signupBx{
+section .wrapper.activeForm .signupBx{
     pointer-events: initial;
 }
-section .container .signupBx .formBx{
+section .wrapper .signupBx .formBx{
     left: 100%;
 }
-section .container.activeForm .signupBx .formBx{
+section .wrapper.activeForm .signupBx .formBx{
     left: 0;
 }
-section .container .signupBx .imgBx{
+section .wrapper .signupBx .imgBx{
     left: -100%;
 }
-section .container.activeForm .signupBx .imgBx{
+section .wrapper.activeForm .signupBx .imgBx{
     left: 0;
 }
 /* sign in form transform style */
-section .container .signinBx .formBx{
+section .wrapper .signinBx .formBx{
     left: 0;
 }
-section .container.activeForm .signinBx .formBx{
+section .wrapper.activeForm .signinBx .formBx{
     left: 100%;
 }
-section .container .signinBx .imgBx{
+section .wrapper .signinBx .imgBx{
     left: 0;
 }
-section .container.activeForm .signinBx .imgBx{
+section .wrapper.activeForm .signinBx .imgBx{
     left: -100%;
 }
 
@@ -155,13 +155,13 @@ section .container.activeForm .signinBx .imgBx{
 }
 
 @media (max-width: 991px){
-    section .container{
+    section .wrapper{
         max-width: 400px;
     }
-    section .container .imgBx{
+    section .wrapper .imgBx{
         display: none;
     }
-    section .container .user .formBx{
+    section .wrapper .user .formBx{
         width: 100%;
     }
 }
