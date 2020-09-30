@@ -74,3 +74,54 @@
             $errors['db_error'] = "Database error: failed to register";
         }
     }
+
+// login controllers
+if(isset($_POST['login'])){
+    $username = $_POST['username'];
+    $pwd = $_POST['pwd'];
+
+    // validating user input
+    if(empty($username)){
+        $errors['username'] = "Username Required!";
+    }
+    if(empty($pwd)){
+        $errors['pwd'] = "Password Required!";
+    }
+   
+    if(count($errors === 0)){
+        $sql = 'SELECT * FROM users WHERE email=? OR username=? LIMIT 1';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ss', $username, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        if(password_verify($pwd, $user['pwd'])){
+            // login success
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['verified'] = $user['verified'];
+
+            // set flash msg
+            $_SESSION['msg'] = "You are now logged in!";
+            $_SESSION['alert-class'] = "alert-success";
+            header('location: home.php');
+            exit();
+        }else{
+            $errors['login_failed'] = "Wrong Credentials";
+        }
+    }
+}
+
+// logout
+if(isset($_GET['logout'])){
+    session_destroy();
+    unset($_SESSION['id']);
+    unset($_SESSION['username']);
+    unset($_SESSION['email']);
+    unset($_SESSION['verified']);
+    header('location: ../index.html'); // back to home page
+    exit();
+}
