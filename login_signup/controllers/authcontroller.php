@@ -1,5 +1,4 @@
 <?php
-
     session_start();
 
     require 'config/db.php';
@@ -47,13 +46,15 @@
 
     if(count($errors) === 0) {
         $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-        $token = bin2hex(random_bytes(50));
+        $char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
+		$token = substr(str_shuffle($char), 0, 8);
+        // $token = bin2hex(random_bytes(50));
         $verified = false;
 
         $sql = "INSERT INTO users (username, email, verified, token, pwd) VALUES (?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssbss', $username, $email, $verified, $token, $pwd);
+        $stmt->bind_param('ssbss', $username, $email, $pwd, $verified, $token);
 
         if($stmt->execute()){
             // login the user here
@@ -68,8 +69,6 @@
             $_SESSION['alert-class'] = "alert-success";
             header('location: home.php');
             exit();
-
-
         }else{
             $errors['db_error'] = "Database error: failed to register";
         }
@@ -80,7 +79,6 @@
 if(isset($_POST['login'])){
     $username = $_POST['username'];
     $pwd = $_POST['pwd'];
-
     // validating user input
     if(empty($username)){
         $errors['username'] = "Username Required!";
@@ -108,7 +106,7 @@ if(isset($_POST['login'])){
             // set flash msg
             $_SESSION['msg'] = "You are now logged in!";
             $_SESSION['alert-class'] = "alert-success";
-            header('location: home.php');
+            header('location: ../home.php');
             exit();
         }else{
             $errors['login_failed'] = "Wrong Credentials";
