@@ -22,7 +22,7 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">
                     <div class="new_menu">
@@ -58,7 +58,7 @@
     <br><br><br><br><br>
             <br><br>
     <section>
-        <div class="container">
+        <div class="wrapper">
             <div class="user signinBx">
                 <div class="imgBx"><img src="../img/globe.jpg" alt=""></div>
                 <div class="formBx">

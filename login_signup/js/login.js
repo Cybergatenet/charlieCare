@@ -1,4 +1,4 @@
 function toggleForm(){
-    let container = document.querySelector('.container');
-    container.classList.toggle('activeForm');
+    let wrapper = document.querySelector('.wrapper');
+    wrapper.classList.toggle('activeForm');
 }
