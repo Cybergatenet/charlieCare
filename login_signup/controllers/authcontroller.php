@@ -30,7 +30,7 @@
         if($pwd !== $cpwd){
             $errors = "Your Password did NOT match";
         }
-    }
+## remoed closed curly brace}
 
     ## connection
     $emailQuery = "SELECT * FROM users WHERE email=? LIMIT 1";
@@ -74,6 +74,7 @@
             $errors['db_error'] = "Database error: failed to register";
         }
     }
+}
 
 // login controllers
 if(isset($_POST['login'])){

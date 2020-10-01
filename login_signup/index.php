@@ -1,10 +1,10 @@
 <?php 
 
     require_once 'controllers/authcontroller.php'; 
-    if(!isset($_SESSION['id'])){
-        header('location: index.html');
-        exit();
-    }
+    // if(!isset($_SESSION['id'])){
+    //     header('location: ../index.html');
+    //     exit();
+    // }
 
 ?>
 <!DOCTYPE html>
@@ -73,8 +73,8 @@
                             </div>
                         <?php endif; ?>
 
-                        <input type="text" placeholder="Username or Email" value="<?php echo $username; ?>">
-                        <input type="password" placeholder="Password">
+                        <input type="text" name="username" placeholder="Username or Email" value="<?php echo $username; ?>">
+                        <input type="password" name="pwd" placeholder="Password">
                         <input type="submit" value="Login" name="login">
                         <p class="signup">Don't have an account ? <a href="#" onclick="toggleForm();">Sign Up</a></p>
                     </form>
@@ -96,8 +96,8 @@
 
                         <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Enter Your Username">
                         <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Enter Your Email">
-                        <input type="password" placeholder="Create Password">
-                        <input type="password" placeholder="Confirm Password">
+                        <input type="password" placeholder="Create Password" name="pwd">
+                        <input type="password" name="cpwd" placeholder="Confirm Password">
                         <input type="submit" name="signup" value="Sign Up">
                         <p class="signup">Already have an account ? <a href="#" onclick="toggleForm();">Log In</a></p>
                     </form>
@@ -108,10 +108,10 @@
     </section>
 
 
-    <!-- <script src="./js/jquery-1.9.1.min.js"></script> -->
-    <!-- <script src="./js/bootstrap.min.js"></script> -->
+    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
     <!-- header js -->
     <script src="../js/main.js"></script>
-    <!-- <script src="./js/login.js"></script> -->
+    <script src="./js/login.js"></script>
 </body>
 </html>
