@@ -27,7 +27,7 @@ menuToggler.addEventListener('click', function() {
 // bugs to be fixed || reverted no more bugs
 });
 
-const tabBtn = document.querySelector('.nav ul li');
+const tabBtn = document.querySelector('.navs ul li');
 const tab = document.querySelectorAll('.tab');
 
 function tabs(panelIndex){
