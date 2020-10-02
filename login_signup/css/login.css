@@ -118,7 +118,7 @@ section .wrapper .user .formBx form .signup a{
     text-decoration: none;
     color: #677eff;
 }
-/* section .wrapper .signupBx{
+section .wrapper .signupBx{
     pointer-events: none;
 }
 section .wrapper.activeForm .signupBx{
@@ -135,7 +135,7 @@ section .wrapper .signupBx .imgBx{
 }
 section .wrapper.activeForm .signupBx .imgBx{
     left: 0;
-} */
+}
 /* sign in form transform style */
 /* section .wrapper .signinBx .formBx{
     left: 0;
