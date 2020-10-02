@@ -1,10 +1,18 @@
 function _$(element){
-    return document.querySelector(element);
+    return document.querySelectorAll(element);
 }
+// let test = _$('.nav .ul li');
+// // console.log(test.length);
+// for(let i = 0; i < test.length; i++){
+//     // console.log(test[i]);
+//     test[i].addEventListener('click', () =>{
+//         this.classList.add('active');
+//     })
+// }
+$('.nav .ul li').addEventListener('click', () => {
+    $(this).addClass("active").siblings().removeClass("active");
 
-_$('.nav ul li').addEventListener('click', () => {
-    console.log("clicked");
-    // $(this).addClass("active").siblings().removeClass("active");
+    console.log(this.target);
 });
 
 const tabBtn = document.querySelector('.nav ul li');
