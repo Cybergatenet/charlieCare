@@ -1,53 +1,31 @@
-function _$(element){
+//  navbar toggle here!
+const selectElement = (element) => {
+    return document.querySelector(element);
+};
+const selectElementAll = (element) => {
     return document.querySelectorAll(element);
+};
+
+let nav = selectElementAll('.nav-link');
+for (let i = 0; i < nav.length; i++){
+    nav[i].onclick = function() {
+        let c = 0;
+        while (c < nav.length) {
+            nav[c++].classList.remove('active');
+        }
+        nav[i].classList.add('active');
+    };
 }
-// let el = _$('.ul li');
-// for (let i = 0; i < el.length; i++){
-//     el[i].onclick = function() {
-//         let c = 0;
-//         while (c < el.length) {
-//             el[c++].className = 'user';
-//         }
-//         el[i].className = 'user active';
-//     };
-// }
-///////////////////////////////////////
-// let lis = _$('.nav .ul li');
-// lis.forEach(li => {
-//     // console.log(li.siblings);
-//     li.addEventListener('click', () => {
-//         if(li.classList.contains('active')){
-            
-//             li.classList.remove('active');
-//         }else{
 
-//             li.classList.add('active');
-//         }
-//     })
-//     // console.log('removing class');
-//     // li[0].classList.add('active');
-// })
+let menuToggler = selectElement('.menu-toggle');
+let body = selectElement('body');
+let header = selectElement('header');
 
-// _$('.nav .ul li').addEventListener('click', (lis) => {
-    
-//     $(this).addClass("active").siblings().removeClass("active");
-//     console.log($(this));
-// });
-// try some thing new
-    // const ul = document.querySelector('.ul');
-    // ul.addEventListener('click', (e) => {
-    //     const li = ul.getElementsByTagName('li');
-    //     for(let i = 0; i < li.length; i++){
-    //         let ticked = li[i];
-    //         if(ticked.classList.contains('active')){
-    //             ticked.classList.remove('active');
-    //         }else{
-    //             ticked.classList.add('active');
-    //         }
-    //     }
-    // })
-
-// try some thing new
+menuToggler.addEventListener('click', function() {
+    body.classList.toggle('open');
+    header.classList.toggle('sticky');
+// bugs to be fixed || reverted no more bugs
+});
 
 const tabBtn = document.querySelector('.nav ul li');
 const tab = document.querySelectorAll('.tab');
@@ -57,8 +35,22 @@ function tabs(panelIndex){
         node.style.display = 'none';
     });
     tab[panelIndex].style.display = 'block';
-    // tab[panelIndex].style.boxShadow = '0px -3px 0px rgba(288, 0, 70, .9) inset';
-    tabBtn[panelIndex].style.borderBottom = '3px solid rgba(288, 0, 70, .9)';
+    //
+    tab[panelIndex].style.borderBottom = '3px solid rgba(288, 0, 70, .9)';
+
+    const selectElementAll = (element) => {
+        return document.querySelectorAll(element);
+    };
+    let el = selectElementAll('.ul li');
+    for (let i = 0; i < el.length; i++){
+        el[i].onclick = function() {
+            let c = 0;
+            while (c < el.length) {
+                el[c++].classList.remove('active');
+            }
+            el[i].classList.add('active');
+        };
+    }
 }
 tabs(0);
 
@@ -77,3 +69,16 @@ function addLength(){
     bio.innerHTML = bio.oldText;
     bio.innerHTML += "&nbsp;" + `<span onclick='bioText()' id='see-less-bio'>See less</span>`;
 }
+
+///////////////////////////////////////
+
+
+// for (let i = 0; i < el.length; i++){
+//     el[i].onclick = function() {
+//         let c = 0;
+//         while (c < el.length) {
+//             el[c++].classList.remove('active');
+//         }
+//         el[i].classList.add('active');
+//     };
+// }

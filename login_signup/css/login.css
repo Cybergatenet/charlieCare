@@ -48,7 +48,7 @@ section .wrapper .user .imgBx{
     position: relative;
     width: 50%;
     height: 100%;
-    background: #ff0;
+    background: #2196f3;
     transition: 0.5s;
 }
 section .wrapper .user .imgBx img{

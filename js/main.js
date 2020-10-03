@@ -20,6 +20,21 @@ menuToggler.addEventListener('click', function() {
 // bugs to be fixed || reverted no more bugs
 });
 
+// NavBar items active class
+const selectElementAll = (element) => {
+    return document.querySelectorAll(element);
+};
+let nav = selectElementAll('.nav-link');
+for (let i = 0; i < nav.length; i++){
+    nav[i].onclick = function() {
+        let c = 0;
+        while (c < nav.length) {
+            nav[c++].classList.remove('active');
+        }
+        nav[i].classList.add('active');
+    };
+}
+
 // Scroll reveal libray animation
 window.sr = ScrollReveal();
 

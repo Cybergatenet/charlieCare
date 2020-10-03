@@ -82,7 +82,7 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -60px;
+    margin-left: -150px;
 }
 .main-header-title a{
     /* float: left; */
@@ -271,6 +271,7 @@ header.sticky .header-small{
 .open .nav::before{
     opacity: 1;
     transform: scale(1);
+    z-index: -1;
 }
 .nav-item{
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
@@ -584,7 +585,9 @@ footer{
         margin: 10px;
         box-shadow: var(--body-shadow);
     }
-    
+    .main-header-title{
+        margin-left: -50px;
+    }
     /* .container .clip{
         max-width: calc(100% - 20px);
         margin: 10px;

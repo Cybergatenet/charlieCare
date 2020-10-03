@@ -194,6 +194,7 @@ button.createBtn i{
 .nav .ul li{
     padding: 10px;
     width: 100%;
+    font-size: 1.2rem;
     cursor: pointer;
     text-align: center;
     transition: all .4s ease-in-out;
