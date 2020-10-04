@@ -121,38 +121,40 @@ section .wrapper .user .formBx form .signup a{
 section .wrapper .signupBx{
     pointer-events: none;
 }
-section .wrapper.activeForm .signupBx{
+/* section .wrapper.activeForm .signupBx{
     pointer-events: initial;
-}
-section .wrapper .signupBx .formBx{
-    left: 100%;
-}
-section .wrapper.activeForm .signupBx .formBx{
+} */
+/* section .wrapper .signupBx .formBx{ */
+    /* left: 0; */
+    /* left: 100%; */
+/* } */
+/* section .wrapper.activeForm .signupBx .formBx{
     left: 0;
-}
-section .wrapper .signupBx .imgBx{
-    left: -100%;
-}
-section .wrapper.activeForm .signupBx .imgBx{
+} */
+/* section .wrapper .signupBx .imgBx{ */
+    /* left: 0; */
+    /* left: -100%; */
+/* } */
+/* section .wrapper.activeForm .signupBx .imgBx{
     left: 0;
-}
+} */
 /* sign in form transform style */
-/* section .wrapper .signinBx .formBx{
+section .wrapper .user .formBx{
     left: 0;
 }
-section .wrapper.activeForm .signinBx .formBx{
+/* section .wrapper.activeForm .signinBx .formBx{
     left: 100%;
-}
-section .wrapper .signinBx .imgBx{
+} */
+section .wrapper .user .imgBx{
     left: 0;
 }
-section .wrapper.activeForm .signinBx .imgBx{
+/* section .wrapper.activeForm .signinBx .imgBx{
     left: -100%;
-}
+} */
 
 .logout{
     color: red;
-} */
+}
 
 @media (max-width: 991px){
     section .wrapper{
