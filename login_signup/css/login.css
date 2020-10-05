@@ -124,17 +124,17 @@ section .wrapper .signupBx{
 /* section .wrapper.activeForm .signupBx{
     pointer-events: initial;
 } */
-section .wrapper .signupBx .formBx{
+/* section .wrapper .signupBx .formBx{ */
     /* left: 0; */
     /* left: 100%; */
-}
+/* } */
 /* section .wrapper.activeForm .signupBx .formBx{
     left: 0;
 } */
-section .wrapper .signupBx .imgBx{
+/* section .wrapper .signupBx .imgBx{ */
     /* left: 0; */
     /* left: -100%; */
-}
+/* } */
 /* section .wrapper.activeForm .signupBx .imgBx{
     left: 0;
 } */
