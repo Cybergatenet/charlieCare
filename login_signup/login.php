@@ -81,7 +81,7 @@
                         <input type="text" name="username" placeholder="Username or Email" value="<?php echo $username; ?>">
                         <input type="password" name="pwd" placeholder="Password">
                         <input type="submit" value="Login" name="login">
-                        <p class="signup">Don't have an account ? <a href="#" onclick="toggleForm();">Sign Up</a></p>
+                        <p class="signup">Don't have an account ? <a href="./signup.php">Sign Up</a><br><br><br><a href="../server/reset_pass.php">Forgot Password?</a></p>
                     </form>
                 </div>
             </div>

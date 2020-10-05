@@ -1,6 +1,6 @@
 <?php 
 
-    // require_once 'controllers/authcontroller.php'; 
+    require_once 'controllers/authcontroller.php'; 
     // if(!isset($_SESSION['id'])){
     //     header('location: ../index.html');
     //     exit();
@@ -53,7 +53,7 @@
                         <a href="../about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./login.php" onclick="alert('sorry, this app is under maintenance');" class="nav-link active">Log In</a>
+                        <a href="./login.php" class="nav-link active">Log In</a>
                     </li>
                 </ul>
             </nav>
@@ -82,7 +82,7 @@
                         <input type="password" placeholder="Create Password" name="pwd">
                         <input type="password" name="cpwd" placeholder="Confirm Password">
                         <input type="submit" name="signup" value="Sign Up">
-                        <p class="signup">Already have an account ? <a href="#" onclick="toggleForm();">Log In</a></p>
+                        <p class="signup">Already have an account ? <a href="./login.php">Log In</a></p>
                     </form>
                 </div>
                 <div class="imgBx"><img src="../img/star2.png" alt=""></div>
