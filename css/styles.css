@@ -20,7 +20,8 @@
                     0px 7px 7px rgba(0, 0, 0, 0.8);
 }
 html{
-    font-family: var(--body-font);
+    /* font-family: var(--body-font); */
+    font-family: var(--secondary-font);
     font-size: 10px;
     color: var(--body-font-color);
     scroll-behavior: smooth;
