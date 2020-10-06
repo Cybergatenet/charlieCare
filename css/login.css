@@ -119,7 +119,8 @@ section .wrapper .user .formBx form .signup a{
     color: #677eff;
 }
 section .wrapper .signupBx{
-    pointer-events: none;
+    pointer-events: all;
+    /* pointer-events: none; */
 }
 /* section .wrapper.activeForm .signupBx{
     pointer-events: initial;
