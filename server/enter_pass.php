@@ -2,7 +2,7 @@
 	session_start();
 
 	// database connection
-   require('../config/config.php');
+   require('../config/constants.php');
    require('../config/db.php');
 	
  	$token = $_SESSION['token'];
@@ -35,25 +35,25 @@
 		if($pwd === $cpwd){
 			if($get_token === $var_token && $token === $var_token){
 		// token matched...update table
-			$set_pwd = "UPDATE  `greencash`.`greencash_table` SET  `pwd` =  '$pwd' WHERE  `greencash_table`.`email` = '$email'";
+			// $set_pwd = "UPDATE  `greencash`.`greencash_table` SET  `pwd` =  '$pwd' WHERE  `greencash_table`.`email` = '$email'";
 				if(mysqli_query($conn, $set_pwd)){
-					$_SESSION['token'] = $token;
-				    $_SESSION['email'] = $email;
-				    setcookie("new_token", $token);
+					// $_SESSION['token'] = $token;
+				    // $_SESSION['email'] = $email;
+				    // setcookie("new_token", $token);
 
-				    header("location: ../login.php");
+				    // header("location: ../login.php");
 				}else{
-					$msg = "Password update Failed!...try again";
-					$msgClass = "alert-danger";
+					// $msg = "Password update Failed!...try again";
+					// $msgClass = "alert-danger";
 					exit();
 				}
 			}else{
-				$msg = "Wrong Token Enter. Check Your Email and try again";
-				$msgClass = "alert-danger";
+				// $msg = "Wrong Token Enter. Check Your Email and try again";
+				// $msgClass = "alert-danger";
 			}
 		}else{
-			$msg = "Password Match Failed! Enter Password Again";
-				$msgClass = "alert-danger";
+			// $msg = "Password Match Failed! Enter Password Again";
+				// $msgClass = "alert-danger";
 		}		    
 	}
 	
@@ -186,10 +186,10 @@
 	// }
 	
 </script>
-    <script src="./js/jquery-1.9.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- header js -->
-    <script src="../js/main.js"></script>
-    <script src="./js/login.js"></script>
+    <!-- <script src="../js/main.js"></script> -->
+    <script src="../js/login.js"></script>
 </body>
 </html>

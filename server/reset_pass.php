@@ -2,11 +2,11 @@
 	session_start();
 
 	// database connection
-   require('../config/config.php');
-   require('../config/db.php');
-
+    require('../config/constants.php');
+    require('../config/db.php');
    	$msg = "";
-   	$msgClass = "";
+       $msgClass = "";
+    $email = '';
 
 	function sanitize_my_email($field) {
     // $field = filter_var($field, FILTER_SANITIZE_EMAIL);
