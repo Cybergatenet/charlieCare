@@ -81,7 +81,7 @@
                         <input type="text" name="username" placeholder="Username or Email" value="<?php echo $username; ?>">
                         <input type="password" name="pwd" placeholder="Password">
                         <input type="submit" value="Login" name="login">
-                        <p class="signup">Don't have an account ? <a href="#" onclick="toggleForm();">Sign Up</a></p>
+                        <p class="signup">Don't have an account ? <a href="./signup.php" onclick="toggleForm();">Sign Up</a></p>
                     </form>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                         <input type="password" placeholder="Create Password" name="pwd">
                         <input type="password" name="cpwd" placeholder="Confirm Password">
                         <input type="submit" name="signup" value="Sign Up">
-                        <p class="signup">Already have an account ? <a href="#" onclick="toggleForm();">Log In</a></p>
+                        <p class="signup">Already have an account ? <a href="./login.php" onclick="toggleForm();">Log In</a></p>
                     </form>
                 </div>
                 <div class="imgBx"><img src="../img/star2.png" alt=""></div>
