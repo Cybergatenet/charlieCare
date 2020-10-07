@@ -20,8 +20,8 @@
                     0px 7px 7px rgba(0, 0, 0, 0.8);
 }
 html{
-    /* font-family: var(--body-font); */
-    font-family: var(--secondary-font);
+    font-family: var(--body-font);
+    /* font-family: var(--secondary-font); */
     font-size: 10px;
     color: var(--body-font-color);
     scroll-behavior: smooth;
@@ -302,7 +302,8 @@ header.sticky .header-small{
 }
 .sub-headline{
     font-size: 3rem;
-    font-family: var(--secondary-font);
+    /* font-family: var(--secondary-font); */
+    font-family: var(--body-font);
     color: #eee;
     font-weight: 100;
     line-height: 0.4px;
