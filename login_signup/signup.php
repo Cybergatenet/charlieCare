@@ -19,11 +19,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up | CharlyCareCla$ic</title>
     <link rel="icon" href="../img/charlyLogo22.png">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- fontAwesome -->
     <link rel="stylesheet" href="../css/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <style>
+        .error {
+            color: red;
+            font-size: 85%;
+        }
+    </style>
 </head>
 <body>
     <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
@@ -66,7 +72,7 @@
         <div class="wrapper">
             <div class="user signupBx">
                 <div class="formBx">    
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" name="signupForm" id="signupForm">
                         <h2>Create an account</h2>
                         <!-- error msg here -->
                         <?php if(count($errors) > 0): ?>
@@ -78,9 +84,13 @@
                         <?php endif; ?>
 
                         <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Enter Your Username">
+                        <div class="error" id="usernameErr"></div>
                         <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Enter Your Email">
+                        <div class="error" id="emailErr"></div>
                         <input type="password" placeholder="Create Password" name="pwd">
+                        <div class="error" id="pwdErr"></div>
                         <input type="password" name="cpwd" placeholder="Confirm Password">
+                        <div class="error" id="cpwdErr"></div>
                         <input type="submit" name="signup" value="Sign Up">
                         <p class="signup">Already have an account ? <a href="./login.php">Log In</a></p>
                     </form>
@@ -91,10 +101,11 @@
     </section>
 
 
-    <script src="./js/jquery-1.9.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- header js -->
     <script src="../js/main.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/validation.js"></script>
 </body>
 </html>

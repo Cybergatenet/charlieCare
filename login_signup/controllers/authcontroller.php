@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require 'config/db.php';
+    require '../config/db.php';
 
     $errors = array();
     $username = '';
@@ -12,6 +12,8 @@
         $email = $_POST['email'];
         $pwd = $_POST['pwd'];
         $cpwd = $_POST['cpwd'];
+        $avatar = 'defaultAvatar.png';
+        // $userTime = '';
 
         // validating user input
         if(empty($username)){
@@ -51,10 +53,10 @@
         // $token = bin2hex(random_bytes(50));
         $verified = false;
 
-        $sql = "INSERT INTO users (username, email, verified, token, pwd) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, email, pwd, verified, token, avatar) VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssbss', $username, $email, $pwd, $verified, $token);
+        $stmt->bind_param('ssbsss', $username, $email, $pwd, $verified, $token, $avatar);
 
         if($stmt->execute()){
             // login the user here
@@ -63,6 +65,8 @@
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
             $_SESSION['verified'] = $verified;
+            $_SESSION['avatar'] = $avatar;
+            $_SESSION['userTime'] = $userTime;
 
             // set flash msg
             $_SESSION['msg'] = "You are now logged in!";

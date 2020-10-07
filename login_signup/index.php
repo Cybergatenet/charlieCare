@@ -23,7 +23,7 @@
     <!-- fontAwesome -->
     <link rel="stylesheet" href="../css/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
 </head>
 <body>
     <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
@@ -81,7 +81,7 @@
                         <input type="text" name="username" placeholder="Username or Email" value="<?php echo $username; ?>">
                         <input type="password" name="pwd" placeholder="Password">
                         <input type="submit" value="Login" name="login">
-                        <p class="signup">Don't have an account ? <a href="#" onclick="toggleForm();">Sign Up</a></p>
+                        <p class="signup">Don't have an account ? <a href="./signup.php" onclick="toggleForm();">Sign Up</a></p>
                     </form>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                         <input type="password" placeholder="Create Password" name="pwd">
                         <input type="password" name="cpwd" placeholder="Confirm Password">
                         <input type="submit" name="signup" value="Sign Up">
-                        <p class="signup">Already have an account ? <a href="#" onclick="toggleForm();">Log In</a></p>
+                        <p class="signup">Already have an account ? <a href="./login.php" onclick="toggleForm();">Log In</a></p>
                     </form>
                 </div>
                 <div class="imgBx"><img src="../img/star2.png" alt=""></div>
@@ -113,10 +113,10 @@
     </section>
 
 
-    <script src="./js/jquery-1.9.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- header js -->
     <script src="../js/main.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 </html>
