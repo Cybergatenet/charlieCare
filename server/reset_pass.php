@@ -72,18 +72,25 @@
     <meta name="author" content="Designed by cybergate communication network">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Password Reset | CharlyCareCla$ic</title>
-    <!-- font-awesome cdn | locally hosted -->
     <link rel="icon" href="../img/charlyLogo22.png">
-    <!-- fontAwesome here -->
+    <!-- font-awesome cdn | locally hosted -->
     <link rel="stylesheet" type="text/css" href="../css/css/all.css">
     <!-- Scroll Reveal CDN -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <!-- NEW Styles Added here -->
     <link rel="stylesheet" type="text/css" href="../css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+
+    <style>
+        #btn{
+            max-width: 250px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-<header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
+    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -151,11 +158,11 @@
                                     <li><?php echo $error; ?></li>
                                 <?php endforeach; ?>
                             </div>
-                        <?php endif; ?> -->
+                            <?php endif; ?> -->
 
                         <input type="email" name="email" placeholder="Enter Your email address" value="<?php echo $email; ?>">
-                        <input type="submit" value="Recover Password" name="submit">
-                        <p class="signup">Don't have an account ? <a href="./signup.php">Sign Up</a><br><br><br><a href="../server/reset_pass.php">Sign In Instead?</a></p>
+                        <input type="submit" id="btn" value="Recover Password" name="submit">
+                        <p class="signup">Don't have an account ? <a href="../login_signup/signup.php">Sign Up</a><br><br><br><a href="../login_signup/login.php">Sign In Instead?</a></p>
                     </form>
                 </div>
             </div>
@@ -175,10 +182,10 @@
 	// }
 	
 </script>
-    <script src="./js/jquery-1.9.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- header js -->
     <script src="../js/main.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 </html>
