@@ -119,7 +119,7 @@ if(isset($_POST['login'])){
             // set flash msg
             $_SESSION['msg'] = "You are now logged in!";
             $_SESSION['alert-class'] = "alert-success";
-            header('location: ../home.php');
+            header('location: ../User_dashboard/user.html');
             exit();
         }else{
             $errors['login_failed'] = "Wrong Credentials";
