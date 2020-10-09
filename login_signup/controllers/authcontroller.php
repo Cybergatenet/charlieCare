@@ -13,7 +13,8 @@
         $pwd = $_POST['pwd'];
         $cpwd = $_POST['cpwd'];
         $avatar = 'defaultAvatar.png';
-        // $userTime = '';
+        // $userTime = 'CURRENT_TIMESTAMP';
+        // define('CURRENT_TIMESTAMP', 'CURRENT_TIMESTAMP');
 
         // validating user input
         if(empty($username)){
@@ -51,12 +52,19 @@
         $char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
 		$token = substr(str_shuffle($char), 0, 8);
         // $token = bin2hex(random_bytes(50));
-        $verified = false;
+        // $verified = false;
+        $verified = 0;
+#####################################
+        // $new_sql = "INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `verified`, `token`, `avatar`, `userTime`) VALUES (NULL, 'cybergate test', 'cybergatetest@gmail.com', MD5('qwerty'), '0', 'nsklnder', 'pic.png', CURRENT_TIMESTAMP)";
 
+        // if(mysqli_query($conn, $new_sql) === false){
+        //     echo "data not inserted : CONTACT ADMIN";
+        // }
+#####################################
         $sql = "INSERT INTO users (username, email, pwd, verified, token, avatar) VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssbsss', $username, $email, $pwd, $verified, $token, $avatar);
+        $stmt->bind_param('sssbss', $username, $email, $pwd, $verified, $token, $avatar);
 
         if($stmt->execute()){
             // login the user here
@@ -71,10 +79,11 @@
             // set flash msg
             $_SESSION['msg'] = "You are now logged in!";
             $_SESSION['alert-class'] = "alert-success";
-            header('location: home.php');
+            header('location: ./home.php');
             exit();
         }else{
             $errors['db_error'] = "Request NOT successful: failed to register";
+            echo 'this error '. mysqli_error($conn);
         }
     }
 }
