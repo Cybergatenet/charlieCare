@@ -52,8 +52,8 @@
         $char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
 		$token = substr(str_shuffle($char), 0, 8);
         // $token = bin2hex(random_bytes(50));
-        // $verified = false;
-        $verified = 0;
+        $verified = false;
+        // $verified = '0';
 #####################################
         // $new_sql = "INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `verified`, `token`, `avatar`, `userTime`) VALUES (NULL, 'cybergate test', 'cybergatetest@gmail.com', MD5('qwerty'), '0', 'nsklnder', 'pic.png', CURRENT_TIMESTAMP)";
 
@@ -77,7 +77,7 @@
             $_SESSION['userTime'] = $userTime;
 
             // set flash msg
-            $_SESSION['msg'] = "You are now logged in!";
+            $_SESSION['msg'] = "Registration Success!";
             $_SESSION['alert-class'] = "alert-success";
             header('location: ./home.php');
             exit();
@@ -134,6 +134,8 @@ if(isset($_GET['logout'])){
     unset($_SESSION['username']);
     unset($_SESSION['email']);
     unset($_SESSION['verified']);
-    header('location: ../index.html'); // back to home page
+    unset($_SESSION['msg']);
+    unset($_SESSION['alert-class']);
+    header('location: ../index.html'); // back to index page
     exit();
 }

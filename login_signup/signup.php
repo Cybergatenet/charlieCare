@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="CharlyCareCla$ic is a single family office that thrives on the ideology of inventing the life we 
     deserve through innovation and creativity.">
@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-    <!-- <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
+    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -64,7 +64,7 @@
                 </ul>
             </nav>
         </div>
-    </header> -->
+    </header>
     <!-- header ends here -->
     <br><br><br><br><br>
             <br><br>

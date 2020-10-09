@@ -4,7 +4,7 @@ function printError(elemId, hintMsg) {
     element.innerHTML = hintMsg;
     setTimeout(() =>{
         element.innerHTML = '';
-    }, 5000)
+    }, 7000)
     element.addEventListener('input', () =>{
         element.innerHTML = '';
     });
@@ -14,6 +14,7 @@ function printError(elemId, hintMsg) {
 let signupForm = document.querySelector('#signupForm');
 
 signupForm.addEventListener('submit', (e) => {
+    let canSubmitForm = false;
     // e.preventDefault();
     // return false;
     // appending variables or value
@@ -76,7 +77,8 @@ signupForm.addEventListener('submit', (e) => {
     
     // Prevent the form from being submitted if there are any errors
     if((usernameErr || emailErr || pwdErr || cpwdErr) == true) {
-       return false;
+        canSubmitForm = false;
+        // return false;
     } else {
         // Creating a string from input data for preview
         // let dataPreview = "You've entered the following details: \n" +
@@ -88,8 +90,17 @@ signupForm.addEventListener('submit', (e) => {
         // }
         // alert(dataPreview);
         // window.location.href = './signup.php';
+        canSubmitForm = true;
         document.signupForm.submit();
-        return val();
+        // return document.signupForm.value;
         // return true;
+    }
+
+    if(canSubmitForm == false){
+        e.preventDefault();
+    }else{
+        document.signupForm.submit();
+
+        return true;
     }
 });
