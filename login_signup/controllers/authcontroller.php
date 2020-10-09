@@ -29,7 +29,7 @@
             $errors['pwd'] = "Password Required!";
         }
         if($pwd !== $cpwd){
-            $errors = "Your Password did NOT match";
+            $errors['pwd'] = "Your Password did NOT match";
         }
 ## removed closed curly brace}
 
@@ -74,7 +74,7 @@
             header('location: home.php');
             exit();
         }else{
-            $errors['db_error'] = "Database error: failed to register";
+            $errors['db_error'] = "Request NOT successful: failed to register";
         }
     }
 }
