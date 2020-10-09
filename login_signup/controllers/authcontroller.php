@@ -110,6 +110,8 @@ if(isset($_POST['login'])){
         $user = $result->fetch_assoc();
 
         if(password_verify($pwd, $user['pwd'])){
+            ##  Send Email Here
+            
             // login success
             $_SESSION['id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
