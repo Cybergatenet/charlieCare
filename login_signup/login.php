@@ -19,14 +19,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Log In | CharlyCareCla$ic</title>
     <link rel="icon" href="../img/charlyLogo22.png">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- fontAwesome -->
     <link rel="stylesheet" href="../css/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/login.css">
 </head>
 <body>
-    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
+    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">

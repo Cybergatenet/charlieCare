@@ -1,9 +1,10 @@
 <?php
+	define('ROOT_URL', 'http://www.charlycareclasic.com/');
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '123456');
-    // define('DB_NAME', 'cyber_user');
-    define('DB_NAME', 'cybergate_user');
+    define('DB_NAME', 'cyber_user');
+    // define('DB_NAME', 'cybergate_user');
 
     ## origin variables
     // define('DB_HOST', 'ec2-34-232-212-164.compute-1.amazonaws.com');

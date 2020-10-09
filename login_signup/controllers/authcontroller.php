@@ -7,26 +7,37 @@
     $username = '';
     $email = '';
 
+    ///   Input Validation Function
+    function validate_input($input){
+        $input = htmlspecialchars($input);
+        $input = trim($input);
+        $input = stripslashes($input);
+        return $input;
+    }
+
     if(isset($_POST['signup'])){
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $pwd = $_POST['pwd'];
-        $cpwd = $_POST['cpwd'];
-        $avatar = 'defaultAvatar.png';
-        // $userTime = '';
+        $username = mysqli_real_escape_string($conn, validate_input($_POST['username']));
+        $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
+        $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
+        $cpwd = mysqli_real_escape_string($conn, validate_input($_POST['cpwd']));
+        $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
+
+## issue 
+        // $userTime = 'CURRENT_TIMESTAMP';
+        // define('CURRENT_TIMESTAMP', 'CURRENT_TIMESTAMP');
 
         // validating user input
         if(empty($username)){
-            $errors['username'] = "Username Required!";
+            $errors['username'] = "Username Is Required!";
         }
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errors['email'] = "Invalid email Address";
+            $errors['email'] = "Invalid Email Address";
         }
         if(empty($email)){
-            $errors['email'] = "Email Required!";
+            $errors['email'] = "Email Is Required!";
         }
         if(empty($pwd)){
-            $errors['pwd'] = "Password Required!";
+            $errors['pwd'] = "Password Is Required!";
         }
         if($pwd !== $cpwd){
             $errors['pwd'] = "Your Password did NOT match";
@@ -43,20 +54,28 @@
     $stmt->close();
 
     if($userCount > 0) {
-        $errors['email'] = "Email Already exist";
+        $errors['email'] = "Email NOT Avaliable";
     }
 
     if(count($errors) === 0) {
         $pwd = password_hash($pwd, PASSWORD_DEFAULT);
         $char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
-		$token = substr(str_shuffle($char), 0, 8);
+        $token_hash = substr(str_shuffle($char), 0, 8);
+        $token = password_hash($token_hash, PASSWORD_DEFAULT);
         // $token = bin2hex(random_bytes(50));
         $verified = false;
+        // $verified = '0';
+#####################################
+        // $new_sql = "INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `verified`, `token`, `avatar`, `userTime`) VALUES (NULL, 'cybergate test', 'cybergatetest@gmail.com', MD5('qwerty'), '0', 'nsklnder', 'pic.png', CURRENT_TIMESTAMP)";
 
+        // if(mysqli_query($conn, $new_sql) === false){
+        //     echo "data not inserted : CONTACT ADMIN";
+        // }
+#####################################
         $sql = "INSERT INTO users (username, email, pwd, verified, token, avatar) VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssbsss', $username, $email, $pwd, $verified, $token, $avatar);
+        $stmt->bind_param('sssbss', $username, $email, $pwd, $verified, $token, $avatar);
 
         if($stmt->execute()){
             // login the user here
@@ -68,27 +87,34 @@
             $_SESSION['avatar'] = $avatar;
             $_SESSION['userTime'] = $userTime;
 
+    ###### Sending Email Here
+            send_email($email, $token);
+
             // set flash msg
-            $_SESSION['msg'] = "You are now logged in!";
+            $_SESSION['msg'] = "Registration Success!";
             $_SESSION['alert-class'] = "alert-success";
-            header('location: home.php');
+            header('location: ./home.php');
             exit();
         }else{
             $errors['db_error'] = "Request NOT successful: failed to register";
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 1cc291bc4599ee9cefbb650791cb97211d820877
         }
     }
 }
 
 // login controllers
 if(isset($_POST['login'])){
-    $username = $_POST['username'];
-    $pwd = $_POST['pwd'];
+    $username = mysqli_real_escape_string($conn, validate_input($_POST['username']));
+    $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
     // validating user input
     if(empty($username)){
-        $errors['username'] = "Username Required!";
+        $errors['username'] = "Username Is Required!";
     }
     if(empty($pwd)){
-        $errors['pwd'] = "Password Required!";
+        $errors['pwd'] = "Password Is Required!";
     }
    
     if(count($errors === 0)){
@@ -101,6 +127,7 @@ if(isset($_POST['login'])){
         $user = $result->fetch_assoc();
 
         if(password_verify($pwd, $user['pwd'])){
+
             // login success
             $_SESSION['id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
@@ -108,15 +135,42 @@ if(isset($_POST['login'])){
             $_SESSION['verified'] = $user['verified'];
 
             // set flash msg
-            $_SESSION['msg'] = "You are now logged in!";
-            $_SESSION['alert-class'] = "alert-success";
-            header('location: ../home.php');
+            // $_SESSION['msg'] = "You are now logged In!";
+            // $_SESSION['alert-class'] = "alert-success";
+            header('location: ../User_dashboard/user.html');
             exit();
         }else{
             $errors['login_failed'] = "Wrong Credentials";
         }
     }
 }
+#################################################
+//  Send email here
+function send_email($input, $OTP){
+    $username = mysqli_real_escape_string(validate_input($_POST['username']));
+// Generation of ramdom token
+    // $char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
+    // $token = substr(str_shuffle($char), 0, 6);
+//  creating the session varialbes
+    $_SESSION['token'] = $OTP;
+# creating cookies
+    setcookie("charlycareclasic", $OTP, time() + (86400 * 14), '/');
+
+    $to_email = $input;
+    $subject = 'Account Activation';
+    $message = '<html><body>';
+    $message .= '<p>Welcome '.$username.', You have requested to register as a member @ <span style="color: blue; font-weight: bold;">CharlyCareCla$ic</span> Family Office. Your request have been received and your account will be up and running in no distant time. Click on the Link below to Activate your Account: <br> <h2><a href="http://charlycarecla.herokuapp.com/login_signup/home.php?otp='.$token.'&email='.$input.'" style="background-color: blue; color: white; font-weight: bold; border-radius: 4px;">Activate Account</a></h2><br><br> If you do not reconginse this activity, kindly report to the <a href="http://www.charlycareclasic.com">Admin</a> <br> Thank You!</p>';
+    $message .= '</body></html>';
+
+    $headers = "From: noreply@charlycareclasic.com"."\r\n";
+    $headers .= "MIME-Version : 1.0" ."\r\n";
+    $headers .= "Content-Type: text/html; Charset: UTF-8" ."\r\n";
+
+    mail($to_email, $subject, $message, $headers);
+
+}
+
+#################################################
 
 // logout
 if(isset($_GET['logout'])){
@@ -125,6 +179,8 @@ if(isset($_GET['logout'])){
     unset($_SESSION['username']);
     unset($_SESSION['email']);
     unset($_SESSION['verified']);
-    header('location: ../index.html'); // back to home page
+    unset($_SESSION['msg']);
+    unset($_SESSION['alert-class']);
+    header('location: ../index.html'); // back to index page
     exit();
 }

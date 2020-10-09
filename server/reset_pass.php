@@ -2,15 +2,16 @@
 	session_start();
 
 	// database connection
-    require('../config/constants.php');
     require('../config/db.php');
-   	$msg = "";
-       $msgClass = "";
-    $email = '';
 
-	function sanitize_my_email($field) {
+   	$msg = "";
+    $msgClass = "";
+    $email = "";
+    $errors = array();
+
+	function sanitize_email($field) {
     // $field = filter_var($field, FILTER_SANITIZE_EMAIL);
-	    if (filter_var($field, FILTER_VALIDATE_EMAIL)){
+	    if(filter_var($field, FILTER_VALIDATE_EMAIL)){
 	        return true;
 	    } else {
 	        return false;
@@ -18,18 +19,16 @@
 	}
 
 	if(isset($_POST['submit'])){
-
 		$char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
 		$token = substr(str_shuffle($char), 0, 6);
 
-		$inputmail = mysqli_real_escape_string($conn, $_POST['email']);
+		$inputmail = mysqli_real_escape_string($conn, sanitize_email($_POST['email']));
 
 		$email = $inputmail;
-		$get_email = "SELECT * FROM greencash_table WHERE email = '$email'";
+		$get_email = "SELECT * FROM users WHERE email = '$email' LIMIT=1";
 		$query = mysqli_query($conn, $get_email);
 		$result = mysqli_num_rows($query);
-		if($result === 0){
-
+		if($result > 0){
 			$to_email = $email;
 			$subject = 'Password Reset';
 			$message = '</html></body>';
@@ -40,23 +39,23 @@
 			$headers .= "Content-Type: text/html;charset: UTF-8" ."\r\n";
 			//check if the email address is invalid $secure_check
 			if ($to_email === false) {
-			    $msg = "Invalid Email. Try Again";
-			    $msgClass = "alert-danger";
+			    $$errors['emailErr'] = "Invalid Email. Try Again";
+			    // $msgClass = "alert-danger";
 			} else { //send email 
 			   if(mail($to_email, $subject, $message, $headers)){
 				   	$_SESSION['token'] = $token;
 				    $_SESSION['email'] = $email;
-				    setcookie("greencash_new_token", $token);
+				    setcookie("Charlycareclasic_pwd_token", $token);
 
 				    header('location: enter_pass.php?token='.$token);
 				}else{
-			    	$msg = "Password Reset Failed. Try Again. OR contact the Admin";
-			    	$msgClass = "alert-danger";
+			    	$errors['mailErr'] = "Password Reset Failed. Try Again. OR contact the Admin";
+			    	// $msgClass = "alert-danger";
 				}
 			}
 	}else{
-		$msg = "NO Record Found. Check the Email and try again";
-		$msgClass = "alert-danger";
+		$$errors['db_null'] = "NO Record Found. Check the Email and try again";
+		// $msgClass = "alert-danger";
 	}
 }
 
@@ -90,7 +89,11 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
+=======
+    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
+>>>>>>> 1cc291bc4599ee9cefbb650791cb97211d820877
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -114,10 +117,10 @@
                         <a href="../index.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
+                        <a href="../about.html" class="nav-link">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./signup.php" onclick="alert('sorry, this app is under maintenance');" class="nav-link active">Sign Up</a>
+                        <a href="./signup.php" class="nav-link active">Sign Up</a>
                     </li>
                 </ul>
             </nav>
@@ -152,13 +155,17 @@
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                         <h2>Reset Password</h2>
                         <!-- error msg here -->
-                        <!-- <?php if(count($errors) > 0): ?>
+                        <?php if(count($errors) > 0): ?>
                             <div class="alert alert-danger">
                                 <?php foreach($errors as $error): ?>
                                     <li><?php echo $error; ?></li>
                                 <?php endforeach; ?>
                             </div>
+<<<<<<< HEAD
                             <?php endif; ?> -->
+=======
+                            <?php endif; ?>
+>>>>>>> 1cc291bc4599ee9cefbb650791cb97211d820877
 
                         <input type="email" name="email" placeholder="Enter Your email address" value="<?php echo $email; ?>">
                         <input type="submit" id="btn" value="Recover Password" name="submit">
@@ -169,6 +176,7 @@
         </div>
     </section>
 
+<<<<<<< HEAD
 	<?php ## include("../inc/footer.php"); ?>
 
 <script type="text/javascript">
@@ -182,6 +190,8 @@
 	// }
 	
 </script>
+=======
+>>>>>>> 1cc291bc4599ee9cefbb650791cb97211d820877
     <script src="../js/jquery-1.9.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <!-- header js -->

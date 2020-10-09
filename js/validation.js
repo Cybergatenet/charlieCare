@@ -4,17 +4,19 @@ function printError(elemId, hintMsg) {
     element.innerHTML = hintMsg;
     setTimeout(() =>{
         element.innerHTML = '';
-    }, 5000)
+    }, 7000)
     element.addEventListener('input', () =>{
         element.innerHTML = '';
     });
 }
 
 // Defining a function to validate form 
-let signupForm = document.querySelector('signupForm');
+let signupForm = document.querySelector('#signupForm');
 
-signupForm.addEventListener('click', (e) => {
-    e.preventDefault();
+signupForm.addEventListener('submit', (e) => {
+    let canSubmitForm = false;
+    // e.preventDefault();
+    // return false;
     // appending variables or value
     const username = document.signupForm.username.value;
     const email = document.signupForm.email.value;
@@ -22,7 +24,7 @@ signupForm.addEventListener('click', (e) => {
     const cpwd = document.signupForm.cpwd.value;
    
 	// Defining error variables with a default value
-    let usernameErr = emailErr = pwd = cpwd = true;
+    let usernameErr = emailErr = pwdErr = cpwdErr = true;
     // Validate username
     if(username == "") {
         printError("usernameErr", "Please enter your username");
@@ -52,9 +54,9 @@ signupForm.addEventListener('click', (e) => {
     if(pwd == "") {
         printError("pwdErr", "Please enter your password");
     }else {
-        let regex = /^[a-zA-Z\s]+$/;                
-        if(regex.test(pwd) === false) {
-            printError("pwdErr", "Please enter a valid name");
+        // let regex = /^[a-zA-Z\s]+$/;                
+        if(pwd.length < 8) {   // regex.test(pwd) === false
+            printError("pwdErr", "Please Enter atleast 8 characters");
         } else {
             printError("pwdErr", "");
             pwdErr = false;
@@ -64,9 +66,9 @@ signupForm.addEventListener('click', (e) => {
     if(cpwd == "") {
         printError("cpwdErr", "Please enter your password");
     }else {
-        let regex = /^[a-zA-Z\s]+$/;                
-        if(regex.test(cpwd) === false) {
-            printError("cpwdErr", "Please enter a valid name");
+        // let regex = /^[a-zA-Z\s]+$/;                
+        if(cpwd.length < 8) {
+            printError("cpwdErr", "Please Enter atleast 8 characters");
         } else {
             printError("cpwdErr", "");
             cpwdErr = false;
@@ -74,17 +76,31 @@ signupForm.addEventListener('click', (e) => {
     }
     
     // Prevent the form from being submitted if there are any errors
-    if((nameErr || emailErr || mobileErr || countryErr || genderErr) == true) {
-       return false;
+    if((usernameErr || emailErr || pwdErr || cpwdErr) == true) {
+        canSubmitForm = false;
+        // return false;
     } else {
         // Creating a string from input data for preview
-        let dataPreview = "You've entered the following details: \n" +
-        "Full Name: " + username + "\n" +
-        "Email Address: " + email + "\n" +
-        "Email Address: " + pwd + "\n";
+        // let dataPreview = "You've entered the following details: \n" +
+        // "Full Name: " + username + "\n" +
+        // "Email Address: " + email + "\n" +
+        // "Email Address: " + pwd + "\n";
         // if(hobbies.length) {
         //     dataPreview += "Hobbies: " + hobbies.join(", ");
         // }
-        alert(dataPreview);
+        // alert(dataPreview);
+        // window.location.href = './signup.php';
+        canSubmitForm = true;
+        document.signupForm.submit();
+        // return document.signupForm.value;
+        // return true;
+    }
+
+    if(canSubmitForm == false){
+        e.preventDefault();
+    }else{
+        document.signupForm.submit();
+
+        return true;
     }
 });
