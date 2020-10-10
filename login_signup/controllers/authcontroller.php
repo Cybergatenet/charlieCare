@@ -97,10 +97,7 @@
             exit();
         }else{
             $errors['db_error'] = "Request NOT successful: failed to register";
-<<<<<<< HEAD
-=======
             
->>>>>>> 1cc291bc4599ee9cefbb650791cb97211d820877
         }
     }
 }
