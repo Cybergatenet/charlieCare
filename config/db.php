@@ -1,8 +1,8 @@
 <?php
 
-    require 'constants.php';
+    // require 'constants.php';
 
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    // $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     // $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     if(!$conn){
