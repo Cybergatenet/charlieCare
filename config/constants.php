@@ -1,4 +1,5 @@
 <?php
+	define('ROOT_URL', 'http://www.charlycareclasic.com/');
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
     define('DB_PASS', '123456');

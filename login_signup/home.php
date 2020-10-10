@@ -10,12 +10,27 @@
     <meta name="author" content="Designed by cybergate communication network">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/charlyLogo22.png">
-    <title>Welcome Page | Charlycarecla$ic</title>
+    <title>Account Verification | Charlycarecla$ic</title>
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="../css/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/login.css"> 
-    <!-- fontAwesome -->
-    <link rel="stylesheet" href="../css/css/all.min.css">
+    <style>
+        body{
+            min-height: 100vh;
+        }
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid rgba(0, 0, 0, 0.5);
+            padding: 20px 100px;
+            width: 400px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
@@ -55,9 +70,9 @@
     <br><br><br><br><br>
             <br><br>
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-md-4 offset-md-4 form-div login">
+            <div class="col-md-12 offset-md-12 form-div login">
             <?php if(isset($_SESSION['msg'])): ?>
                 <div class="alert <?php echo $_SESSION['alert-class']; ?>">
                     <?php 
@@ -73,7 +88,7 @@
                 <a href="./login.php?logout=1" class="btn btn-danger m-2">Log out</a>
 
                 <?php if(!$_SESSION['verified']): ?>
-                    <div class="alert alert-warning">
+                    <div class="alert alert-warning h4">
                         You need to verify your account.
                         Sign in to your email account and click on the verification link we just emailed you at <strong><?php echo $_SESSION['email']; ?></strong>
                     </div>
@@ -90,5 +105,6 @@
 
     <script src="../js/jquery-1.9.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

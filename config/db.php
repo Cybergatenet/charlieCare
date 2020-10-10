@@ -8,9 +8,11 @@
     if(!$conn){
         echo 'Database is not connnecting now';
         header('location: ../../errors/404.php');
+        die($conn->connection_status);
+        exit("Oop!...NOT connected");
     }
 
     if($conn->connect_error) {
         die('Database error-:)= could not connect to database' . $conn->connect_error);
-        // header('location: ../../errors/404.php');
+        header('location: ../../errors/404.php');
     }
