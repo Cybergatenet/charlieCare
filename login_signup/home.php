@@ -1,4 +1,49 @@
-<?php require_once 'controllers/authcontroller.php'; ?>
+<?php 
+    // session_start();
+
+    require_once 'controllers/authcontroller.php'; 
+
+    if(!$_SESSION['username']){
+######### comment out ooh
+        // header('location: ./login.php');
+    }
+
+    $msg = "";
+    $msgClass = "";
+
+    if(isset($_GET['otp'])){
+        $get_token = mysqli_real_escape_string($conn, $_GET['otp']);
+        $get_email = mysqli_real_escape_string($conn, $_GET['email']);
+        
+        // check if $get_token === $_SESSION['token'];
+        $sql = 'SELECT * FROM users WHERE email=? LIMIT 1';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $get_email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        if(password_verify($get_token, $user['token'])){
+
+            // Verification success
+            $_SESSION['id'] = $user['id'];
+
+            $sql_update = "UPDATE `users` SET `verified` = '1' WHERE `users`.`id` = ".$_SESSION['id'];
+            if(mysqli_query($conn, $sql_update)){
+                $_SESSION['verified'] = '1';
+                header('location: ./login.php');
+            }else{
+                header('location: ./home.php');
+            }
+        }else{
+            $msg = "Token Failed. Try Again Later";
+            $msgClass = "alert-danger";
+            // exit();
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +102,7 @@
                         <a href="../index.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
+                        <a href="../about.html" class="nav-link">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a href="./login.php" class="nav-link active">Log Out</a>
@@ -73,6 +118,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12 offset-md-12 form-div login">
+            <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
             <?php if(isset($_SESSION['msg'])): ?>
                 <div class="alert <?php echo $_SESSION['alert-class']; ?>">
                     <?php 

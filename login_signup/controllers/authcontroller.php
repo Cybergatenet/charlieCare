@@ -132,8 +132,8 @@ if(isset($_POST['login'])){
             $_SESSION['verified'] = $user['verified'];
 
             // set flash msg
-            $_SESSION['msg'] = "You are now logged In!";
-            $_SESSION['alert-class'] = "alert-success";
+            // $_SESSION['msg'] = "You are now logged In!";
+            // $_SESSION['alert-class'] = "alert-success";
             header('location: ../User_dashboard/user.html');
             exit();
         }else{
@@ -144,22 +144,22 @@ if(isset($_POST['login'])){
 #################################################
 //  Send email here
 function send_email($input, $OTP){
-    $username = test_input($_POST['username']);
+    $username = mysqli_real_escape_string(validate_input($_POST['username']));
 // Generation of ramdom token
-    $char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
-    $token = substr(str_shuffle($char), 0, 6);
+    // $char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
+    // $token = substr(str_shuffle($char), 0, 6);
 //  creating the session varialbes
-    $_SESSION['token'] = $token;
+    $_SESSION['token'] = $OTP;
 # creating cookies
-    setcookie("greencash", $token, time() + (86400 * 14), '/');
+    setcookie("charlycareclasic", $OTP, time() + (86400 * 14), '/');
 
     $to_email = $input;
     $subject = 'Account Activation';
     $message = '<html><body>';
-    $message .= '<p>Welcome '.$username.', You have requested to register as a member @ <span style="color: blue; font-weight: bold;">CharlyCareCla$ic</span> Family House. Click on this Link to Activate your Account: <br> <h2><a>'.$token.'</a></h2><br>Your request have been received and your account will be up and running in no distant time. If you do not reconginse this activity, kindly report to the <a href="http://www.charlycareclasic.com">Admin</a> <br> Thank You!</p>';
+    $message .= '<p>Welcome '.$username.', You have requested to register as a member @ <span style="color: blue; font-weight: bold;">CharlyCareCla$ic</span> Family Office. Your request have been received and your account will be up and running in no distant time. Click on the Link below to Activate your Account: <br> <h2><a href="http://charlycarecla.herokuapp.com/login_signup/home.php?otp='.$token.'&email='.$input.'" style="background-color: blue; color: white; font-weight: bold; border-radius: 4px;">Activate Account</a></h2><br><br> If you do not reconginse this activity, kindly report to the <a href="http://www.charlycareclasic.com">Admin</a> <br> Thank You!</p>';
     $message .= '</body></html>';
 
-    $headers = "From: admin@charlycareclasic.com"."\r\n";
+    $headers = "From: noreply@charlycareclasic.com"."\r\n";
     $headers .= "MIME-Version : 1.0" ."\r\n";
     $headers .= "Content-Type: text/html; Charset: UTF-8" ."\r\n";
 
