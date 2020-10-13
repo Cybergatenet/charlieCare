@@ -102,7 +102,7 @@
     }
 }
 
-// login controllers
+// login controllers 
 if(isset($_POST['login'])){
     $username = mysqli_real_escape_string($conn, validate_input($_POST['username']));
     $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));

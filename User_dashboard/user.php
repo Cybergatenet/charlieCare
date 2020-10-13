@@ -1,10 +1,9 @@
 <?php
-    <!-- require_once '../login_signup/controllers/authcontroller.php'; -->
-
+     require_once '../login_signup/controllers/authcontroller.php'; 
     #################
 //Avaliable Variables 
 // login success
-    <!-- $_SESSION['id'] = $user['id'];
+    $_SESSION['id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
     $_SESSION['email'] = $user['email'];
     $_SESSION['verified'] = $user['verified'];
@@ -20,7 +19,7 @@
         if(password_verify($pwd, $user['pwd'])){
 
             
-        } -->
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
