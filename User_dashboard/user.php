@@ -1,14 +1,13 @@
 <?php
-     require_once '../login_signup/controllers/authcontroller.php'; 
-    #################
-//Avaliable Variables 
-// login success
-    $_SESSION['id'] = $user['id'];
-    $_SESSION['username'] = $user['username'];
-    $_SESSION['email'] = $user['email'];
-    $_SESSION['verified'] = $user['verified'];
+    require_once '../login_signup/controllers/authcontroller.php'; 
 
-    $sql = 'SELECT * FROM users WHERE email=? OR username=? LIMIT 1';
+//Avaliable Variables 
+    $id = $_SESSION['id'];
+    $username = $_SESSION['username'];
+    $email = $_SESSION['email'];
+    $verified = $_SESSION['verified'];
+
+    $sql = 'SELECT * FROM users WHERE email=? LIMIT 1';
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('ss', $username, $email);
@@ -16,10 +15,7 @@
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
 
-        if(password_verify($pwd, $user['pwd'])){
-
-            
-        }
+      
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +68,7 @@
                         <a href="../about.html" class="nav-link">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../login_signup/login.php?logout=1" class="nav-link active">Log Out</a>
+                        <a href="../login_signup/login.php?logout=true" class="nav-link active">Log Out</a>
                     </li>
                 </ul>
             </nav>
@@ -85,27 +81,27 @@
                 <img src="../img/user.png" width="200px" alt="">
             </div>
             <div class="profile-nav-info">
-                <h3 class="user-name">Demo User</h3>
+                <h3 class="user-name"><?php echo $username; ?></h3>
                 <div class="address">
-                    <p class="state">Demo State</p>
-                    <span class="country">Demo country</span>
+                    <p class="state">Add State</p>
+                    <span class="country">Add Country</span>
                 </div>
             </div>
             <div class="profile-option">
                 <div class="notification">
                     <i class="fa fa-bell"></i>
-                    <span class="alert-msg">3</span>
+                    <span class="alert-msg">1</span>
                 </div>
             </div>
         </div>
         <div class="main-bg">
             <div class="left-side">
                 <div class="profile-side">
-                    <p class="mobile-no"><i class="fa fa-phone"></i>+2335485856</p>
-                    <p class="user-mail"><i class="fa fa-envelope"></i>sampleemail@gmail.com</p>
+                    <p class="mobile-no"><i class="fa fa-phone"></i>Go to Settings and add phone number</p>
+                    <p class="user-mail"><i class="fa fa-envelope"></i><?php echo $email; ?></p>
                     <div class="user-bio">
                         <h3>Bio-Data</h3>
-                        <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quae dolor obcaecati! Dolorem, dicta nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                        <p class="bio"><code>No Bio-data Avaliable</code> Bio data is a brief discription of yourself. Go to settings, and add your Bio-data</p>
                     </div>
                     <div class="profile-btn">
                         <button class="chatBtn"><i class="fa fa-comment"></i>Chat</button>
@@ -122,7 +118,7 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <span class="no-user">
-                                <span>123</span>&nbsp;&nbsp;Reviews
+                                <span>2</span>&nbsp;&nbsp;Reviews
                             </span>
                         </div>
                     </div>
@@ -147,7 +143,10 @@
                     </div>
                     <div class="profile-setting tab">
                         <h1>Account Settings</h1>
-                        <p>Here there will be provision for user to change his account settings., amet consectetur adipisicing elit. Quibusdam expedita laborum consequuntur, temporibus sunt quidem consequatur architecto voluptatum odio eligendi quaerat ex ipsam quasi sint soluta omnis tenetur molestiae dignissimos corporis? Neque, voluptatibus quidem. Unde veniam quae ea, dolores repellendus temporibus? Nostrum nesciunt asperiores corporis reprehenderit animi a sequi, laborum praesentium et maiores, repudiandae dolore nam aliquid quidem unde. Porro at molestias unde sed ab fugiat fuga et, hic aperiam!</p>
+                        <p>Here there will be provision for user to change his account settings.</p>
+                        <form action="" method="">
+                            <h5>Buttons for account settings is not Avaliable at the moment. Please, contact the Admin.</h5>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -166,7 +165,7 @@
                 <div class="footer-content-about animate-top">
                     <h4>About Charly Care Cla$ic</h4>
                     <div class="asterisk"><i class="fas fa-asterisk"></i></div>
-                    <p>we drive our mission through a culture of excellence, constantly improving and winning with
+                    <p>We drive our mission through a culture of excellence, constantly improving and winning with
                         integrity. Our approach and process is aimed at inventing the life we deserve through innovation
                         and creativity coupled with radical truthfulness and radical transparency</p>
                 </div>
@@ -223,7 +222,7 @@
                 <!-- ended here -->
                 <div class="footer-content-divider animate-bottom">
                     <div class="social-media">
-                        <h4>follow along</h4>
+                        <h4>Follow along</h4>
                         <ul class="social-icons">
                             <li>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -260,6 +259,7 @@
 
     <!-- link jqery here -->
     <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- <script src="../js/main.js"></script> -->
     <script src="../js/user.js"></script>
 </body>

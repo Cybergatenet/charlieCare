@@ -178,6 +178,6 @@ if(isset($_GET['logout'])){
     unset($_SESSION['verified']);
     unset($_SESSION['msg']);
     unset($_SESSION['alert-class']);
-    header('location: ../index.html'); // back to index page
+    header('location: ../login_signup/login.php'); // back to login page
     exit();
 }
