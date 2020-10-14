@@ -2,8 +2,8 @@
 
     require 'constants.php';
 
-    // $conn = new mysqli($server, $username, $password, $db);
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    $conn = new mysqli($server, $username, $password, $db);
+    // $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     // $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     // if(!$conn){
@@ -14,6 +14,6 @@
     // }
 
     if($conn->connect_error) {
-        die('Database error-:)= setting up dataBase in 24hours' . $conn->connect_error);
+        die('Database error-:)= setting up dataBase in 24hours'.'<br>'. $conn->connect_error);
         header('location: ../../errors/404.php');
     }
