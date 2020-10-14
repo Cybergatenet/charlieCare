@@ -29,8 +29,8 @@ html{
 body{
     overflow-x: hidden;
 /* still testing this shadow out, but it looks good in linux */
-    margin: 7px;
-    box-shadow: var(--body-shadow);
+    /* margin: 7px; */
+    /* box-shadow: var(--body-shadow); */
 }
 section{
     padding: 3.9rem 0;
@@ -584,8 +584,8 @@ footer{
     body{
         overflow-x: hidden;
     /* still testing this shadow out, but it looks good in linux */
-        margin: 10px;
-        box-shadow: var(--body-shadow);
+        /* margin: 10px; */
+        /* box-shadow: var(--body-shadow); */
     }
     .main-header-title{
         margin-left: -50px;

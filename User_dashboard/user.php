@@ -9,11 +9,11 @@
 
     $sql = 'SELECT * FROM users WHERE email=? LIMIT 1';
 
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ss', $username, $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
+        // $stmt = $conn->prepare($sql);
+        // $stmt->bind_param('ss', $username, $email);
+        // $stmt->execute();
+        // $result = $stmt->get_result();
+        // $user = $result->fetch_assoc();
 
       
 ?>
@@ -79,6 +79,7 @@
         <div class="profile-header">
             <div class="profile-img">
                 <img src="../img/user.png" width="200px" alt="">
+                <!-- <img src="<?php echo $image; ?>" width="200px" alt="failed to fetch image from Database records. Enter New image"> -->
             </div>
             <div class="profile-nav-info">
                 <h3 class="user-name"><?php echo $username; ?></h3>
@@ -101,7 +102,7 @@
                     <p class="user-mail"><i class="fa fa-envelope"></i><?php echo $email; ?></p>
                     <div class="user-bio">
                         <h3>Bio-Data</h3>
-                        <p class="bio"><code>No Bio-data Avaliable</code> Bio data is a brief discription of yourself. Go to settings, and add your Bio-data</p>
+                        <p class="bio"><code><em>No Bio-data Avaliable</em></code><br> Bio data is a brief discription of yourself. Go to settings, and add your Bio-data</p>
                     </div>
                     <div class="profile-btn">
                         <button class="chatBtn"><i class="fa fa-comment"></i>Chat</button>

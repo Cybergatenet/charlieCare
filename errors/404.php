@@ -18,6 +18,18 @@
     <!-- NEW Styles Added here -->
     <link rel="stylesheet" type="text/css" href="../css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <style>
+        .hero{
+            width: 100%;
+            height: 100vh;
+            background: url(../img/error.png) center no-repeat;
+            background-size: 400px;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <?php include_once '../inc/header.php'; ?>
