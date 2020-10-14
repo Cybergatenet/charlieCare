@@ -6,6 +6,14 @@
     // define('DB_NAME', 'cyber_user');
     // define('DB_NAME', 'cybergate_user');
 
+### ClearDb Config
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+    $server = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass"];
+    $db = substr($url["path"], 1);
+
 
 
     ### main database
