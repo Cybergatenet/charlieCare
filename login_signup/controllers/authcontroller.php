@@ -102,7 +102,7 @@
     }
 }
 
-// login controllers
+// login controllers 
 if(isset($_POST['login'])){
     $username = mysqli_real_escape_string($conn, validate_input($_POST['username']));
     $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
@@ -178,6 +178,6 @@ if(isset($_GET['logout'])){
     unset($_SESSION['verified']);
     unset($_SESSION['msg']);
     unset($_SESSION['alert-class']);
-    header('location: ../index.html'); // back to index page
+    header('location: ../login_signup/login.php'); // back to login page
     exit();
 }

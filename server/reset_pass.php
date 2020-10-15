@@ -89,7 +89,11 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
+    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
+=======
     <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
+>>>>>>> 1cc291bc4599ee9cefbb650791cb97211d820877
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -157,7 +161,11 @@
                                     <li><?php echo $error; ?></li>
                                 <?php endforeach; ?>
                             </div>
+<<<<<<< HEAD
+                            <?php endif; ?> -->
+=======
                             <?php endif; ?>
+>>>>>>> 1cc291bc4599ee9cefbb650791cb97211d820877
 
                         <input type="email" name="email" placeholder="Enter Your email address" value="<?php echo $email; ?>">
                         <input type="submit" id="btn" value="Recover Password" name="submit">
@@ -168,6 +176,22 @@
         </div>
     </section>
 
+<<<<<<< HEAD
+	<?php ## include("../inc/footer.php"); ?>
+
+<script type="text/javascript">
+
+	// window.onload = () => {
+	// 	let comfirm = prompt("Do You Wish To Proceed With Password Reset?", "YES...?");
+	// 	if(confirm === false){
+	// 		window.location.href = "../login.php";
+
+	// 	}
+	// }
+	
+</script>
+=======
+>>>>>>> 1cc291bc4599ee9cefbb650791cb97211d820877
     <script src="../js/jquery-1.9.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <!-- header js -->
