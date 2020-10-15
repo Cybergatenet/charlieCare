@@ -63,8 +63,8 @@
         $token_hash = substr(str_shuffle($char), 0, 8);
         $token = password_hash($token_hash, PASSWORD_DEFAULT);
         // $token = bin2hex(random_bytes(50));
-        $verified = false;
-        // $verified = '0';
+        // $verified = false;
+        $verified = '0';
 #####################################
         // $new_sql = "INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `verified`, `token`, `avatar`, `userTime`) VALUES (NULL, 'cybergate test', 'cybergatetest@gmail.com', MD5('qwerty'), '0', 'nsklnder', 'pic.png', CURRENT_TIMESTAMP)";
 
@@ -75,7 +75,7 @@
         $sql = "INSERT INTO users (username, email, pwd, verified, token, avatar) VALUES (?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('sssbss', $username, $email, $pwd, $verified, $token, $avatar);
+        $stmt->bind_param('ssssss', $username, $email, $pwd, $verified, $token, $avatar);
 
         if($stmt->execute()){
             // login the user here
@@ -96,12 +96,11 @@
             header('location: ./home.php');
             exit();
         }else{
-            $errors['db_error'] = "Request NOT successful: failed to register";
-            
+            $errors['db_error'] = "Request NOT successful: failed to register".'<br>'.mysqli_error($conn);
         }
     }
 }
-
+##################################################################
 // login controllers 
 if(isset($_POST['login'])){
     $username = mysqli_real_escape_string($conn, validate_input($_POST['username']));

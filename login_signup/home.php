@@ -7,7 +7,7 @@
 ######### comment out ooh
         // header('location: ./login.php');
     }
-
+    
     $msg = "";
     $msgClass = "";
 
@@ -23,6 +23,8 @@
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
+        // echo $user['token'].'<br>';
+        // echo $get_token;
 
         if(password_verify($get_token, $user['token'])){
 
@@ -115,7 +117,7 @@
     <br><br><br><br><br>
             <br><br>
 
-    <div class="container mt-5">
+    <div class="container mt-5 p-4">
         <div class="row">
             <div class="col-md-12 offset-md-12 form-div login">
             <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
@@ -140,7 +142,7 @@
                     </div>
                 <?php endif; ?>
 
-                <?php if($_SESSION['verified']): ?>
+                <?php if($_SESSION['verified'] === '1'): ?>
                     <button class="btn btn-block btn-lg btn-primary">I am verified!</button>
                 <?php endif; ?>
             </div>

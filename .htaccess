@@ -32,10 +32,10 @@
 
     #DirectoryIndex index.php index.html index.htm index2.html
 
-    #ErrorDocument 400 https://greencash2020.com/errors/404.php
-    #ErrorDocument 401 https://greencash2020.com/errors/404.php
-    #ErrorDocument 403 https://greencash2020.com/errors/404.php
-    #ErrorDocument 404 https://greencash2020.com/errors/404.php
-    #ErrorDocument 500 https://greencash2020.com/errors/404.php
-    #ErrorDocument 503 https://greencash2020.com/errors/404.php
+    #ErrorDocument 400 https://charlycareclasic.com/errors/404.php
+    #ErrorDocument 401 https://charlycareclasic.com/errors/404.php
+    #ErrorDocument 403 https://charlycareclasic.com/errors/404.php
+    #ErrorDocument 404 https://charlycareclasic.com/errors/404.php
+    #ErrorDocument 500 https://charlycareclasic.com/errors/404.php
+    #ErrorDocument 503 https://charlycareclasic.com/errors/404.php
 #</IfModule>

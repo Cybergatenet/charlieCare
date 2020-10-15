@@ -1,12 +1,12 @@
 <?php
 	// define('ROOT_URL', 'http://www.charlycareclasic.com/');
-    // define('DB_HOST', 'localhost');
-    // define('DB_USER', 'root');
-    // define('DB_PASS', '123456');
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '123456');
     // define('DB_NAME', 'cyber_user');
-    // define('DB_NAME', 'cybergate_user');
+    define('DB_NAME', 'cybergate_user');
 
-### ClearDb Config
+### ClearDb Config MAIN
     // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $url = parse_url(getenv("CLEARDB_AMBER_URL"));
 
@@ -14,7 +14,8 @@
     $username = $url["user"];
     $password = $url["pass"];
     $db = substr($url["path"], 1);
-    
+### ClearDb Config MAIN
+
 
     // $server = $url["host"];
     // $username = $url["user"];
