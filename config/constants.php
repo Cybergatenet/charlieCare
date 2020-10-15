@@ -7,12 +7,17 @@
     // define('DB_NAME', 'cybergate_user');
 
 ### ClearDb Config
-    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-    $server = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $db = substr($url["path"], 1);
+    // $server = $url["host"];
+    // $username = $url["user"];
+    // $password = $url["pass"];
+    // $db = substr($url["path"], 1);
+
+    $username = 'bb2bad4130e48c';
+    $passwrod = '89dea8e7';
+    $server = ' heroku_4855ef7cc781658';
+    $db = 'us-cdbr-east-02.cleardb.com';
 
 
 
