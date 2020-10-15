@@ -9,6 +9,7 @@
 // $url_clear = 'us-cdbr-east-02.cleardb.com';
 
     $conn = new mysqli($server, $username, $password, $db);
+
     // $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     // $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -49,10 +50,8 @@
     
 
 
-
 #####
 ##CLEARDB_DATABASE_URL:      mysql://bb2bad4130e48c:89dea8e7@us-cdbr-east-02.cleardb.com/heroku_4855ef7cc781658?reconnect=true
 ##HEROKU_POSTGRESQL_RED_URL: postgres://miybpuvqhzxiie:45aaaa01572163c923524e84edfbf43cd4cab6b6d7cba257568425f09d6df109@ec2-54-160-161-214.compute-1.amazonaws.com:5432/d735mp7tf0lee5
+
 ?>
-
-
