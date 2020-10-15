@@ -18,9 +18,15 @@
     <link rel="stylesheet" type="text/css" href="./css/css/all.css">
     <!-- Scroll Reveal CDN -->
     <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- jQuery CDN here && other cdns here-->
+    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <!-- NEW Styles Added here -->
     <link rel="stylesheet" type="text/css" href="./css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/blog.css">
 </head>
 <body>
     <header>
@@ -65,7 +71,7 @@
                 <p>Inventing the life we deserve through innovation and creativity</p>
             </div>
         </div>
-        <div class="clip clip2">
+        <!-- <div class="clip clip2">
             <div class="content">
                 <h2>Our Mission</h2>
                 <p>Inventing the life we deserve through innovation and creativity</p>
@@ -76,7 +82,7 @@
                 <h2>Our Mission</h2>
                 <p>Inventing the life we deserve through innovation and creativity</p>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- ending here -->
     <section class="hero" id="hero">
@@ -165,23 +171,58 @@
                 <p>Stay connected for amazing contents</p>
             </div>
             <div class="content">
-                <div class="serviceBx animate-right">
-                    <img src="./img/bg_4.png">
-                    <h2>Demo Post</h2>
-                    <p>This Post will be updated by the admin soon. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="serviceBx animate-left">
-                    <img src="./img/star.jpg">
-                    <h2>Demo Post</h2>
-                    <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="serviceBx animate-right">
-                    <img src="./img/nature3.jpg">
-                    <h2>Demo post</h2>
-                    <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
+                <!-- <section class="culinary-delight"> -->
+                    <!-- <div class="container"> -->
+                        <div class="slider owl-carousel">
+                            <div class="card">
+                                <div class="img"><img src="./img/user.png" alt=""></div>
+                                <div class="content">
+                                    <div class="title">Innovation</div>
+                                    <div class="sub-title">Posted By Admin</div>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
+                                    <div class="btn">
+                                        <button>Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="img"><img src="./img/star2.png" alt=""></div>
+                                <div class="content">
+                                    <div class="title">Creativity</div>
+                                    <div class="sub-title">Posted By Admin</div>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
+                                    <div class="btn">
+                                        <button>Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="img"><img src="./img/globe.jpg" alt=""></div>
+                                <div class="content">
+                                    <div class="title">Inventing</div>
+                                    <div class="sub-title">Posted By Admin</div>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
+                                    <div class="btn">
+                                        <button>Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+            <!-- fetching posts from db starts here -->
+                    <!-- <div class="card">
+                        <div class="img"><img src="./img/globe.jpg" alt=""></div>
+                        <div class="content">
+                            <div class="title"><?php echo $row['title']; ?></div>
+                            <div class="sub-title">Posted By <?php echo $row['user_id']; ?></div>
+                            <p><?php echo $row['post_body']; ?></p>
+                            <small><?php echo $row['post_date']; ?></small>
+                            <div class="btn">
+                                <a href="./blog.html?post_id=<?php echo $row['post_id']; ?>" class="btn btn-danger">Read More</a>
+                            </div>
+                        </div>
+                    </div> -->
+                        </div>
+                    <!-- </div> -->
+                <!-- </section> -->
             </div>
         </div>
     </section>
@@ -207,18 +248,17 @@
                 <p>Learn more by watching our classic videos</p>
             </div>
             <div class="content">
-                <div class="workBx animate-top">
+                <div class="serviceBx animate-right">
+                    <img src="./img/bg_4.png">
+                    <h2>Demo Post</h2>
+                    <p>This Post will be updated by the admin soon. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="serviceBx animate-left">
                     <img src="./img/star2.png">
+                    <h2>Demo Post</h2>
+                    <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-                <!-- <div class="workBx animate-right">
-                    <img src="./img/globe.jpg">
-                </div> -->
-                <div class="workBx animate-bottom">
-                    <img src="./img/nature.jpg">
-                </div>
-                <!-- <div class="workBx animate-left">
-                    <img src="./img/charlyLogo22.png">
-                </div> -->
             </div>
             <div class="heading">
                 <a href="#" class="btn">View More</a>
@@ -373,6 +413,14 @@
     <!-- typewriter effect -->
     <script src="./js/typewriter.js"></script>
     <script src="./js/main.js"></script>
+    <!-- OwlCarousel -->
+    <script>
+        $(".slider").owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true
+        });
+    </script>
 </body>
-
 </html>
