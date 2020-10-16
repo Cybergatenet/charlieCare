@@ -20,7 +20,14 @@
         $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
         $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
         $cpwd = mysqli_real_escape_string($conn, validate_input($_POST['cpwd']));
+        $phone = 'Add Mobile Number';
+        $address = 'Add Address';
+        $state = 'Add state';
+        $country = 'Add country';
+        $bio_data = 'Add bio_data';
         $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
+        $userTime;
+        $verified;
 
 ## issue 
         // $userTime = 'CURRENT_TIMESTAMP';
@@ -64,7 +71,6 @@
         $token = password_hash($token_hash, PASSWORD_DEFAULT);
         // $token = bin2hex(random_bytes(50));
         // $verified = false;
-        $verified = '0';
 #####################################
         // $new_sql = "INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `verified`, `token`, `avatar`, `userTime`) VALUES (NULL, 'cybergate test', 'cybergatetest@gmail.com', MD5('qwerty'), '0', 'nsklnder', 'pic.png', CURRENT_TIMESTAMP)";
 
@@ -72,10 +78,10 @@
         //     echo "data not inserted : CONTACT ADMIN";
         // }
 #####################################
-        $sql = "INSERT INTO users (username, email, pwd, verified, token, avatar) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO charlycare_users (username, email, pwd, token, phone, address, state, country, bio_data, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssssss', $username, $email, $pwd, $verified, $token, $avatar);
+        $stmt->bind_param('ssssssssss', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar);
 
         if($stmt->execute()){
             // login the user here
@@ -84,8 +90,8 @@
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
             $_SESSION['verified'] = $verified;
-            $_SESSION['avatar'] = $avatar;
-            $_SESSION['userTime'] = $userTime;
+            // $_SESSION['avatar'] = $avatar;
+            // $_SESSION['userTime'] = $userTime;
 
     ###### Sending Email Here
             send_email($email, $token);
