@@ -484,6 +484,10 @@ header.sticky .header-small{
     grid-template-columns: 1fr;
     grid-gap: 1.5rem;
 }
+.video{
+    cursor: pointer;
+    border-radius: 5px;
+}
 .discover-our-menu .restaurant-description{
     padding-top: 3rem;
     margin-bottom: 0;

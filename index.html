@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <!-- NEW Styles Added here -->
     <link rel="stylesheet" type="text/css" href="./css/new_styles.css">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <link rel="stylesheet" type="text/css" href="./css/blog.css">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
     <header>
@@ -87,7 +87,7 @@
     <!-- ending here -->
     <section class="hero" id="hero">
         <div class="container">
-            <h2 class="sub-headline">
+            <h2 class="sub-headline" style="margin-top: 20px;">
                 <span class="first-letter">I</span>nventing
             </h2>
             <br><br><br><br><br>
@@ -175,7 +175,7 @@
                     <!-- <div class="container"> -->
                         <div class="slider owl-carousel">
                             <div class="card">
-                                <div class="img"><img src="./img/user.png" alt=""></div>
+                                <div class="img"><img src="./img/bg_2.png" alt=""></div>
                                 <div class="content">
                                     <div class="title">Innovation</div>
                                     <div class="sub-title">Posted By Admin</div>
@@ -186,7 +186,7 @@
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="img"><img src="./img/star2.png" alt=""></div>
+                                <div class="img"><img src="./img/globe.jpg" alt=""></div>
                                 <div class="content">
                                     <div class="title">Creativity</div>
                                     <div class="sub-title">Posted By Admin</div>
@@ -197,9 +197,20 @@
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="img"><img src="./img/globe.jpg" alt=""></div>
+                                <div class="img"><img src="./img/bg_4.png" alt=""></div>
                                 <div class="content">
                                     <div class="title">Inventing</div>
+                                    <div class="sub-title">Posted By Admin</div>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
+                                    <div class="btn">
+                                        <button>Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="img"><img src="./img/star2.png" alt=""></div>
+                                <div class="content">
+                                    <div class="title">Communication</div>
                                     <div class="sub-title">Posted By Admin</div>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
                                     <div class="btn">
@@ -249,12 +260,14 @@
             </div>
             <div class="content">
                 <div class="serviceBx animate-right">
-                    <img src="./img/bg_4.png">
+                    <!-- <img src="./img/bg_4.png"> -->
+                    <video class="video" src="" poster="./img/bg_4.png" width="100%" controls></video>
                     <h2>Demo Post</h2>
                     <p>This Post will be updated by the admin soon. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
                 <div class="serviceBx animate-left">
-                    <img src="./img/star2.png">
+                    <video class="video" src="" poster="./img/bg_2.png" width="100%" controls></video>
+                    <!-- <img src="./img/star2.png"> -->
                     <h2>Demo Post</h2>
                     <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -388,7 +401,7 @@
                                 <a href="#"><i class="fab fa-github-square"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i class="fab fa-linkedin-in"></i></a>
                             </li>
                             <li>
                                 <a href="#"><i class="fab fa-tripadvisor"></i></a>
@@ -419,7 +432,7 @@
         $(".slider").owlCarousel({
             loop: true,
             autoplay: true,
-            autoplayTimeout: 2000,
+            autoplayTimeout: 3000,
             autoplayHoverPause: true
         });
     </script>
