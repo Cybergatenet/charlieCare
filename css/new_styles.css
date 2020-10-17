@@ -65,6 +65,21 @@ img{
 .services .content .serviceBx:hover{
 	background-color: #2196f3;
 }
+.content .serviceBx{
+	padding: 20px;
+	background-color: #222;
+	color: #fff;
+	/* max-width: 340px; */
+	min-width: 340px;
+	margin: 10px;
+	text-align: center;
+    border-radius: 5px;
+	transition: 0.5s;
+}
+.content .serviceBx:hover{
+	background-color: #2196f3;
+	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.95);
+}
 .work .content{
 	display: flex;
 	justify-content: space-between;

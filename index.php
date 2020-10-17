@@ -1,6 +1,9 @@
 <!-- check if for all page routing 
     maybe create another index page for it or change this one to a php file
 -->
+<?php
+    require_once './server/contact.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +26,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <!-- Bootstrap Styles Added here -->
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <!-- NEW Styles Added here -->
     <link rel="stylesheet" type="text/css" href="./css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="./css/blog.css">
@@ -262,13 +267,13 @@
                 <div class="serviceBx animate-right">
                     <!-- <img src="./img/bg_4.png"> -->
                     <video class="video" src="" poster="./img/bg_4.png" width="100%" controls></video>
-                    <h2>Demo Post</h2>
+                    <h2>Watch Demo Video</h2>
                     <p>This Post will be updated by the admin soon. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
                 <div class="serviceBx animate-left">
                     <video class="video" src="" poster="./img/bg_2.png" width="100%" controls></video>
                     <!-- <img src="./img/star2.png"> -->
-                    <h2>Demo Post</h2>
+                    <h2>Download Demo Video</h2>
                     <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
@@ -330,7 +335,7 @@
                     <div class="asterisk"><i class="fas fa-asterisk"></i></div>
                     <p>We drive our mission through a culture of excellence, constantly improving and winning with
                         integrity. Our approach and process is aimed at inventing the life we deserve through innovation
-                        and creativity coupled with radical truthfulness and radical transparency</p>
+                        and creativity coupled with radical truthfulness and radical transparency.</p>
                     <br><br><br>
                     <p>Not A Member?</p>
                 </div>
@@ -376,12 +381,13 @@
                             </div>
                         </div>
                         <div class="formBx animate-top">
-                            <form>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                                 <h3>Message Us</h3>
-                                <input type="text" name="" placeholder="Full Name">
-                                <input type="email" name="" placeholder="Enter Your Email">
-                                <textarea placeholder="Your Message here"></textarea>
-                                <input class="btn-block" type="submit" name="" value="Send">
+                                <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
+                                <input type="text" name="contact_name" placeholder="Enter Full Name">
+                                <input type="email" name="contact_email" placeholder="Enter Your Email">
+                                <textarea name="contact_msg" placeholder="Your Message here"></textarea>
+                                <input class="btn-block" type="submit" name="contactMsg" value="Send">
                             </form>
                         </div>
                     </div>
