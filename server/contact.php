@@ -28,7 +28,7 @@
 				if(mail($toemail, $title, $body, $header)){
 						$errMsg = "Thank you ".$name . " for partnering with us."."\r\n"." Your Request is being considered and we will get back to you ASAP";
 						$errMsgClass = "alert-success";
-						$name = $email = $subject = $message = '';
+						$name = $email = $message = '';
 				}else{
 						$errMsg = "Your email was not successful. Try again later";
 						$errMsgClass = "alert-danger";
@@ -42,5 +42,5 @@
 		}
 
 	}
-	
+
 ?>

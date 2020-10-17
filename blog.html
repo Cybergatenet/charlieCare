@@ -1,3 +1,6 @@
+<?php
+    require_once './server/contact.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,7 +180,7 @@
                     <div class="asterisk"><i class="fas fa-asterisk"></i></div>
                     <p>We drive our mission through a culture of excellence, constantly improving and winning with
                         integrity. Our approach and process is aimed at inventing the life we deserve through innovation
-                        and creativity coupled with radical truthfulness and radical transparency</p>
+                        and creativity coupled with radical truthfulness and radical transparency.</p>
                 </div>
                 <!-- Add NEW here -->
                 <section class="contact" id="contact">
@@ -215,12 +218,13 @@
                             </div>
                         </div>
                         <div class="formBx animate-top">
-                            <form>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                                 <h3>Message Us</h3>
-                                <input type="text" name="" placeholder="Full Name">
-                                <input type="email" name="" placeholder="Enter Your Email">
-                                <textarea placeholder="Your Message here"></textarea>
-                                <input class="btn-block" type="submit" name="" value="Send">
+                                <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
+                                <input type="text" name="contact_name" placeholder="Enter Full Name">
+                                <input type="email" name="contact_email" placeholder="Enter Your Email">
+                                <textarea name="contact_msg" placeholder="Your Message here"></textarea>
+                                <input class="btn-block" type="submit" name="contactMsg" value="Send">
                             </form>
                         </div>
                     </div>

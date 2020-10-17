@@ -1,6 +1,3 @@
-<!-- check if for all page routing 
-    maybe create another index page for it or change this one to a php file
--->
 <?php
     require_once './server/contact.php';
 ?>
