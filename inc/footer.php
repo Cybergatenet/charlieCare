@@ -77,7 +77,7 @@
                                 <a href="#"><i class="fab fa-github-square"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i class="fab fa-linkedin-in"></i></a>
                             </li>
                             <li>
                                 <a href="#"><i class="fab fa-tripadvisor"></i></a>
@@ -95,5 +95,6 @@
                     </div>
                 </div>
             </div>
+            <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All Rights Reserved.</p>
         </div>
     </footer>

@@ -5,7 +5,7 @@
 
     if(!$_SESSION['username']){
 ######### comment out ooh
-        // header('location: ./login.php');
+        header('location: ./login.php');
     }
     
     $msg = "";
@@ -31,9 +31,9 @@
             // Verification success
             $_SESSION['id'] = $user['id'];
 
-            $sql_update = "UPDATE `users` SET `verified` = '1' WHERE `users`.`id` = ".$_SESSION['id'];
+            $sql_update = "UPDATE `users` SET `verified` = `true` WHERE `users`.`id` = ".$_SESSION['id'];
             if(mysqli_query($conn, $sql_update)){
-                $_SESSION['verified'] = '1';
+                $_SESSION['verified'] = true;
                 header('location: ./login.php');
             }else{
                 header('location: ./home.php');
@@ -142,7 +142,7 @@
                     </div>
                 <?php endif; ?>
 
-                <?php if($_SESSION['verified'] === '1'): ?>
+                <?php if($_SESSION['verified']): ?>
                     <button class="btn btn-block btn-lg btn-primary">I am verified!</button>
                 <?php endif; ?>
             </div>
