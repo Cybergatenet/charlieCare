@@ -16,7 +16,7 @@
         $get_email = mysqli_real_escape_string($conn, $_GET['email']);
         
         // check if $get_token === $_SESSION['token'];
-        $sql = 'SELECT * FROM users WHERE email=? LIMIT 1';
+        $sql = 'SELECT * FROM charlycare_users WHERE email=? LIMIT 1';
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('s', $get_email);
@@ -26,12 +26,12 @@
         // echo $user['token'].'<br>';
         // echo $get_token;
 
-        if(password_verify($get_token, $user['token'])){
-
+        // if(password_verify($get_token, $user['token'])){
+        if(password_verify($get_token, $_SESSION['token'])){
             // Verification success
             $_SESSION['id'] = $user['id'];
 
-            $sql_update = "UPDATE `users` SET `verified` = `true` WHERE `users`.`id` = ".$_SESSION['id'];
+            $sql_update = "UPDATE `charlycare_users` SET `verified` = `true` WHERE `users`.`id` = ".$_SESSION['id'];
             if(mysqli_query($conn, $sql_update)){
                 $_SESSION['verified'] = true;
                 header('location: ./login.php');
@@ -143,7 +143,7 @@
                 <?php endif; ?>
 
                 <?php if($_SESSION['verified']): ?>
-                    <button class="btn btn-block btn-lg btn-primary">I am verified!</button>
+                    <button class="btn btn-block btn-lg btn-primary">You are verified!</button>
                 <?php endif; ?>
             </div>
         </div>

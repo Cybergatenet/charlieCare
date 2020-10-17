@@ -26,8 +26,8 @@
         $country = 'Add country';
         $bio_data = 'Add bio_data';
         $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
-        $userTime;
-        $verified;
+        // $userTime;
+        // $verified;
 
 ## issue 
         // $userTime = 'CURRENT_TIMESTAMP';
@@ -52,7 +52,7 @@
 ## removed closed curly brace}
 
     ## connection
-    $emailQuery = "SELECT * FROM users WHERE email=? LIMIT 1";
+    $emailQuery = "SELECT * FROM charlycare_users WHERE email=? LIMIT 1";
     $stmt = $conn->prepare($emailQuery);
     $stmt->bind_param('s', $email);
     $stmt->execute();
@@ -78,7 +78,7 @@
         //     echo "data not inserted : CONTACT ADMIN";
         // }
 #####################################
-        $sql = "INSERT INTO charlycare_users (username, email, pwd, token, phone, address, state, country, bio_data, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `charlycare_users` (`username`, `email`, `pwd`, `token`, `phone`, `address`, `state`, `country`, `bio_data`, `avatar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('ssssssssss', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar);
@@ -119,28 +119,32 @@ if(isset($_POST['login'])){
         $errors['pwd'] = "Password Is Required!";
     }
    
-    if(count($errors === 0)){
-        $sql = 'SELECT * FROM users WHERE email=? OR username=? LIMIT 1';
+    if(count($errors) === 0){
+        $sql = 'SELECT * FROM charlycare_users WHERE email=? OR username=? LIMIT 1';
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ss', $username, $email);
+        $stmt->bind_param('ss', $username, $username);
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
 
         if(password_verify($pwd, $user['pwd'])){
+            ## check if they are verified
+            // if($user['verified']){
+                // login success
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['verified'] = $user['verified'];
 
-            // login success
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['verified'] = $user['verified'];
-
-            // set flash msg
-            // $_SESSION['msg'] = "You are now logged In!";
-            // $_SESSION['alert-class'] = "alert-success";
-            header('location: ../User_dashboard/user.html');
-            exit();
+                // set flash msg
+                // $_SESSION['msg'] = "You are now logged In!";
+                // $_SESSION['alert-class'] = "alert-success";
+                header('location: ../User_dashboard/user.php');
+                exit();
+            // }else{
+            //     header('location: ./home.php');
+            // }
         }else{
             $errors['login_failed'] = "Wrong Credentials";
         }
@@ -161,7 +165,7 @@ function send_email($input, $OTP){
     $to_email = $input;
     $subject = 'Account Activation';
     $message = '<html><body>';
-    $message .= '<p>Welcome '.$username.', You have requested to register as a member @ <span style="color: blue; font-weight: bold;">CharlyCareCla$ic</span> Family Office. Your request have been received and your account will be up and running in no distant time. Click on the Link below to Activate your Account: <br> <h2><a href="http://charlycarecla.herokuapp.com/login_signup/home.php?otp='.$token.'&email='.$input.'" style="background-color: blue; color: white; font-weight: bold; border-radius: 4px;">Activate Account</a></h2><br><br> If you do not reconginse this activity, kindly report to the <a href="http://www.charlycareclasic.com">Admin</a> <br> Thank You!</p>';
+    $message .= '<p>Welcome '.$username.', You have requested to register as a member @ <span style="color: blue; font-weight: bold;">CharlyCareCla$ic</span> Family Office. Your request have been received and your account will be up and running in no distant time. Click on the Link below to Activate your Account: <br> <h2><a href="http://www.charlycarecla.com/login_signup/home.php?otp='.$token.'&email='.$input.'" style="background-color: blue; color: white; font-weight: bold; border-radius: 4px;">Activate Account</a></h2><br><br> If you do not reconginse this activity, kindly report to the <a href="http://www.charlycareclasic.com">Admin</a> <br> Thank You!</p>';
     $message .= '</body></html>';
 
     $headers = "From: noreply@charlycareclasic.com"."\r\n";

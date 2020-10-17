@@ -1,5 +1,6 @@
 <?php
-    require_once '../login_signup/controllers/authcontroller.php'; 
+    require_once '../login_signup/controllers/authcontroller.php';
+     
 
 //Avaliable Variables 
     $id = $_SESSION['id'];
