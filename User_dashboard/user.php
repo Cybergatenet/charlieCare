@@ -1,6 +1,6 @@
 <?php
     require_once '../login_signup/controllers/authcontroller.php';
-     
+
 
 //Avaliable Variables 
     $id = $_SESSION['id'];
@@ -16,7 +16,7 @@
         // $result = $stmt->get_result();
         // $user = $result->fetch_assoc();
 
-      
+    //  mysql --host=us-cdbr-east.cleardb.com --user=b280ac36b578f6 --password=eaa82564 --reconnect heroku_4046d464e26fbe3 < charlycare_users.sql 
 ?>
 <!DOCTYPE html>
 <html lang="en">

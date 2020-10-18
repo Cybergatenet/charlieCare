@@ -2,7 +2,7 @@
 	require('./config.php');
     require('./db.php');
 
-	$table = "CREATE TABLE IF NOT EXISTS `greencash_table` (
+	$table = "CREATE TABLE IF NOT EXISTS `charly_chat` (
 	  `id` int(11) NOT NULL AUTO_INCREMENT,
 	  `username` varchar(15) NOT NULL,
 	  `surname` varchar(15) NOT NULL,
@@ -22,8 +22,8 @@
 	  PRIMARY KEY (`id`)
 	) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1";
 
-	 if(mysqli_query($conn, $table) === false){
-            echo "CONNECTIOIN LOST: CONTACT ADMIN";
-        }
+	//  if(mysqli_query($conn, $table) === false){
+    //         echo "CONNECTIOIN LOST: CONTACT ADMIN";
+    //     }
 
 ?>
