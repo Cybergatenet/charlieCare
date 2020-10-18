@@ -31,7 +31,7 @@
     <link rel="icon" href="../img/charlyLogo22.png">
     <title>User DashBoard | charlycareclasic</title>
     <!-- linking jQuery -->
-    <script src="../js/jquery-1.9.1.min.js" defer></script>
+    <script src="../js/jquery-3.5.1.slim.min.js"></script>
     <!-- bootstrap here -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
     <!-- fontAwesome -->
@@ -85,25 +85,25 @@
             <div class="profile-nav-info">
                 <h3 class="user-name"><?php echo $username; ?></h3>
                 <div class="address">
-                    <p class="state">Add State</p>
-                    <span class="country">Add Country</span>
+                    <p class="state"><?php echo $state; ?></p>
+                    <span class="country"><?php echo $country; ?></span>
                 </div>
             </div>
             <div class="profile-option">
                 <div class="notification">
                     <i class="fa fa-bell"></i>
-                    <span class="alert-msg">1</span>
+                    <span class="alert-msg">1</span> <!-- function to return chat msg_numbers -->
                 </div>
             </div>
         </div>
         <div class="main-bg">
             <div class="left-side">
                 <div class="profile-side">
-                    <p class="mobile-no"><i class="fa fa-phone"></i>Go to Settings and add phone number</p>
+                    <p class="mobile-no"><i class="fa fa-phone"></i><?php echo $phone; ?></p>
                     <p class="user-mail"><i class="fa fa-envelope"></i><?php echo $email; ?></p>
                     <div class="user-bio">
                         <h3>Bio-Data</h3>
-                        <p class="bio"><code><em>No Bio-data Avaliable</em></code><br> Bio data is a brief discription of yourself. Go to settings, and add your Bio-data</p>
+                        <p class="bio"><?php echo $bio_data; ?></p>
                     </div>
                     <div class="profile-btn">
                         <button class="chatBtn"><i class="fa fa-comment"></i>Chat</button>
@@ -137,27 +137,30 @@
                 <div class="profile-body">
                     <div class="profile-posts tab">
                         <h1>Your Posts</h1>
-                        <p>All Your posts will show here amet consectetur adipisicing elit. Quibusdam expedita laborum consequuntur, temporibus sunt quidem consequatur architecto voluptatum odio eligendi quaerat ex ipsam quasi sint soluta omnis tenetur molestiae dignissimos corporis? Neque, voluptatibus quidem. Unde veniam quae ea, dolores repellendus temporibus? Nostrum nesciunt asperiores corporis reprehenderit animi a sequi, laborum praesentium et maiores, repudiandae dolore nam aliquid quidem unde. Porro at molestias unde sed ab fugiat fuga et, hic aperiam!</p>
+                        <p>There are no post yet. All Your posts will show here. Review Our terms of use to see how you can create your own posts</p>
+                        <button class="chatBtn"><i class="fa fa-plus"></i>Add Post</button>
                     </div>
                     <div class="profile-review tab">
                         <h1>User Reviews</h1>
-                        <p>User Reviews will be displayed here. amet consectetur adipisicing elit. Quibusdam expedita laborum consequuntur, temporibus sunt quidem consequatur architecto voluptatum odio eligendi quaerat ex ipsam quasi sint soluta omnis tenetur molestiae dignissimos corporis? Neque, voluptatibus quidem. Unde veniam quae ea, dolores repellendus temporibus? Nostrum nesciunt asperiores corporis reprehenderit animi a sequi, laborum praesentium et maiores, repudiandae dolore nam aliquid quidem unde. Porro at molestias unde sed ab fugiat fuga et, hic aperiam!</p>
+                        <p>Your Reviews will be displayed here. Contact CharlyCareCla$ic Family Office for more details</p>
+                        <button class="chatBtn"><i class="fa fa-plus"></i>Add Review</button>
                     </div>
                     <div class="profile-setting tab">
                         <h1>Account Settings</h1>
-                        <p>Here there will be provision for user to change his account settings.</p>
-                        <form action="" method="">
-                            <h5>Buttons for account settings is not Avaliable at the moment. Please, contact the Admin.</h5>
-                        </form>
+                        <p>Make changes to your profile</p>
+                        <!-- <form action="" method="" class="form-group">
+                            <div class="form-div">
+                                <input type="tel" class="form-control col-9" placeholder="Enter Your Phone Number">
+                                <input type="button" class="btn btn-primary btn-sm col-3" value="Update">
+                            </div>
+                        </form> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
     <!-- including footer here -->
-
     <footer style="margin-top: 50px;">
         <div class="container">
             <div class="back-to-top">
@@ -257,11 +260,10 @@
             <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <!-- including footer here -->
+    <!-- END including footer here -->
 
     <!-- link jqery here -->
-    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/jquery-3.5.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <!-- <script src="../js/main.js"></script> -->
     <script src="../js/user.js"></script>

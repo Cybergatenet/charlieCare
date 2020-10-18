@@ -83,7 +83,7 @@
                             </div>
                         <?php endif; ?>
 
-                        <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Enter Your Username">
+                        <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Enter Your Full Name" title="Surname First, then other Names">
                         <div class="error" id="usernameErr"></div>
                         <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Enter Your Email">
                         <div class="error" id="emailErr"></div>

@@ -24,13 +24,30 @@ let header = selectElement('header');
 menuToggler.addEventListener('click', function() {
     body.classList.toggle('open');
     header.classList.toggle('sticky');
-// bugs to be fixed || reverted no more bugs
+});
+///////     Navber End 
+
+$(function(){
+    $('.navs .ul li').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
 });
 
-const tabBtn = document.querySelector('.navs ul li');
+const tabBtn = document.querySelectorAll('.navs .ul li');
 const tab = document.querySelectorAll('.tab');
+// let el = selectElementAll('.ul li');
 
 function tabs(panelIndex){
+    //  for (let i = 0; i < tabBtn.length; i++){
+    //     tabBtn[i].ondblclick = function() {
+    //         let c = 0;
+    //         while (c < tabBtn.length) {
+    //             tabBtn[c++].classList.remove('active');
+    //         }
+    //         tabBtn[i].classList.add('active');
+    //     };
+    // }
+
     tab.forEach(function(node) {
         node.style.display = 'none';
     });
@@ -38,19 +55,6 @@ function tabs(panelIndex){
     //
     tab[panelIndex].style.borderBottom = '3px solid rgba(288, 0, 70, .9)';
 
-    const selectElementAll = (element) => {
-        return document.querySelectorAll(element);
-    };
-    let el = selectElementAll('.ul li');
-    for (let i = 0; i < el.length; i++){
-        el[i].onclick = function() {
-            let c = 0;
-            while (c < el.length) {
-                el[c++].classList.remove('active');
-            }
-            el[i].classList.add('active');
-        };
-    }
 }
 tabs(0);
 
