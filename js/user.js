@@ -57,6 +57,7 @@ function tabs(panelIndex){
 
 }
 tabs(0);
+// tabs(2);
 
 // Bio data
 

@@ -148,13 +148,48 @@
                     <div class="profile-setting tab">
                         <h1>Account Settings</h1>
                         <p>Make changes to your profile</p>
+                        <form action="" method="" class="form-group">
+                            <div class="form-div-div">
+                                <input type="tel" class="form-control" placeholder="Enter Your Phone Number">
+                                <input type="button" class="btn btn-primary" value="Update Contact">
+                            </div>
+                            <div class="form-div-div">
+                                <input type="text" class="form-control" placeholder="Enter Your Contact Address">
+                                <input type="button" class="btn btn-primary" value="Update Address">
+                            </div>
+                            <div class="form-div-div">
+                                <input type="text" class="form-control" placeholder="Enter Your State">
+                                <input type="button" class="btn btn-primary" value="Update State">
+                            </div>
+                            <div class="form-div-div">
+                                <input type="text" class="form-control" placeholder="Enter Your Country">
+                                <input type="button" class="btn btn-primary" value="Update Country">
+                            </div>
+                            <div class="form-div-div">
+                                <textarea class="form-control" placeholder="Update Your Bio-data"></textarea>
+                                <input type="button" class="btn btn-primary" value="Update Bio-data">
+                            </div>
+                            <div class="form-div-div">
+                                <input type="password" class="form-control" placeholder="Enter Your New Password">
+                                <input type="button" class="btn btn-primary" value="Change Password">
+                            </div>
+                            <div class="form-div-div">
+                                <input type="file" class="form-control" placeholder="Enter Your Contact Address">
+                                <input type="button" class="btn btn-primary btn-sm" value="Upload Profile Image">
+                            </div>
+                        </form>
+                        <button class="chatBtn"><i class="fa fa-plus"></i>Update All</button>
+                    </div>
+                    <!-- <div class="profile-setting tab"> -->
+                        <!-- <h1>Account Settings</h1> -->
+                        <!-- <p>Make changes to your profile</p> -->
                         <!-- <form action="" method="" class="form-group">
                             <div class="form-div">
                                 <input type="tel" class="form-control col-9" placeholder="Enter Your Phone Number">
                                 <input type="button" class="btn btn-primary btn-sm col-3" value="Update">
                             </div>
                         </form> -->
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
