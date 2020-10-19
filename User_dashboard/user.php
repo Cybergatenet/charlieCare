@@ -1,6 +1,12 @@
 <?php
+    session_start();
+
     require_once '../login_signup/controllers/authcontroller.php';
 
+    if(!$_SESSION){
+        header('location: ../login_signup/login.php');
+        exit();
+    }
 
 //Avaliable Variables 
     $id = $_SESSION['id'];
@@ -15,7 +21,105 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
+########################################
+    // inserting and fetching image
+    // check for submit
+	// if(isset($_POST['submit'])){
+	// 	// echo 'submmited';
+	// 	$pay_acc_name = mysqli_real_escape_string($conn, $_POST['pay_acc_name']);
+	// 	$pay_acc_number = mysqli_real_escape_string($conn, $_POST['pay_acc_number']);
+	// 	$pay_bank_name = mysqli_real_escape_string($conn, $_POST['pay_bank_name']);
+	// 	// $image = validat_image($_FILES['fileToUpload']['name']);
+	// 	$target = "../uploads/".basename($_FILES['fileToUpload']['name']);
+	// 	$image = $_FILES['fileToUpload']['name'];
+	// 	$merge = "paid but not merged";//// merge is two; for "paid_by" and "paid_to"///////////
+	// 	$merge_details = "I Have Paid My Merge";//// havent added this into the database
+	// 	$merge_at = "";
+	// 	// $id = mysqli_real_escape_string($conn, $_GET['id']);
+	// 	$username = $_SESSION['username'];
+	// 	$query = "UPDATE `greencash_bank` SET `merge` = '$merge', `merge_details` = '$merge_details', `merge_at` = CURRENT_TIME, `pay_acc_name` = '$pay_acc_name', `pay_acc_number` = '$pay_acc_number', `pay_bank_name` = '$pay_bank_name', `image` = '$image' WHERE `greencash_bank`.`username` = '$username'";
 
+	// 	if(mysqli_query($conn, $query)){
+	// 		$imagery = "UPDATE `greencash_bank` SET `image` = '$image' WHERE `greencash_bank`.`acc_name` = '$pay_acc_name'";
+	// 		if(mysqli_query($conn, $imagery)){
+	// 			/// sending image into the image folder
+	// 			if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
+	// 		// upload was successful
+	// 				header('Location: index_merge.php');
+	// 			}else{
+	// 				$msg = 'Your image did NOT uploaded';
+	// 				$msgClass = 'alert-danger';
+	// 			}
+	// 		}else{
+	// 		// Error occured during second upload
+	// 			$msg = 'Error! Upload incomplete. Try Again';
+	// 			$msgClass = 'alert-danger';
+	// 		}			
+	// 	}else{
+	// 		// echo 'ERROR: '.mysqli_error($conn);
+	// 		$msg = 'An Error occurred during the uplaod. Try Again';
+	// 		$msgClass = 'alert-danger';
+	// 	}
+	// }
+
+
+// 	function validat_image($inputIMG){
+// 		$target_dir = "../uploads/";
+// 		$target_file = $target_dir . basename($inputIMG);
+// 		$uploadOk = 1;
+// 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// 		// Check if image file is a actual image or fake image
+// 		// if(isset($_POST["submit"])) {
+// 		    $check = getimagesize($inputIMG);
+// 		    if($check !== false) {
+// 		        $msg = "File is an image - " . $check["mime"] . ".";
+// 				$msgClass = 'alert-success';
+// 		        $uploadOk = 1;
+// 		    } else {
+// 		        $msg = "File is not an image.";
+// 		        $msgClass = 'alert-danger';
+// 		        $uploadOk = 0;
+// 		    }
+// 		// }
+// 		// Check if file already exists
+// 		if (file_exists($target_file)) {
+// 		    $msg = "Sorry, file already exists.";
+// 			$msgClass = 'alert-danger';		    
+// 		    $uploadOk = 0;
+// 		}
+// 		// Check file size
+// 		if ($_FILES["fileToUpload"]["size"] > 500000) {
+// 		    $msg = "Sorry, your file is too large.";
+// 			$msgClass = 'alert-danger';
+// 		    $uploadOk = 0;
+// 		}
+// 		// Allow certain file formats
+// 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+// 		&& $imageFileType != "gif" ) {
+// 		    $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+// 			$msgClass = 'alert-danger';			
+// 		    $uploadOk = 0;
+// 		}
+// 		// Check if $uploadOk is set to 0 by an error
+// 		if ($uploadOk == 0) {
+// 		    $msg = "Sorry, your file was not uploaded.";
+// 			$msgClass = 'alert-danger';		    
+// 		// if everything is ok, try to upload file
+// 		} else {
+// 		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+// 		        $msg = "The file ". basename($inputIMG). " has been uploaded.";
+// 				$msgClass = 'alert-success';
+// 		        // header('Location: index_merge.php');
+
+// 		    } else {
+// 		        $msg = "Sorry, there was an error uploading your file.";
+// 				$msgClass = 'alert-danger';
+// 		    }
+// 		}
+// }
+    
+
+######################################
     //  mysql --host=us-cdbr-east.cleardb.com --user=b280ac36b578f6 --password=eaa82564 --reconnect heroku_4046d464e26fbe3 < charlycare_users.sql 
 ?>
 <!DOCTYPE html>
@@ -148,7 +252,7 @@
                     <div class="profile-setting tab">
                         <h1>Account Settings</h1>
                         <p>Make changes to your profile</p>
-                        <form action="" method="" class="form-group">
+                        <form action="" method="" class="form-group" enctype="multipart/form-data">
                             <div class="form-div-div">
                                 <input type="tel" class="form-control" placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
                                 <input type="button" class="updateBtn" value="Update Contact">
@@ -176,7 +280,7 @@
                                 <input type="button" class="updateBtn"  value="Change Password">
                             </div>
                             <div class="form-div-div">
-                                <input type="file" class="form-control" placeholder="">
+                                <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" placeholder="">
                                 <input type="button" class="updateBtn" value="Upload Image">
                             </div>
                         </form>
