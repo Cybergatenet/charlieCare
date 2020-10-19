@@ -151,33 +151,33 @@
                         <form action="" method="" class="form-group">
                             <div class="form-div-div">
                                 <input type="tel" class="form-control" placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
-                                <input type="button" class="btn btn-primary" value="Update Contact">
+                                <input type="button" class="updateBtn" value="Update Contact">
                             </div>
                             <div class="form-div-div">
                                 <input type="text" class="form-control" placeholder="Enter Your Contact Address" value="<?php echo $user['address']; ?>">
-                                <input type="button" class="btn btn-primary" value="Update Address">
+                                <input type="button" class="updateBtn" value="Update Address">
                             </div>
                             <div class="form-div-div">
                                 <input type="text" class="form-control" placeholder="Enter Your State" value="<?php echo $user['state']; ?>">
-                                <input type="button" class="btn btn-primary" value="Update State">
+                                <input type="button" class="updateBtn" value="Update State">
                             </div>
                             <div class="form-div-div">
                                 <input type="text" class="form-control" placeholder="Enter Your Country" value="<?php echo $user['country']; ?>">
-                                <input type="button" class="btn btn-primary" value="Update Country">
+                                <input type="button" class="updateBtn" value="Update Country">
                             </div>
                             <div class="form-div-div">
                                 <textarea class="form-control" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
-                                <input type="button" class="btn btn-primary" value="Update Bio-data">
+                                <input type="button" class="updateBtn" value="Update Bio-data">
                             </div>
                             <div class="form-div-div">
                                 <input type="password" class="form-control" placeholder="Enter Your New Password" value="<?php echo $user['pwd']; ?>">
             <!-- button for show-hide password -->
-                                <span class="fa fa-eye"></span>
-                                <input type="button" class="btn btn-primary" value="Change Password">
+                                <!-- <span class="fa fa-eye"></span> -->
+                                <input type="button" class="updateBtn"  value="Change Password">
                             </div>
                             <div class="form-div-div">
-                                <input type="file" class="form-control" placeholder="Enter Your Contact Address">
-                                <input type="button" class="btn btn-primary btn-sm" value="Upload Image">
+                                <input type="file" class="form-control" placeholder="">
+                                <input type="button" class="updateBtn" value="Upload Image">
                             </div>
                         </form>
                         <button class="chatBtn"><i class="fa fa-plus"></i>Update All</button>
