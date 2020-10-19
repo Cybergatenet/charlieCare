@@ -8,13 +8,13 @@
     $email = $_SESSION['email'];
     $verified = $_SESSION['verified'];
 
-    $sql = 'SELECT * FROM users WHERE email=? LIMIT 1';
+    $sql = 'SELECT * FROM charlycare_users WHERE email=? OR username=? LIMIT 1';
 
-        // $stmt = $conn->prepare($sql);
-        // $stmt->bind_param('ss', $username, $email);
-        // $stmt->execute();
-        // $result = $stmt->get_result();
-        // $user = $result->fetch_assoc();
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ss', $username, $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
 
     //  mysql --host=us-cdbr-east.cleardb.com --user=b280ac36b578f6 --password=eaa82564 --reconnect heroku_4046d464e26fbe3 < charlycare_users.sql 
 ?>
@@ -42,7 +42,7 @@
 </head>
 <body>
     <div id="hero"></div>
-    <header style="background-color: #e40046; padding-top: 0px; box-shadow: 0px -3px 3px rgba(0, 0, 288, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
+    <header style="background-color: #e40046; padding-top: 0px; box-shadow: 0px -3px 3px rgba(0, 0, 288, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
         <div class="container">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -80,13 +80,13 @@
         <div class="profile-header">
             <div class="profile-img">
                 <img src="../img/user.png" width="200px" alt="">
-                <!-- <img src="<?php echo $image; ?>" width="200px" alt="failed to fetch image from Database records. Enter New image"> -->
+                <!-- <img src="<?php echo $user['pwd']; ?>" width="200px" alt="failed to fetch image from Database records. Enter New image"> -->
             </div>
             <div class="profile-nav-info">
                 <h3 class="user-name"><?php echo $username; ?></h3>
                 <div class="address">
-                    <p class="state"><?php echo $state; ?></p>
-                    <span class="country"><?php echo $country; ?></span>
+                    <p class="state"><?php echo $user['state']; ?></p>
+                    <span class="country"><?php echo $user['country']; ?></span>
                 </div>
             </div>
             <div class="profile-option">
@@ -99,11 +99,11 @@
         <div class="main-bg">
             <div class="left-side">
                 <div class="profile-side">
-                    <p class="mobile-no"><i class="fa fa-phone"></i><?php echo $phone; ?></p>
-                    <p class="user-mail"><i class="fa fa-envelope"></i><?php echo $email; ?></p>
+                    <p class="mobile-no"><i class="fa fa-phone"></i><?php echo $user['phone']; ?></p>
+                    <p class="user-mail"><i class="fa fa-envelope"></i><?php echo $user['email']; ?></p>
                     <div class="user-bio">
                         <h3>Bio-Data</h3>
-                        <p class="bio"><?php echo $bio_data; ?></p>
+                        <p class="bio"><?php echo $user['bio_data']; ?></p>
                     </div>
                     <div class="profile-btn">
                         <button class="chatBtn"><i class="fa fa-comment"></i>Chat</button>
@@ -150,27 +150,29 @@
                         <p>Make changes to your profile</p>
                         <form action="" method="" class="form-group">
                             <div class="form-div-div">
-                                <input type="tel" class="form-control" placeholder="Enter Your Phone Number">
+                                <input type="tel" class="form-control" placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
                                 <input type="button" class="btn btn-primary" value="Update Contact">
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" placeholder="Enter Your Contact Address">
+                                <input type="text" class="form-control" placeholder="Enter Your Contact Address" value="<?php echo $user['address']; ?>">
                                 <input type="button" class="btn btn-primary" value="Update Address">
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" placeholder="Enter Your State">
+                                <input type="text" class="form-control" placeholder="Enter Your State" value="<?php echo $user['state']; ?>">
                                 <input type="button" class="btn btn-primary" value="Update State">
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" placeholder="Enter Your Country">
+                                <input type="text" class="form-control" placeholder="Enter Your Country" value="<?php echo $user['country']; ?>">
                                 <input type="button" class="btn btn-primary" value="Update Country">
                             </div>
                             <div class="form-div-div">
-                                <textarea class="form-control" placeholder="Update Your Bio-data"></textarea>
+                                <textarea class="form-control" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
                                 <input type="button" class="btn btn-primary" value="Update Bio-data">
                             </div>
                             <div class="form-div-div">
-                                <input type="password" class="form-control" placeholder="Enter Your New Password">
+                                <input type="password" class="form-control" placeholder="Enter Your New Password" value="<?php echo $user['pwd']; ?>">
+            <!-- button for show-hide password -->
+                                <span class="fa fa-eye"></span>
                                 <input type="button" class="btn btn-primary" value="Change Password">
                             </div>
                             <div class="form-div-div">
@@ -180,16 +182,6 @@
                         </form>
                         <button class="chatBtn"><i class="fa fa-plus"></i>Update All</button>
                     </div>
-                    <!-- <div class="profile-setting tab"> -->
-                        <!-- <h1>Account Settings</h1> -->
-                        <!-- <p>Make changes to your profile</p> -->
-                        <!-- <form action="" method="" class="form-group">
-                            <div class="form-div">
-                                <input type="tel" class="form-control col-9" placeholder="Enter Your Phone Number">
-                                <input type="button" class="btn btn-primary btn-sm col-3" value="Update">
-                            </div>
-                        </form> -->
-                    <!-- </div> -->
                 </div>
             </div>
         </div>

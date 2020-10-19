@@ -1,5 +1,4 @@
 <?php
-	require('./config.php');
     require('./db.php');
 
 	$table = "CREATE TABLE IF NOT EXISTS `charly_chat` (

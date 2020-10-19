@@ -1,5 +1,4 @@
 <?php
-    require('./config.php');
     require('./db.php');
 
 
@@ -23,6 +22,8 @@
 
 	 if(mysqli_query($conn, $table) === false){
             echo "CONNECTIOIN LOST: CONTACT ADMIN";
+        }else{
+            echo "Table created successfully";
         }
 
 ?>
