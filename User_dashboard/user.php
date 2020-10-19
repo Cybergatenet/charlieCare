@@ -121,6 +121,11 @@
 
 ######################################
     //  mysql --host=us-cdbr-east.cleardb.com --user=b280ac36b578f6 --password=eaa82564 --reconnect heroku_4046d464e26fbe3 < charlycare_users.sql 
+
+    // $username = 'b280ac36b578f6';
+    // $passwrod = 'eaa82564';
+    // $server = ' heroku_4046d464e26fbe3';
+    // $db = 'us-cdbr-east-02.cleardb.com';
 ?>
 <!DOCTYPE html>
 <html lang="en">

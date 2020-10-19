@@ -6,6 +6,11 @@
     // define('DB_NAME', 'cyber_user');
     define('DB_NAME', 'cybergate_user');
 
+    // $username = 'b280ac36b578f6';
+    // $passwrod = 'eaa82564';
+    // $server = ' heroku_4046d464e26fbe3';
+    // $db = 'us-cdbr-east-02.cleardb.com';
+
 ### ClearDb Config MAIN
     // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $url = parse_url(getenv("CLEARDB_AMBER_URL"));
@@ -23,10 +28,7 @@
     // $db = substr($url["path"], 1);
     // $dns = 'modern-pomegranate-97jr4y64uu0qld0gn0vlwv2j.herokudns.com';
 
-    // $username = 'bb2bad4130e48c';
-    // $passwrod = '89dea8e7';
-    // $server = ' heroku_4855ef7cc781658';
-    // $db = 'us-cdbr-east-02.cleardb.com';
+    
 
 
 
