@@ -175,7 +175,7 @@
                             </div>
                             <div class="form-div-div">
                                 <input type="file" class="form-control" placeholder="Enter Your Contact Address">
-                                <input type="button" class="btn btn-primary btn-sm" value="Upload Profile Image">
+                                <input type="button" class="btn btn-primary btn-sm" value="Upload Image">
                             </div>
                         </form>
                         <button class="chatBtn"><i class="fa fa-plus"></i>Update All</button>

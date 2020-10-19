@@ -217,9 +217,10 @@ button.createBtn i{
     text-align: center;
     display: none;
 }
+/* settings style */
 .form-div-div{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 70% 25%;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -236,16 +237,17 @@ button.createBtn i{
 }
 .form-div-div input:nth-child(2){
     /* padding: 10px; */
-    max-width: 200px;
-    /* height: 100%; */
+    width: 200px!important;
+    min-width: 200px;
+    padding: 10px 5px!important;
+    height: auto;
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
 }
 
-.form-div input{
-    margin: 10px;
-    
+.form-div-div input, .form-div-div textarea{
+    margin-left: -15px;
 }
 #see-more-bio,
 #see-less-bio{
@@ -322,6 +324,35 @@ button.createBtn i{
         justify-content: center;
     }
 }
+@media (max-width: 786px){
+    .form-div-div{
+        display: block;
+        /* justify-content: center;
+        align-items: left;
+        align-content: left; */
+    }
+    .form-div-div input:nth-child(1), .form-div-div textarea{
+        padding: 10px;
+        width: 90%;
+        height: auto;
+        position: relative;
+        font-size: 1.2rem;
+        margin-right: 20px;
+    }
+    .form-div-div input:nth-child(2){
+        float: right;
+        right: 50px;
+        margin-bottom: 10px;
+        width: 100px!important;
+        padding: 10px 5px!important;
+        height: auto;
+        font-size: 1.2rem;
+    }
+
+    .form-div-div input, .form-div-div textarea{
+        margin-left: 20px;
+    }
+}
 @media (max-width: 400px){
     body{
         margin: 0;
@@ -351,4 +382,6 @@ button.createBtn i{
     .profile-nav-info{
         padding-top: 70px;
     }
+    /* settings style here */
+   
 }
