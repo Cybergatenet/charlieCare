@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
 
     require_once '../login_signup/controllers/authcontroller.php';
 
@@ -21,46 +21,69 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
+
+
 ########################################
     // inserting and fetching image
     // check for submit
-	// if(isset($_POST['submit'])){
-	// 	// echo 'submmited';
-	// 	$pay_acc_name = mysqli_real_escape_string($conn, $_POST['pay_acc_name']);
-	// 	$pay_acc_number = mysqli_real_escape_string($conn, $_POST['pay_acc_number']);
-	// 	$pay_bank_name = mysqli_real_escape_string($conn, $_POST['pay_bank_name']);
-	// 	// $image = validat_image($_FILES['fileToUpload']['name']);
-	// 	$target = "../uploads/".basename($_FILES['fileToUpload']['name']);
-	// 	$image = $_FILES['fileToUpload']['name'];
-	// 	$merge = "paid but not merged";//// merge is two; for "paid_by" and "paid_to"///////////
-	// 	$merge_details = "I Have Paid My Merge";//// havent added this into the database
-	// 	$merge_at = "";
-	// 	// $id = mysqli_real_escape_string($conn, $_GET['id']);
-	// 	$username = $_SESSION['username'];
-	// 	$query = "UPDATE `greencash_bank` SET `merge` = '$merge', `merge_details` = '$merge_details', `merge_at` = CURRENT_TIME, `pay_acc_name` = '$pay_acc_name', `pay_acc_number` = '$pay_acc_number', `pay_bank_name` = '$pay_bank_name', `image` = '$image' WHERE `greencash_bank`.`username` = '$username'";
+    $msg = '';
+    $msgClass = '';
+    // function validate_input($input){
+    //     $input = htmlspecialchars($input);
+    //     $input = trim($input);
+    //     $input = stripslashes($input);
+    //     return $input;
+    // }
+	if(isset($_POST[''])){
+        $username = mysqli_real_escape_string($conn, validate_input($_POST['username']));
+        $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
+        $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
+        $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
+        $phone = mysqli_real_escape_string($conn, validate_input($_POST['phone']));
+        $address = mysqli_real_escape_string($conn, validate_input($_POST['address']));
+        $state = mysqli_real_escape_string($conn, validate_input($_POST['state']));
+        $country = mysqli_real_escape_string($conn, validate_input($_POST['country']));
+        $bio_data = mysqli_real_escape_string($conn, validate_input($_POST['bio_data']));
+        // $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
+        // $image = validat_image($_FILES['fileToUpload']['name']);
+		$target = "../uploads/".basename($_FILES['fileToUpload']['name']);
+		$avatar = $_FILES['fileToUpload']['name'];
 
-	// 	if(mysqli_query($conn, $query)){
-	// 		$imagery = "UPDATE `greencash_bank` SET `image` = '$image' WHERE `greencash_bank`.`acc_name` = '$pay_acc_name'";
-	// 		if(mysqli_query($conn, $imagery)){
-	// 			/// sending image into the image folder
-	// 			if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
-	// 		// upload was successful
-	// 				header('Location: index_merge.php');
-	// 			}else{
-	// 				$msg = 'Your image did NOT uploaded';
-	// 				$msgClass = 'alert-danger';
-	// 			}
-	// 		}else{
-	// 		// Error occured during second upload
-	// 			$msg = 'Error! Upload incomplete. Try Again';
-	// 			$msgClass = 'alert-danger';
-	// 		}			
-	// 	}else{
-	// 		// echo 'ERROR: '.mysqli_error($conn);
-	// 		$msg = 'An Error occurred during the uplaod. Try Again';
-	// 		$msgClass = 'alert-danger';
-	// 	}
-	// }
+    
+     $sql = "UPDATE `charlycare_users` SET `pwd` = '$hash_pwd', `phone` = '$phone', `address` = '$address', `state` = '$state', `country` = '$country', `bio_data` = '$bio_data', `avatar` = '$avatar' WHERE `email` = '$email'";
+    
+    //  $sql = "UPDATE `charlycare_users` SET `pwd` = ?, `phone` = ?, `address` = ?, `state` = ?, `country` = ?, `bio_data` = ?, `avatar` = ? WHERE `email` = ?";
+
+    //  $stmt = $conn->prepare($sql);
+    //  $stmt->bind_param('ssssssss', $hash_pwd, $phone, $address, $state, $country, $bio_data, $avatar, $email);
+    //  $stmt->execute();
+
+     
+###		
+
+		if(mysqli_query($conn, $sql)){
+			$imagery = "UPDATE `charlycare_users` SET `avatar` = '$avatar' WHERE `charlycare_users`.`email` = '$email'";
+			if(mysqli_query($conn, $imagery)){
+				/// sending image into the image folder
+				if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
+			// upload was successful
+                    $msg = 'Record updated successfully';
+                    $msgClass = 'alert-success';
+				}else{
+					$msg = 'Your image did NOT uploaded';
+					$msgClass = 'alert-danger';
+				}
+			}else{
+			// Error occured during second upload
+				$msg = 'Error! Upload incomplete. Try Again';
+				$msgClass = 'alert-danger';
+			}			
+		}else{
+			// echo 'ERROR: '.mysqli_error($conn);
+			$msg = 'An Error occurred during the uplaod. Try Again';
+			$msgClass = 'alert-danger';
+		}
+	}
 
 
 // 	function validat_image($inputIMG){
@@ -151,6 +174,34 @@
     <link rel="stylesheet" type="text/css" href="../css/new_styles.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/user.css">
+    <!-- AJAX jQuery script here -->
+    <!-- <script> -->
+        <!-- // $(document).ready(function() {
+        //     let phone = document.querySelector('phone');
+        //     let address = document.querySelector('address');
+        //     let state = document.querySelector('state');
+        //     let country = document.querySelector('country');
+        //     let bio_data = document.querySelector('bio_data');
+        //     let pwd = document.querySelector('pwd');
+        //     let fileToUpload = document.querySelector('fileToUpload');
+        // // get email
+        //     let email = document.querySelector('user-mail');
+
+        //     $("#updateSettings").click(function() {
+        //         $(".wrapper").load("load-settings.php", {
+        //             email: email,
+        //             phone: phone,
+        //             address: address,
+        //             state: state,
+        //             country: country,
+        //             bio_data: bio_data,
+        //             pwd: pwd
+        //             // fileToUpload: fileToUpload.val()
+        //         });
+        //         console.log('updateSettings button clicked');
+        //     });
+        // }); -->
+    <!-- </script> -->
 </head>
 <body>
     <div id="hero"></div>
@@ -191,8 +242,8 @@
     <div class="wrapper" style="margin-top: 20px;">
         <div class="profile-header">
             <div class="profile-img">
-                <img src="../img/user.png" width="200px" alt="">
-                <!-- <img src="<?php echo $user['pwd']; ?>" width="200px" alt="failed to fetch image from Database records. Enter New image"> -->
+                <!-- <img src="../img/user.png" width="200px" alt=""> -->
+                <img src="../uploads/<?php echo $user['avatar']; ?>" width="200px" alt="No image record. Enter New image">
             </div>
             <div class="profile-nav-info">
                 <h3 class="user-name"><?php echo $username; ?></h3>
@@ -260,39 +311,40 @@
                     <div class="profile-setting tab">
                         <h1>Account Settings</h1>
                         <p>Make changes to your profile</p>
-                        <form action="" method="" class="form-group" enctype="multipart/form-data">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-group" enctype="multipart/form-data">
+                            <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
                             <div class="form-div-div">
-                                <input type="tel" class="form-control" placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
                                 <!-- <input type="button" class="updateBtn" value="Update Contact"> -->
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" placeholder="Enter Your Contact Address" value="<?php echo $user['address']; ?>">
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter Your Contact Address" value="<?php echo $user['address']; ?>">
                                 <!-- <input type="button" class="updateBtn" value="Update Address"> -->
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" placeholder="Enter Your State" value="<?php echo $user['state']; ?>">
+                                <input type="text" class="form-control" id="state" name="state" placeholder="Enter Your State" value="<?php echo $user['state']; ?>">
                                 <!-- <input type="button" class="updateBtn" value="Update State"> -->
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" placeholder="Enter Your Country" value="<?php echo $user['country']; ?>">
+                                <input type="text" class="form-control" id="country" name="country" placeholder="Enter Your Country" value="<?php echo $user['country']; ?>">
                                 <!-- <input type="button" class="updateBtn" value="Update Country"> -->
                             </div>
                             <div class="form-div-div">
-                                <textarea class="form-control" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
+                                <textarea class="form-control" id="bio_data" name="bio_data" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
                                 <!-- <input type="button" class="updateBtn" value="Update Bio-data"> -->
                             </div>
                             <div class="form-div-div">
-                                <input type="password" class="form-control" placeholder="Enter Your New Password" value="<?php echo $user['pwd']; ?>">
+                                <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Enter Your New Password" value="<?php echo $user['pwd']; ?>">
             <!-- button for show-hide password -->
-                                <span class="fa fa-eye"></span>
+                                <!-- <span class="fa fa-eye"></span> -->
                                 <!-- <input type="button" class="updateBtn"  value="Change Password"> -->
                             </div>
                             <div class="form-div-div">
                                 <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" placeholder="">
                                 <!-- <input type="button" class="updateBtn" value="Upload Image"> -->
                             </div>
+                            <button type="submit" class="chatBtn" id="updateSettings" name="submit"><i class="fa fa-plus"></i>Update All</button>
                         </form>
-                        <button class="chatBtn"><i class="fa fa-plus"></i>Update All</button>
                     </div>
                 </div>
             </div>
