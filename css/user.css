@@ -219,15 +219,15 @@ button.createBtn i{
 }
 /* settings style */
 .form-div-div{
-    display: grid;
-    grid-template-columns: 80% 20%;
+    display: block;
+    /* grid-template-columns: 80% 20%; */
     justify-content: center;
     align-items: center;
     align-content: center;
-    grid-column-gap: 7px;
+    /* grid-column-gap: 7px; */
     margin: 5px;
 }
-.form-div-div input:nth-child(1), .form-div-div textarea{
+.form-div-div input, .form-div-div textarea{
     padding: 10px;
     width: 100%;
     height: 100%;
@@ -235,32 +235,7 @@ button.createBtn i{
     font-size: 1.5rem;
     margin-right: 20px;
 }
-.form-div-div .updateBtn{
-    /* padding: 10px; */
-    display: inline-block;
-    width: 200px;
-    min-width: 200px;
-    padding: 10px 5px;
-    height: auto;
-    position: relative;
-    font-size: 1.2rem;
-    font-weight: 700;
-    background-color: rgb(7, 60, 218);
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    color: seashell;
-    transition: all 0.3s;
-}
-.form-div-div .updateBtn:hover,
-.form-div-div .updateBtn:active{
-    transform: scale(0.95);
-    background-color: rgb(34, 79, 214);
-}
 
-.form-div-div input, .form-div-div textarea{
-    margin-left: -15px;
-}
 #see-more-bio,
 #see-less-bio{
     color: blue;
@@ -337,36 +312,14 @@ button.createBtn i{
     }
 }
 @media (max-width: 786px){
-    .form-div-div{
-        /* display: grid;
-        justify-content: center;
-        align-items: left;
-        align-content: left; */
-        grid-column-gap: 0px;
-    }
-    .form-div-div input:nth-child(1), .form-div-div textarea{
+    .form-div-div input, .form-div-div textarea{
         padding: 5px;
-        width: 90%;
+        width: 100%;
         height: auto;
         font-size: 1rem;
         margin-right: 10px;
-        margin-left: -20px;
-    }
-    .form-div-div .updateBtn{
-        padding: 5px;
-        width: 50px;
-        font-size: 1rem;
-        margin-left: -20px;
-        background-color: rgb(7, 60, 218);
-        outline: none;
-        border: none;
-        border-radius: 4px;
-        color: seashell;
     }
 
-    .form-div-div input, .form-div-div textarea{
-        margin-left: -20px;
-    }
 }
 @media (max-width: 400px){
     body{
