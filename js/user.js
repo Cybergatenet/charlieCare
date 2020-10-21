@@ -106,6 +106,7 @@ defaultBtn.addEventListener("change", function(){
     const file = this.files[0];
     if(file){
         const reader = new FileReader();
+        console.log(reader);
         reader.onload = function(){
         const result = reader.result;
         img.src = result;

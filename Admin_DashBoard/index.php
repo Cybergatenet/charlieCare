@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+  include_once './process/index.php';
+?>
+<!Doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,7 +11,7 @@
     <meta name="keywords" content="CharlyCareCla$ic, Forex, Online Trading, Investment, Foreign exchange">
     <meta name="author" content="Designed by cybergate communication network">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/charlyLogo22.png" type="image/x-icon">
     <title>DashBoard | CharlyCareCla$ic</title>
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -19,29 +22,22 @@
     <!-- Add ck-editor cdn -->
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
-
   <body>
-
     <nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
       <a class="navbar-brand" href="#">CharlyCareCla$ic</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         
-       
-
       </div>
     </nav>
-
     <header id="header">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <h1 class="text-center"> Admin Area <small>| Account Login</small></h1>
           </div>
-         
         </div>
       </div>
     </header>
@@ -50,14 +46,19 @@
       <div class="container">
         <div class="row">     
           <div class="col-md-4 col-md-offset-4">
-              <form id="login" action="index.html" class="card p-3">
+              <form id="login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="card p-3">
+			      <h4 class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></h4>
                 <div class="form-group mx-3">
                     <label for="">Email Address</label>
-                    <input type="email" class="form-control" placeholder="Enter Email..." required>
+                    <input type="email" name="email" class="form-control" placeholder="Enter Email..." required>
                 </div>
                 <div class="form-group mx-3">
                     <label for="">Password</label>
-                    <input type="password" class="form-control" placeholder="Enter Password..." required>
+                    <input type="password" name="pwd" class="form-control" placeholder="Enter Password..." required>
+                </div>
+                <div class="form_group mx-3">
+                  <label>Admin Security Key</label>
+                  <input type="password" name="security" class="form-control" value="" placeholder="Enter Admin Security Key">
                 </div>
                 <button type="submit" class="btn btn-danger btn-block mt-2" onsubmit="alert('Hello, CharlyCare')">Login</button>
               </form>
@@ -67,7 +68,7 @@
     </section>
     <!-- footer -->
     <footer id="footer">
-      <p>Copyright CharlyCareCla$ic, &copy; 2020</p>
+      <p>Copyright CharlyCareCla$ic family office, &copy; 2020</p>
     </footer>
   
 
@@ -79,8 +80,18 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./js/jquery-slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+<!-- Admin verification -->
+    <script type="text/javascript">
+      // window.onload = () => {
+      //     let anwser = prompt("Enter Admin PassKey", "");
+  
+      //     if(anwser != "123456"){
+      //         window.location.href = "../login_signup/login.php";
+      //     }
+      // }
+  </script>
   </body>
 </html>
