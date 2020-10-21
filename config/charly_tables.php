@@ -2,7 +2,7 @@
     require('./db.php');
 
 
-	$table = "CREATE TABLE IF NOT EXISTS `charlycare_usersNEW` (
+	$table = "CREATE TABLE IF NOT EXISTS `charlycare_users` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `username` varchar(255) NOT NULL,
     `email` varchar(255) NOT NULL,
@@ -15,7 +15,7 @@
     `country` varchar(255) NOT NULL,
     `bio_data` text NOT NULL,
     `avatar` text NOT NULL,
-    `userTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `userTime` varchar(255) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `email` (`email`)
   ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1";

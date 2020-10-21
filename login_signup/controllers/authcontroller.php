@@ -26,7 +26,8 @@
         $country = 'Add country';
         $bio_data = 'No Bio-data Avaliable. Bio data is a brief discription of yourself. Go to settings, and add your Bio-data';
         $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
-        // $userTime;
+        $date = date('Y/m/d H:i:s');
+        $userTime = $date;
         // $verified;
 
 ## issue 
@@ -78,10 +79,10 @@
         //     echo "data not inserted : CONTACT ADMIN";
         // }
 #####################################
-        $sql = "INSERT INTO `charlycare_users` (`username`, `email`, `pwd`, `token`, `phone`, `address`, `state`, `country`, `bio_data`, `avatar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `charlycare_users` (`username`, `email`, `pwd`, `token`, `phone`, `address`, `state`, `country`, `bio_data`, `avatar`, `userTime`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssssssssss', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar);
+        $stmt->bind_param('sssssssssss', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar, $userTime);
 
         if($stmt->execute()){
             // login the user here
