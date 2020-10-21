@@ -5,15 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale: 1">
 	<title>Preview Image</title>
 	<!-- link font-awesome -->
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="imgPreview.css">
 </head>
 <body>
-	<div class="container">
-		<div class="wrapper">
+	<div class="img_container">
+		<div class="img_wrapper">
 			<div class="image">
 				<img src="" alt="">
 			</div>
-			<div class="content">
+			<div class="img_content">
 				<div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
 				<div class="class">No file chosen, yet!</div>
 			</div>
@@ -25,7 +25,7 @@
 	</div>
 
 	<script type="text/javascript">
-		const wrapper = document.querySelector(".wrapper");
+		const wrapper = document.querySelector(".img_wrapper");
 		const fileName = document.querySelector("#file-name");
 		const cancelBtn = document.querySelector("#cancel-btn");
 		const defaultBtn = document.querySelector("#default-btn");

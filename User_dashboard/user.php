@@ -37,6 +37,7 @@
 	if(isset($_POST[''])){
         $username = mysqli_real_escape_string($conn, validate_input($_POST['username']));
         $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
+    ###password settings
         $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
         $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
         $phone = mysqli_real_escape_string($conn, validate_input($_POST['phone']));
@@ -47,10 +48,12 @@
         // $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
         // $image = validat_image($_FILES['fileToUpload']['name']);
 		$target = "../uploads/".basename($_FILES['fileToUpload']['name']);
-		$avatar = $_FILES['fileToUpload']['name'];
+        $avatar = $_FILES['fileToUpload']['name'];
+        
+        $password = isset($_POST['pwd']) ? $hash_pwd : $user['pwd'];
 
     
-     $sql = "UPDATE `charlycare_users` SET `pwd` = '$hash_pwd', `phone` = '$phone', `address` = '$address', `state` = '$state', `country` = '$country', `bio_data` = '$bio_data', `avatar` = '$avatar' WHERE `email` = '$email'";
+     $sql = "UPDATE `charlycare_users` SET `pwd` = '$password', `phone` = '$phone', `address` = '$address', `state` = '$state', `country` = '$country', `bio_data` = '$bio_data', `avatar` = '$avatar' WHERE `email` = '$email'";
     
     //  $sql = "UPDATE `charlycare_users` SET `pwd` = ?, `phone` = ?, `address` = ?, `state` = ?, `country` = ?, `bio_data` = ?, `avatar` = ? WHERE `email` = ?";
 
@@ -334,15 +337,31 @@
                                 <!-- <input type="button" class="updateBtn" value="Update Bio-data"> -->
                             </div>
                             <div class="form-div-div">
-                                <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Enter Your New Password" value="<?php echo $user['pwd']; ?>">
+                                <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Enter Your New Password" value="">
             <!-- button for show-hide password -->
                                 <!-- <span class="fa fa-eye"></span> -->
                                 <!-- <input type="button" class="updateBtn"  value="Change Password"> -->
                             </div>
-                            <div class="form-div-div">
-                                <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" placeholder="">
-                                <!-- <input type="button" class="updateBtn" value="Upload Image"> -->
+                <!-- New image upload preview -->
+                    <div class="img_container">
+                        <div class="img_wrapper">
+                            <div class="image">
+                                <img src="" alt="">
                             </div>
+                            <div class="img_content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="class">No file chosen, yet!</div>
+                            </div>
+                            <div id="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">File name here</div>
+                        </div>
+                        <input id="default-btn" type="file" hidden>
+                        <button type="button" onclick="defaultBtnActive()" id="custom-btn">choose a file</button>
+                    </div>
+                    <br><br>
+                            <!-- <div class="form-div-div">
+                                <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" placeholder="">
+                            </div> -->
                             <button type="submit" class="chatBtn" id="updateSettings" name="submit"><i class="fa fa-plus"></i>Update All</button>
                         </form>
                     </div>
