@@ -2,7 +2,7 @@
     require('./db.php');
 
 
-	$table = "CREATE TABLE IF NOT EXISTS `charlycare_users` (
+	$table = "CREATE TABLE IF NOT EXISTS `charlycare_usersNEW` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `username` varchar(255) NOT NULL,
     `email` varchar(255) NOT NULL,
