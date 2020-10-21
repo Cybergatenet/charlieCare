@@ -50,7 +50,6 @@
         if($pwd !== $cpwd){
             $errors['pwd'] = "Your Password did NOT match";
         }
-## removed closed curly brace}
 
     ## connection
     $emailQuery = "SELECT * FROM charlycare_users WHERE email=? LIMIT 1";
