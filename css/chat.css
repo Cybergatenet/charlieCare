@@ -58,6 +58,7 @@ body{
     background: url('../images/search.svg') no-repeat rgba(255, 255, 255, 0.3);
     background-position: 15px center;
     background-size: 20px 20px;
+    box-shadow: 0 1px 3px -1px rgba(0,0,0,0.75);
 }
 #search-container input::placeholder{
     color: #ddd;
@@ -219,6 +220,57 @@ body{
     border-radius: 6px;
     font-size: 1.4rem;
 }
+/* ###################################### */
+#search-container .autocom-box{
+    background-color: #fff;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+    font-size: 1.2rem;
+    position: relative;
+    top: 70px;
+    right: 0;
+    padding: 0;
+    max-height: 280px;
+    margin-top: 40px;
+    overflow-y: auto;
+/* hidding the search box */
+    opacity: 0;
+    pointer-events: none;
+}
+#search-container.active .autocom-box{
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+}
+#search-container{
+    position: relative;
+    box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.5);
+}
+#search-container .icon{
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.autocom-box li{
+    list-style: none;
+    padding: 8px 12px;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
+.autocom-box li:hover{
+    background: #efefef;
+    font-weight: 600;
+}
+
+/* ###################################### */
 ::-webkit-scrollbar{
     display: none;
 }
