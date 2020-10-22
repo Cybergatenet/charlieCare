@@ -272,7 +272,7 @@
                         <p class="bio"><?php echo $user['bio_data']; ?></p>
                     </div>
                     <div class="profile-btn">
-                        <button class="chatBtn"><i class="fa fa-comment"></i>Chat</button>
+                        <button class="chatBtn" onclick="redirect()"><i class="fa fa-comment"></i>Chat</button>
                         <button class="createBtn"><i class="fa fa-plus"></i>Create</button>
                     </div>
                     <div class="user-rating">
@@ -477,5 +477,10 @@
     <script src="../js/bootstrap.min.js"></script>
     <!-- <script src="../js/main.js"></script> -->
     <script src="../js/user.js"></script>
+    <script>
+        function redirect(){
+            window.location.href = './chat.html';
+        }
+    </script>
 </body>
 </html>

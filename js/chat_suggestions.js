@@ -9,5 +9,13 @@ let suggestions = [
     "Creativity",
     "Investment",
     "Communication",
-    "Unity"
+    "Unity",
+    "Abraham Isreal",
+    "Abraham Isreal",
+    "Cybergate Abel",
+    "Cybergatenet Chinedu",
+    "Cybergatenet Chinedu",
+    "Vania Priceness",
+    "Favour Cindy",
+    "Praise Nwaoke"
 ];

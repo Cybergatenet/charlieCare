@@ -1,8 +1,7 @@
 <?php
 	session_start();
 
-	require('../../../config/config.php');
-    require('../../../config/db.php');
+    require('../config/db.php');
 
     // $_SESSION['admin'] = "super_admin";
     if(!$_SESSION['admin']){
