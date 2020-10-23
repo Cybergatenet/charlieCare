@@ -261,19 +261,22 @@
                 <p>Learn more by watching our classic videos</p>
             </div>
             <div class="content">
-                <div class="serviceBx animate-right">
-                    <!-- <img src="./img/bg_4.png"> -->
-                    <video class="video" src="" poster="./img/bg_4.png" width="100%" controls></video>
-                    <h2>Watch Demo Video</h2>
-                    <p>This Post will be updated by the admin soon. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
                 <div class="serviceBx animate-left">
-                    <video class="video" src="" poster="./img/bg_2.png" width="100%" controls></video>
-                    <!-- <img src="./img/star2.png"> -->
+                    <video class="video" src="" poster="" width="100%" controls></video>
                     <h2>Download Demo Video</h2>
                     <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
+                <div class="serviceBx animate-left">
+                    <video class="video" src="" poster="" width="100%" controls></video>
+                    <h2>Watch Demo Video</h2>
+                    <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <!-- <div class="serviceBx animate-right">
+                    <video class="video" src="" poster="" width="100%" controls></video>
+                    <h2>Watch Demo Video</h2>
+                    <p>This Post will be updated by the admin soon. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div> -->
             </div>
             <div class="heading">
                 <a href="#" class="btn">View More</a>
