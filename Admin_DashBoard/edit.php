@@ -8,6 +8,15 @@
       header("location: ./index.php");
       exit();
   }
+  $query = 'SELECT * FROM charlycare_users ORDER BY userTime DESC';
+    $result = mysqli_query($conn, $query);
+    $datas = array();
+    
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $datas[] = $row;
+        }
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,18 +30,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="../img/charlyLogo22.png" type="image/x-icon">
     <title>DashBoard | CharlyCareCla$ic</title>
+    <!-- Fontawesome link -->
+    <link href="./css/css/all.min.css" type="text/css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="./css/starter-template.css" rel="stylesheet">
+    <link href="./css/starter-template.css" type="text/css" rel="stylesheet">
     <!-- custom stylesheet -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <!-- Add ck-editor cdn -->
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
-      <a class="navbar-brand" href="#">CharlyCareCla$ic</a>
+      <a class="navbar-brand" href="../index.php">CharlyCareCla$ic</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -68,11 +79,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit <small> Edit Content</small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit <small class="h6"> Edit Content</small></h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
+              <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a class="dropdown-item" type="button" data-toggle="model" data-target="#addPage">Add Page</a></li>
                 <li><a class="dropdown-item" href="posts.html">Add Post</a></li>
@@ -97,20 +108,20 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <div class="list-group">
-              <a href="index.html" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>DashBoard</a>
-              <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>Pages <span class="badge">12</span></a>
-              <a href="posts.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Posts <span class="badge">100</span></a>
-              <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Users <span class="badge">1000</span></a>
+          <div class="list-group">
+              <a href="index.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
+              <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
+              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary">loading...</small></span></a>
+              <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
             </div>
             <div class="well">
               <h4>Disk space Used</h4>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">loading...</div>
               </div>
               <h4>BandWidth Used</h4>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">loading...</div>
               </div>
             </div>
           </div>

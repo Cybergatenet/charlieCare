@@ -25,7 +25,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
-      <a class="navbar-brand" href="#">CharlyCareCla$ic</a>
+      <a class="navbar-brand" href="../index.php">CharlyCareCla$ic</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -86,13 +86,13 @@
     <script src="./js/bootstrap.min.js"></script>
 <!-- Admin verification -->
     <script type="text/javascript">
-      // window.onload = () => {
-      //     let anwser = prompt("Enter Admin PassKey", "");
+      window.onload = () => {
+          let anwser = prompt("Enter Admin PassKey", "");
   
-      //     if(anwser != "123456"){
-      //         window.location.href = "../login_signup/login.php";
-      //     }
-      // }
+          if(anwser != "123456"){
+              window.location.href = "../login_signup/login.php";
+          }
+      }
   </script>
   </body>
 </html>

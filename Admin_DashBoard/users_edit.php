@@ -8,6 +8,16 @@
       header("location: ./index.php");
       exit();
   }
+  $user_id = mySqli_real_escape_string($conn, $_GET['userId']);
+  $query = "SELECT * FROM charlycare_users WHERE `id`='$user_id'";
+    $result = mysqli_query($conn, $query);
+    $datas = array();
+    
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $datas[] = $row;
+        }
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,9 +42,7 @@
     <!-- Add ck-editor cdn -->
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
-
   <body>
-
     <nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
       <a class="navbar-brand" href="../index.php">CharlyCareCla$ic</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,15 +52,15 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">DashBoard</a>
+            <a class="nav-link" href="admin.php">DashBoard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pages.php">Pages<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="posts.php">Posts</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="users.php">Users</a>
           </li>
         </ul>
@@ -72,15 +80,15 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Posts <small class="h6"> Manage blog Posts</small></h1>
+            <h1><span class="fa fa-cogs" aria-hidden="true"></span> Users <small class="h6"> Manage Users</small></h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
               <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a class="dropdown-item" type="button" data-toggle="model" data-target="#addPage">Add Page</a></li>
-                <li><a class="dropdown-item" href="posts.php">Add Post</a></li>
-                <li><a class="dropdown-item" href="users.php">Add User</a></li>
+                <li><a class="dropdown-item" href="posts.html">Add Post</a></li>
+                <li><a class="dropdown-item" href="users.html">Add User</a></li>
               </ul>
             </div>
           </div>
@@ -92,7 +100,7 @@
       <div class="container">
         <ol class="breadcrumb">
             <li><a href="#">DashBoard</a></li>
-          <li class="active">Posts</li>
+          <li class="active">User</li>
         </ol>
       </div>
     </section>
@@ -101,11 +109,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-          <div class="list-group">
+            <div class="list-group">
               <a href="index.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
               <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
-              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge">100</span></a>
-              <a href="users.php" class="list-group-item"><span class="fa fa-users" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge">1000</span></a>
+              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary">loading...</small></span></a>
+              <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
             </div>
             <div class="well">
               <h4>Disk space Used</h4>
@@ -121,47 +129,25 @@
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Posts</h3>
+                <h3 class="panel-title">Users</h3>
               </div>
               <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Filter Posts...">
+                        <input type="text" class="form-control" placeholder="Filter Users...">
                     </div>
                 </div>
                 <br>
-                <table class="table table-striped table-hover">
-                    <tr>
-                        <th>Title</th>
-                        <th>Published</th>
-                        <th>Created</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>Demo Blog Post</td>
-                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
-                        <td>Sept 15, 2020</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Blog Post two</td>
-                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
-                        <td>Sept 12, 2020</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Blog Post Three</td>
-                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
-                        <td>Sept 9, 2020</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Blog Post Four</td>
-                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
-                        <td>Sept 1, 2020</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
-                    </tr>
-                </table>
+                <div class="row">
+                <ul class="list-group col-md-12 col-offset-12">
+                      <?php foreach($datas as $data): ?>
+                          <li class="list-group-item">Username:- <?php echo $data['username']; ?></li>
+                          <li class="list-group-item">Phone:- <?php echo $data['phone']; ?></li>
+                          <li class="list-group-item">Email:- <?php echo $data['email']; ?></li>
+                          <li class="list-group-item">Joined:- <?php echo $data['userTime']; ?></li>
+                       <?php endforeach; ?>
+                  </ul>
+                </div>
               </div>
             </div>
         </div>
@@ -204,6 +190,7 @@
               <input type="text" class="form-control" placeholder="Add Meta Description...">
             </div>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -212,7 +199,6 @@
         </div>
       </div>
     </div>
-
     <!-- ck Editor -->
     <script>
       CKEDITOR.replace( 'editor1' );

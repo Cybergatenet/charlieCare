@@ -380,7 +380,159 @@ if(isset($_POST['confirm'])){
 </script>
 
 <!-- footer -->
-<?php include("./inc/footer.php"); ?>
+<?php 
+
+//     #####  SENDING ADMIN MESSAGE HERE ######
+//     $errMsg = '';
+//     $errMsgClass = '';
+
+//     if(filter_has_var(INPUT_POST, 'submit')){
+//         $name = htmlspecialchars($_POST['username']);
+//         $email = htmlspecialchars($_POST['email']);
+//         $subject = htmlspecialchars($_POST['subject']);
+//         $message = htmlspecialchars($_POST['message']);
+
+//         if(!empty($name) && !empty($email) && !empty($subject) && !empty($message)){
+
+//             if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
+//                 $errMsg = "Please use a vaild email";
+//                 $errMsgClass = "alert-danger";
+//             }else{
+//                 $toemail = $email;
+//                 $title = $subject;
+//                 $body = '<html><body>';
+//                 $body .= '<h4>Dear '.$name.'</h4>
+//                         <p>'.$message.'</p>';
+//                 $body .= '</body></html>';
+
+//                 $header = "MIME-Version : 1.0" ."\r\n";
+//                 $header .= "Content-Type: text/html;charset: UTF-8" ."\r\n";
+//                 $header .= "Admin From Greencash: admin@greencash2020.com". "\r\n";
+
+//                 if(mail($toemail, $title, $body, $header)){
+//                         $errMsg = "Hi Admin, Your Email to ".$name." was successful. Cheers!";
+//                         $errMsgClass = "alert-success";
+//                         $name = $email = $subject = $message = '';
+//                 }else{
+//                         $errMsg = "Hi Admin, Your email was NOT successful. Try again later";
+//                         $errMsgClass = "alert-danger";
+//                 }
+//             }
+//         } else{
+//             $errMsg = "Please fill all fields";
+//             $errMsgClass = "alert-danger";
+//         }
+//     }
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////##########################################################
+//     ####       MERGING STARTS HERE
+//     $msg = "";
+//     $MsgClass = "";
+
+// if(isset($_POST['merge_A'])){
+//         $payee = mysqli_real_escape_string($conn, $_POST['payee']);
+//         $pay_acc_name = mysqli_real_escape_string($conn, $_POST['pay_acc_name']);
+//         $pay_acc_number = mysqli_real_escape_string($conn, $_POST['pay_acc_number']);
+//         $pay_bank_name = mysqli_real_escape_string($conn, $_POST['pay_bank_name']);
+//         $payer = mysqli_real_escape_string($conn, $_POST['payer']);
+//     if(!empty($payee) && !empty($pay_acc_name) && !empty($pay_acc_number) && !empty($pay_bank_name) && !empty($payer)){
+//         if($payee === $payer){
+//             $msg = 'You Can NOT Merge One Person Twice';
+//             $msgClass = "alert-danger";
+//         }else{
+// ########## Admin will customise these variables himself ##############
+//         $sql_merge = "SELECT * FROM greencash_bank WHERE username = '$payee'";
+//         $result = mysqli_query($conn, $sql_merge);
+//         $post = mysqli_fetch_assoc($result);
+//         mysqli_free_result($result);
+//         $merge = "merge payment";
+//         $merge_at = "";
+//         $merge_details = "Account Name: ".$post['acc_name']."<br>"."Account Number: ".$post['acc_number']."<br>"."Bank Name: ".$post['acc_bank'];
+//         $image = "My pending image.jpg";
+// $id = mysqli_real_escape_string($conn, $_GET['id']);
+#### UPDATING PAYER'S ROW
+
+//     $query_payer = "UPDATE `greencash_bank` SET `merge` = '$merge', `merge_details` = '$merge_details', `merge_at` = CURRENT_TIME, `pay_acc_name` = '$pay_acc_name', `pay_acc_number` = '$pay_acc_number', `pay_bank_name` = '$pay_bank_name', `image` = '$image' WHERE `greencash_bank`.`username` = '$payer'";
+
+//         if(mysqli_query($conn, $query_payer)){
+//             $msg = 'Successfully Merged A'."<br>";
+//             $msgClass = "alert-success";
+//             // $payee = $pay_acc_name = $pay_acc_number = $pay_bank_name = $payer = "";
+//         }else{
+//             // echo 'ERROR: '.mysqli_error($conn);
+//             $msg = 'An Error occurred during the merge procees. Try Again';
+//             $msgClass = "alert-danger";
+//             }
+//         }
+//    }else{
+//     //   some fields are empty
+//     $msg = 'Please fill All fields To Continue';
+//     $msgClass = "alert-danger";
+//     }
+// }
+//////   #    ///////    #   //////////  #    ////////////    #    //////////   #   ///////
+#### UPDATING RECEIVER'S ROW
+// if(isset($_POST['merge_B'])){
+//         $payee = mysqli_real_escape_string($conn, $_POST['payee']);
+//         $pay_acc_name = mysqli_real_escape_string($conn, $_POST['pay_acc_name']);
+//         $pay_acc_number = mysqli_real_escape_string($conn, $_POST['pay_acc_number']);
+//         $pay_bank_name = mysqli_real_escape_string($conn, $_POST['pay_bank_name']);
+//         $payer = mysqli_real_escape_string($conn, $_POST['payer']);
+//     if(!empty($payee) && !empty($pay_acc_name) && !empty($pay_acc_number) && !empty($pay_bank_name) && !empty($payer)){
+//         if($payee === $payer){
+//             $msg = 'You Can NOT Merge One Person Twice';
+//             $msgClass = "alert-danger";
+//         }else{
+//     /// merge variable for just the RECEIVER
+//         // get acc_name, number, email
+//         $merge = "merged"; 
+//         $sql_merge = "SELECT * FROM greencash_bank WHERE username = '$payer'";
+//         $result = mysqli_query($conn, $sql_merge);
+//         $post = mysqli_fetch_assoc($result);
+//         mysqli_free_result($result);
+//     // adding payers details here ///
+//         $merge_details = "Name: ".$post['acc_name']."<br>";
+//         $merge_details .= "Number: ".$post['number']."<br>";
+//         $merge_details .= "Email: ".$post['email']."<br>";
+//         $merge_details .= "Amount: ".$post['amount'];
+
+//         $query_payee = "UPDATE `greencash_bank` SET `merge` = '$merge', `merge_details` = '$merge_details', `merge_at` = CURRENT_TIME WHERE `greencash_bank`.`username` = '$payee'";
+
+//         if(mysqli_query($conn, $query_payee)){
+//             $msg = 'Successfully Merged B';
+//             $msgClass = "alert-success";
+//             // $payee = $pay_acc_name = $pay_acc_number = $pay_bank_name = $payer = "";
+//         }else{
+//             // echo 'ERROR: '.mysqli_error($conn);
+//             $msg = 'Incomplete merge Process. Contact Webmaster';
+//             $msgClass = "alert-danger";
+//         }
+//     }
+// }else{
+//     //   some fields are empty
+//     $msg = 'Please fill All fields To Continue';
+//     $msgClass = "alert-danger";
+//     }
+// }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////######################################################
+/// Admin confirm payments here
+// $png = "";
+// if(isset($_POST['confirm'])){
+//     $payment = mysqli_real_escape_string($conn, $_POST['payment']);
+//     $merge = "paid and confirmed";
+//     $merge_details = "Cheers!...Your Payment Has Been Confirmed";
+
+//     if(empty($payment)){
+//         $png = "<h5 style='color:red;'>ERROR!...You MUST select A Username to complete this action</h5>";
+//     }else{
+//         $query_payment = "UPDATE greencash_bank SET `merge` = '$merge', `merge_details` = '$merge_details' WHERE `username` = '$payment'";
+//         if(mysqli_query($conn, $query_payment)){
+//             $png = "<img src='../../../img/pass.png' width='80px' height='80px'>";
+//         }else{
+//             $png = "<img src='../../../img/error.png' width='80px' height='80px'>";
+//         }
+//     }
+// }
+?>
         
 </body>
 </html>
