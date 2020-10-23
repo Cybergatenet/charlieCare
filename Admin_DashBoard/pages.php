@@ -1,3 +1,14 @@
+<?php
+  session_start();
+
+  require('../config/db.php');
+
+  // $_SESSION['admin'] = 'Charly_Admin';
+  if(!$_SESSION['admin']){
+      header("location: ./index.php");
+      exit();
+  }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,16 +42,16 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">DashBoard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages.html">Pages<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="posts.html">Posts</a>
+            <a class="nav-link" href="#">DashBoard</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="users.html">Users</a>
+            <a class="nav-link" href="./pages.php">Pages<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./posts.php">Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./users.php">Users</a>
           </li>
         </ul>
 
@@ -49,7 +60,7 @@
             <a class="nav-link" href="#">Welcome, Admin<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Logout</a>
+            <a class="nav-link" href="./index.php?login=true">Logout</a>
           </li>
           </ul>
       </div>
@@ -59,7 +70,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Users <small> Manage Users</small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Pages <small> Manage Site Pages</small></h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
@@ -79,7 +90,7 @@
       <div class="container">
         <ol class="breadcrumb">
             <li><a href="#">DashBoard</a></li>
-          <li class="active">User</li>
+          <li class="active">Pages</li>
         </ol>
       </div>
     </section>
@@ -108,43 +119,43 @@
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Users</h3>
+                <h3 class="panel-title">Pages</h3>
               </div>
               <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Filter Users...">
+                        <input type="text" class="form-control" placeholder="Filter Pages...">
                     </div>
                 </div>
                 <br>
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Joined</th>
+                        <th>Title</th>
+                        <th>Published</th>
+                        <th>Created</th>
                         <th></th>
                     </tr>
                     <tr>
-                        <td>Cybergate Mercygate</td>
-                        <td>cybergatenet@yahoo.com</td>
+                        <td>Demo_page</td>
+                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
                         <td>Sept 15, 2020</td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
                     </tr>
                     <tr>
-                        <td>Abelistist Chinedu</td>
-                        <td>abelististuwas@yahoo.com</td>
+                        <td>Demo_page</td>
+                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
                         <td>Sept 12, 2020</td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
                     </tr>
                     <tr>
-                        <td>Vania Ijeoma</td>
-                        <td>ijvania@gmail.com</td>
+                        <td>Demo_page</td>
+                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
                         <td>Sept 9, 2020</td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
                     </tr>
                     <tr>
-                        <td>Ejike Jackson</td>
-                        <td>ejikej@gmail.com</td>
+                        <td>Demo_page</td>
+                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
                         <td>Sept 1, 2020</td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
                     </tr>
@@ -200,6 +211,9 @@
         </div>
       </div>
     </div>
+
+   
+
     <!-- ck Editor -->
     <script>
       CKEDITOR.replace( 'editor1' );

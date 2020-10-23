@@ -3,109 +3,109 @@
 
     require('../config/db.php');
 
-    // $_SESSION['admin'] = "super_admin";
+    // $_SESSION['admin'] = 'Charly_Admin';
     if(!$_SESSION['admin']){
-        header("location: ./index.php");
-        exit();
+        // header("location: ./index.php");
+        // exit();
     }
 
-    $query = 'SELECT * FROM greencash_bank ORDER BY merge_at DESC';
-    $result = mysqli_query($conn, $query);
-    $datas = array();
+//     $query = 'SELECT * FROM greencash_bank ORDER BY merge_at DESC';
+//     $result = mysqli_query($conn, $query);
+//     $datas = array();
     
-    if(mysqli_num_rows($result) > 0){
-        while($row = mysqli_fetch_assoc($result)){
-            $datas[] = $row;
-        }
-    }
-/////////////////////////////////////////////////////////////////////////
-    #####  SENDING ADMIN MESSAGE HERE ######
-    $errMsg = '';
-    $errMsgClass = '';
+//     if(mysqli_num_rows($result) > 0){
+//         while($row = mysqli_fetch_assoc($result)){
+//             $datas[] = $row;
+//         }
+//     }
+// /////////////////////////////////////////////////////////////////////////
+//     #####  SENDING ADMIN MESSAGE HERE ######
+//     $errMsg = '';
+//     $errMsgClass = '';
 
-    if(filter_has_var(INPUT_POST, 'submit')){
-        $name = htmlspecialchars($_POST['username']);
-        $email = htmlspecialchars($_POST['email']);
-        $subject = htmlspecialchars($_POST['subject']);
-        $message = htmlspecialchars($_POST['message']);
+//     if(filter_has_var(INPUT_POST, 'submit')){
+//         $name = htmlspecialchars($_POST['username']);
+//         $email = htmlspecialchars($_POST['email']);
+//         $subject = htmlspecialchars($_POST['subject']);
+//         $message = htmlspecialchars($_POST['message']);
 
-        if(!empty($name) && !empty($email) && !empty($subject) && !empty($message)){
+//         if(!empty($name) && !empty($email) && !empty($subject) && !empty($message)){
 
-            if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
-                $errMsg = "Please use a vaild email";
-                $errMsgClass = "alert-danger";
-            }else{
-                $toemail = $email;
-                $title = $subject;
-                $body = '<html><body>';
-                $body .= '<h4>Dear '.$name.'</h4>
-                        <p>'.$message.'</p>';
-                $body .= '</body></html>';
+//             if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
+//                 $errMsg = "Please use a vaild email";
+//                 $errMsgClass = "alert-danger";
+//             }else{
+//                 $toemail = $email;
+//                 $title = $subject;
+//                 $body = '<html><body>';
+//                 $body .= '<h4>Dear '.$name.'</h4>
+//                         <p>'.$message.'</p>';
+//                 $body .= '</body></html>';
 
-                $header = "MIME-Version : 1.0" ."\r\n";
-                $header .= "Content-Type: text/html;charset: UTF-8" ."\r\n";
-                $header .= "Admin From Greencash: admin@greencash2020.com". "\r\n";
+//                 $header = "MIME-Version : 1.0" ."\r\n";
+//                 $header .= "Content-Type: text/html;charset: UTF-8" ."\r\n";
+//                 $header .= "Admin From Greencash: admin@greencash2020.com". "\r\n";
 
-                if(mail($toemail, $title, $body, $header)){
-                        $errMsg = "Hi Admin, Your Email to ".$name." was successful. Cheers!";
-                        $errMsgClass = "alert-success";
-                        $name = $email = $subject = $message = '';
-                }else{
-                        $errMsg = "Hi Admin, Your email was NOT successful. Try again later";
-                        $errMsgClass = "alert-danger";
-                }
-            }
-        } else{
-            $errMsg = "Please fill all fields";
-            $errMsgClass = "alert-danger";
-        }
-    }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////##########################################################
-    ####       MERGING STARTS HERE
-    $msg = "";
-    $MsgClass = "";
+//                 if(mail($toemail, $title, $body, $header)){
+//                         $errMsg = "Hi Admin, Your Email to ".$name." was successful. Cheers!";
+//                         $errMsgClass = "alert-success";
+//                         $name = $email = $subject = $message = '';
+//                 }else{
+//                         $errMsg = "Hi Admin, Your email was NOT successful. Try again later";
+//                         $errMsgClass = "alert-danger";
+//                 }
+//             }
+//         } else{
+//             $errMsg = "Please fill all fields";
+//             $errMsgClass = "alert-danger";
+//         }
+//     }
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////##########################################################
+//     ####       MERGING STARTS HERE
+//     $msg = "";
+//     $MsgClass = "";
 
-if(isset($_POST['merge_A'])){
-        $payee = mysqli_real_escape_string($conn, $_POST['payee']);
-        $pay_acc_name = mysqli_real_escape_string($conn, $_POST['pay_acc_name']);
-        $pay_acc_number = mysqli_real_escape_string($conn, $_POST['pay_acc_number']);
-        $pay_bank_name = mysqli_real_escape_string($conn, $_POST['pay_bank_name']);
-        $payer = mysqli_real_escape_string($conn, $_POST['payer']);
-    if(!empty($payee) && !empty($pay_acc_name) && !empty($pay_acc_number) && !empty($pay_bank_name) && !empty($payer)){
-        if($payee === $payer){
-            $msg = 'You Can NOT Merge One Person Twice';
-            $msgClass = "alert-danger";
-        }else{
-########## Admin will customise these variables himself ##############
-        $sql_merge = "SELECT * FROM greencash_bank WHERE username = '$payee'";
-        $result = mysqli_query($conn, $sql_merge);
-        $post = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-        $merge = "merge payment";
-        $merge_at = "";
-        $merge_details = "Account Name: ".$post['acc_name']."<br>"."Account Number: ".$post['acc_number']."<br>"."Bank Name: ".$post['acc_bank'];
-        $image = "My pending image.jpg";
+// if(isset($_POST['merge_A'])){
+//         $payee = mysqli_real_escape_string($conn, $_POST['payee']);
+//         $pay_acc_name = mysqli_real_escape_string($conn, $_POST['pay_acc_name']);
+//         $pay_acc_number = mysqli_real_escape_string($conn, $_POST['pay_acc_number']);
+//         $pay_bank_name = mysqli_real_escape_string($conn, $_POST['pay_bank_name']);
+//         $payer = mysqli_real_escape_string($conn, $_POST['payer']);
+//     if(!empty($payee) && !empty($pay_acc_name) && !empty($pay_acc_number) && !empty($pay_bank_name) && !empty($payer)){
+//         if($payee === $payer){
+//             $msg = 'You Can NOT Merge One Person Twice';
+//             $msgClass = "alert-danger";
+//         }else{
+// ########## Admin will customise these variables himself ##############
+//         $sql_merge = "SELECT * FROM greencash_bank WHERE username = '$payee'";
+//         $result = mysqli_query($conn, $sql_merge);
+//         $post = mysqli_fetch_assoc($result);
+//         mysqli_free_result($result);
+//         $merge = "merge payment";
+//         $merge_at = "";
+//         $merge_details = "Account Name: ".$post['acc_name']."<br>"."Account Number: ".$post['acc_number']."<br>"."Bank Name: ".$post['acc_bank'];
+//         $image = "My pending image.jpg";
 // $id = mysqli_real_escape_string($conn, $_GET['id']);
 #### UPDATING PAYER'S ROW
 
-    $query_payer = "UPDATE `greencash_bank` SET `merge` = '$merge', `merge_details` = '$merge_details', `merge_at` = CURRENT_TIME, `pay_acc_name` = '$pay_acc_name', `pay_acc_number` = '$pay_acc_number', `pay_bank_name` = '$pay_bank_name', `image` = '$image' WHERE `greencash_bank`.`username` = '$payer'";
+//     $query_payer = "UPDATE `greencash_bank` SET `merge` = '$merge', `merge_details` = '$merge_details', `merge_at` = CURRENT_TIME, `pay_acc_name` = '$pay_acc_name', `pay_acc_number` = '$pay_acc_number', `pay_bank_name` = '$pay_bank_name', `image` = '$image' WHERE `greencash_bank`.`username` = '$payer'";
 
-        if(mysqli_query($conn, $query_payer)){
-            $msg = 'Successfully Merged A'."<br>";
-            $msgClass = "alert-success";
-            // $payee = $pay_acc_name = $pay_acc_number = $pay_bank_name = $payer = "";
-        }else{
-            // echo 'ERROR: '.mysqli_error($conn);
-            $msg = 'An Error occurred during the merge procees. Try Again';
-            $msgClass = "alert-danger";
-            }
-        }
-   }else{
-    //   some fields are empty
-    $msg = 'Please fill All fields To Continue';
-    $msgClass = "alert-danger";
-    }
-}
+//         if(mysqli_query($conn, $query_payer)){
+//             $msg = 'Successfully Merged A'."<br>";
+//             $msgClass = "alert-success";
+//             // $payee = $pay_acc_name = $pay_acc_number = $pay_bank_name = $payer = "";
+//         }else{
+//             // echo 'ERROR: '.mysqli_error($conn);
+//             $msg = 'An Error occurred during the merge procees. Try Again';
+//             $msgClass = "alert-danger";
+//             }
+//         }
+//    }else{
+//     //   some fields are empty
+//     $msg = 'Please fill All fields To Continue';
+//     $msgClass = "alert-danger";
+//     }
+// }
 //////   #    ///////    #   //////////  #    ////////////    #    //////////   #   ///////
 #### UPDATING RECEIVER'S ROW
 // if(isset($_POST['merge_B'])){
@@ -207,13 +207,13 @@ if(isset($_POST['merge_A'])){
             <a class="nav-link" href="#">DashBoard<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages.html">Pages</a>
+            <a class="nav-link" href="pages.php">Pages</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="posts.html">Posts</a>
+            <a class="nav-link" href="posts.php">Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="users.html">Users</a>
+            <a class="nav-link" href="users.php">Users</a>
           </li>
         </ul>
 
@@ -222,7 +222,7 @@ if(isset($_POST['merge_A'])){
             <a class="nav-link" href="#">Welcome, Admin<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Logout</a>
+            <a class="nav-link" href="./index.php?login=true">Logout</a>
           </li>
           </ul>
       </div>
@@ -239,8 +239,8 @@ if(isset($_POST['merge_A'])){
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a class="dropdown-item" type="button" data-toggle="model" data-target="#addPage">Add Page</a></li>
-                <li><a class="dropdown-item" href="posts.html">Add Post</a></li>
-                <li><a class="dropdown-item" href="users.html">Add User</a></li>
+                <li><a class="dropdown-item" href="posts.php">Add Post</a></li>
+                <li><a class="dropdown-item" href="users.php">Add User</a></li>
               </ul>
             </div>
           </div>
@@ -262,7 +262,7 @@ if(isset($_POST['merge_A'])){
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="index.html" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>DashBoard</a>
+              <a href="index.php" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>DashBoard</a>
               <a href="pages.html" class="list-group-item"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>Pages <span class="badge">12</span></a>
               <a href="posts.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Posts <span class="badge">100</span></a>
               <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Users <span class="badge">1000</span></a>

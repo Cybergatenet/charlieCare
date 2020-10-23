@@ -1,5 +1,6 @@
 <?php
-  include_once './process/index.php';
+  require_once './process/adminLogin.php';
+
 ?>
 <!Doctype html>
 <html lang="en">
@@ -36,7 +37,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h1 class="text-center"> Admin Area <small>| Account Login</small></h1>
+            <h1 class="text-center h3"> Admin Area <small>| Account Login</small></h1>
           </div>
         </div>
       </div>
@@ -45,9 +46,9 @@
     <section id="main">
       <div class="container">
         <div class="row">     
-          <div class="col-md-4 col-md-offset-4">
+          <div class="col-md-6 col-md-offset-6 mx-auto">
               <form id="login" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="card p-3">
-			      <h4 class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></h4>
+			      <h4 class="alert <?php echo $msgClass; ?> h6"><?php echo $msg; ?></h4>
                 <div class="form-group mx-3">
                     <label for="">Email Address</label>
                     <input type="email" name="email" class="form-control" placeholder="Enter Email..." required>
@@ -58,9 +59,9 @@
                 </div>
                 <div class="form_group mx-3">
                   <label>Admin Security Key</label>
-                  <input type="password" name="security" class="form-control" value="" placeholder="Enter Admin Security Key">
+                  <input type="password" name="security" class="form-control" value="" placeholder="Enter Admin Security Key" required>
                 </div>
-                <button type="submit" class="btn btn-danger btn-block mt-2" onsubmit="alert('Hello, CharlyCare')">Login</button>
+                <button type="submit" name="submit" class="btn btn-danger btn-block mt-2" onsubmit="alert('Hello, CharlyCare')">Login</button>
               </form>
         </div>
       </div>
