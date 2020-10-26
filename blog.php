@@ -1,5 +1,29 @@
 <?php
+    require_once './config/db.php'; // connection here
+
     require_once './server/contact.php';
+// fetching posts here
+$query_posts = 'SELECT * FROM charlycare_posts ORDER BY post_time DESC';
+$return_posts = mysqli_query($conn, $query_posts);
+$posts = array();
+
+if(mysqli_num_rows($return_posts) > 0){
+    while($row = mysqli_fetch_assoc($return_posts)){
+        $posts[] = $row;
+    }
+}
+
+#### Fetching single post
+    $post_id = mysqli_real_escape_string($conn, htmlspecialchars($_GET['post_id']));
+    $query_post = "SELECT * FROM charlycare_posts WHERE `id`='$post_id' LIMIT 1";
+    $result = mysqli_query($conn, $query_post);
+    $blog_posts = array();
+  
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $blog_posts[] = $row;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +35,7 @@
     <meta name="keywords" content="CharlyCareCla$ic, Forex, Online Trading, Investment, Foreign exchange">
     <meta name="author" content="Designed by cybergate communication network">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About Us | CharlyCareCla$ic</title>
+    <title>Blog Post | CharlyCareCla$ic</title>
     <!-- font-awesome cdn | locally hosted -->
     <link rel="icon" href="./img/charlyLogo22.png">
     <!-- fontAwesome here -->
@@ -66,7 +90,7 @@
                         <a href="./index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" onclick="alert('Oop!..offline for maintenance!');" class="nav-link active">About Us</a>
+                        <a href="./about.php" class="nav-link active">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a href="./login_signup/login.php" class="nav-link">Log In</a>
@@ -77,7 +101,6 @@
     </header>
     <!-- header ends here -->
     <!-- this hero section is a consideration and can be removed -->
-
     <section class="hero" id="hero">
         <div class="container">
             <h2 class="sub-headline">
@@ -108,43 +131,48 @@
 
 <section class="culinary-delight">
     <div class="container">
-        <div class="slider owl-carousel">
+        <div class="slider">
+        <?php foreach($blog_posts as $blog): ?>
             <div class="card">
-                <div class="img"><img src="./img/user.png" alt=""></div>
+                <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" alt="post image"></div>
                 <div class="content">
-                    <div class="title">Innovation</div>
-                    <div class="sub-title">Posted By Admin</div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
+                    <div class="title"><?php echo $blog['post_title']; ?></div>
+                    <small class="sub-title h6">Posted By <?php echo $blog['user_username']; ?></small>
+                    <p><?php echo $blog['post_body']; ?></p>
                     <div class="btn">
-                        <button>Read More</button>
+                        <a href="./blog.php?post_id=<?php echo $blog['id']; ?>" class="btn btn-danger">Next Page</a>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="img"><img src="./img/star2.png" alt=""></div>
-                <div class="content">
-                    <div class="title">Creativity</div>
-                    <div class="sub-title">Posted By Admin</div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
-                    <div class="btn">
-                        <button>Read More</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img"><img src="./img/globe.jpg" alt=""></div>
-                <div class="content">
-                    <div class="title">Inventing</div>
-                    <div class="sub-title">Posted By Admin</div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
-                    <div class="btn">
-                        <button>Read More</button>
-                    </div>
-                </div>
-            </div>
+        <?php endforeach; ?>
         </div>
     </div>
 </section>
+<section class="services" id="services">
+        <div class="container">
+            <div class="heading white animate-top">
+                <h2>Our Blog</h2>
+                <p>Stay connected for amazing contents</p>
+            </div>
+            <div class="content">
+                <div class="slider owl-carousel">
+                    <?php foreach($posts as $post): ?>
+                        <div class="card">
+                            <div class="img"><img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image"></div>
+                            <div class="content">
+                                <div class="title"><?php echo $post['post_title']; ?></div>
+                                <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small>
+                                <p><?php echo substr($post['post_body'], 0, 150); ?>...</p>
+                                <div class="btn">
+                                    <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <!-- stop Blog Posts here -->
     <section class="culinary-delight">
@@ -163,7 +191,6 @@
                 </div>
                 <div class="image-group">
                     <img class="animate-top" src="img/nature.jpg" alt="">
-                    <img class="animate-bottom" src="img/nature.jpg" alt="">
                 </div>
             </div>
         </div>

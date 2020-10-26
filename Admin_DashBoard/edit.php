@@ -17,6 +17,30 @@
             $datas[] = $row;
         }
     }
+
+     // fetching posts here
+  $query_post = 'SELECT * FROM charlycare_posts ORDER BY post_time DESC';
+  $return_posts = mysqli_query($conn, $query_post);
+  $posts = array();
+
+  if(mysqli_num_rows($return_posts) > 0){
+      while($row = mysqli_fetch_assoc($return_posts)){
+          $posts[] = $row;
+      }
+  }
+######################################################
+// Fetching a single post here
+  $post_id = mysqli_real_escape_string($conn, $_GET['post_id']);
+  $query_user = "SELECT * FROM charlycare_posts WHERE `id`='$post_id' LIMIT 1";
+  $single_result = mysqli_query($conn, $query_user);
+  $edit_post = array();
+    
+  if(mysqli_num_rows($single_result) > 0){
+      while($row = mysqli_fetch_assoc($single_result)){
+          $edit_post[] = $row;
+      }
+  }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -111,7 +135,7 @@
           <div class="list-group">
               <a href="index.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
               <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
-              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary">loading...</small></span></a>
+              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?><small></span></a>
               <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
             </div>
             <div class="well">
@@ -133,12 +157,12 @@
               <div class="panel-body">
                 <form>
                   <div class="form-group">
-                    <label>Page Title</label>
-                    <input type="text" class="form-control" placeholder="Page Title">
+                    <label>Post Title</label>
+                    <input type="text" class="form-control" value="<?php echo $edit_post['post_title']; ?>" placeholder="Post Title">
                     </div>
                     <div class="form-group">
-                      <label>Page Title</label>
-                      <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
+                      <label>Post Body</label>
+                      <textarea name="editor1" class="form-control" placeholder="Post Body"><?php echo $edit_post['post_body']; ?></textarea>
                   </div>
                   <div class="checkbox">
                     <label>
@@ -157,8 +181,6 @@
                 </form>
               </div>
             </div>
-        
-
 
         </div>
       </div>

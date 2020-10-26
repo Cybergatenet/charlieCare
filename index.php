@@ -1,5 +1,18 @@
 <?php
+    require_once './config/db.php'; // connection here
     require_once './server/contact.php';
+
+###############################################
+// fetching posts here
+$query_post = 'SELECT * FROM charlycare_posts ORDER BY post_time DESC';
+$return_posts = mysqli_query($conn, $query_post);
+$posts = array();
+
+if(mysqli_num_rows($return_posts) > 0){
+    while($row = mysqli_fetch_assoc($return_posts)){
+        $posts[] = $row;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -141,7 +154,6 @@
                         than the world currently know?, we are sure there are much better ways to live a fulfilled life
                         than
                         ever experienced. We do not conform to the status quo, even when status quo is working well.</p>
-                    <!-- <a href="#" onclick="alert('Oop!...offline for maintenance');" class="btn body-btn">About Us</a> -->
                 </div>
                 <div class="restaurant-info-img animate-right">
                     <img src="./img/globe.jpg" alt="">
@@ -150,22 +162,6 @@
         </div>
     </section>
 
-    <!-- Discover our story ends -->
-
-    <!-- <section class="tasteful-recipes between">
-        <div class="container"> -->
-    <!-- <div class="global-headline">
-                <div class="animate-top">
-                    <h2 class="sub-headline">
-                        <span class="first-letter">F</span>orex
-                    </h2>
-                </div>
-                <div class="animate-bottom">
-                    <h1 class="headline">Trading</h1>
-                </div>
-            </div> -->
-
-    <!-- Added here -->
     <section class="services" id="services">
         <div class="container">
             <div class="heading white animate-top">
@@ -173,74 +169,24 @@
                 <p>Stay connected for amazing contents</p>
             </div>
             <div class="content">
-                <!-- <section class="culinary-delight"> -->
-                    <!-- <div class="container"> -->
-                        <div class="slider owl-carousel">
-                            <div class="card">
-                                <div class="img"><img src="./img/bg_2.png" alt=""></div>
-                                <div class="content">
-                                    <div class="title">Innovation</div>
-                                    <div class="sub-title">Posted By Admin</div>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
-                                    <div class="btn">
-                                        <button>Read More</button>
-                                    </div>
+                <div class="slider owl-carousel">
+                    <?php foreach($posts as $post): ?>
+                        <div class="card">
+                            <div class="img"><img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image"></div>
+                            <div class="content">
+                                <div class="title"><?php echo $post['post_title']; ?></div>
+                                <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small>
+                                <p><?php echo substr($post['post_body'], 0, 150); ?>...</p>
+                                <div class="btn">
+                                    <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
                                 </div>
-                            </div>
-                            <div class="card">
-                                <div class="img"><img src="./img/globe.jpg" alt=""></div>
-                                <div class="content">
-                                    <div class="title">Creativity</div>
-                                    <div class="sub-title">Posted By Admin</div>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
-                                    <div class="btn">
-                                        <button>Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="img"><img src="./img/bg_4.png" alt=""></div>
-                                <div class="content">
-                                    <div class="title">Inventing</div>
-                                    <div class="sub-title">Posted By Admin</div>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
-                                    <div class="btn">
-                                        <button>Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="img"><img src="./img/star2.png" alt=""></div>
-                                <div class="content">
-                                    <div class="title">Communication</div>
-                                    <div class="sub-title">Posted By Admin</div>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ipsam illo aperiam rem consectetur distinctio!</p>
-                                    <div class="btn">
-                                        <button>Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-            <!-- fetching posts from db starts here -->
-                    <!-- <div class="card">
-                        <div class="img"><img src="./img/globe.jpg" alt=""></div>
-                        <div class="content">
-                            <div class="title"><?php echo $row['title']; ?></div>
-                            <div class="sub-title">Posted By <?php echo $row['user_id']; ?></div>
-                            <p><?php echo $row['post_body']; ?></p>
-                            <small><?php echo $row['post_date']; ?></small>
-                            <div class="btn">
-                                <a href="./blog.html?post_id=<?php echo $row['post_id']; ?>" class="btn btn-danger">Read More</a>
                             </div>
                         </div>
-                    </div> -->
-                        </div>
-                    <!-- </div> -->
-                <!-- </section> -->
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </section>
-    <!-- </div>
-    </section> -->
 
     <!-- Tasteful recipes ends -->
 
@@ -284,46 +230,6 @@
         </div>
     </section>
     <!-- Ended here -->
-    <!-- </div> -->
-    <!-- <div class="restaurant-description animate-right">
-       <div class="container">
-        <div class="global-headline">
-            <h2 class="sub-headline">
-                <span class="first-letter">C</span>harly
-            </h2>
-            <h1 class="headline headline-dark">Care Cla$ic</h1>
-            <div class="asterisk"><i class="fas fa asterisk"></i></div>
-        </div>
-        <p>we drive our mission through a culture of excellence, constantly improving and winning with
-            integrity. Our approach and process is aimed at inventing the life we deserve through innovation
-            and creativity coupled with radical truthfulness and radical transparency</p>
-        <a href="#" onclick="alert('Oop!...offline for maintenance');" class="btn body-btn">Register</a>
-       </div>
-    </div> -->
-    <!-- <section class="culinary-delight">
-        <div class="container">
-            <div class="restaurant-info">
-                <div class="restaurant-description padding-right animate-left">
-                    <div class="global-headline">
-                        <h2 class="sub-headline">
-                            <span class="first-letter">C</span>harly
-                        </h2>
-                        <h1 class="headline headline-dark">Care Cla$ic</h1>
-                        <div class="asterisk"><i class="fas fa asterisk"></i></div>
-                    </div>
-                    <p>We drive our mission through a culture of excellence, constantly improving and winning with
-                        integrity. Our approach and process is aimed at inventing the life we deserve through innovation
-                        and creativity coupled with radical truthfulness and radical transparency</p>
-                    <a href="./login_signup/index.php" onclick="alert('sorry, this app is under maintenance');" class="btn body-btn">Register</a>
-                </div>
-                <div class="image-group">
-                    <img class="animate-top" src="img/nature.jpg" alt="">
-                    <img class="animate-bottom" src="img/nature.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- culinary-delight ends -->
     <footer>
         <div class="container">
             <div class="back-to-top">

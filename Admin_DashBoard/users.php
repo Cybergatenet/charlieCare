@@ -17,6 +17,18 @@
             $datas[] = $row;
         }
     }
+
+// fetching posts here
+$query_post = 'SELECT * FROM charlycare_posts ORDER BY post_time DESC';
+$return_posts = mysqli_query($conn, $query_post);
+$posts = array();
+
+if(mysqli_num_rows($return_posts) > 0){
+    while($row = mysqli_fetch_assoc($return_posts)){
+        $posts[] = $row;
+    }
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -111,7 +123,7 @@
             <div class="list-group">
               <a href="index.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
               <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
-              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary">loading...</small></span></a>
+              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
               <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
             </div>
             <div class="well">

@@ -1,6 +1,6 @@
 <?php
     // include db_conn
-    $sql = "SELECT * FROM posts LIMIT 2";
+    $sql = "SELECT * FROM charly_posts LIMIT 5";
     $result = mysqli_query($conn, $sql);
     if (mysql_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)){
@@ -18,11 +18,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Charly Posts</title>
     <!-- link to jquery -->
     <script>
         $(document).ready(function() {
-            let commentsCount = 2;
+            let commentsCount = 5;
             $("button").click(function() {
                 commentsCount = commentsCount + 2;
                 $("#comments").load("load-comments.php", {
