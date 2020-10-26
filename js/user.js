@@ -95,7 +95,7 @@ const fileName = document.querySelector(".file-name");
 const cancelBtn = document.querySelector("#cancel-btn");
 const defaultBtn = document.querySelector("#default-btn");
 const customBtn = document.querySelector("#custom-btn");
-const img = document.querySelector("img");
+const img = document.querySelector("#img-preview");
 let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\9\0\.\%\+\~\_ ]+$/;
 function defaultBtnActive(event){
     // event.preventDefault();

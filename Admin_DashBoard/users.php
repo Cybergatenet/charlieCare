@@ -153,7 +153,7 @@
                           <td><?php echo $data['phone']; ?></td>
                           <td><?php echo $data['email']; ?></td>
                           <td><?php echo $data['userTime']; ?></td>
-                          <td><a class="btn btn-primary" href="users_edit.php?userId='.$data['id'].'">View Profile</a> <a class="btn btn-danger" href="#">Delete</a> </td>
+                          <td><a class="btn btn-primary" href="users_edit.php?userId=<?php echo $data['id']; ?>">View Profile</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Block</a> </td>
                       </tr>
                       <?php endforeach; ?>
                     </tbody>

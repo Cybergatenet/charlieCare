@@ -8,6 +8,15 @@
       header("location: ./index.php");
       exit();
   }
+  $query = 'SELECT * FROM charlycare_users ORDER BY userTime DESC';
+  $result = mysqli_query($conn, $query);
+  $datas = array();
+  
+  if(mysqli_num_rows($result) > 0){
+      while($row = mysqli_fetch_assoc($result)){
+          $datas[] = $row;
+      }
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -104,8 +113,8 @@
           <div class="list-group">
               <a href="index.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
               <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
-              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge">100</span></a>
-              <a href="users.php" class="list-group-item"><span class="fa fa-users" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge">1000</span></a>
+              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary">loading...</small></span></a>
+              <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
             </div>
             <div class="well">
               <h4>Disk space Used</h4>
@@ -138,28 +147,76 @@
                         <th></th>
                     </tr>
                     <tr>
-                        <td>Demo_page</td>
-                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
+                        <td>Home Page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
                         <td>Sept 15, 2020</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
                     </tr>
                     <tr>
-                        <td>Demo_page</td>
-                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
+                        <td>About Page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                        <td>Sept 15, 2020</td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
+                    </tr>
+                    <tr>
+                        <td>Login Page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                        <td>Sept 15, 2020</td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
+                    </tr>
+                    <tr>
+                        <td>User Page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
                         <td>Sept 12, 2020</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
                     </tr>
                     <tr>
-                        <td>Demo_page</td>
-                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
+                        <td>DashBoard page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
                         <td>Sept 9, 2020</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
                     </tr>
                     <tr>
-                        <td>Demo_page</td>
-                        <td><span class="gylphicon gylphicon-ok" aria-hidden="true"></span></td>
+                        <td>Admin page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                        <td>Sept 9, 2020</td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
+                    </tr>
+                    <tr>
+                        <td>Posts page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                        <td>Sept 9, 2020</td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
+                    </tr>
+                    <tr>
+                        <td>SignUp page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
                         <td>Sept 1, 2020</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a> </td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
+                    </tr>
+                    <tr>
+                        <td>Users page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                        <td>Sept 1, 2020</td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
+                    </tr>
+                    <tr>
+                        <td>Edit_Post Page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                        <td>Sept 28, 2020</td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
+                    </tr>
+                    <tr>
+                        <td>Validate_Email Page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                        <td>Sept 28, 2020</td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
+                    </tr>
+                    <tr>
+                        <td>Blog Page</td>
+                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                        <td>Sept 30, 2020</td>
+                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
                     </tr>
                 </table>
               </div>

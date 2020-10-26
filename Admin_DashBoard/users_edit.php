@@ -8,14 +8,25 @@
       header("location: ./index.php");
       exit();
   }
-  $user_id = mySqli_real_escape_string($conn, $_GET['userId']);
-  $query = "SELECT * FROM charlycare_users WHERE `id`='$user_id'";
-    $result = mysqli_query($conn, $query);
+#### Fetching mulpile users
+  $query = 'SELECT * FROM charlycare_users ORDER BY userTime DESC';
+    $allResult = mysqli_query($conn, $query);
     $datas = array();
     
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
             $datas[] = $row;
+        }
+    }
+#### Fetching single users
+  $user_id = mysqli_real_escape_string($conn, $_GET['userId']);
+  $query_user = "SELECT * FROM charlycare_users WHERE `id`='$user_id' LIMIT 1";
+    $result = mysqli_query($conn, $query_user);
+    $users = array();
+    
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $users[] = $row;
         }
     }
 ?>
@@ -113,7 +124,7 @@
               <a href="index.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
               <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
               <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary">loading...</small></span></a>
-              <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
+              <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($allResult); ?></span></a>
             </div>
             <div class="well">
               <h4>Disk space Used</h4>
@@ -140,11 +151,16 @@
                 <br>
                 <div class="row">
                 <ul class="list-group col-md-12 col-offset-12">
-                      <?php foreach($datas as $data): ?>
-                          <li class="list-group-item">Username:- <?php echo $data['username']; ?></li>
-                          <li class="list-group-item">Phone:- <?php echo $data['phone']; ?></li>
-                          <li class="list-group-item">Email:- <?php echo $data['email']; ?></li>
-                          <li class="list-group-item">Joined:- <?php echo $data['userTime']; ?></li>
+                      <?php foreach($users as $user): ?>
+                          <li class="list-group-item"><img src="../uploads/<?php echo $user['avatar']; ?>" alt="profile-Image"></li>
+                          <li class="list-group-item"><span class="text-primary font-weight-bold">Username:-</span> <?php echo $user['username']; ?></li>
+                          <li class="list-group-item"><span class="text-primary font-weight-bold">Phone:-</span> <?php echo $user['phone']; ?></li>
+                          <li class="list-group-item"><span class="text-primary font-weight-bold">Email:-</span> <?php echo $user['email']; ?></li>
+                          <li class="list-group-item"><span class="text-primary font-weight-bold">Address:-</span> <?php echo $user['address']; ?></li>
+                          <li class="list-group-item"><span class="text-primary font-weight-bold">State:-</span> <?php echo $user['state']; ?></li>
+                          <li class="list-group-item"><span class="text-primary font-weight-bold">Country:-</span> <?php echo $user['country']; ?></li>
+                          <li class="list-group-item"><span class="text-primary font-weight-bold">Bio-data:-</span> <?php echo $user['bio_data']; ?></li>
+                          <li class="list-group-item"><span class="text-primary font-weight-bold">Joined:-</span> <?php echo $user['userTime']; ?></li>
                        <?php endforeach; ?>
                   </ul>
                 </div>
