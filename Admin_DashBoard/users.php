@@ -86,8 +86,8 @@
               <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a class="dropdown-item" type="button" data-toggle="model" data-target="#addPage">Add Page</a></li>
-                <li><a class="dropdown-item" href="posts.html">Add Post</a></li>
-                <li><a class="dropdown-item" href="users.html">Add User</a></li>
+                <li><a class="dropdown-item" href="posts.php">Add Post</a></li>
+                <li><a class="dropdown-item" href="users.php">Add User</a></li>
               </ul>
             </div>
           </div>
