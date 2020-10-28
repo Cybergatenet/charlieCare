@@ -30,7 +30,7 @@
     # but I prefer to have my own custom 404 error page
     # Submitted by: Cybergate
 
-    #DirectoryIndex index.php index.html index.htm index2.html
+    DirectoryIndex index.php index.html index.htm index2.html
 
     ErrorDocument 400 https://charlycareclasic.com/errors/404.php
     ErrorDocument 401 https://charlycareclasic.com/errors/404.php

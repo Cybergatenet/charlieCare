@@ -5,14 +5,14 @@
     require('../config/db.php');
 
     if(!$_SESSION['token']){
-####### comment out here
-        // header('location: ../login_signup/login.php');
+####### comment out here--------GOOD TO GO
+        header('location: ../login_signup/login.php');
     }
 	
  	$token = $_SESSION['token'];
 	$email = $_SESSION['email'];
 
-	// setcookie("new_token", $token, time() + 3600);
+	setcookie("new_token", $token, time() + 3600);
 
 	$msg = "";
 	$msgClass = "";
@@ -59,9 +59,8 @@
 			$msg = "Password Match Failed! Enter Password Again";
 			$msgClass = "alert-danger";
 		}		    
-	}
-	
-
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -148,7 +147,7 @@
                         <input type="password" name="pwd" placeholder="Enter New Password" value="">
                         <input type="password" name="cpwd" placeholder="Confirm New password" value="">
                         <input type="submit" id="btn" value="Change Password" name="submit">
-                        <p class="signup">Don't have an account ? <a href="../login_signup/signup.php">Sign Up</a><br><br><br><a href="../login_signup/login.php">Sign In Instead?</a></p>
+                        <p class="signup">Don't have an account ? <a href="../login_signup/signup.php">Sign Up</a><br><br><br><a href="../login_signup/login.php">Log In Instead?</a></p>
                     </form>
                 </div>
             </div>
