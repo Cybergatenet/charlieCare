@@ -18,7 +18,7 @@
         }
     }
 
-     // fetching posts here
+// fetching posts here
   $query_post = 'SELECT * FROM charlycare_posts ORDER BY post_time DESC';
   $return_posts = mysqli_query($conn, $query_post);
   $posts = array();
@@ -38,6 +38,9 @@
   if(mysqli_num_rows($single_result) > 0){
       while($row = mysqli_fetch_assoc($single_result)){
           $edit_post[] = $row;
+      }
+      foreach($edit_post as $edit){
+        echo $edit['post_title'];
       }
   }
 
@@ -157,9 +160,10 @@
                 <form>
                   <div class="form-group">
                     <label>Post Title</label>
+<!-- create a simple loop to loop through -->
                     <input type="text" class="form-control" value="<?php echo $edit_post['post_title']; ?>" placeholder="Post Title">
-                    </div>
-                    <div class="form-group">
+                  </div>
+                  <div class="form-group">
                       <label>Post Body</label>
                       <textarea name="editor1" class="form-control" placeholder="Post Body"><?php echo $edit_post['post_body']; ?></textarea>
                   </div>

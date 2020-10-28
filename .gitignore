@@ -8,3 +8,4 @@ note.txt
 private.key
 ca_bundle.crt
 certificate.crt
+mailer.php
