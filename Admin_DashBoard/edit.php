@@ -47,8 +47,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="CharlyCareCla$ic is a single family office that thrives on the ideology of inventing the life we 
-    deserve through innovation and creativity.">
+    <meta name="description" content="CharlyCareCla$ic is a single family office that thrives on the ideology of inventing the life we deserve through innovation and creativity.">
     <meta name="keywords" content="CharlyCareCla$ic, Forex, Online Trading, Investment, Foreign exchange">
     <meta name="author" content="Designed by cybergate communication network">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -152,7 +151,7 @@
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Edit Page</h3>
+                <h3 class="panel-title p-2">Edit Page</h3>
               </div>
               <div class="panel-body">
                 <form>

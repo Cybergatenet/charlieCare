@@ -13,8 +13,8 @@
     $allResult = mysqli_query($conn, $query);
     $datas = array();
     
-    if(mysqli_num_rows($result) > 0){
-        while($row = mysqli_fetch_assoc($result)){
+    if(mysqli_num_rows($allResult) > 0){
+        while($row = mysqli_fetch_assoc($allResult)){
             $datas[] = $row;
         }
     }
@@ -151,7 +151,7 @@
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Users</h3>
+                <h3 class="panel-title p-2">Users</h3>
               </div>
               <div class="panel-body">
                 <div class="row">

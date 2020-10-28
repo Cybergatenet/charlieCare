@@ -20,10 +20,10 @@
         $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
         $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
         $cpwd = mysqli_real_escape_string($conn, validate_input($_POST['cpwd']));
-        $phone = 'Add Mobile Number';
-        $address = 'Add Address';
-        $state = 'Add state';
-        $country = 'Add country';
+        $phone = 'No Mobile Number';
+        $address = 'No Address';
+        $state = 'No state';
+        $country = 'No country';
         $bio_data = 'No Bio-data Avaliable. Bio data is a brief description of yourself. Go to settings, and add your Bio-data';
         $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
         $date = date('Y/m/d H:i:s');
@@ -102,6 +102,11 @@
             header('location: ./home.php');
             exit();
         }else{
+############
+############
+############    Remove detailed error message here
+############
+############
             $errors['db_error'] = "Request NOT successful: failed to register".'<br>'.mysqli_error($conn);
         }
     }

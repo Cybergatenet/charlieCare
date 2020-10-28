@@ -142,7 +142,7 @@
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Website Overview</h3>
+                <h3 class="panel-title p-2">Website Overview</h3>
               </div>
               <div class="panel-body row">
                 <div class="col-md-3">
@@ -174,7 +174,7 @@
             <!-- lstest panel -->
             <div class="panel panel-default">
               <div class="panel-heading bg-danger text-white">
-                <h3 class="panel-title">Latest Users</h3>
+                <h3 class="panel-title p-2">Latest Users</h3>
               </div>
               <div class="panel-body row">
                 <table class="table col-md-12 col-offset-12 table-striped table-hover bg-primary table-sm">
