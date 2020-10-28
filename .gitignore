@@ -5,3 +5,6 @@ resourses
 note.txt
 .htaccess
 .vscode
+private.key
+ca_bundle.crt
+certificate.crt

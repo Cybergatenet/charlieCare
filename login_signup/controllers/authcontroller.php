@@ -90,10 +90,8 @@
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
             $_SESSION['verified'] = $verified;
-            // $_SESSION['avatar'] = $avatar;
-            // $_SESSION['userTime'] = $userTime;
 
-    ###### Sending Email Here
+#################### Sending Email Here Using PHPMailer
             send_email($email, $token);
 
             // set flash msg
@@ -102,12 +100,7 @@
             header('location: ./home.php');
             exit();
         }else{
-############
-############
-############    Remove detailed error message here
-############
-############
-            $errors['db_error'] = "Request NOT successful: failed to register".'<br>'.mysqli_error($conn);
+            $errors['db_error'] = "Request NOT successful: failed to register";
         }
     }
 }
