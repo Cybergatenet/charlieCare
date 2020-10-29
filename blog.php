@@ -51,6 +51,7 @@ if(mysqli_num_rows($return_posts) > 0){
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/blog.css">
     <style>
         .hero{
             width: 100%;
@@ -62,8 +63,19 @@ if(mysqli_num_rows($return_posts) > 0){
             align-items: center;
             text-align: center;
         }
+        .content{
+            display: block;
+        }
+        @media (min-width: 900px){
+            .content .btn{
+                display: inline-block!important;
+                padding: 10px;
+                font-size: 1.5rem;
+                line-height: 2;
+                font-weight: 700;
+            }
+        }
     </style>
-    <link rel="stylesheet" href="./css/blog.css">
 </head>
 <body>
     <header>
@@ -131,16 +143,16 @@ if(mysqli_num_rows($return_posts) > 0){
 
 <section class="culinary-delight">
     <div class="container">
-        <div class="slider">
+        <div class="row p-3">          
         <?php foreach($blog_posts as $blog): ?>
-            <div class="card">
+            <div class="card p-3">
                 <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" alt="post image"></div>
                 <div class="content">
                     <div class="title"><?php echo $blog['post_title']; ?></div>
                     <small class="sub-title h6">Posted By <?php echo $blog['user_username']; ?></small>
-                    <p><?php echo $blog['post_body']; ?></p>
+                    <p class="text-justify p-4"><?php echo $blog['post_body']; ?></p>
                     <div class="btn">
-                        <a href="./blog.php?post_id=<?php echo $blog['id']; ?>" class="btn btn-danger">Next Page</a>
+                        <a href="./blog.php" class="btn btn-primary btn-md-block">Next Page</a>
                     </div>
                 </div>
             </div>
