@@ -344,7 +344,7 @@ if(mysqli_num_rows($return_posts) > 0){
         $(".slider").owlCarousel({
             loop: true,
             autoplay: true,
-            autoplayTimeout: 3000,
+            autoplayTimeout: 4000,
             autoplayHoverPause: true
         });
     </script>

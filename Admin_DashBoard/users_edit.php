@@ -40,6 +40,11 @@
           $posts[] = $row;
       }
   }
+################### MAKE ADMIN
+  if(isset($_POST['make_admin'])){
+    echo '<script>alert("Make this user an Admin?");</script>';
+    // header('location: ./users.php');
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -138,11 +143,11 @@
               <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($allResult); ?></span></a>
             </div>
             <div class="well">
-              <h4>Disk space Used</h4>
+              <h4 class="h6">Disk space Used</h4>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">loading...</div>
               </div>
-              <h4>BandWidth Used</h4>
+              <h4 class="h6">BandWidth Used</h4>
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">loading...</div>
               </div>
@@ -172,6 +177,11 @@
                           <li class="list-group-item"><span class="text-primary font-weight-bold">Country:-</span> <?php echo $user['country']; ?></li>
                           <li class="list-group-item"><span class="text-primary font-weight-bold">Bio-data:-</span> <?php echo $user['bio_data']; ?></li>
                           <li class="list-group-item"><span class="text-primary font-weight-bold">Joined:-</span> <?php echo $user['userTime']; ?></li>
+                          <li class="list-group-item">
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>?userId=<?php echo $user['id']; ?>" method="POST">
+                            <span class="text-primary font-weight-bold">isAdmin:-</span> <?php echo $user['isAdmin'] ? '<span class="text-success font-weight-bold">Admin</span><br><button type="submit" name="remove_admin" class="btn btn-sm btn-danger float-right">Remove Admin</button>' : '<span class="text-danger">NOT Admin</span><br><button type="submit" name="make_admin" class="btn btn-sm btn-primary float-right">Make Admin</button>'; ?>
+                            </form>
+                          </li>
                        <?php endforeach; ?>
                   </ul>
                 </div>
@@ -235,6 +245,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./js/jquery-slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="./js/jquery-3.5.1.slim.min.js"></script>
+    <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
   </body>

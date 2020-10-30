@@ -11,15 +11,16 @@
     $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
     $date = date('Y/m/d H:i:s');
     $userTime = $date;
+    $isAdmin = true;
     $token = md5('AC252320BF');
     $pwd = 'Charly_ADMIN2020';
 
     $pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO `charlycare_users` (`username`, `email`, `pwd`, `token`, `phone`, `address`, `state`, `country`, `bio_data`, `avatar`, `userTime`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO `charlycare_users` (`username`, `email`, `pwd`, `token`, `phone`, `address`, `state`, `country`, `bio_data`, `avatar`, `userTime`, `isAdmin`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('sssssssssss', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar, $userTime);
+    $stmt->bind_param('sssssssssssb', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar, $userTime, $isAdmin);
 
     // if($stmt->execute()){
     //     echo "Admin data Inserted successfully";

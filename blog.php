@@ -151,8 +151,9 @@ if(mysqli_num_rows($return_posts) > 0){
                     <div class="title"><?php echo $blog['post_title']; ?></div>
                     <small class="sub-title h6">Posted By <?php echo $blog['user_username']; ?></small>
                     <p class="text-justify p-4"><?php echo $blog['post_body']; ?></p>
+                    <small class="text-primary text-left">Post Details: <?php echo $blog['post_time']; ?><br><?php echo $blog['country']; ?></small>
                     <div class="btn">
-                        <a href="./blog.php" class="btn btn-primary btn-md-block">Next Page</a>
+                        <a href="./blog.php?post_id=<?php echo $blog['id']; ?>" class="btn btn-primary btn-md-block">Next Page</a>
                     </div>
                 </div>
             </div>
@@ -314,7 +315,7 @@ if(mysqli_num_rows($return_posts) > 0){
         $(".slider").owlCarousel({
             loop: true,
             autoplay: true,
-            autoplayTimeout: 2000,
+            autoplayTimeout: 4000,
             autoplayHoverPause: true
         });
     </script>

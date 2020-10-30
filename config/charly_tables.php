@@ -16,6 +16,7 @@
     `bio_data` text NOT NULL,
     `avatar` text NOT NULL,
     `userTime` varchar(255) NOT NULL,
+    `isAdmin` BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY (`id`),
     UNIQUE KEY `email` (`email`)
   ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1";
