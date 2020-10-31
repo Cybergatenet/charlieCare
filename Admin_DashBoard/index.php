@@ -61,7 +61,7 @@
                   <label>Admin Security Key</label>
                   <input type="password" name="security" class="form-control" value="" placeholder="Enter Admin Security Key" required>
                 </div>
-                <button type="submit" name="submit" class="btn btn-danger btn-block mt-2" onsubmit="alert('Hello, CharlyCare')">Login</button>
+                <button type="submit" name="submit" class="btn btn-danger btn-block mt-2">Login</button>
               </form>
         </div>
       </div>

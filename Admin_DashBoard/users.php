@@ -98,7 +98,7 @@ if(mysqli_num_rows($return_posts) > 0){
               <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a class="dropdown-item" type="button" data-toggle="model" data-target="#addPage">Add Page</a></li>
-                <li><a class="dropdown-item" href="posts.php">Add Post</a></li>
+                  <li><a class="dropdown-item" href="new_post.php">Add Post</a></li>
                 <li><a class="dropdown-item" href="users.php">Add User</a></li>
               </ul>
             </div>
@@ -110,7 +110,7 @@ if(mysqli_num_rows($return_posts) > 0){
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-            <li><a href="#">DashBoard</a></li>
+            <li><a href="admin.php">DashBoard</a></li>
           <li class="active">User</li>
         </ol>
       </div>
@@ -121,7 +121,7 @@ if(mysqli_num_rows($return_posts) > 0){
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="index.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
+              <a href="admin.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
               <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
               <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
               <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>

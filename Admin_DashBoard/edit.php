@@ -47,34 +47,27 @@
       $postId = mysqli_real_escape_string($conn, $_POST['post_id']);
       $post_title = mysqli_real_escape_string($conn, $_POST['post_title']);
       $post_body = mysqli_real_escape_string($conn, $_POST['post_body']);
-      $imageUpload = mysqli_real_escape_string($conn, $_FILES['imageUpload']['name']);
+      $imageUpload = $_FILES['imageUpload']['name'];
 
       $date = date('Y/m/d H:i:s');
 
       $post_time = $date;
-      $target = "../uploads/".basename($_FILES['imageUpload']['name']);
-        $avatar = $_FILES['imageUpload']['name'];
+      $target = "../uploads/".basename($imageUpload);
 
     //   var_dump($_POST);
     $sql = "UPDATE `charlycare_posts` SET `post_title`=?, `post_body`=?,`avatar`=?, `post_time`=? WHERE `id`=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ssssi', $post_title, $post_body, $imageUpload, $post_time, $postId);
-    
-    if($stmt->execute()){
-        $imagery = "UPDATE `charlycare_posts` SET `avatar` = '$avatar' WHERE `charlycare_posts`.`id` = '$post_id'";
-        if(mysqli_query($conn, $imagery)){
-            /// sending image into the image folder
-            if(move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target)){
-        // upload was successful
-                $msg = 'Cheers :) Your Post was Successful.  <a href="posts.php">Review Posts</a>';
-                $msgClass = 'alert-success';
-            }else{
-                $msg = 'Your image did NOT uploaded  <a href="edit.php?post_id='.$postId.'">Try Again</a>'.mysqli_error($conn);
-                    $msgClass = 'alert-danger';
-            }
-        }
+    $stmt->execute();
+
+    if(move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target)){
+    // upload was successful
+        $msg = 'Cheers :) Your Post was Successful.  <a href="posts.php">Review Posts</a>';
+        $msgClass = 'alert-success';
+    }else{
+        $msg = 'Your image did NOT upload  <a href="edit.php?post_id='.$postId.'">Try Again</a>';
+            $msgClass = 'alert-danger';
     }
-    
 
   }
 
@@ -152,7 +145,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a class="dropdown-item" type="button" data-toggle="model" data-target="#addPage">Add
                                     Page</a></li>
-                            <li><a class="dropdown-item" href="posts.php">Add Post</a></li>
+                            <li><a class="dropdown-item" href="new_post.php">Add Post</a></li>
                             <li><a class="dropdown-item" href="users.php">Add User</a></li>
                         </ul>
                     </div>
@@ -164,7 +157,7 @@
     <section id="breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="index.html">DashBoard</a></li>
+                <li><a href="admin.php">DashBoard</a></li>
                 <li class="active">User</li>
             </ol>
         </div>
@@ -175,7 +168,7 @@
         <div class="row">
           <div class="col-md-3">
           <div class="list-group">
-              <a href="index.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
+              <a href="admin.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
               <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
               <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
               <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
@@ -198,7 +191,7 @@
               </div>
               <div class="panel-body">
                 <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                     <?php foreach ($edit_post as $edit): ?>
                     <div class="form-group">
                         <label>Post Title</label>
@@ -217,7 +210,7 @@
                     </div>
                     <div class="form-group">
                         <label>Add Cover Image</label>
-                        <input type="file" name="imageUpload" id="imageUpload" class="form-control" value="<?php echo $edit['avatar']; ?>" placeholder="Add Image file here">
+                        <input type="file" name="imageUpload" class="form-control">
                     </div>
                     <input type="hidden" name="post_id" value="<?php echo $edit['id']; ?>">
                     <input type="submit" name="edit_post" class="btn btn-danger" value="Update Post">

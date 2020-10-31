@@ -65,7 +65,7 @@ if(isset($_GET['logout'])){
     unset($_SESSION['admin']);
     unset($_SESSION['username']);
     unset($_SESSION['email']);
-    header('location: ./index.php'); // back to login page
+    header('location: ./index.php'); // back to Admin login page
     exit();
   }
 

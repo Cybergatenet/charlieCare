@@ -71,13 +71,7 @@
         $token = password_hash($token_hash, PASSWORD_DEFAULT);
         // $token = bin2hex(random_bytes(50));
         // $verified = false;
-#####################################
-        // $new_sql = "INSERT INTO `users` (`id`, `username`, `email`, `pwd`, `verified`, `token`, `avatar`, `userTime`) VALUES (NULL, 'cybergate test', 'cybergatetest@gmail.com', MD5('qwerty'), '0', 'nsklnder', 'pic.png', CURRENT_TIMESTAMP)";
-
-        // if(mysqli_query($conn, $new_sql) === false){
-        //     echo "data not inserted : CONTACT ADMIN";
-        // }
-#####################################
+        
         $sql = "INSERT INTO `charlycare_users` (`username`, `email`, `pwd`, `token`, `phone`, `address`, `state`, `country`, `bio_data`, `avatar`, `userTime`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($sql);

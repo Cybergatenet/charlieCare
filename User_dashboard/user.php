@@ -28,14 +28,8 @@
     // check for submit
     $msg = '';
     $msgClass = '';
-    // function validate_input($input){
-    //     $input = htmlspecialchars($input);
-    //     $input = trim($input);
-    //     $input = stripslashes($input);
-    //     return $input;
-    // }
-	if(isset($_POST[''])){
-        $username = mysqli_real_escape_string($conn, validate_input($_POST['username']));
+
+	if(isset($_POST['submit'])){
         $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
     ###password settings
         $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
@@ -46,52 +40,31 @@
         $country = mysqli_real_escape_string($conn, validate_input($_POST['country']));
         $bio_data = mysqli_real_escape_string($conn, validate_input($_POST['bio_data']));
         // $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
-        // $image = validat_image($_FILES['fileToUpload']['name']);
-		$target = "../uploads/".basename($_FILES['fileToUpload']['name']);
+        // $avatar = validat_image($_FILES['fileToUpload']['name']);
         $avatar = $_FILES['fileToUpload']['name'];
+        $target = "../uploads/".basename($avatar);
         
         $password = isset($_POST['pwd']) ? $hash_pwd : $user['pwd'];
 
+        //   var_dump($_POST);
+        $sql = "UPDATE `charlycare_users` SET `pwd`=?, `phone`=?, `address`=?, `state`=?, `country`=?, `bio_data`=?, `avatar`=? WHERE `email`=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ssssssss', $password, $phone, $address, $state, $country, $bio_data, $avatar, $email);
+        $stmt->execute();
     
-     $sql = "UPDATE `charlycare_users` SET `pwd` = '$password', `phone` = '$phone', `address` = '$address', `state` = '$state', `country` = '$country', `bio_data` = '$bio_data', `avatar` = '$avatar' WHERE `email` = '$email'";
-    
-    //  $sql = "UPDATE `charlycare_users` SET `pwd` = ?, `phone` = ?, `address` = ?, `state` = ?, `country` = ?, `bio_data` = ?, `avatar` = ? WHERE `email` = ?";
-
-    //  $stmt = $conn->prepare($sql);
-    //  $stmt->bind_param('ssssssss', $hash_pwd, $phone, $address, $state, $country, $bio_data, $avatar, $email);
-    //  $stmt->execute();
-
-     
-###		
-
-		if(mysqli_query($conn, $sql)){
-			$imagery = "UPDATE `charlycare_users` SET `avatar` = '$avatar' WHERE `charlycare_users`.`email` = '$email'";
-			if(mysqli_query($conn, $imagery)){
-				/// sending image into the image folder
-				if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
-			// upload was successful
-                    $msg = 'Record updated successfully';
-                    $msgClass = 'alert-success';
-				}else{
-					$msg = 'Your image did NOT uploaded';
-					$msgClass = 'alert-danger';
-				}
-			}else{
-			// Error occured during second upload
-				$msg = 'Error! Upload incomplete. Try Again';
-				$msgClass = 'alert-danger';
-			}			
-		}else{
-			// echo 'ERROR: '.mysqli_error($conn);
-			$msg = 'An Error occurred during the uplaod. Try Again';
-			$msgClass = 'alert-danger';
-		}
-	}
-
+        if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
+        // upload was successful
+            $msg = 'Cheers :) Record updated successfully';
+            $msgClass = 'alert-success';
+        }else{
+            $msg = 'Your image did NOT upload';
+            $msgClass = 'alert-danger';
+        }
+    }
 
 // 	function validat_image($inputIMG){
 // 		$target_dir = "../uploads/";
-// 		$target_file = $target_dir . basename($inputIMG);
+// 		$target_file = $target_dir.basename($inputIMG);
 // 		$uploadOk = 1;
 // 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // 		// Check if image file is a actual image or fake image
@@ -272,8 +245,8 @@
                         <p class="bio"><?php echo $user['bio_data']; ?></p>
                     </div>
                     <div class="profile-btn">
-                        <button class="chatBtn" onclick="redirect()"><i class="fa fa-comment"></i>Chat</button>
-                        <button class="createBtn"><i class="fa fa-plus"></i>Create</button>
+                        <button class="chatBtn" onclick="alert('Download our App to use this Feature');"><i class="fa fa-comment"></i>Chat</button>
+                        <button class="createBtn" onclick="alert('Download our App to use this Feature');"><i class="fa fa-plus"></i>Create</button>
                     </div>
                     <div class="user-rating">
                         <h3 class="rating">4.3</h3>
@@ -304,25 +277,24 @@
                     <div class="profile-posts tab">
                         <h1>Your Posts</h1>
                         <p>There are no post yet. All Your posts will show here. Review Our terms of use to see how you can create your own posts</p>
-                        <button class="chatBtn"><i class="fa fa-plus"></i>Add Post</button>
+                        <button class="chatBtn" onclick="alert('NOT Allowed');"><i class="fa fa-plus"></i>Add Post</button>
                     </div>
                     <div class="profile-review tab">
                         <h1>User Reviews</h1>
                         <p>Your Reviews will be displayed here. Contact CharlyCareCla$ic Family Office for more details</p>
-                        <button class="chatBtn"><i class="fa fa-plus"></i>Add Review</button>
+                        <button class="chatBtn" onclick="alert('Service not Available. Try Again');"><i class="fa fa-plus"></i>Add Review</button>
                     </div>
                     <div class="profile-setting tab">
                         <h1>Account Settings</h1>
                         <p>Make changes to your profile</p>
+                        <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-group" enctype="multipart/form-data">
-                            <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
+                            <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
                             <div class="form-div-div">
                                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
-                                <!-- <input type="button" class="updateBtn" value="Update Contact"> -->
                             </div>
                             <div class="form-div-div">
                                 <input type="text" class="form-control" id="address" name="address" placeholder="Enter Your Contact Address" value="<?php echo $user['address']; ?>">
-                                <!-- <input type="button" class="updateBtn" value="Update Address"> -->
                             </div>
                             <div class="form-div-div">
                                 <input type="text" class="form-control" id="state" name="state" placeholder="Enter Your State" value="<?php echo $user['state']; ?>">
@@ -475,6 +447,7 @@
     <script src="../js/user.js"></script>
     <script>
         function redirect(){
+    // No need to redirec, chat will be featured in the Mobile app
             window.location.href = './chat.html';
         }
     </script>
