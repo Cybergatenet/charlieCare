@@ -43,7 +43,43 @@
 ################### MAKE ADMIN
   if(isset($_POST['make_admin'])){
     echo '<script>alert("Make this user an Admin?");</script>';
-    // header('location: ./users.php');
+    $userID = mysqli_real_escape_string($conn, $_POST['userID']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $isAdmin = true;
+
+    $sql = "UPDATE `charlycare_users` SET `isAdmin`=? WHERE `id`=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ii', $isAdmin, $userID);
+    if($stmt->execute()){
+        $msg = 'Request Successful, ".$username." is now an Admin    <a href="users.php?user_id=$userID>Review User</a>'; // Error##################
+        ############################
+        ##########################33
+        ##########################
+        $msgClass = 'alert-success';
+    }else{
+      $msg = 'Request NOT Successful    <a href="users.php">Review Users</a>';
+      $msgClass = 'alert-danger';
+    }
+
+  }
+  ################### MAKE ADMIN
+  if(isset($_POST['remove_admin'])){
+    echo '<script>alert("Remove this user from Admin?");</script>';
+    $userID = mysqli_real_escape_string($conn, $_POST['userID']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $isAdmin = false;
+
+    $sql = "UPDATE `charlycare_users` SET `isAdmin`=? WHERE `id`=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ii', $isAdmin, $userID);
+    if($stmt->execute()){
+        $msg = 'Request Successful    <a href="users.php">Review User</a>';
+        $msgClass = 'alert-success';
+    }else{
+        $msg = 'Request NOT Successful    <a href="users.php">Review Users</a>';
+        $msgClass = 'alert-danger';
+    }
+
   }
 ?>
 <!doctype html>
@@ -179,6 +215,8 @@
                           <li class="list-group-item"><span class="text-primary font-weight-bold">Joined:-</span> <?php echo $user['userTime']; ?></li>
                           <li class="list-group-item">
                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>?userId=<?php echo $user['id']; ?>" method="POST">
+                            <input type="hidden" name="userID" value="<?php echo $user['id']; ?>">
+                            <input type="hidden" name="username" value="<?php echo $user['username']; ?>">
                             <span class="text-primary font-weight-bold">isAdmin:-</span> <?php echo $user['isAdmin'] ? '<span class="text-success font-weight-bold">Admin</span><br><button type="submit" name="remove_admin" class="btn btn-sm btn-danger float-right">Remove Admin</button>' : '<span class="text-danger">NOT Admin</span><br><button type="submit" name="make_admin" class="btn btn-sm btn-primary float-right">Make Admin</button>'; ?>
                             </form>
                           </li>

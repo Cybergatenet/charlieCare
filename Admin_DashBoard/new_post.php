@@ -226,7 +226,7 @@ if(isset($_POST['publish_post'])){
                     </div>
                     <div class="form-group">
                         <label>Add Cover Image</label>
-                        <input type="file" name="imageUpload" class="form-control">
+                        <input type="file" name="imageUpload" id="image" class="form-control">
                     </div>
                     <!-- <input type="hidden" name="post_id" value=""> -->
                     <input type="submit" name="publish_post" class="btn btn-primary" value="Publish Post">
@@ -301,6 +301,17 @@ if(isset($_POST['publish_post'])){
     <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script>
+        let image = document.querySelector('#image');
+        let regex = "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$";
+        image.addEventListener('input', () => {
+            if(image.value.match(regex)){
+                console.log('matching');
+            }else{
+                console.log('NOT matching');
+            }
+        });
+    </script>
 </body>
 
 </html>

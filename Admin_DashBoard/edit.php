@@ -70,6 +70,18 @@
     }
 
   }
+############################################ Delete Post
+  if(isset($_POST['delete_post'])){
+    $postId = mysqli_real_escape_string($conn, $_POST['post_id']);
+
+    $sql = "DELETE FROM `charlycare_posts` WHERE `id`=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $postId);
+    if($stmt->execute()){
+        $msg = 'Post Deleted Successfully.  <a href="posts.php">Review Posts</a>';
+        $msgClass = 'alert-success';
+    }
+  }
 
 ?>
 <!doctype html>
@@ -187,7 +199,7 @@
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title p-2">Edit Post</h3>
+                <h3 class="panel-title p-2"><?php echo isset($_GET['delete']) ? 'Delete Post' : 'Edit Post'; ?></h3>
               </div>
               <div class="panel-body">
                 <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
@@ -213,7 +225,7 @@
                         <input type="file" name="imageUpload" class="form-control">
                     </div>
                     <input type="hidden" name="post_id" value="<?php echo $edit['id']; ?>">
-                    <input type="submit" name="edit_post" class="btn btn-danger" value="Update Post">
+                    <input type="submit" name="<?php echo isset($_GET['delete']) ? 'delete_post' : 'edit_post'; ?>" class="btn btn-danger" value="<?php echo isset($_GET['delete']) ? 'Delete Post' : 'Update Post'; ?>">
                     <?php endforeach; ?>
                 </form>
               </div>
