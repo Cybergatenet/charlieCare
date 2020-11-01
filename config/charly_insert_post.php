@@ -15,11 +15,11 @@
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('sssssss', $user_id, $user_username, $country, $avatar, $post_title, $post_body, $post_time);
 
-    if($stmt->execute()){
-        echo "Post data Inserted successfully";
-    }else{
-        echo "NOT successful".'<br>'.mysqli_error($conn);
-    }
+    // if($stmt->execute()){
+    //     echo "Post data Inserted successfully";
+    // }else{
+    //     echo "NOT successful".'<br>'.mysqli_error($conn);
+    // }
 
 ?>
 

@@ -21,7 +21,8 @@
     // }
 
     if($conn->connect_error) {
-        die('Database error-:)= setting up dataBase in 24hours'.'<br>'. $conn->connect_error);
+        die('Database error-:)= offline for maintenance'.'<br>');
+        // .$conn->connect_error);
         header('location: ../../errors/404.php');
     }
 
