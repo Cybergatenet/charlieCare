@@ -175,7 +175,7 @@ if(mysqli_num_rows($return_posts) > 0){
                             <div class="img"><img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image"></div>
                             <div class="content">
                                 <div class="title"><?php echo $post['post_title']; ?></div>
-                                <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small>
+                                <!-- <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small> -->
                                 <p><?php echo substr($post['post_body'], 0, 150); ?>...</p>
                                 <div class="btn">
                                     <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
@@ -344,7 +344,7 @@ if(mysqli_num_rows($return_posts) > 0){
         $(".slider").owlCarousel({
             loop: true,
             autoplay: true,
-            autoplayTimeout: 4000,
+            autoplayTimeout: 5000,
             autoplayHoverPause: true
         });
     </script>

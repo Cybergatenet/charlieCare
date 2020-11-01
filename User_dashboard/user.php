@@ -62,61 +62,6 @@
             $msgClass = 'alert-danger';
         }
     }
-
-// 	function validat_image($inputIMG){
-// 		$target_dir = "../uploads/";
-// 		$target_file = $target_dir.basename($inputIMG);
-// 		$uploadOk = 1;
-// 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// 		// Check if image file is a actual image or fake image
-// 		// if(isset($_POST["submit"])) {
-// 		    $check = getimagesize($inputIMG);
-// 		    if($check !== false) {
-// 		        $msg = "File is an image - " . $check["mime"] . ".";
-// 				$msgClass = 'alert-success';
-// 		        $uploadOk = 1;
-// 		    } else {
-// 		        $msg = "File is not an image.";
-// 		        $msgClass = 'alert-danger';
-// 		        $uploadOk = 0;
-// 		    }
-// 		// }
-// 		// Check if file already exists
-// 		if (file_exists($target_file)) {
-// 		    $msg = "Sorry, file already exists.";
-// 			$msgClass = 'alert-danger';		    
-// 		    $uploadOk = 0;
-// 		}
-// 		// Check file size
-// 		if ($_FILES["fileToUpload"]["size"] > 500000) {
-// 		    $msg = "Sorry, your file is too large.";
-// 			$msgClass = 'alert-danger';
-// 		    $uploadOk = 0;
-// 		}
-// 		// Allow certain file formats
-// 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-// 		&& $imageFileType != "gif" ) {
-// 		    $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-// 			$msgClass = 'alert-danger';			
-// 		    $uploadOk = 0;
-// 		}
-// 		// Check if $uploadOk is set to 0 by an error
-// 		if ($uploadOk == 0) {
-// 		    $msg = "Sorry, your file was not uploaded.";
-// 			$msgClass = 'alert-danger';		    
-// 		// if everything is ok, try to upload file
-// 		} else {
-// 		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-// 		        $msg = "The file ". basename($inputIMG). " has been uploaded.";
-// 				$msgClass = 'alert-success';
-// 		        // header('Location: index_merge.php');
-
-// 		    } else {
-// 		        $msg = "Sorry, there was an error uploading your file.";
-// 				$msgClass = 'alert-danger';
-// 		    }
-// 		}
-// }
     
 
 ######################################
@@ -151,34 +96,18 @@
     <link rel="stylesheet" type="text/css" href="../css/new_styles.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/user.css">
-    <!-- AJAX jQuery script here -->
-    <!-- <script> -->
-        <!-- // $(document).ready(function() {
-        //     let phone = document.querySelector('phone');
-        //     let address = document.querySelector('address');
-        //     let state = document.querySelector('state');
-        //     let country = document.querySelector('country');
-        //     let bio_data = document.querySelector('bio_data');
-        //     let pwd = document.querySelector('pwd');
-        //     let fileToUpload = document.querySelector('fileToUpload');
-        // // get email
-        //     let email = document.querySelector('user-mail');
-
-        //     $("#updateSettings").click(function() {
-        //         $(".wrapper").load("load-settings.php", {
-        //             email: email,
-        //             phone: phone,
-        //             address: address,
-        //             state: state,
-        //             country: country,
-        //             bio_data: bio_data,
-        //             pwd: pwd
-        //             // fileToUpload: fileToUpload.val()
-        //         });
-        //         console.log('updateSettings button clicked');
-        //     });
-        // }); -->
-    <!-- </script> -->
+    <style>
+        .show{
+            position: relative;
+        }
+        .fa-eye{
+            position: relative;
+            top: 0;
+            right: 0;
+            font-size: 3.5rem;
+            font-weight: 900;
+        }
+    </style>
 </head>
 <body>
     <div id="hero"></div>
@@ -308,9 +237,8 @@
                                 <textarea class="form-control" id="bio_data" name="bio_data" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
                             </div>
                             <div class="form-div-div">
-                                <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Enter Your New Password" value="">
-            <!-- button for show-hide password -->
-                                <!-- <span class="fa fa-eye"></span> -->
+                                <input type="password" id="pwd" name="pwd" class="form-control show" placeholder="Enter Your New Password" value="">
+                                <span class="fa fa-eye"></span>
                             </div>
                 <!-- New image upload preview -->
                     <div class="img_container">
