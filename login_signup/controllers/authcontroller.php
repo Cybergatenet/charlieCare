@@ -24,7 +24,7 @@
         $address = 'No Address';
         $state = 'No state';
         $country = 'No country';
-        $bio_data = 'No Bio-data Avaliable. Bio data is a brief description of yourself. Go to settings, and add your Bio-data';
+        $bio_data = 'No Bio-data Available. Bio data is a brief description of yourself. Go to settings, and add your Bio-data';
         $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
         $date = date('Y/m/d H:i:s');
         $userTime = $date;

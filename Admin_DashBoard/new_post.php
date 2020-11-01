@@ -66,20 +66,30 @@ if(isset($_POST['publish_post'])){
     $date = date('Y/m/d H:i:s');
     $post_time = $date;
 
-    // var_dump($_POST);
+    // let_dump($_POST);
 
     if(!empty($post_title) && !empty($post_body) && $avatar != 'NULL'){
-        $sql = "INSERT INTO `charlycare_posts` (`user_id`, `user_username`, `country`, `avatar`, `post_title`, `post_body`, `post_time`) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('sssssss', $user_id, $user_username, $country, $avatar, $post_title, $post_body, $post_time);
-        $stmt->execute();
+    ##### Validate Image here
+        if(preg_match("/^[^\?]+\.(jpg|jpeg|gif|png)(?:\?|$)/", $avatar)){
+            // $msg = 'Regex True';
+            // $msgClass = 'alert-warning';
 
-        if(move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target)){
-        // upload was successful
-            $msg = 'Cheers :) Your Post was Successful';
-            $msgClass = 'alert-success';
+            $sql = "INSERT INTO `charlycare_posts` (`user_id`, `user_username`, `country`, `avatar`, `post_title`, `post_body`, `post_time`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('sssssss', $user_id, $user_username, $country, $avatar, $post_title, $post_body, $post_time);
+            $stmt->execute();
+
+                if(move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target)){
+                // upload was successful
+                    $post_body = $post_title = '';
+                    $msg = 'Cheers :) Your Post was Successful';
+                    $msgClass = 'alert-success';
+                }else{
+                    $msg = 'Your image did NOT upload';
+                    $msgClass = 'alert-danger';
+                }
         }else{
-            $msg = 'Your image did NOT upload';
+            $msg = 'Invalid Image Input. Try Again';
             $msgClass = 'alert-danger';
         }
     }else{
@@ -143,7 +153,7 @@ if(isset($_POST['publish_post'])){
                     <a class="nav-link" href="#">Welcome, Admin<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.php?login=true">Logout</a>
+                    <a class="nav-link" href="./index.php?logout=true">Logout</a>
                 </li>
             </ul>
         </div>
@@ -208,16 +218,16 @@ if(isset($_POST['publish_post'])){
               </div>
               <div class="panel-body">
                 <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Post Title</label>
-                        <input type="text" class="form-control" name="post_title" value=""
+                        <input type="text" class="form-control" name="post_title" value="<?php echo $post_title; ?>"
                             placeholder="Post Title">
                     </div>
                     <div class="form-group">
                         <label>Post Body</label>
                         <textarea name="post_body" class="form-control"
-                            placeholder="Post Body"></textarea>
+                            placeholder="Post Body"><?php echo $post_body; ?></textarea>
                     </div>
                     <div class="checkbox">
                         <label>
@@ -226,7 +236,7 @@ if(isset($_POST['publish_post'])){
                     </div>
                     <div class="form-group">
                         <label>Add Cover Image</label>
-                        <input type="file" name="imageUpload" id="image" class="form-control">
+                        <input type="file" name="imageUpload" id="imageUploadID" class="form-control">
                     </div>
                     <!-- <input type="hidden" name="post_id" value=""> -->
                     <input type="submit" name="publish_post" class="btn btn-primary" value="Publish Post">
@@ -302,15 +312,43 @@ if(isset($_POST['publish_post'])){
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script>
-        let image = document.querySelector('#image');
-        let regex = "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$";
-        image.addEventListener('input', () => {
-            if(image.value.match(regex)){
-                console.log('matching');
-            }else{
-                console.log('NOT matching');
-            }
+        let image = document.querySelector('#imageUploadID');
+        // let regex = '/\.(jpe?g|png|gif|bmp)$/gi';
+        // let regex = '/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i';
+        let msg = document.querySelector('.alert');
+      
+        image.addEventListener('change', () => {
+            // console.log(image.value);
+
+            validateImage();
+            
         });
+
+        function validateImage() {
+            let formData = new FormData();
+            // console.log(formData);
+
+            let file = document.getElementById("imageUploadID").files[0];
+
+            formData.append("Filedata", file);
+            let t = file.type.split('/').pop().toLowerCase();
+            if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
+                msg.className += ' alert-danger';
+                msg.innerHTML = '<span title="Make Sure the file You delected is an Image file">Invalid File Type. Try Again</span>';
+                alert('Please select a valid image file');
+                document.getElementById("imageUploadID").value = '';
+                return false;
+            }
+            if (file.size > 1024000) {
+                alert('Max Upload size is 1MB only');
+                document.getElementById("imageUploadID").value = '';
+                return false;
+            }
+                msg.className += ' alert-info';
+                msg.innerHTML = '<span class="fa fa-check"></span>   Image is Valid. ';
+            return true;
+        }
+        
     </script>
 </body>
 

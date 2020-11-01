@@ -31,6 +31,7 @@
 
 	if(isset($_POST['submit'])){
         $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
+        $userPWD = mysqli_real_escape_string($conn, validate_input($_POST['userPWD']));
     ###password settings
         $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
         $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
@@ -44,7 +45,7 @@
         $avatar = $_FILES['fileToUpload']['name'];
         $target = "../uploads/".basename($avatar);
         
-        $password = isset($_POST['pwd']) ? $hash_pwd : $user['pwd'];
+        $password = isset($_POST['pwd']) ? $hash_pwd : $userPWD;
 
         //   var_dump($_POST);
         $sql = "UPDATE `charlycare_users` SET `pwd`=?, `phone`=?, `address`=?, `state`=?, `country`=?, `bio_data`=?, `avatar`=? WHERE `email`=?";
@@ -281,15 +282,16 @@
                     </div>
                     <div class="profile-review tab">
                         <h1>User Reviews</h1>
-                        <p>Your Reviews will be displayed here. Contact CharlyCareCla$ic Family Office for more details</p>
+                        <p>Your Reviews will be displayed here. Contact CharlyCareCla$ic Family Office for more details. Review Our terms of use to see how you can create your own posts</p>
                         <button class="chatBtn" onclick="alert('Service not Available. Try Again');"><i class="fa fa-plus"></i>Add Review</button>
                     </div>
                     <div class="profile-setting tab">
                         <h1>Account Settings</h1>
-                        <p>Make changes to your profile</p>
+                        <p>Make changes to your profile. All changes made on your Dashboard are effected instantly. Also review Our terms of use to see how you can create your own posts. <em>Contact Admin for any help</em></p>
                         <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-group" enctype="multipart/form-data">
                             <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
+                            <input type="hidden" name="userPWD" value="<?php echo $user['pwd']; ?>">
                             <div class="form-div-div">
                                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
                             </div>
@@ -298,21 +300,17 @@
                             </div>
                             <div class="form-div-div">
                                 <input type="text" class="form-control" id="state" name="state" placeholder="Enter Your State" value="<?php echo $user['state']; ?>">
-                                <!-- <input type="button" class="updateBtn" value="Update State"> -->
                             </div>
                             <div class="form-div-div">
                                 <input type="text" class="form-control" id="country" name="country" placeholder="Enter Your Country" value="<?php echo $user['country']; ?>">
-                                <!-- <input type="button" class="updateBtn" value="Update Country"> -->
                             </div>
                             <div class="form-div-div">
                                 <textarea class="form-control" id="bio_data" name="bio_data" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
-                                <!-- <input type="button" class="updateBtn" value="Update Bio-data"> -->
                             </div>
                             <div class="form-div-div">
                                 <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Enter Your New Password" value="">
             <!-- button for show-hide password -->
                                 <!-- <span class="fa fa-eye"></span> -->
-                                <!-- <input type="button" class="updateBtn"  value="Change Password"> -->
                             </div>
                 <!-- New image upload preview -->
                     <div class="img_container">
@@ -448,8 +446,48 @@
     <script>
         function redirect(){
     // No need to redirec, chat will be featured in the Mobile app
-            window.location.href = './chat.html';
+            // window.location.href = './chat.html';
         }
+    </script>
+    <!-- Validating Image here -->
+    <script>
+        let image = document.querySelector('#default-btn');
+        // let regex = '/\.(jpe?g|png|gif|bmp)$/gi';
+        // let regex = '/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i';
+        let msg = document.querySelector('.alert');
+      
+        image.addEventListener('change', () => {
+            // console.log(image.value);
+
+            validateImage();
+            
+        });
+
+        function validateImage() {
+            let formData = new FormData();
+            // console.log(formData);
+
+            let file = document.getElementById("default-btn").files[0];
+
+            formData.append("Filedata", file);
+            let t = file.type.split('/').pop().toLowerCase();
+            if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
+                msg.className += ' alert-danger';
+                msg.innerHTML = '<span title="Make Sure the file You delected is an Image file">Invalid File Type. Try Again</span>';
+                alert('Please select a valid image file');
+                document.getElementById("imageUploadID").value = '';
+                return false;
+            }
+            if (file.size > 1024000) {
+                alert('Max Upload size is 1MB only');
+                document.getElementById("imageUploadID").value = '';
+                return false;
+            }
+                msg.className += ' alert-info';
+                msg.innerHTML = '<span class="fa fa-check"></span>   Image is Valid. ';
+            return true;
+        }
+        
     </script>
 </body>
 </html>

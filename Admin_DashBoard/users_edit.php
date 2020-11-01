@@ -51,18 +51,15 @@
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ii', $isAdmin, $userID);
     if($stmt->execute()){
-        $msg = 'Request Successful, ".$username." is now an Admin    <a href="users.php?user_id=$userID>Review User</a>'; // Error##################
-        ############################
-        ##########################33
-        ##########################
+        $msg = 'Request Successful, '.$username.' is now an Admin    <a href="users_edit.php?userId='.$userID.'">Review User</a>';
         $msgClass = 'alert-success';
     }else{
-      $msg = 'Request NOT Successful    <a href="users.php">Review Users</a>';
+      $msg = 'Request NOT Successful    <a href="users_edit.php?userId='.$userID.'">Review Users</a>';
       $msgClass = 'alert-danger';
     }
 
   }
-  ################### MAKE ADMIN
+  ################### REMOVE ADMIN
   if(isset($_POST['remove_admin'])){
     echo '<script>alert("Remove this user from Admin?");</script>';
     $userID = mysqli_real_escape_string($conn, $_POST['userID']);
@@ -73,10 +70,10 @@
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ii', $isAdmin, $userID);
     if($stmt->execute()){
-        $msg = 'Request Successful    <a href="users.php">Review User</a>';
+        $msg = 'Request Successful    <a href="users_edit.php?userId='.$userID.'">Review User</a>';
         $msgClass = 'alert-success';
     }else{
-        $msg = 'Request NOT Successful    <a href="users.php">Review Users</a>';
+        $msg = 'Request NOT Successful    <a href="users_edit.php?userId='.$userID.'">Review User</a>';
         $msgClass = 'alert-danger';
     }
 
@@ -133,7 +130,7 @@
             <a class="nav-link" href="#">Welcome, Admin<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./index.php?login=true">Logout</a>
+            <a class="nav-link" href="./index.php?logout=true">Logout</a>
           </li>
           </ul>
       </div>
@@ -203,6 +200,7 @@
                 <br>
                 <div class="row">
                 <ul class="list-group col-md-12 col-offset-12">
+                      <div class="alert <?php echo $msgClass; ?>" title="Click -Review User- to complete Your request"><?php echo $msg; ?></div>
                       <?php foreach($users as $user): ?>
                           <li class="list-group-item"><img src="../uploads/<?php echo $user['avatar']; ?>" width="80%" height="auto" alt="profile-Image"></li>
                           <li class="list-group-item"><span class="text-primary font-weight-bold">Username:-</span> <?php echo $user['username']; ?></li>

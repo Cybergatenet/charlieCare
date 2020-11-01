@@ -80,7 +80,7 @@
             <a class="nav-link" href="#">Welcome, Admin<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./index.php?login=true">Logout</a>
+            <a class="nav-link" href="./index.php?logout=true">Logout</a>
           </li>
           </ul>
       </div>

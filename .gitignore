@@ -10,3 +10,4 @@ ca_bundle.crt
 certificate.crt
 mailer.php
 vendor
+CkeditorImageUpload.php
