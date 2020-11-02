@@ -255,7 +255,7 @@ if(mysqli_num_rows($return_posts) > 0){
                     </div> -->
                     <div class="content">
                         <div class="contactInfo animate-right">
-                            <h3>Contact Us</h3>
+                            <h3 id="contactUs">Contact Us</h3>
                             <div class="contactInfoBx">
                                 <div class="box">
                                     <div class="icon">

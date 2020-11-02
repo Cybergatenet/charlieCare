@@ -168,7 +168,7 @@
         </div>
     </section>
 
-    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/jquery-3.5.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <!-- header js -->
     <script src="../js/main.js"></script>

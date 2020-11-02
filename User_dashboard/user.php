@@ -31,10 +31,7 @@
 
 	if(isset($_POST['submit'])){
         $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
-        $userPWD = mysqli_real_escape_string($conn, validate_input($_POST['userPWD']));
-    ###password settings
-        $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
-        $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
+    
         $phone = mysqli_real_escape_string($conn, validate_input($_POST['phone']));
         $address = mysqli_real_escape_string($conn, validate_input($_POST['address']));
         $state = mysqli_real_escape_string($conn, validate_input($_POST['state']));
@@ -44,21 +41,26 @@
         // $avatar = validat_image($_FILES['fileToUpload']['name']);
         $avatar = $_FILES['fileToUpload']['name'];
         $target = "../uploads/".basename($avatar);
+        if(!empty($_POST['pwd'])){
+            ###password settings
+            $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
+            $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
+            //   var_dump($_POST);
+            $sql = "UPDATE `charlycare_users` SET `pwd`=?, `phone`=?, `address`=?, `state`=?, `country`=?, `bio_data`=?, `avatar`=? WHERE `email`=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ssssssss', $hash_pwd, $phone, $address, $state, $country, $bio_data, $avatar, $email);
+            $stmt->execute();
         
-        $password = isset($_POST['pwd']) ? $hash_pwd : $userPWD;
-
-        //   var_dump($_POST);
-        $sql = "UPDATE `charlycare_users` SET `pwd`=?, `phone`=?, `address`=?, `state`=?, `country`=?, `bio_data`=?, `avatar`=? WHERE `email`=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssssssss', $password, $phone, $address, $state, $country, $bio_data, $avatar, $email);
-        $stmt->execute();
-    
-        if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
-        // upload was successful
-            $msg = 'Cheers :) Record updated successfully';
-            $msgClass = 'alert-success';
+            if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
+            // upload was successful
+                $msg = 'Cheers :) Record updated successfully';
+                $msgClass = 'alert-success';
+            }else{
+                $msg = 'Your image did NOT upload';
+                $msgClass = 'alert-danger';
+            }
         }else{
-            $msg = 'Your image did NOT upload';
+            $msg = 'Password is Required';
             $msgClass = 'alert-danger';
         }
     }
@@ -102,10 +104,26 @@
         }
         .fa-eye{
             position: relative;
-            top: 0;
-            right: 0;
-            font-size: 3.5rem;
+            top: -33px;
+            right: -40%;
+            font-size: 3rem;
             font-weight: 900;
+            text-align: right;
+            cursor: pointer;
+        }
+        .fa-eye:hover,
+        .fa-eye:active{
+            font-weight: 700;
+            transform: scale(0.92);
+        }
+
+        @meida (max-width: 500px){
+            .fa-eye{
+                top: -20px;
+                right: -40%;
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
         }
     </style>
 </head>
@@ -237,7 +255,7 @@
                                 <textarea class="form-control" id="bio_data" name="bio_data" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
                             </div>
                             <div class="form-div-div">
-                                <input type="password" id="pwd" name="pwd" class="form-control show" placeholder="Enter Your New Password" value="">
+                                <input type="password" id="pwd" name="pwd" class="form-control show" placeholder="Enter Password" title="You can also Click on forgot password to reset your password" value="">
                                 <span class="fa fa-eye"></span>
                             </div>
                 <!-- New image upload preview -->
@@ -253,7 +271,7 @@
                             <div id="cancel-btn"><i class="fas fa-times"></i></div>
                             <div class="file-name">File name here</div>
                         </div>
-                        <input id="default-btn" name="fileToUpload" type="file" hidden> <!---id="fileToUpload"-->
+                        <input id="default-btn" name="fileToUpload" type="file" hidden> 
                         <button type="button" onclick="defaultBtnActive()" id="custom-btn">choose a file</button>
                     </div>
                     <br><br>
@@ -371,12 +389,6 @@
     <script src="../js/bootstrap.min.js"></script>
     <!-- <script src="../js/main.js"></script> -->
     <script src="../js/user.js"></script>
-    <script>
-        function redirect(){
-    // No need to redirec, chat will be featured in the Mobile app
-            // window.location.href = './chat.html';
-        }
-    </script>
     <!-- Validating Image here -->
     <script>
         let image = document.querySelector('#default-btn');
@@ -393,7 +405,6 @@
 
         function validateImage() {
             let formData = new FormData();
-            // console.log(formData);
 
             let file = document.getElementById("default-btn").files[0];
 
@@ -415,6 +426,18 @@
                 msg.innerHTML = '<span class="fa fa-check"></span>   Image is Valid. ';
             return true;
         }
+
+        // show_hide password here
+        let showEye = document.querySelector('.fa-eye');
+        let pwd = document.querySelector('#pwd');
+
+        showEye.addEventListener('mousedown', () => {
+            pwd.setAttribute('type', 'text');
+        });
+
+        showEye.addEventListener('mouseup', () => {
+            pwd.setAttribute('type', 'password');
+        });
         
     </script>
 </body>
