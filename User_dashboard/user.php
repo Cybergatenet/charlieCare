@@ -7,6 +7,9 @@
         header('location: ../login_signup/login.php');
         exit();
     }
+### Sending Email here
+    require_once '../server/contact.php';
+
 
 //Avaliable Variables 
     $id = $_SESSION['id'];
@@ -41,7 +44,7 @@
         // $avatar = validat_image($_FILES['fileToUpload']['name']);
         $avatar = $_FILES['fileToUpload']['name'];
         $target = "../uploads/".basename($avatar);
-        if(!empty($_POST['pwd'])){
+        if(!empty($_POST['pwd']) && strlen($_POST['pwd']) >= 8){
             ###password settings
             $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
             $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
@@ -53,14 +56,15 @@
         
             if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target)){
             // upload was successful
-                $msg = 'Cheers :) Record updated successfully';
+                $msg = 'Cheers :) Record updated successfully  '.'<a href="./user.php" class="btn btn-primary float-right">Apply</a>';
                 $msgClass = 'alert-success';
+                echo '<script>alert("To effect this change, Go to -Settings Tab-, click on the -Apply- button");</script>';
             }else{
                 $msg = 'Your image did NOT upload';
                 $msgClass = 'alert-danger';
             }
         }else{
-            $msg = 'Password is Required';
+            $msg = 'Password is Empty or Too Short';
             $msgClass = 'alert-danger';
         }
     }
@@ -190,7 +194,7 @@
                     <p class="user-mail"><i class="fa fa-envelope"></i><?php echo $user['email']; ?></p>
                     <div class="user-bio">
                         <h3>Bio-Data</h3>
-                        <p class="bio"><?php echo $user['bio_data']; ?></p>
+                        <p class="bio" title="Go to the -Settings- tab to update your Bio-data"><?php echo $user['bio_data']; ?></p>
                     </div>
                     <div class="profile-btn">
                         <button class="chatBtn" onclick="alert('Download our App to use this Feature');"><i class="fa fa-comment"></i>Chat</button>
@@ -255,13 +259,13 @@
                                 <textarea class="form-control" id="bio_data" name="bio_data" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
                             </div>
                             <div class="form-div-div">
-                                <input type="password" id="pwd" name="pwd" class="form-control show" placeholder="Enter Password" title="You can also Click on forgot password to reset your password" value="">
+                                <input type="password" id="pwd" name="pwd" class="form-control show" placeholder="Enter Password" title="Also use the -FORGET PASSWORD PORTAL- to reset your password" value="">
                                 <span class="fa fa-eye"></span>
                             </div>
                 <!-- New image upload preview -->
                     <div class="img_container">
                         <div class="img_wrapper">
-                            <div class="image">
+                            <div class="image" title="select a profile image here">
                                 <img src="" alt="" id="img-preview">
                             </div>
                             <div class="img_content">
@@ -299,10 +303,6 @@
                 </div>
                 <!-- Add NEW here -->
                 <section class="contact" id="contact">
-                    <!-- <div class="heading white animate-left">
-                        <h2>Contact Us</h2>
-                        <p>Contact us using any of the following links below</p>
-                    </div> -->
                     <div class="content">
                         <div class="contactInfo animate-right">
                             <h3>Contact Us</h3>
@@ -337,12 +337,13 @@
                             </div>
                         </div>
                         <div class="formBx animate-top">
-                            <form>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                                 <h3>Message Us</h3>
-                                <input type="text" name="" placeholder="Full Name">
-                                <input type="email" name="" placeholder="Enter Your Email">
-                                <textarea placeholder="Your Message here"></textarea>
-                                <input class="btn-block" type="submit" name="" value="Send">
+                                <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
+                                <input type="text" name="contact_name" placeholder="Enter Full Name" value="<?php echo $contact_name; ?>">
+                                <input type="email" name="contact_email" placeholder="Enter Your Email" value="<?php echo $contact_email; ?>">
+                                <textarea name="contact_msg" placeholder="Your Message here"><?php echo $contact_msg; ?></textarea>
+                                <input class="btn-block" type="submit" name="contactMsg" value="Send">
                             </form>
                         </div>
                     </div>

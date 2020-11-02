@@ -47,8 +47,11 @@
         if(empty($email)){
             $errors['email'] = "Email Is Required!";
         }
-        if(empty($pwd)){
+        if(empty($pwd) && strlen($pwd) < 8){
             $errors['pwd'] = "Password Is Required!";
+        }
+        if(strlen($pwd) < 8){
+            $errors['pwd'] = "Password Is Too Short";
         }
         if($pwd !== $cpwd){
             $errors['pwd'] = "Your Password did NOT match";
@@ -162,12 +165,13 @@ function send_email($input, $OTP){
     $headers .= "From: noreply@charlycareclasic.com"."\r\n";
 
     // mail($input, $subject, $message, $headers);
-    require 'vendor/autoload.php';
+    require '../vendor/autoload.php';
     
     $mail = new PHPMailer;
     $mail->isSMTP();
     $mail->SMTPDebug = 2;
-    $mail->Host = 'smtp.heroku.com';
+    // $mail->Host = 'smtp.heroku.com';
+    $mail->Host = 'smtp.gmail.com';
     $mail->Port = 587;
     $mail->SMTPAuth = true;
     $mail->Username = 'abelchinedu2@gmail.com';

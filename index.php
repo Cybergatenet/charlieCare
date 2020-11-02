@@ -1,6 +1,6 @@
 <?php
     require_once './config/db.php'; // connection here
-    require_once './server/contact.php';
+    require_once './server/sendEmail.php';
 
 ###############################################
 // fetching posts here
@@ -290,9 +290,9 @@ if(mysqli_num_rows($return_posts) > 0){
                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                                 <h3>Message Us</h3>
                                 <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
-                                <input type="text" name="contact_name" placeholder="Enter Full Name">
-                                <input type="email" name="contact_email" placeholder="Enter Your Email">
-                                <textarea name="contact_msg" placeholder="Your Message here"></textarea>
+                                <input type="text" name="contact_name" placeholder="Enter Full Name" value="<?php echo $contact_name; ?>">
+                                <input type="email" name="contact_email" placeholder="Enter Your Email" value="<?php echo $contact_email; ?>">
+                                <textarea name="contact_msg" placeholder="Your Message here"><?php echo $contact_msg; ?></textarea>
                                 <input class="btn-block" type="submit" name="contactMsg" value="Send">
                             </form>
                         </div>
