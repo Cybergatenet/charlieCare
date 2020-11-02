@@ -169,7 +169,7 @@ function send_email($input, $OTP){
     $mail->Port = 587;
     $mail->SMTPAuth = true;
     $mail->Username = 'abelchinedu2@gmail.com';
-    $mail->Password = 'abchej3647CHINEDU';
+    $mail->Password = 'uwasomba';
     $mail->setFrom('noreply@charlycareclasic.com', 'CharlyCareClasic');
     $mail->addReplyTo('charlycareclasic@gmail.com', 'CharlyCareClasic');
     $mail->addAddress($input, $username);
