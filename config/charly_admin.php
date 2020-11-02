@@ -22,11 +22,11 @@
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('sssssssssssi', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar, $userTime, $isAdmin);
 
-    if($stmt->execute()){
-        echo "Admin data Inserted successfully";
-    }else{
-        echo "NOT successful".'<br>'.mysqli_error($conn);
-    }
+    // if($stmt->execute()){
+    //     echo "Admin data Inserted successfully";
+    // }else{
+    //     echo "NOT successful".'<br>'.mysqli_error($conn);
+    // }
 
 ?>
 
