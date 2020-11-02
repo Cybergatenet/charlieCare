@@ -1,5 +1,5 @@
 <?php
-    require_once './server/contact.php';
+    require_once './server/sendEmail.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +71,6 @@
     </header>
     <!-- header ends here -->
     <!-- this hero section is a consideration and can be removed -->
-
     <section class="hero" id="hero">
         <div class="container">
             <h2 class="sub-headline">
@@ -122,7 +121,6 @@
                         <div class="asterisk"><i class="fas fa asterisk"></i></div>
                     </div>
                     <p>We drive our mission through a culture of excellence, constantly improving and winning with integrity. Our approach and process is aimed at inventing the life we deserve through innovation and creativity coupled with radical truthfulness and radical transparency.</p>
-                    <!-- <a href="#" onclick="alert('Oop!...offline for maintenance');" class="btn body-btn">About Us</a> -->
                 </div>
                 <div class="restaurant-info-img animate-right">
                     <img src="./img/star2.png" alt="">
@@ -130,136 +128,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Discover our story ends -->
-
-    <!-- <section class="tasteful-recipes between">
-        <div class="container"> -->
-    <!-- <div class="global-headline">
-                <div class="animate-top">
-                    <h2 class="sub-headline">
-                        <span class="first-letter">F</span>orex
-                    </h2>
-                </div>
-                <div class="animate-bottom">
-                    <h1 class="headline">Trading</h1>
-                </div>
-            </div> -->
-
-    <!-- Added here -->
-    <!-- <section class="services" id="services">
-        <div class="container">
-            <div class="heading white animate-top">
-                <h2>Our Services</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed</p>
-            </div>
-            <div class="content">
-                <div class="serviceBx animate-right">
-                    <img src="./img/bg_4.png">
-                    <h2>Demo Work</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="serviceBx animate-left">
-                    <img src="./img/star.jpg">
-                    <h2>Demo work2</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="serviceBx animate-right">
-                    <img src="./img/nature3.jpg">
-                    <h2>Demo Apps</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- <section class="work" id="work">
-        <div class="container">
-            <div class="heading">
-                <h2>Our Motivation</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed</p>
-            </div>
-            <div class="content">
-                <div class="workBx animate-top">
-                    <img src="./img/star.jpg">
-                </div>
-                <div class="workBx animate-right">
-                    <img src="./img/globe.jpg">
-                </div>
-                <div class="workBx animate-bottom">
-                    <img src="./img/nature.jpg">
-                </div>
-                <div class="workBx animate-left">
-                    <img src="./img/charlyLogo22.png">
-                </div>
-            </div>
-            <div class="heading">
-                <a href="#" class="btn">View More</a>
-            </div>
-        </div>
-    </section> -->
-    <!-- Ended here -->
-    <!-- </div> -->
-    <!-- <div class="restaurant-description animate-right">
-       <div class="container">
-        <div class="global-headline">
-            <h2 class="sub-headline">
-                <span class="first-letter">C</span>harly
-            </h2>
-            <h1 class="headline headline-dark">Care Cla$ic</h1>
-            <div class="asterisk"><i class="fas fa asterisk"></i></div>
-        </div>
-        <p>We drive our mission through a culture of excellence, constantly improving and winning with
-            integrity. Our approach and process is aimed at inventing the life we deserve through innovation
-            and creativity coupled with radical truthfulness and radical transparency</p>
-        <a href="#" onclick="alert('Oop!...offline for maintenance');" class="btn body-btn">Register</a>
-       </div>
-    </div> -->
-    <!-- </div>
-        </div>
-    </section> -->
-    <!-- Discover Our menu ends -->
-    <!-- <section class="perfect-blend between">
-        <div class="container"> -->
-    <!-- <div class="global-headline">
-                <div class="animate-top">
-                    <h2 class="sub-headline">
-                        <span class="first-letter">C</span>harlyCare
-                    </h2>
-                </div>
-                <div class="animate-bottom">
-                    <h1 class="headline">Real Estate</h1>
-                </div>
-            </div> -->
-
-    <!-- NEW -->
-    <!-- <section class="testimonies" id="testimonies">
-        <div class="container">
-            <div class="heading animate-top">
-                <h2>Testimonies</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed</p>
-            </div>
-            <div class="content">
-                <div class="testimoniesBx animate-bottom">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                    <h3>Someone Famous<br><span>Cybergate Manager</span></h3>
-                </div>
-                <div class="testimoniesBx">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                    <h3>Someone Famous<br><span>Cybergate Manager</span></h3>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- </div>
-    </section> -->
     <!-- perfect blend end -->
-
     <section class="culinary-delight">
         <div class="container">
             <div class="restaurant-info">
@@ -338,9 +207,9 @@
                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                                 <h3>Message Us</h3>
                                 <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
-                                <input type="text" name="contact_name" placeholder="Enter Full Name">
-                                <input type="email" name="contact_email" placeholder="Enter Your Email">
-                                <textarea name="contact_msg" placeholder="Your Message here"></textarea>
+                                <input type="text" name="contact_name" placeholder="Enter Full Name" value="<?php echo $contact_name; ?>">
+                                <input type="email" name="contact_email" placeholder="Enter Your Email" value="<?php echo $contact_email; ?>">
+                                <textarea name="contact_msg" placeholder="Your Message here"><?php echo $contact_msg; ?></textarea>
                                 <input class="btn-block" type="submit" name="contactMsg" value="Send">
                             </form>
                         </div>

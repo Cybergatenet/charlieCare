@@ -115,7 +115,6 @@
             text-align: right;
             cursor: pointer;
         }
-        .fa-eye:hover,
         .fa-eye:active{
             font-weight: 700;
             transform: scale(0.92);

@@ -1,16 +1,18 @@
 <?php
 	// Import PHPMailer classes into the global namespace
 	// These must be at the top of your script, not inside a function
-	use \vendor\PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
-############################################
-###############################
-############################
-########################
-################## ERROR !!!!
+
+	// Load Composer's autoloader
+	require '../vendor/autoload.php';
+
+	$mail = new PHPMailer;
+
 	$errMsg = '';
 	$errMsgClass = '';
+	$contact_name = $contact_email = $contact_msg = '';
 
 	if(filter_has_var(INPUT_POST, 'contactMsg')){
 		$contact_name = htmlspecialchars($_POST['contact_name']);
