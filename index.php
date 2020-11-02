@@ -239,10 +239,6 @@ if(mysqli_num_rows($return_posts) > 0){
                 <a href="./login_signup/signup.php" style="background-color: #eee; padding: 7px; margin-bottom: 10px; border-radius: 5px; color: #222;" class="btn body-btn">Register</a>
                 <!-- Add NEW here -->
                 <section class="contact" id="contact">
-                    <!-- <div class="heading white animate-left">
-                        <h2>Contact Us</h2>
-                        <p>Contact us using any of the following links below</p>
-                    </div> -->
                     <div class="content">
                         <div class="contactInfo animate-right">
                             <h3 id="contactUs">Contact Us</h3>

@@ -69,7 +69,7 @@ if(mysqli_num_rows($return_posts) > 0){
         @media (min-width: 900px){
             .content .btn{
                 display: inline-block!important;
-                /* padding: 10px; */
+                padding: 10px;
                 font-size: 1.5rem;
                 line-height: 2;
                 font-weight: 700;
@@ -295,14 +295,12 @@ if(mysqli_num_rows($return_posts) > 0){
                     </div>
                     <div class="newsletter-container">
                         <h4>Newsletter</h4>
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                                <h3>Message Us</h3>
-                                <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
-                                <input type="text" name="contact_name" placeholder="Enter Full Name" value="<?php echo $contact_name; ?>">
-                                <input type="email" name="contact_email" placeholder="Enter Your Email" value="<?php echo $contact_email; ?>">
-                                <textarea name="contact_msg" placeholder="Your Message here"><?php echo $contact_msg; ?></textarea>
-                                <input class="btn-block" type="submit" name="contactMsg" value="Send">
-                            </form>
+                        <form action="" class="newsletter-form">
+                            <input type="text" class="newsletter-input" placeholder="Your email address...">
+                            <button type="submit" class="newsletter-btn">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
