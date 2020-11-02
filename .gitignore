@@ -9,5 +9,6 @@ private.key
 ca_bundle.crt
 certificate.crt
 mailer.php
-vendor
+vendor/composer
+vendor/phpmailer
 CkeditorImageUpload.php

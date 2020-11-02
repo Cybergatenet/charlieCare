@@ -1,10 +1,11 @@
 <?php
     session_start();
+    
+    require '../config/db.php';
+    
     use PHPMailer\PHPMailer\PHPMailer;
 
-    require '../config/db.php';
-    require 'vendor/autoload.php';
-
+    
     $errors = array();
     $username = '';
     $email = '';
@@ -161,6 +162,7 @@ function send_email($input, $OTP){
     $headers .= "From: noreply@charlycareclasic.com"."\r\n";
 
     // mail($input, $subject, $message, $headers);
+    require 'vendor/autoload.php';
     
     $mail = new PHPMailer;
     $mail->isSMTP();
