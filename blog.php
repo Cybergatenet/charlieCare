@@ -1,7 +1,7 @@
 <?php
     require_once './config/db.php'; // connection here
 
-    require_once './server/contact.php';
+    require_once './server/sendEmail.php';
 // fetching posts here
 $query_posts = 'SELECT * FROM charlycare_posts ORDER BY post_time DESC';
 $return_posts = mysqli_query($conn, $query_posts);
@@ -69,7 +69,7 @@ if(mysqli_num_rows($return_posts) > 0){
         @media (min-width: 900px){
             .content .btn{
                 display: inline-block!important;
-                padding: 10px;
+                /* padding: 10px; */
                 font-size: 1.5rem;
                 line-height: 2;
                 font-weight: 700;
@@ -170,13 +170,15 @@ if(mysqli_num_rows($return_posts) > 0){
             <div class="content">
                 <div class="slider owl-carousel">
                     <?php foreach($posts as $post): ?>
-                        <div class="card">
-                            <div class="img"><img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image"></div>
+                        <div class="card" style="min-height: 400px; max-height: 400px; height: 400px;">
+                            <div class="img">
+                                <img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image">
+                            </div>
                             <div class="content">
                                 <div class="title"><?php echo $post['post_title']; ?></div>
                                 <!-- <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small> -->
                                 <p><?php echo substr($post['post_body'], 0, 150); ?>...</p>
-                                <div class="btn">
+                                <div class="btn" style="position: relative;">
                                     <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
                                 </div>
                             </div>

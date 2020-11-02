@@ -171,13 +171,15 @@ if(mysqli_num_rows($return_posts) > 0){
             <div class="content">
                 <div class="slider owl-carousel">
                     <?php foreach($posts as $post): ?>
-                        <div class="card">
-                            <div class="img"><img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image"></div>
+                        <div class="card" style="min-height: 400px; max-height: 400px; height: 400px;">
+                            <div class="img">
+                                <img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image">
+                            </div>
                             <div class="content">
                                 <div class="title"><?php echo $post['post_title']; ?></div>
                                 <!-- <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small> -->
                                 <p><?php echo substr($post['post_body'], 0, 150); ?>...</p>
-                                <div class="btn">
+                                <div class="btn" style="position: relative; bottom: 10%;">
                                     <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
                                 </div>
                             </div>
@@ -188,18 +190,6 @@ if(mysqli_num_rows($return_posts) > 0){
         </div>
     </section>
 
-    <!-- Tasteful recipes ends -->
-
-    <!-- <section class="discover-our-menu">
-        <div class="container">
-            <div class="restaurant-info">
-                <div class="image-group padding-right animate-left"> -->
-    <!-- <img src="./img/nature3.jpg" alt="images">
-                    <img src="./img/star.jpg" alt="images">
-                    <img src="./img/globe.jpg" alt="images">
-                    <img src="./img/bg_4.png" alt="images"> -->
-
-    <!-- Added here -->
     <section class="work" id="work">
         <div class="container">
             <div class="heading">
