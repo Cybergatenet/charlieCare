@@ -27,11 +27,9 @@
     #RewriteCond %{SERVER_PORT} 80
     #RewriteRule ^(.*)$ https://www.charlycareclasic.com/$1 [R,L]
 
-    #RewriteCond %{SERVER_PORT} 80
-    #RewriteRule ^(.*)$ https://www.charlycareclasic.com/$1 [R,L]
+    RewriteCond %{SERVER_PORT} 80
+    RewriteRule ^(.*)$ https://www.charlycareclasic.com/$1 [R,L]
 
-    RewriteCond %{HTTP_HOST} off
-    RewriteRule (.*) https://%{HTTP_HOST}% {REQUEST_URI} [R=301,L]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
