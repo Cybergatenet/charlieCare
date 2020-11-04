@@ -26,6 +26,24 @@
     RewriteCond %{HTTP_HOST} ^charlycareclasic\.com [NC]
     RewriteCond %{SERVER_PORT} 80
     RewriteRule ^(.*)$ https://www.charlycareclasic.com/$1 [R,L]
+
+    #remove php file extension-e.g. https://example.com/file.php will become https://example.com/file 
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.*)$ $1.php [NC,L] 
+
+    #remove html file extension-e.g. https://example.com/file.html will become https://example.com/file
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.*)$ $1.html [NC,L]
+
+    #DirectorySlash Off
+    #RewriteCond %{REQUEST_FILENAME}.html -f
+    #RewriteRule ^(.*)$ $1.html
+
+    #RewriteRule ^(.+)\.php$ /$1 [R,L]
+    #RewriteCond %{REQUEST_FILENAME}.php -f
+    #RewriteRule ^(.*?)/?$ /$1.php [NC,END]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
