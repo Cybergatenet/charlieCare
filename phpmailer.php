@@ -98,3 +98,6 @@ function save_mail($mail)
 
     return $result;
 }
+
+echo "<br>";
+echo (extension_loaded('openssl')?'SSL loaded':'SSL not loaded')."\n";

@@ -11,7 +11,7 @@
                     <a href="#"><i class="fas fa-times"></i></a>
                 </div>
                 <div class="main-header-title">
-                    <a href="../index.html" class="logo"><img src="../img/charlyLogo22.png" alt="" width="70px"
+                    <a href="../index.php" class="logo"><img src="../img/charlyLogo22.png" alt="logo" width="70px"
                             height="50px"></a>
                     <div class="main-title">
                         <h2 class="header-title">CharlyCareCla$ic</h2>
@@ -20,13 +20,13 @@
                 </div>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="../index.html" class="nav-link active">Home</a>
+                        <a href="../index.php" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
+                        <a href="../about.html" class="nav-link">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../login_signup/index.php" onclick="alert('sorry, this app is under maintenance');" class="nav-link">Log In</a>
+                        <a href="../login_signup/login.php" class="nav-link">Log In</a>
                     </li>
                 </ul>
             </nav>

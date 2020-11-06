@@ -40,29 +40,23 @@
                 <span class="first-letter">404</span>Oop!
             </h2>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriter" data-wait="6000" data-words='["the life we deserve"]'>An Error has Occured</p>
+            <p style="color: #f00;" class="sub-headline typeWriter" data-wait="6000" data-words='["the life we deserve"]'>An Error has Occured</p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline">We could not proces</p>
+            <p style="color: #f00;" class="sub-headline">We could not proces</p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline"> your last request.</p>
+            <p style="color: #f00;" class="sub-headline"> your last request.</p>
             <br><br><br><br><br>
             <h1 class="headline"> Try Again</h1>
             <div class="headline-description">
-                <div class="separator">
-                    <div class="line line-left"></div>
-                    <div class="asterisk"><i class="fas fa-asterisk"></i></div>
-                    <div class="line line-right"></div>
-                </div>
+            <!-- deletesd from here -->
                 <div class="single-animation">
                     <h5>To continue</h5>
-                    <a href="../index.html" class="btn cta-btn">Click Here</a>
+                    <a href="../index.php" class="btn cta-btn">Click Here</a>
                 </div>
             </div>
         </div>
     </section>
     <!-- hero ends here -->
-
-	<?php ## include_once '../inc/footer.php'; ?>
 
 	<script src="../js/main.js"></script>
 </body>

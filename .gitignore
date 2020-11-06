@@ -1,9 +1,5 @@
-components
-img_photoshop
-jumbotron
-resourses
-note.txt
-.vscode
+policy.html
+terms_and_conditions.html
 private.key
 ca_bundle.crt
 certificate.crt

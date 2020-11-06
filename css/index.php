@@ -1,4 +1,4 @@
-<?php
+<?php 
     session_start();
 
     if($_SESSION){
@@ -10,8 +10,8 @@
 		unset($_SESSION['msg']);
 		unset($_SESSION['alert-class']);
 		
-		header("location: ../../login_signup/login.php");
+		header("location: ../login_signup/login.php");
 	}else{
-		header("location: ../../index.html");
+		header("location: ../index.html");
 	}
 ?>
