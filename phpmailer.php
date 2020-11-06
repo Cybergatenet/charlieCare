@@ -54,10 +54,10 @@ $mail->Password = 'uwasomba';
 $mail->setFrom('from@example.com', 'First Last');
 
 //Set an alternative reply-to address
-$mail->addReplyTo('replyto@example.com', 'First Last');
+// $mail->addReplyTo('replyto@example.com', 'First Last');
 
 //Set who the message is to be sent to
-$mail->addAddress('cybergatenet@yahoo.com', 'John Doe');
+$mail->addAddress('cybergatenet@yahoo.com');
 
 //Set the subject line
 $mail->Subject = 'PHPMailer GMail SMTP test';
@@ -102,6 +102,3 @@ function save_mail($mail)
 
     return $result;
 }
-
-echo "<br>";
-echo (extension_loaded('openssl')?'SSL loaded, that is openssl':'SSL not loaded')."\n";
