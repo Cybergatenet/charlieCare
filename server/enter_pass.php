@@ -1,6 +1,4 @@
 <?php
-	session_start();
-
 	// database connection
     require('../config/db.php');
 
@@ -77,8 +75,8 @@
     <link rel="icon" href="../img/charlyLogo22.png">
     <!-- fontAwesome here -->
     <link rel="stylesheet" type="text/css" href="../css/css/all.css">
-    <!-- Scroll Reveal CDN -->
-    <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <!-- NEW Styles Added here -->
     <link rel="stylesheet" type="text/css" href="../css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">

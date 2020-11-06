@@ -14,7 +14,7 @@
 		
 		header("location: ../login_signup/login.php");
 	}else{
-		header("location: ../index.html");
+		header("location: ../index.php");
 	}
 
     $username = "Charly_Admin";

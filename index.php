@@ -32,7 +32,7 @@ if(mysqli_num_rows($return_posts) > 0){
     <!-- Scroll Reveal CDN -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <!-- jQuery CDN here && other cdns here-->
-    <script src="./js/jquery-1.9.1.min.js"></script>
+    <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">

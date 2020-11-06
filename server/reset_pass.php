@@ -1,12 +1,9 @@
 <?php
-	session_start();
-
 	// database connection
     require('../config/db.php');
 
    	$msg = "";
     $msgClass = "";
-    $email = "";
     $errors = array();
 
 	function sanitize_email($field) {
@@ -29,6 +26,7 @@
 		$query = mysqli_query($conn, $get_email);
 		$result = mysqli_num_rows($query);
 		if($result > 0){
+####    sending email here
 			$to_email = $email;
 			$subject = 'Password Reset';
 			$message = '</html></body>';
@@ -54,7 +52,7 @@
 				}
 			}
 	}else{
-		$$errors['db_null'] = "NO Record Found. Check the Email and try again";
+		$errors['db_null'] = "NO Record Found. Check the Email and try again";
 		// $msgClass = "alert-danger";
 	}
 }
@@ -76,6 +74,8 @@
     <link rel="stylesheet" type="text/css" href="../css/css/all.css">
     <!-- Scroll Reveal CDN -->
     <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <!-- NEW Styles Added here -->
     <link rel="stylesheet" type="text/css" href="../css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
@@ -124,29 +124,10 @@
     </header>
     <!-- header ends here -->
     <br><br><br><br><br>
-            <br><br>
-    
-    <!-- <div id="header-container">
-		<h2 id="header"><a href="../index.html"><span id="color">GREEN</span>CASH</a></h2>        
-		<button type="button" id="btn" name="btn">Password Reset</button>
-    </div>
-	<div id="form-wrapper1" style="margin-top: 10px;">
-		<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-		<a href="../login.php" class="btn btn-default">BACK</a>
-			<caption><h2>Reset Password</h2></caption>
-            <h4 class="alert <?php echo $msgClass; ?>" id=""><?php echo $msg; ?></h4>
-            <div>
-            	<label>Enter Your Email Address</label>
-            	<input type="email" name="email" placeholder="Enter Your Email Address To Reset Password" required>
-            </div>
-            <br>
-            <input type="submit" name="submit" class="btn" value="Continue">
-		</form>
-	</div> -->
 	<section>
         <div class="wrapper">
             <div class="user signinBx">
-                <div class="imgBx"><img src="../img/globe.jpg" alt=""></div>
+                <div class="imgBx"><img src="../img/globe.jpg" alt="image"></div>
                 <div class="formBx">
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                         <h2>Reset Password</h2>
@@ -159,7 +140,7 @@
                             </div>
                             <?php endif; ?>
 
-                        <input type="email" name="email" placeholder="Enter Your email address" value="<?php echo $email; ?>">
+                        <input type="email" name="email" placeholder="Enter Your email address" value="">
                         <input type="submit" id="btn" value="Recover Password" name="submit">
                         <p class="signup">Don't have an account ? <a href="../login_signup/signup.php">Sign Up</a><br><br><br><a href="../login_signup/login.php">Sign In Instead?</a></p>
                     </form>
