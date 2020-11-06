@@ -56,7 +56,7 @@ if(mysqli_num_rows($return_posts) > 0){
                     <a href="#"><i class="fas fa-times"></i></a>
                 </div>
                 <div class="main-header-title">
-                    <a href="./index.html" class="logo"><img src="./img/charlyLogo22.png" alt="" width="70px"
+                    <a href="./index.php" class="logo"><img src="./img/charlyLogo22.png" alt="" width="70px"
                             height="50px"></a>
                     <div class="main-title">
                         <h2 class="header-title">CharlyCareCla$ic</h2>
@@ -65,7 +65,7 @@ if(mysqli_num_rows($return_posts) > 0){
                 </div>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="./index.html" class="nav-link active">Home</a>
+                        <a href="#" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="./about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>

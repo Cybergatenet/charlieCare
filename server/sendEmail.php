@@ -10,6 +10,7 @@ require './vendor/autoload.php';
 
     $errMsg = '';
     $errMsgClass = '';
+    $contact_name = $contact_email = $contact_msg = '';
 
 if(isset($_POST['contactMsg'])){
     // Instantiation and passing `true` enables exceptions

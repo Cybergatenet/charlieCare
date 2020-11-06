@@ -10,7 +10,7 @@
 		unset($_SESSION['msg']);
 		unset($_SESSION['alert-class']);
 		
-		header("location: ../login_signup/login.php");
+		header("location: ./login.php");
 	}else{
 		header("location: ../index.php");
 	}
