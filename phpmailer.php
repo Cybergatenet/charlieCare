@@ -26,19 +26,23 @@ $mail->isSMTP();
 $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
 //Set the hostname of the mail server
-$mail->Host = 'smtp.gmail.com';
+$mailer->Host = 'tls://smtp.gmail.com';
+// $mail->Host = 'smtp.gmail.com';
+$mailer->SMTPSecure = 'tls';
 // use
 // $mail->Host = gethostbyname('smtp.gmail.com');
 // if your network does not support SMTP over IPv6
 
 //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-$mail->Port = 587;
+// $mail->Port = 465;
+$mailer->SMTPAuth = true;
+$mailer->Port = 587;
 
 //Set the encryption mechanism to use - STARTTLS or SMTPS
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
 //Whether to use SMTP authentication
-$mail->SMTPAuth = true;
+$mail->SMTPAuth = false;
 
 //Username to use for SMTP authentication - use full email address for gmail
 $mail->Username = 'abelchinedu2@gmail.com';
@@ -100,4 +104,4 @@ function save_mail($mail)
 }
 
 echo "<br>";
-echo (extension_loaded('openssl')?'SSL loaded':'SSL not loaded')."\n";
+echo (extension_loaded('openssl')?'SSL loaded, that is openssl':'SSL not loaded')."\n";
