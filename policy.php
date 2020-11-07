@@ -18,7 +18,7 @@
     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-    <!-- $mail->send(); -->
+    // $mail->send();
     if (!$mail->send()) {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
@@ -47,7 +47,7 @@
 
 
 
-    <footer>
+    <!-- <footer>
         <div class="container">
             <div class="back-to-top">
                 <a href="#hero"><i class="fas fa-chevron-up"></i></a>
@@ -91,7 +91,7 @@
                 </div>
         </div>
     </div>
-</footer>
+</footer> -->
         
         <script src="./js/main.js"></script>
 </body>
