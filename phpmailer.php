@@ -17,7 +17,7 @@ require './vendor/autoload.php';
 $mail = new PHPMailer();
 
 //Tell PHPMailer to use SMTP
-// $mail->isSMTP();
+$mail->isSMTP();
 
 //Enable SMTP debugging
 // SMTP::DEBUG_OFF = off (for production use)
@@ -42,7 +42,7 @@ $mailer->Port = 587;
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 
 //Whether to use SMTP authentication
-$mail->SMTPAuth = false;
+$mail->SMTPAuth = true;
 
 //Username to use for SMTP authentication - use full email address for gmail
 $mail->Username = 'abelchinedu2@gmail.com';
@@ -54,7 +54,7 @@ $mail->Password = 'uwasomba';
 $mail->setFrom('from@example.com', 'First Last');
 
 //Set an alternative reply-to address
-// $mail->addReplyTo('replyto@example.com', 'First Last');
+$mail->addReplyTo('replyto@example.com', 'First Last');
 
 //Set who the message is to be sent to
 $mail->addAddress('cybergatenet@yahoo.com');
