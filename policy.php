@@ -9,12 +9,12 @@
     $mail->IsSMTP();
     $mail->CharSet = 'UTF-8';
 
-    $mail->Host       = "mail.example.com"; // SMTP server example
-    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-    $mail->SMTPAuth   = true;                  // enable SMTP authentication
-    $mail->Port       = 25;                    // set the SMTP port for the GMAIL server
-    $mail->Username   = "abelchinedu2@gmail.com"; // SMTP account username example
-    $mail->Password   = "uwasomba";        // SMTP account password example
+    $mail->Host       = "mail.example.com"; 
+    $mail->SMTPDebug  = 0;                     
+    $mail->SMTPAuth   = true;              
+    $mail->Port       = 25;                    
+    $mail->Username   = "abelchinedu2@gmail.com"; 
+    $mail->Password   = "abchej3647";    
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
