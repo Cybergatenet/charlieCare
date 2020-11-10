@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
 	// define('ROOT_URL', 'http://www.charlycareclasic.com/');
     define('DB_HOST', 'localhost');
