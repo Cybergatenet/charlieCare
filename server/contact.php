@@ -1,6 +1,4 @@
 <?php
-	// Import PHPMailer classes into the global namespace
-	// These must be at the top of your script, not inside a function
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
@@ -41,14 +39,12 @@
 				$mail->SMTPSecure = 'tls'; // ssl is depracated
 				$mail->SMTPAuth = true;
 				$mail->Username = 'abelchinedu2@gmail.com';
-				$mail->Password = 'uwasomba';
+				$mail->Password = 'abchej3647';
 				$mail->setFrom('abelchinedu2@gmail.com', 'testing from user.php');
 				$mail->addReplyTo($toemail, 'CharlyCare Admin');
 				$mail->addAddress('abelististuwas@yahoo.com', 'reply to myself');
 				$mail->Subject = $title;
-				$mail->msgHTML($body); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
-				// $mail->AltBody = 'HTML messaging not supported';
-				// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
+				$mail->msgHTML($body); 
 
 				if($mail->send()){
 				    $errMsg = "Thank you ".$contact_name . " for partnering with us."."\r\n"." Your Request is being considered and we will get back to you ASAP";

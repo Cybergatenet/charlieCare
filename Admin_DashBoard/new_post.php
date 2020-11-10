@@ -121,7 +121,7 @@ if(isset($_POST['publish_post'])){
     <!-- custom stylesheet -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <!-- Add ck-editor cdn -->
-    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
 </head>
 
 <body>

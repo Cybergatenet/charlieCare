@@ -1,11 +1,8 @@
 <?php
-// Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// Load Composer's autoloader
 require './vendor/autoload.php';
 
     $errMsg = '';
@@ -35,34 +32,29 @@ if(isset($_POST['contactMsg'])){
 				$body .= '</body></html>';
             try {
                 //Server settings
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-                $mail->isSMTP();                                            // Send using SMTP
-                $mail->Host       = 'ssl://smtp.gmail.com';                    // Set the SMTP server to send through
-                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = 'abelchinedu2@gmail.com';                     // SMTP username
-                $mail->Password   = 'uwasomba';                               // SMTP password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-                // $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-                $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->isSMTP();                      
+                $mail->Host       = 'ssl://smtp.gmail.com';
+                $mail->SMTPAuth   = true;                  
+                $mail->Username   = 'abelchinedu2@gmail.com';
+                $mail->Password   = 'abchej3647';            
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                // $mail->Port       = 587;                        
+                $mail->Port       = 465;                           
             
                 //Recipients
                 $mail->setFrom('abelchinedu2@gmail.com', 'Cybergate Testing');
-                $mail->addAddress('charlycareclasic@gmail.com', 'Charly_Admin');     // Add a recipient
-                $mail->addAddress('cybergatenet@yahoo.com');               // Name is optional
+                $mail->addAddress('charlycareclasic@gmail.com', 'Charly_Admin');    
+                $mail->addAddress('cybergatenet@yahoo.com');             
                 $mail->addReplyTo($contact_email, 'Sender of this Email');
                 $mail->addCC('abelististuwas@yahoo.com');
-                // $mail->addBCC('bcc@example.com');
-            
-                // Attachments
-                // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-                // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+ 
             
                 // Content
-                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->isHTML(true);        
                 $mail->Subject = $title;
                 $mail->Body    = $body;
-                // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-            
+                    
                 $mail->send();
                     $errMsg = "Thank you ".$contact_name . " for partnering with us."."\r\n"." Your Request is being considered and we will get back to you ASAP";
                     $errMsgClass = "alert-success";
