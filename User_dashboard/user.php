@@ -8,7 +8,7 @@
         exit();
     }
 ### Sending Email here
-    require_once '../server/contact.php';
+    require_once '../server/sendEmail.php';
 
 
 //Avaliable Variables 

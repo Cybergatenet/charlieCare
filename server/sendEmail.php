@@ -43,17 +43,17 @@ if(isset($_POST['contactMsg'])){
                 $mail->Port       = 465;                           
             
                 //Recipients
-                $mail->setFrom('abelchinedu2@gmail.com', 'Cybergate Testing');
+                $mail->setFrom('charlycareclasic@gmail.com', 'One User Contact');
                 $mail->addAddress('charlycareclasic@gmail.com', 'Charly_Admin');    
                 $mail->addAddress('cybergatenet@yahoo.com');             
-                $mail->addReplyTo($contact_email, 'Sender of this Email');
-                $mail->addCC('abelististuwas@yahoo.com');
+                $mail->addReplyTo($contact_email, 'Sender');
+                // $mail->addCC('abelististuwas@yahoo.com');
  
             
                 // Content
                 $mail->isHTML(true);        
                 $mail->Subject = $title;
-                $mail->Body    = $body;
+                $mail->Body = $body;
                     
                 $mail->send();
                     $errMsg = "Thank you ".$contact_name . " for partnering with us."."\r\n"." Your Request is being considered and we will get back to you ASAP";

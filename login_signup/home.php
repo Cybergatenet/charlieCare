@@ -138,12 +138,12 @@
                 <?php if(!$_SESSION['verified']): ?>
                     <div class="alert alert-warning h4">
                         You need to verify your account.
-                        Sign in to your email account and click on the verification link we just emailed you at <strong><?php echo $_SESSION['email']; ?></strong>
+                        Sign in to your email account and click on the verification link we just emailed to you at <strong><?php echo $_SESSION['email']; ?></strong>
                     </div>
                 <?php endif; ?>
 
                 <?php if($_SESSION['verified']): ?>
-                    <button class="btn btn-block btn-lg btn-primary">You are verified!</button>
+                    <a href="./login.php" class="btn btn-block btn-lg btn-primary" title="Click this button to continue">You are verified!</a>
                 <?php endif; ?>
             </div>
         </div>
