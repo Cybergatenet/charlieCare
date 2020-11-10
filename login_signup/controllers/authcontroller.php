@@ -95,7 +95,7 @@
             $_SESSION['verified'] = $verified;
 
 #################### Sending Email Here Using PHPMailer
-            send_email($email, $token);
+            send_email($email, $token, $username);
 
             // set flash msg
             $_SESSION['msg'] = "Registration Success!";
@@ -153,8 +153,8 @@ if(isset($_POST['login'])){
 }
 #################################################
 //  Send email here
-function send_email($input, $OTP){
-    $username = mysqli_real_escape_string(validate_input($_POST['username']));
+function send_email($input, $OTP, $username){
+    // $username = $_POST['username'];
     $_SESSION['token'] = $OTP;
     setcookie("charlycareclasic", $OTP, time() + (86400 * 14), '/');
 
@@ -176,7 +176,7 @@ function send_email($input, $OTP){
     $mail->addAddress($input, $username);
     $mail->Subject = 'Account Activation';
     $mail->IsHTML(true);
-    $mail->Body = '<p>Welcome '.$username.', You have requested to register as a member @ <span style="color: blue; font-weight: bold;">CharlyCareCla$ic</span> Family Office. Your request have been received and your account will be up and running in no distant time. Click on the Link below to Activate your Account: <br> <h2><a href="http://www.charlycarecla.com/login_signup/home.php?otp='.$OTP.'&email='.$input.'" style="background-color: blue; color: white; font-weight: bold; border-radius: 4px;">Activate Account</a></h2><br><br> If you do not reconginse this activity, kindly report to the <a href="http://www.charlycareclasic.com/#contactUs">Admin</a> <br> Thank You!</p>';
+    $mail->Body = '<p>Welcome '.$username.', You have requested to register as a member @ <span style="color: blue; font-weight: bold;">CharlyCareCla$ic</span> Family Office. Your request have been received and your account will be up and running in no distant time. Click on the Link below to Activate your Account: <br> <h4><a href="https://www.charlycareclasic.com/login_signup/home.php?otp='.$OTP.'&email='.$input.'" style="background-color: blue; padding: 5px; color: white; font-weight: bold; border-radius: 4px;">Activate Account</a></h4><br><br> If you do not reconginse this activity, kindly report to the <a href="https://www.charlycareclasic.com/#contactUs">Admin</a> <br> Thank You!</p>';
 
     if (!$mail->send()) {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
