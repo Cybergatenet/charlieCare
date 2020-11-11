@@ -45,7 +45,7 @@ if(isset($_POST['contactMsg'])){
                 //Recipients
                 $mail->setFrom('charlycareclasic@gmail.com', 'One User Contact');
                 $mail->addAddress('charlycareclasic@gmail.com', 'Charly_Admin');    
-                $mail->addAddress('cybergatenet@yahoo.com');             
+                // $mail->addAddress('cybergatenet@yahoo.com');             
                 $mail->addReplyTo($contact_email, 'Sender');
                 // $mail->addCC('abelististuwas@yahoo.com');
  
