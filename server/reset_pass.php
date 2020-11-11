@@ -19,42 +19,67 @@
 		$char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
 		$token = substr(str_shuffle($char), 0, 6);
 
-		$inputmail = mysqli_real_escape_string($conn, sanitize_email($_POST['email']));
+        $inputmail = mysqli_real_escape_string($conn, sanitize_email($_POST['email']));
+        
+        $to_email = $inputmail;
+        $subject = 'Password Reset';
+        $message = '</html></body>';
+        $message .= 'Your OTP for Password Reset is: <br>'.$token."\r\n".'You have requested to Reset Your Password. If you dont reconginse this action, kindly report to the <a href="http://www.charlycarecla.herokuapp.com">Admin</a>'."\r\n".' Thank You!';
+        $message .= '</body></html>'; 
+        $headers = 'From: noreply@charlycareclasic.com';
+        $headers .= "MIME-Version : 1.0" ."\r\n";
+        $headers .= "Content-Type: text/html;charset: UTF-8" ."\r\n";
+        //check if the email address is invalid $secure_check
 
-		$email = $inputmail;
-		$get_email = "SELECT * FROM users WHERE email = '$email' LIMIT=1";
-		$query = mysqli_query($conn, $get_email);
-		$result = mysqli_num_rows($query);
-		if($result > 0){
-####    sending email here
-			$to_email = $email;
-			$subject = 'Password Reset';
-			$message = '</html></body>';
-			$message .= 'Your OTP for Password Reset is: <br>'.$token."\r\n".'You have requested to Reset Your Password. If you dont reconginse this action, kindly report to the <a href="http://www.charlycarecla.herokuapp.com">Admin</a>'."\r\n".' Thank You!';
-			$message .= '</body></html>'; 
-			$headers = 'From: admin@charlycarecla.herokuapp.com';
-			$headers .= "MIME-Version : 1.0" ."\r\n";
-			$headers .= "Content-Type: text/html;charset: UTF-8" ."\r\n";
-			//check if the email address is invalid $secure_check
-			if ($to_email === false) {
-			    $$errors['emailErr'] = "Invalid Email. Try Again";
-			    // $msgClass = "alert-danger";
-			} else { //send email 
-			   if(mail($to_email, $subject, $message, $headers)){
-				   	$_SESSION['token'] = $token;
-				    $_SESSION['email'] = $email;
-				    setcookie("Charlycareclasic_pwd_token", $token);
-
-				    header('location: enter_pass.php?token='.$token);
-				}else{
-			    	$errors['mailErr'] = "Password Reset Failed. Try Again. OR contact the Admin";
-			    	// $msgClass = "alert-danger";
-				}
-			}
-	}else{
-		$errors['db_null'] = "NO Record Found. Check the Email and try again";
-		// $msgClass = "alert-danger";
-	}
+		if ($to_email === false) {
+            $errors['emailErr'] = "Invalid Email. Try Again";
+            // $msgClass = "alert-danger";
+        } else { //send email 
+            $sql = "SELECT * FROM `charlycare_users` WHERE `email`='$inputmail' LIMIT 1";
+            $query = mysqli_query($conn, $sql);
+            $result = mysqli_num_rows($query);
+            var_dump($result);
+                if($result > 0){
+        ####    sending email here
+                    $_SESSION['token'] = $token;
+                    setcookie("charlycareclasic", $token, time() + (86400 * 14), '/');
+                
+                    
+                    $mail = new PHPMailer(true);
+                
+                    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                    $mail->isSMTP();                      
+                    $mail->Host       = 'ssl://smtp.gmail.com';
+                    $mail->SMTPAuth   = true;                  
+                    $mail->Username   = 'charlycareclasic@gmail.com';
+                    $mail->Password   = 'ifechuwkudi';            
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    // $mail->Port       = 587;                        
+                    $mail->Port       = 465;  
+                
+                    $mail->setFrom('noreply@charlycareclasic.com', 'CharlyCareClasic');
+                    $mail->addReplyTo('charlycareclasic@gmail.com', 'CharlyCareClasic');
+                    $mail->addAddress($inputmail, $username);
+                    $mail->Subject = $subject;
+                    $mail->IsHTML(true);
+                    $mail->Body = $message;
+                
+                    if (!$mail->send()) {
+                        echo 'Mailer Error: ' . $mail->ErrorInfo;
+                        $errors['mailErr'] = "Password Reset Failed. Try Again. OR contact the Admin";
+                        // $msgClass = "alert-danger";
+                    } else {
+                        $_SESSION['token'] = $token;
+                        $_SESSION['email'] = $inputmail;
+                        setcookie("Charlycareclasic_pwd_token", $token);
+                
+                        header('location: enter_pass.php?token='.$token);
+                    }	   
+                }else{
+                    $errors['db_null'] = "NO Record Found. Check the Email and try again";
+                    // $msgClass = "alert-danger";
+                }
+        }
 }
 
 ?>

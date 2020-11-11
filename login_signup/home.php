@@ -4,7 +4,6 @@
     require_once 'controllers/authcontroller.php'; 
 
     if(!$_SESSION['username']){
-######### comment out ooh
         header('location: ./login.php');
     }
     
@@ -26,8 +25,8 @@
         // echo $user['token'].'<br>';
         // echo $get_token;
 
-        // if(password_verify($get_token, $user['token'])){
-        if(password_verify($get_token, $_SESSION['token'])){
+        if(password_verify($get_token, $user['token'])){
+        // if(password_verify($get_token, $_SESSION['token'])){ // testing this with session
             // Verification success
             $_SESSION['id'] = $user['id'];
 

@@ -588,9 +588,6 @@ footer{
 @media screen and (min-width: 900px){
     body{
         overflow-x: hidden;
-    /* still testing this shadow out, but it looks good in linux */
-        /* margin: 10px; */
-        /* box-shadow: var(--body-shadow); */
     }
     .main-header-title{
         margin-left: -50px;
@@ -718,6 +715,9 @@ footer{
     }
     .newsletter-btn{
         margin-left: 7.5rem;
+    }
+    .fas.fa-envelope{
+        margin-left: -25px;
     }
 }
 @media (max-width: 900px){

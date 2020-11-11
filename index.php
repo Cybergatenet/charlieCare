@@ -199,19 +199,14 @@ if(mysqli_num_rows($return_posts) > 0){
             <div class="content">
                 <div class="serviceBx animate-left">
                     <video class="video" src="" poster="" width="100%" controls></video>
-                    <h2>Download Demo Video</h2>
+                    <h2>Download This Video</h2>
                     <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
-                <div class="serviceBx animate-left">
+                <!-- <div class="serviceBx animate-left">
                     <video class="video" src="" poster="" width="100%" controls></video>
                     <h2>Watch Demo Video</h2>
                     <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <!-- <div class="serviceBx animate-right">
-                    <video class="video" src="" poster="" width="100%" controls></video>
-                    <h2>Watch Demo Video</h2>
-                    <p>This Post will be updated by the admin soon. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div> -->
             </div>
             <div class="heading">
@@ -296,13 +291,10 @@ if(mysqli_num_rows($return_posts) > 0){
                                 <a href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i class="fab fa-facebook-square"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-github-square"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </li>
                             <li>
                                 <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i class="fab fa-linkedin-in"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fab fa-tripadvisor"></i></a>
                             </li>
                         </ul>
                     </div>
