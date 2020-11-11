@@ -50,7 +50,7 @@
         if(empty($email)){
             $errors['email'] = "Email Is Required!";
         }
-        if(empty($pwd) && strlen($pwd) < 8){
+        if(empty($pwd)){
             $errors['pwd'] = "Password Is Required!";
         }
         if(strlen($pwd) < 8){

@@ -359,13 +359,10 @@
                                 <a href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i class="fab fa-facebook-square"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-github-square"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </li>
                             <li>
                                 <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i class="fab fa-linkedin-in"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fab fa-tripadvisor"></i></a>
                             </li>
                         </ul>
                     </div>

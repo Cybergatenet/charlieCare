@@ -1,6 +1,13 @@
 <?php
 	// database connection
     require('../config/db.php');
+    require('../config/gmail.php');
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    require '../vendor/autoload.php';
 
     if(!$_SESSION['token']){
 ####### comment out here--------GOOD TO GO
@@ -8,49 +15,78 @@
     }
 	
  	$token = $_SESSION['token'];
-	$email = $_SESSION['email'];
+    $email = $_SESSION['email'];
+    $username = $_SESSION['username'];
 
 	setcookie("new_token", $token, time() + 3600);
 
 	$msg = "";
 	$msgClass = "";
 
-	function sanitize_my_email($field) {
-    // $field = filter_var($field, FILTER_SANITIZE_EMAIL);
-	    if (filter_var($field, FILTER_VALIDATE_EMAIL)){
-	        // echo $field;
-	        return true;
-	    } else {
-	        // echo $field;
-	        return false;
-	    }
-	}
-	sanitize_my_email($email);
-
 	if(isset($_POST['submit'])){
 
 		$var_token = mysqli_real_escape_string($conn, $_POST['token']);
 		$pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
 		$cpwd = mysqli_real_escape_string($conn, $_POST['cpwd']);
-		$get_token = mysqli_real_escape_string($conn, $_GET['token']);
+        $get_token = mysqli_real_escape_string($conn, $_GET['token']);
+        
+        if(empty($var_token)){
+            $msg = "Token is Required";
+			$msgClass = "alert-danger";
+        }
+        if(empty($pwd)){
+            $msg = "Password is Required";
+			$msgClass = "alert-danger";
+        }
+        if(empty($cpwd)){
+            $msg = "Confirm Password is Required";
+			$msgClass = "alert-danger";
+        }
+        if(strlen($pwd) < 8){
+            $msg = "Password is too short";
+			$msgClass = "alert-danger";
+        }
 
 		if($pwd === $cpwd){
 			if($get_token === $var_token && $token === $var_token){
 		// token matched...update table
-			$set_pwd = "UPDATE  `cyber_user`.`users` SET  `pwd` =  '$pwd' WHERE  `users`.`email` = '$email'";
+			$set_pwd = "UPDATE  `charlycare_users` SET  `pwd` =  '$pwd' WHERE  `email` = '$email'";
 				if(mysqli_query($conn, $set_pwd)){
-					// $_SESSION['token'] = $token;
-				    // $_SESSION['email'] = $email;
-				    // setcookie("new_token", $token);
+        ##### sending a confirmation Email here
+					$mail = new PHPMailer(true);
+        
+                    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                    $mail->isSMTP();                      
+                    $mail->Host       = 'ssl://smtp.gmail.com';
+                    $mail->SMTPAuth   = true;                  
+                    $mail->Username   = GMAIL_EMAIL;
+                    $mail->Password   = GMAIL_PASS;       
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    // $mail->Port       = 587;                        
+                    $mail->Port       = 465;  
+                
+                    $mail->setFrom('noreply@charlycareclasic.com', 'CharlyCareClasic');
+                    $mail->addReplyTo('charlycareclasic@gmail.com', 'CharlyCareClasic');
+                    $mail->addAddress($email, $username);
+                    $mail->Subject = 'Password Changed';
+                    $mail->IsHTML(true);
+                    $mail->Body = 'Hi '.$username.', Your Password Reset was successful. If you do not reconginse this action, kindly contact <a href="https://www.charlycareclasic.com/index.php/#contactForm">Charlycareclasic Family Office</a>'."\r\n".' Thank You!';
+                
+                    if (!$mail->send()) {
+                        // echo 'Mailer Error: ' . $mail->ErrorInfo;
+                        $msg = "Password Reset Failed. Try Again. OR contact the Admin";
+					    $msgClass = "alert-danger";
+                    } else {
+                        header("location: ./login.php");
+                    }
 
-				    header("location: ./login.php");
 				}else{
 					$msg = "Password update Failed!...try again";
 					$msgClass = "alert-danger";
 					exit();
 				}
 			}else{
-				$msg = "Wrong Token Enter. Check Your Email and try again";
+				$msg = "Wrong Token Enter. Check Your Email or Try again";
 				$msgClass = "alert-danger";
 			}
 		}else{
@@ -89,39 +125,39 @@
     </style>
 </head>
 <body>
-<header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->>
-        <div class="wrapper">
-            <nav class="nav">
-                <div class="menu-toggle">
-                    <div class="new_menu">
-                        <div class="lin"></div>
-                        <div class="lin"></div>
-                        <div class="lin"></div>
-                    </div>
-                    <a href="#"><i class="fas fa-times"></i></a>
+<header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;">
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="menu-toggle">
+                <div class="new_menu">
+                    <div class="lin"></div>
+                    <div class="lin"></div>
+                    <div class="lin"></div>
                 </div>
-                <div class="main-header-title">
-                    <a href="../index.php" class="logo"><img src="../img/charlyLogo22.png" alt="" width="70px"
-                            height="50px"></a>
-                    <div class="main-title">
-                        <h2 class="header-title">CharlyCareCla$ic</h2>
-                        <small class="header-small">Family Office</small>
-                    </div>
+                <a href="#"><i class="fas fa-times"></i></a>
+            </div>
+            <div class="main-header-title">
+                <a href="../index.php" class="logo"><img src="../img/charlyLogo22.png" alt="" width="70px"
+                        height="50px"></a>
+                <div class="main-title">
+                    <h2 class="header-title">CharlyCareCla$ic</h2>
+                    <small class="header-small">Family Office</small>
                 </div>
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="../index.php" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../about.html" class="nav-link">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../login_signup/signup.php" class="nav-link active">Sign Up</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="../index.php" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../about.html" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../login_signup/signup.php" class="nav-link active">Sign Up</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
     <!-- header ends here -->
     <br><br><br><br><br>
             <br><br>
@@ -133,14 +169,7 @@
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                         <h2>Enter New Password</h2>
                         <!-- error msg here -->
-                        <!-- <?php if(count($errors) > 0): ?>
-                            <div class="alert alert-danger">
-                                <?php foreach($errors as $error): ?>
-                                    <li><?php echo $error; ?></li>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?> -->
-
+                        <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
                         <input type="text" name="token" placeholder="Enter OTP Here" value="">
                         <input type="password" name="pwd" placeholder="Enter New Password" value="">
                         <input type="password" name="cpwd" placeholder="Confirm New password" value="">
@@ -152,7 +181,7 @@
         </div>
     </section>
 
-	<?php ## include("../inc/footer.php"); ?>
+	<?php ### include("../inc/footer.php"); ?>
 
 <script type="text/javascript">
 

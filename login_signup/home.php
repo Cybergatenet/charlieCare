@@ -33,7 +33,10 @@
             $sql_update = "UPDATE `charlycare_users` SET `verified` = `true` WHERE `users`.`id` = ".$_SESSION['id'];
             if(mysqli_query($conn, $sql_update)){
                 $_SESSION['verified'] = true;
-                header('location: ./login.php');
+
+                header('Refresh: 5; URL=https://www.charlycareclasic.com/login_signup/login.php');
+
+                // header('location: ./login.php');
             }else{
                 header('location: ./home.php');
             }
@@ -55,6 +58,8 @@
     <meta name="keywords" content="CharlyCareCla$ic, Forex, Online Trading, Investment, Foreign exchange">
     <meta name="author" content="Designed by cybergate communication network">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Client side redirect -->
+    <!-- <meta http-equiv="refresh" content="5; URL=https://www.charlycareclasic.com/login_signup/login.php"> -->
     <link rel="icon" href="../img/charlyLogo22.png">
     <title>Account Verification | Charlycarecla$ic</title>
     <!-- fontAwesome -->
@@ -79,7 +84,7 @@
     </style>
 </head>
 <body>
-<header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
+<header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;">
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">

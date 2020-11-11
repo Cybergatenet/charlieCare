@@ -1,6 +1,13 @@
 <?php
 	// database connection
     require('../config/db.php');
+    require('../config/gmail.php');
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    require '../vendor/autoload.php';
 
    	$msg = "";
     $msgClass = "";
@@ -9,7 +16,7 @@
 	function sanitize_email($field) {
     // $field = filter_var($field, FILTER_SANITIZE_EMAIL);
 	    if(filter_var($field, FILTER_VALIDATE_EMAIL)){
-	        return true;
+	        return $field;
 	    } else {
 	        return false;
 	    }
@@ -24,62 +31,69 @@
         $to_email = $inputmail;
         $subject = 'Password Reset';
         $message = '</html></body>';
-        $message .= 'Your OTP for Password Reset is: <br>'.$token."\r\n".'You have requested to Reset Your Password. If you dont reconginse this action, kindly report to the <a href="http://www.charlycarecla.herokuapp.com">Admin</a>'."\r\n".' Thank You!';
+        $message .= 'Your OTP for Password Reset is: <br>'.$token."\r\n".'You have requested to Reset Your Password. If you dont reconginse this action, kindly contact <a href="https://www.charlycareclasic.com/index.php/#contactForm">Charlycareclasic Family Office</a>'."\r\n".' Thank You!';
         $message .= '</body></html>'; 
         $headers = 'From: noreply@charlycareclasic.com';
         $headers .= "MIME-Version : 1.0" ."\r\n";
         $headers .= "Content-Type: text/html;charset: UTF-8" ."\r\n";
         //check if the email address is invalid $secure_check
-
 		if ($to_email === false) {
             $errors['emailErr'] = "Invalid Email. Try Again";
             // $msgClass = "alert-danger";
         } else { //send email 
-            $sql = "SELECT * FROM `charlycare_users` WHERE `email`='$inputmail' LIMIT 1";
-            $query = mysqli_query($conn, $sql);
-            $result = mysqli_num_rows($query);
-            var_dump($result);
-                if($result > 0){
-        ####    sending email here
-                    $_SESSION['token'] = $token;
-                    setcookie("charlycareclasic", $token, time() + (86400 * 14), '/');
-                
-                    
-                    $mail = new PHPMailer(true);
-                
-                    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-                    $mail->isSMTP();                      
-                    $mail->Host       = 'ssl://smtp.gmail.com';
-                    $mail->SMTPAuth   = true;                  
-                    $mail->Username   = 'charlycareclasic@gmail.com';
-                    $mail->Password   = 'ifechuwkudi';            
-                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                    // $mail->Port       = 587;                        
-                    $mail->Port       = 465;  
-                
-                    $mail->setFrom('noreply@charlycareclasic.com', 'CharlyCareClasic');
-                    $mail->addReplyTo('charlycareclasic@gmail.com', 'CharlyCareClasic');
-                    $mail->addAddress($inputmail, $username);
-                    $mail->Subject = $subject;
-                    $mail->IsHTML(true);
-                    $mail->Body = $message;
-                
-                    if (!$mail->send()) {
-                        echo 'Mailer Error: ' . $mail->ErrorInfo;
-                        $errors['mailErr'] = "Password Reset Failed. Try Again. OR contact the Admin";
-                        // $msgClass = "alert-danger";
-                    } else {
-                        $_SESSION['token'] = $token;
-                        $_SESSION['email'] = $inputmail;
-                        setcookie("Charlycareclasic_pwd_token", $token);
-                
-                        header('location: enter_pass.php?token='.$token);
-                    }	   
-                }else{
-                    $errors['db_null'] = "NO Record Found. Check the Email and try again";
-                    // $msgClass = "alert-danger";
-                }
+            $sql = 'SELECT * FROM charlycare_users WHERE email=? LIMIT 1';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('s', $inputmail);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
+            $username = $user['username'];
+
+            $userCount = $result->num_rows;
+            $stmt->close();
+
+        if($userCount > 0){
+####    sending email here
+            $_SESSION['token'] = $token;
+            setcookie("charlycareclasic", $token, time() + (86400 * 14), '/');
+        
+            $mail = new PHPMailer(true);
+        
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();                      
+            $mail->Host       = 'ssl://smtp.gmail.com';
+            $mail->SMTPAuth   = true;                  
+            $mail->Username   = GMAIL_EMAIL;
+            $mail->Password   = GMAIL_PASS;       
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            // $mail->Port       = 587;                        
+            $mail->Port       = 465;  
+        
+            $mail->setFrom('noreply@charlycareclasic.com', 'CharlyCareClasic');
+            $mail->addReplyTo('charlycareclasic@gmail.com', 'CharlyCareClasic');
+            $mail->addAddress($inputmail, $username);
+            $mail->Subject = $subject;
+            $mail->IsHTML(true);
+            $mail->Body = $message;
+        
+            if (!$mail->send()) {
+                // echo 'Mailer Error: ' . $mail->ErrorInfo;
+                $errors['mailErr'] = "Password Reset Failed. Try Again. OR contact the Admin";
+                // $msgClass = "alert-danger";
+            } else {
+                $_SESSION['token'] = $token;
+                $_SESSION['email'] = $inputmail;
+                $_SESSION['username'] = $username;
+                setcookie("Charlycareclasic_pwd_token", $token);
+        
+                header('location: enter_pass.php?token='.$token);
+            }	   
+        }else{
+            $errors['db_null'] = "NO Record Found. Check the Email and try again";
+            // $msgClass = "alert-danger";
         }
+    }
 }
 
 ?>

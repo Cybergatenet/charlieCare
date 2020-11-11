@@ -1,4 +1,7 @@
 <?php
+
+require_once './config/gmail.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -36,20 +39,19 @@ if(isset($_POST['contactMsg'])){
                 $mail->isSMTP();                      
                 $mail->Host       = 'ssl://smtp.gmail.com';
                 $mail->SMTPAuth   = true;                  
-                $mail->Username   = 'abelchinedu2@gmail.com';
-                $mail->Password   = 'abchej3647';            
+                $mail->Username   = GMAIL_GMAIL;
+                $mail->Password   = GMAIL_PASS;            
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 // $mail->Port       = 587;                        
                 $mail->Port       = 465;                           
             
                 //Recipients
-                $mail->setFrom('charlycareclasic@gmail.com', 'One User Contact');
+                $mail->setFrom('charlycareclasic@gmail.com', 'User Contact');
                 $mail->addAddress('charlycareclasic@gmail.com', 'Charly_Admin');    
                 // $mail->addAddress('cybergatenet@yahoo.com');             
                 $mail->addReplyTo($contact_email, 'Sender');
                 // $mail->addCC('abelististuwas@yahoo.com');
  
-            
                 // Content
                 $mail->isHTML(true);        
                 $mail->Subject = $title;

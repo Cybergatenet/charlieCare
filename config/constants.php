@@ -12,7 +12,7 @@
     // $server = ' heroku_4046d464e26fbe3';
     // $db = 'us-cdbr-east-02.cleardb.com';
 
-### ClearDb Config MAIN
+### ClearDb Config MAIN ###)()()()()()({}{}{)(){}###
     // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $url = parse_url(getenv("CLEARDB_AMBER_URL"));
 
