@@ -86,13 +86,13 @@
     <script src="./js/bootstrap.min.js"></script>
 <!-- Admin verification -->
     <script type="text/javascript">
-      window.onload = () => {
-          let anwser = prompt("Enter Admin PassKey", "");
+      // window.onload = () => {
+      //     let anwser = prompt("Enter Admin PassKey", "");
   
-          if(anwser != "123456"){
-              window.location.href = "../login_signup/login.php";
-          }
-      }
+      //     if(anwser != "123456"){
+      //         window.location.href = "../login_signup/login.php";
+      //     }
+      // }
   </script>
   </body>
 </html>

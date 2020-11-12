@@ -226,7 +226,7 @@ if(isset($_POST['publish_post'])){
                     </div>
                     <div class="form-group">
                         <label>Post Body</label>
-                        <textarea name="post_body" class="form-control"
+                        <textarea name="post_body" id="editor1" class="form-control"
                             placeholder="Post Body"><?php echo $post_body; ?></textarea>
                     </div>
                     <div class="checkbox">
@@ -252,53 +252,10 @@ if(isset($_POST['publish_post'])){
     </footer>
 
     <!-- Add page Model -->
-    <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span
-                                aria-hidden="true"></span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add Page</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Page Title</label>
-                            <input type="text" class="form-control" placeholder="Page Title">
-                        </div>
-                        <div class="form-group">
-                            <label>Page Title</label>
-                            <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Published
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label>Meta Tags</label>
-                            <input type="text" class="form-control" placeholder="Add Some Tags...">
-                        </div>
-                        <div class="form-group">
-                            <label>Meta Description</label>
-                            <input type="text" class="form-control" placeholder="Add Meta Description...">
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
 
     <!-- ck Editor -->
     <script>
-    CKEDITOR.replace('editor1');
+        CKEDITOR.replace('editor1');
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -306,7 +263,6 @@ if(isset($_POST['publish_post'])){
     <script src="./js/jquery-slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
-    <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/jquery-3.5.1.slim.min.js"></script>
     <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/popper.min.js"></script>

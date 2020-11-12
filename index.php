@@ -14,6 +14,18 @@ if(mysqli_num_rows($return_posts) > 0){
         $posts[] = $row;
     }
 }
+
+function formatText($resolution){
+    $resolution = trim($resolution);
+    $resolution = nl2br($resolution);
+    // $resolution = htmlentities($resolution);
+    // $resolution = preg_replace("\\r\\n","<br>",$resolution);
+    // $resolution = preg_replace("\r\n","<br>",$resolution);
+    $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
+    $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
+    $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
+    return $resolution;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,7 +191,7 @@ if(mysqli_num_rows($return_posts) > 0){
                             <div class="content">
                                 <div class="title"><?php echo $post['post_title']; ?></div>
                                 <!-- <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small> -->
-                                <p><?php echo substr($post['post_body'], 0, 75); ?>...</p>
+                                <p><?php echo substr(formatText($post['post_body']), 0, 75); ?>...</p>
                                 <div class="btn" style="position: relative; bottom: 10%;">
                                     <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
                                 </div>
