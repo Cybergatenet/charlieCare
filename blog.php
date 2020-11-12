@@ -65,10 +65,20 @@ if(mysqli_num_rows($return_posts) > 0){
             text-align: center;
         }
         .content{
-            display: block;
+            display: inline-grid;
+            /* display: block; */
             position: relative;
             max-width: 90%;
             margin: 10px auto;
+        }
+        pre{
+            display: inline-block; 
+            /* font-size: 87.5%; */
+            /* color: #212529; */
+            margin-top: 0;
+            margin-bottom:0;
+            overflow: scroll;
+    
         }
         @media (min-width: 900px){
             .content .btn{
@@ -154,7 +164,7 @@ if(mysqli_num_rows($return_posts) > 0){
                 <div class="content">
                     <div class="title"><?php echo $blog['post_title']; ?></div>
                     <!-- <small class="sub-title h6">Posted By <?php echo $blog['user_username']; ?></small> -->
-                    <p class="text-justify p-4"><?php echo $blog['post_body']; ?></p>
+                    <p class="text-justify p-4"><?php echo nl2br($blog['post_body']); ?></p>
                     <small class="text-primary text-left float-left">Post Details: <?php echo $blog['post_time']; ?>   |  <?php echo $blog['country']; ?></small>
                     <div class="btn">
                         <a href="./blog.php?post_id=<?php echo $blog['id']; ?>" class="btn btn-primary btn-md-block">Prev. Page</a>
