@@ -76,8 +76,8 @@
     if(count($errors) === 0) {
         $pwd = password_hash($pwd, PASSWORD_DEFAULT);
         $char = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
-        $token_hash = substr(str_shuffle($char), 0, 8);
-        $token = password_hash($token_hash, PASSWORD_DEFAULT);
+        $token_unhash = substr(str_shuffle($char), 0, 8);
+        $token = password_hash($token_unhash, PASSWORD_DEFAULT);
         // $token = bin2hex(random_bytes(50));
         $verified = false;
         
@@ -87,15 +87,16 @@
         $stmt->bind_param('sssssssssss', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar, $userTime);
 
         if($stmt->execute()){
-            // login the user here
+            // Signup the user here
             $user_id = $conn->insert_id;
             $_SESSION['id'] = $user_id;
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
             $_SESSION['verified'] = $verified;
+            $_SESSION['token_unhash'] = $token_unhash;
 
 #################### Sending Email Here Using PHPMailer
-            send_email($email, $token, $username);
+            send_email($email, $token, $username, $token_unhash);
 
             // set flash msg
             $_SESSION['msg'] = "Registration Success!";
@@ -130,22 +131,21 @@ if(isset($_POST['login'])){
         $user = $result->fetch_assoc();
 
         if(password_verify($pwd, $user['pwd'])){
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['verified'] = $user['verified'];
             ## check if they are verified
-            // if($user['verified']){
+            if($user['verified']){
                 // login success
-                $_SESSION['id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['verified'] = $user['verified'];
-
-                // set flash msg
-                // $_SESSION['msg'] = "You are now logged In!";
-                // $_SESSION['alert-class'] = "alert-success";
                 header('location: ../User_dashboard/user.php');
                 exit();
-            // }else{
-            //     header('location: ./home.php');
-            // }
+            }else{
+                $_SESSION['msg'] = "You Have Not Verified Your Account!";
+                $_SESSION['alert-class'] = "alert-success";
+
+                header('location: ./home.php');
+            }
         }else{
             $errors['login_failed'] = "Wrong Credentials";
         }
@@ -153,11 +153,9 @@ if(isset($_POST['login'])){
 }
 #################################################
 //  Send email here
-function send_email($input, $OTP, $username){
-    // $username = $_POST['username'];
-    $_SESSION['token'] = $OTP;
-    setcookie("charlycareclasic", $OTP, time() + (86400 * 14), '/');
+function send_email($input, $OTP, $username, $token_unhash){
 
+    setcookie("token", $token_unhash, time() + (86400 * 14), '/');
     
     $mail = new PHPMailer(true);
 

@@ -20,28 +20,29 @@
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
-        // echo $user['token'].'<br>';
-        // echo $get_token;
 
-        if(password_verify($get_token, $user['token'])){
-        // if(password_verify($get_token, $_SESSION['token'])){ // testing this with session
-            // Verification success
+        if($get_token === $user['token'] && password_verify($_SESSION['token_unhash'], $get_token)){
+
             $_SESSION['id'] = $user['id'];
 
-            $sql_update = "UPDATE `charlycare_users` SET `verified`=`true` WHERE `charlycare_users`.`id` = ".$_SESSION['id'];
+            $sql_update = "UPDATE `charlycare_users` SET `verified`='1' WHERE `id`=".$user['id'];
             if(mysqli_query($conn, $sql_update)){
                 $_SESSION['verified'] = true;
+                // login success
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['verified'] = $user['verified'];
 
-                header('Refresh: 5; URL=https://www.charlycareclasic.com/login_signup/login.php');
-
-                // header('location: ./login.php');
+                // header('Refresh: 5; URL=https://www.charlycareclasic.com/User_dashboard/user.php');
+                header('Refresh: 5; URL=../User_dashboard/user.php');
             }else{
                 header('location: ./home.php');
             }
         }else{
             $msg = "Token Failed. Try Again Later";
             $msgClass = "alert-danger";
-            // exit();
+            exit();
         }
     }
 
@@ -121,7 +122,7 @@
 
     <div class="container mt-5 p-4">
         <div class="row">
-            <div class="col-md-12 offset-md-12 form-div login">
+            <div class="col-md-12 offset-md-12 form-div login" title="If you have issues verifying your account, Please us for assistance">
             <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
             <?php if(isset($_SESSION['msg'])): ?>
                 <div class="alert <?php echo $_SESSION['alert-class']; ?>">
@@ -149,9 +150,7 @@
                 <?php endif; ?>
             </div>
         </div>
-    </div>    
-
-
+    </div>
 
     <script src="../js/jquery-3.5.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
