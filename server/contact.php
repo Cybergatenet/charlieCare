@@ -1,5 +1,4 @@
 <?php
-require_once '../config/gmail.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -38,8 +37,8 @@ if(isset($_POST['contactMsg'])){
                 $mail->isSMTP();                      
                 $mail->Host       = 'ssl://smtp.gmail.com';
                 $mail->SMTPAuth   = true;                  
-                $mail->Username   = GMAIL_EMAIL;
-                $mail->Password   = GMAIL_PASS;          
+                $mail->Username   = 'charlycareclasic@gmail.com';
+                $mail->Password   = 'ifechukwudi';          
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 // $mail->Port       = 587;                        
                 $mail->Port       = 465;                           
