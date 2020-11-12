@@ -79,7 +79,7 @@
         $token_hash = substr(str_shuffle($char), 0, 8);
         $token = password_hash($token_hash, PASSWORD_DEFAULT);
         // $token = bin2hex(random_bytes(50));
-        // $verified = false;
+        $verified = false;
         
         $sql = "INSERT INTO `charlycare_users` (`username`, `email`, `pwd`, `token`, `phone`, `address`, `state`, `country`, `bio_data`, `avatar`, `userTime`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         

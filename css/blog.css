@@ -7,6 +7,8 @@
 }
 .culinary-delight .container{
     display: grid;
+    width: 90%;
+    max-width: 90%;
     height: 100%;
     place-items: center;
     text-align: center;
@@ -62,6 +64,7 @@
     display: inline-block;
     line-height: 3px;
     font-size: 1.5rem;
+    padding: 10px;
     font-weight: 700;
     /* display: block; */
 }

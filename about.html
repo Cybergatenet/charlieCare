@@ -1,5 +1,7 @@
 <?php
     require_once './server/sendEmail.php';
+    require_once './server/newletter.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -236,9 +238,9 @@
                     </div>
                     <div class="newsletter-container">
                         <h4>Newsletter</h4>
-                        <form action="" method="POST" class="newsletter-form">
-                            <input type="text" name="" class="newsletter-input" placeholder="Your email address...">
-                            <button type="submit" name="" class="newsletter-btn">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="newsletter-form" method="POST">
+                            <input type="email" name="email" class="newsletter-input" placeholder="Your email address..." required>
+                            <button type="submit" name="newsletter" class="newsletter-btn">
                                 <i class="fas fa-envelope"></i>
                             </button>
                         </form>

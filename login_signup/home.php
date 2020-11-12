@@ -1,6 +1,4 @@
-<?php 
-    // session_start();
-
+<?php
     require_once 'controllers/authcontroller.php'; 
 
     if(!$_SESSION['username']){
@@ -30,7 +28,7 @@
             // Verification success
             $_SESSION['id'] = $user['id'];
 
-            $sql_update = "UPDATE `charlycare_users` SET `verified` = `true` WHERE `users`.`id` = ".$_SESSION['id'];
+            $sql_update = "UPDATE `charlycare_users` SET `verified`=`true` WHERE `charlycare_users`.`id` = ".$_SESSION['id'];
             if(mysqli_query($conn, $sql_update)){
                 $_SESSION['verified'] = true;
 

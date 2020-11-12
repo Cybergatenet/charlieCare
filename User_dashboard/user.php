@@ -9,7 +9,8 @@
     }
 ### Sending Email here
     require_once '../server/contact.php';
-
+    
+    require_once '../server/newletter.php';
 
 //Avaliable Variables 
     $id = $_SESSION['id'];
@@ -368,9 +369,9 @@
                     </div>
                     <div class="newsletter-container">
                         <h4>Newsletter</h4>
-                        <form action="" class="newsletter-form">
-                            <input type="text" class="newsletter-input" placeholder="Your email address...">
-                            <button type="submit" class="newsletter-btn">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="newsletter-form" method="POST">
+                            <input type="email" name="email" class="newsletter-input" placeholder="Your email address..." required>
+                            <button type="submit" name="newsletter" class="newsletter-btn">
                                 <i class="fas fa-envelope"></i>
                             </button>
                         </form>

@@ -1,6 +1,7 @@
 <?php
     require_once './config/db.php'; // connection here
     require_once './server/sendEmail.php';
+    require_once './server/newletter.php';
 
 ###############################################
 // fetching posts here
@@ -178,7 +179,7 @@ if(mysqli_num_rows($return_posts) > 0){
                             <div class="content">
                                 <div class="title"><?php echo $post['post_title']; ?></div>
                                 <!-- <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small> -->
-                                <p><?php echo substr($post['post_body'], 0, 150); ?>...</p>
+                                <p><?php echo substr($post['post_body'], 0, 75); ?>...</p>
                                 <div class="btn" style="position: relative; bottom: 10%;">
                                     <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
                                 </div>
@@ -300,9 +301,9 @@ if(mysqli_num_rows($return_posts) > 0){
                     </div>
                     <div class="newsletter-container">
                         <h4>Newsletter</h4>
-                        <form action="" class="newsletter-form">
-                            <input type="text" class="newsletter-input" placeholder="Your email address...">
-                            <button type="submit" class="newsletter-btn">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="newsletter-form" method="POST">
+                            <input type="email" name="email" class="newsletter-input" placeholder="Your email address..." required>
+                            <button type="submit" name="newsletter" class="newsletter-btn">
                                 <i class="fas fa-envelope"></i>
                             </button>
                         </form>
