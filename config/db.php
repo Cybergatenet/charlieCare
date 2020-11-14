@@ -21,7 +21,7 @@
     // }
 
     if($conn->connect_error) {
-        die('Database error-:)= offline for maintenance'.'<br>');
+        // die('Database error-:)= offline for maintenance');
         // .$conn->connect_error);
         header('location: ../../errors/404.php');
     }

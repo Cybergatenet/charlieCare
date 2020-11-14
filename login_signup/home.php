@@ -4,7 +4,7 @@
     if(!$_SESSION['username']){
         header('location: ./login.php');
     }
-    
+
     $msg = "";
     $msgClass = "";
 
@@ -22,12 +22,11 @@
         $user = $result->fetch_assoc();
 
         if($get_token === $user['token'] && password_verify($_SESSION['token_unhash'], $get_token)){
-
+            $_SESSION['verified'] = true;
             $_SESSION['id'] = $user['id'];
 
             $sql_update = "UPDATE `charlycare_users` SET `verified`='1' WHERE `id`=".$user['id'];
             if(mysqli_query($conn, $sql_update)){
-                $_SESSION['verified'] = true;
                 // login success
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];

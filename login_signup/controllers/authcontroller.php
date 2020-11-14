@@ -26,11 +26,11 @@
         $email = mysqli_real_escape_string($conn, validate_input($_POST['email']));
         $pwd = mysqli_real_escape_string($conn, validate_input($_POST['pwd']));
         $cpwd = mysqli_real_escape_string($conn, validate_input($_POST['cpwd']));
-        $phone = 'No Mobile Number';
-        $address = 'No Address';
-        $state = 'No state';
-        $country = 'No country';
-        $bio_data = 'No Bio-data Available. Bio data is a brief description of yourself. Go to settings, and add your Bio-data';
+        $phone = 'Mobile Number';
+        $address = 'Address';
+        $state = 'state';
+        $country = 'country';
+        $bio_data = 'Bio data is a brief description of yourself. Go to settings, and add your Bio-data';
         $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
         $date = date('Y/m/d H:i:s');
         $userTime = $date;

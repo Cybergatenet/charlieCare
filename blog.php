@@ -30,8 +30,8 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = trim($resolution);
         $resolution = nl2br($resolution);
         // $resolution = htmlentities($resolution);
-        // $resolution = preg_replace("\\r\\n","<br>",$resolution);
-        // $resolution = preg_replace("\r\n","<br>",$resolution);
+        // $resolution = preg_replace('\\r\\n',"<br>",$resolution);
+        // $resolution = preg_replace('\\'," ", $resolution);
         $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
         $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
         $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
