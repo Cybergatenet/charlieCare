@@ -176,8 +176,7 @@ if(mysqli_num_rows($return_posts) > 0){
                 <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" alt="post image"></div>
                 <div class="content">
                     <div class="title"><?php echo $blog['post_title']; ?></div>
-                    <!-- <small class="sub-title h6">Posted By <?php echo $blog['user_username']; ?></small> -->
-                    <p class="text-justify p-4" style="white-space: pre-line"><?php echo formatText($blog['post_body']); ?></p>
+                    <p class="text-justify p-3" style="white-space: pre-line;text-algin: justify;"><?php echo formatText($blog['post_body']); ?></p>
                     <small class="text-primary text-left float-left">Post Details: <?php echo $blog['post_time']; ?>   |  <?php echo $blog['country']; ?></small>
                     <div class="btn">
                         <a href="./blog.php?post_id=<?php echo $blog['id']; ?>" class="btn btn-primary btn-md-block">Prev. Page</a>
