@@ -45,10 +45,10 @@ if(isset($_POST['contactMsg'])){
             
                 //Recipients
                 $mail->setFrom('contact@charlycareclasic.com', 'Contact');
-                $mail->addAddress('charlycareclasic@gmail.com', 'Charlycare contact');               
+                $mail->addAddress('abelchinedu2@gmail.com', 'Charlycare contact');               
                 $mail->addAddress('cybergatenet@outlook.com', 'Charlycare contact');               
                 $mail->addReplyTo($contact_email, 'Sender Contact');
-                $mail->addCC('abelististuwas@yahoo.com');
+                // $mail->addCC('abelististuwas@yahoo.com');
  
                 // Content
                 $mail->isHTML(true);        
