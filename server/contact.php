@@ -44,11 +44,9 @@ if(isset($_POST['contactMsg'])){
                 $mail->Port       = 465;                           
             
                 //Recipients
-                $mail->setFrom('charlycareclasic@gmail.com', 'One User Contact');
-                $mail->addAddress('charlycareclasic@gmail.com', 'Charly_Admin');               
+                $mail->setFrom('contact@charlycareclasic.com', 'User Contact');
+                $mail->addAddress('charlycareclasic@gmail.com', 'Charlycare contact');               
                 $mail->addReplyTo($contact_email, 'Sender');
-                // $mail->addCC('abelististuwas@yahoo.com');
- 
             
                 // Content
                 $mail->isHTML(true);        
@@ -60,8 +58,9 @@ if(isset($_POST['contactMsg'])){
                     $errMsgClass = "alert-success";
                     $contact_name = $contact_email = $contact_msg = '';
             } catch (Exception $e) {
-                $errMsg = "Your email was not successful. Try again later.<br> Mailer Error: {$mail->ErrorInfo}";
-				$errMsgClass = "alert-danger";
+                $errMsg = "Your email was not successful. Try again later";
+                $errMsgClass = "alert-danger";
+                exit();
             }
         }
     }else{

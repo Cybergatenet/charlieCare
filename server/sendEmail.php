@@ -44,11 +44,10 @@ if(isset($_POST['contactMsg'])){
                 $mail->Port       = 465;
             
                 //Recipients
-                $mail->setFrom('contact@charlycareclasic.com', 'TEsting Contact');
+                $mail->setFrom('contact@charlycareclasic.com', 'User Contact');
                 $mail->addAddress('charlycareclasic@gmail.com', 'Charlycare contact');               
-                $mail->addAddress('cybergatenet@outlook.com', 'Charlycare contact');               
+                // $mail->addAddress('cybergatenet@outlook.com', 'Charlycare contact');               
                 $mail->addReplyTo($contact_email, 'Sender Contact');
-                // $mail->addCC('abelististuwas@yahoo.com');
  
                 // Content
                 $mail->isHTML(true);        
