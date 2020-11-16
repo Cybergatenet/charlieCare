@@ -29,12 +29,15 @@ if(mysqli_num_rows($return_posts) > 0){
     function formatText($resolution){
         $resolution = trim($resolution);
         $resolution = nl2br($resolution);
+        // $resolution = stripslashes($resolution);
         // $resolution = htmlentities($resolution);
         // $resolution = preg_replace('\\r\\n',"<br>",$resolution);
-        $resolution = preg_replace('\\'," ", $resolution);
         $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
         $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
         $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
+        // $resolution = preg_replace("/\//", "", $resolution);
+        // $resolution = preg_replace('/\\\\(.?)/', '$1', $resolution);
+        $resolution = str_replace('\\', "\n", str_replace('\\',"\n",$resolution));
         return $resolution;
     }
 
@@ -176,7 +179,7 @@ if(mysqli_num_rows($return_posts) > 0){
                 <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" alt="post image"></div>
                 <div class="content">
                     <div class="title"><?php echo $blog['post_title']; ?></div>
-                    <p class="text-justify p-2" style="white-space: pre-line;text-algin: justify;"><?php echo formatText($blog['post_body']); ?></p>
+                    <p class="text-justify p-2" style="white-space: pre-line;"><?php echo formatText($blog['post_body']); ?></p>
                     <small class="text-primary text-left float-left">Post Details: <?php echo $blog['post_time']; ?>   |  <?php echo $blog['country']; ?></small>
                     <div class="btn h6">
                         <a href="./blog.php?post_id=<?php echo $blog['id']; ?>" class="btn btn-primary btn-md-block">Prev. Page</a>
@@ -343,6 +346,21 @@ if(mysqli_num_rows($return_posts) > 0){
             autoplayTimeout: 5000,
             autoplayHoverPause: true
         });
+    </script>
+    <script>
+        CKEDITOR.on('txtDescription', function (ev) {
+        ev.editor.dataProcessor.writer.setRules('br',
+            {
+                indent: false,
+                breakBeforeOpen: false,
+                breakAfterOpen: false,
+                breakBeforeClose: false,
+                breakAfterClose: false
+            });
+        });
+
+        config.enterMode = CKEDITOR.ENTER_BR;
+        config.shiftEnterMode = CKEDITOR.ENTER_BR;
     </script>
 </body>
 </html>
