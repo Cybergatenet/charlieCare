@@ -18,12 +18,15 @@ if(mysqli_num_rows($return_posts) > 0){
 function formatText($resolution){
     $resolution = trim($resolution);
     $resolution = nl2br($resolution);
+    // $resolution = stripslashes($resolution);
     // $resolution = htmlentities($resolution);
-    // $resolution = preg_replace("\\r\\n","<br>",$resolution);
-    // $resolution = preg_replace("\r\n","<br>",$resolution);
+    // $resolution = preg_replace('\\r\\n',"<br>",$resolution);
     $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
     $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
     $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
+    // $resolution = preg_replace("/\//", "", $resolution);
+    // $resolution = preg_replace('/\\\\(.?)/', '$1', $resolution);
+    $resolution = str_replace('\\', "\n", str_replace('\\',"\n",$resolution));
     return $resolution;
 }
 ?>
