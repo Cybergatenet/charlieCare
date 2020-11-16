@@ -37,15 +37,15 @@ if(isset($_POST['contactMsg'])){
                 $mail->isSMTP();                      
                 $mail->Host       = 'ssl://smtp.gmail.com';
                 $mail->SMTPAuth   = true;                  
-                $mail->Username   = 'abelchinedu2@gmail.com';
-                $mail->Password   = 'abchej3647';            
+                $mail->Username   = 'charlycareclasic@gmail.com';
+                $mail->Password   = 'ifechukwudi2023';            
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 // $mail->Port       = 587;                        
                 $mail->Port       = 465;
             
                 //Recipients
-                $mail->setFrom('contact@charlycareclasic.com', 'Contact');
-                $mail->addAddress('abelchinedu2@gmail.com', 'Charlycare contact');               
+                $mail->setFrom('contact@charlycareclasic.com', 'TEsting Contact');
+                $mail->addAddress('charlycareclasic@gmail.com', 'Charlycare contact');               
                 $mail->addAddress('cybergatenet@outlook.com', 'Charlycare contact');               
                 $mail->addReplyTo($contact_email, 'Sender Contact');
                 // $mail->addCC('abelististuwas@yahoo.com');
