@@ -18,15 +18,13 @@ if(mysqli_num_rows($return_posts) > 0){
 function formatText($resolution){
     $resolution = trim($resolution);
     $resolution = nl2br($resolution);
-    // $resolution = stripslashes($resolution);
+    $resolution = stripslashes($resolution);
     // $resolution = htmlentities($resolution);
-    // $resolution = preg_replace('\\r\\n',"<br>",$resolution);
     $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
     $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
     $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
-    // $resolution = preg_replace("/\//", "", $resolution);
-    // $resolution = preg_replace('/\\\\(.?)/', '$1', $resolution);
-    $resolution = str_replace('\\', "\n", str_replace('\\',"\n",$resolution));
+    $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
+    $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
     return $resolution;
 }
 ?>
@@ -102,18 +100,6 @@ function formatText($resolution){
                 <p>Inventing the life we deserve through innovation and creativity</p>
             </div>
         </div>
-        <!-- <div class="clip clip2">
-            <div class="content">
-                <h2>Our Mission</h2>
-                <p>Inventing the life we deserve through innovation and creativity</p>
-            </div>
-        </div>
-        <div class="clip clip3">
-            <div class="content">
-                <h2>Our Mission</h2>
-                <p>Inventing the life we deserve through innovation and creativity</p>
-            </div>
-        </div> -->
     </div>
     <!-- ending here -->
     <section class="hero" id="hero">
