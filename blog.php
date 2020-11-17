@@ -31,12 +31,14 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = nl2br($resolution);
         $resolution = stripslashes($resolution);
         // $resolution = htmlentities($resolution);
-        $resolution = str_replace(' mm ',"",str_replace(' m ',"",$resolution));
+        $resolution = str_replace('rnrn',"",str_replace('rn',"",$resolution));
         $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
         $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
         $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
         $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
         $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
+
+        $resolution = strip_tags(html_entity_decode($resolution));
         return $resolution;
     }
 
@@ -153,7 +155,7 @@ if(mysqli_num_rows($return_posts) > 0){
             <p style="color: #fff;" class="sub-headline " data-wait="6000" data-words='["through innovation and creativity"]'>through innovation</p>
             <br><br><br><br><br>
             <p style="color: #fff;" class="sub-headline">and creativity</p>
-            <br><br><br><br><br>
+            <br><br><br>
             <h1 class="headline">Charly_Care_Cla$ic</h1>
             <div class="headline-description">
                 <div class="separator">

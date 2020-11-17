@@ -113,7 +113,7 @@ function formatText($resolution){
             <p style="color: #fff;" class="sub-headline " data-wait="6000" data-words='["through innovation and creativity"]'>through innovation</p>
             <br><br><br><br><br>
             <p style="color: #fff;" class="sub-headline">and creativity</p>
-            <br><br><br><br><br>
+            <br><br><br>
             <h1 class="headline">Charly_Care_Cla$ic</h1>
             <div class="headline-description">
                 <div class="separator">
