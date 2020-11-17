@@ -17,13 +17,13 @@
 	// 	header("location: ../index.php");
 	// }
 
-    $username = "Charly_Admin";
+    $username = "Charlycare_Admin";
     $email = "charlycareclasic@gmail.com";
     $phone = '+23323-865-1493';
     $address = '190/B Castle Road, Accra | Ghana';
     $state = 'Accra';
     $country = 'Ghana';
-    $bio_data = 'No Bio-data Avaliable. Bio data is a brief description of yourself. Go to settings, and add your Bio-data. OR contact webmaster for more details';
+    $bio_data = 'Bio data is a brief description of yourself. Go to settings, and add your Bio-data. OR contact webmaster for more details';
     $avatar = 'defaultAvatar.png'; // sanitize pics before uplaod
     $date = date('Y/m/d H:i:s');
     $userTime = $date;
