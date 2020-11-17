@@ -1,21 +1,21 @@
 <?php
-    // session_start();
+    session_start();
 
     require('./db.php');
 
-    // if($_SESSION){
-	// 	session_destroy();
-	// 	unset($_SESSION['id']);
-	// 	unset($_SESSION['username']);
-	// 	unset($_SESSION['email']);
-	// 	unset($_SESSION['verified']);
-	// 	unset($_SESSION['msg']);
-	// 	unset($_SESSION['alert-class']);
+    if($_SESSION){
+		session_destroy();
+		unset($_SESSION['id']);
+		unset($_SESSION['username']);
+		unset($_SESSION['email']);
+		unset($_SESSION['verified']);
+		unset($_SESSION['msg']);
+		unset($_SESSION['alert-class']);
 		
-	// 	header("location: ../login_signup/login.php");
-	// }else{
-	// 	header("location: ../index.php");
-	// }
+		header("location: ../login_signup/login.php");
+	}else{
+		header("location: ../index.php");
+	}
 
     $username = "Charlycare_Admin";
     $email = "charlycareclasic@gmail.com";
@@ -38,11 +38,11 @@
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('sssssssssssi', $username, $email, $pwd, $token, $phone, $address, $state, $country, $bio_data, $avatar, $userTime, $isAdmin);
 
-    if($stmt->execute()){
-        echo "Admin data Inserted successfully";
-    }else{
-        echo "NOT successful".'<br>'.mysqli_error($conn);
-    }
+    // if($stmt->execute()){
+    //     echo "Admin data Inserted successfully";
+    // }else{
+    //     echo "NOT successful".'<br>'.mysqli_error($conn);
+    // }
 
 ?>
 
