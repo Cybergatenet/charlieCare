@@ -37,8 +37,6 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
         $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
         $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
-
-        // $resolution = strip_tags(html_entity_decode($resolution));
         return $resolution;
     }
 
@@ -177,7 +175,7 @@ if(mysqli_num_rows($return_posts) > 0){
         <div class="row p-3 text-justify">          
         <?php foreach($blog_posts as $blog): ?>
             <div class="card p-3">
-                <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" alt="post image"></div>
+                <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" width="100%" alt="post image"></div>
                 <div class="content">
                     <div class="title"><?php echo $blog['post_title']; ?></div>
                     <p class="p-2" style="text-align: justify; white-space: pre-line;"><?php echo formatText($blog['post_body']); ?></p>

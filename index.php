@@ -20,6 +20,7 @@ function formatText($resolution){
     $resolution = nl2br($resolution);
     $resolution = stripslashes($resolution);
     // $resolution = htmlentities($resolution);
+    $resolution = str_replace('rnrn',"",str_replace('rn',"",$resolution));
     $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
     $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
     $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
