@@ -38,7 +38,7 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
         $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
 
-        $resolution = strip_tags(html_entity_decode($resolution));
+        // $resolution = strip_tags(html_entity_decode($resolution));
         return $resolution;
     }
 
