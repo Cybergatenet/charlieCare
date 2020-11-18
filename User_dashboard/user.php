@@ -69,8 +69,6 @@
             $msgClass = 'alert-danger';
         }
     }
-    
-
 ######################################
     //  mysql --host=us-cdbr-east.cleardb.com --user=b280ac36b578f6 --password=eaa82564 --reconnect heroku_4046d464e26fbe3 < charlycare_users.sql 
 
@@ -104,6 +102,12 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/user.css">
     <style>
+        header{
+            background-color: #e40046;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            box-shadow: 0px -3px 3px rgba(0, 0, 288, .9) inset;
+        }
         .show{
             position: relative;
         }
@@ -133,7 +137,7 @@
 </head>
 <body>
     <div id="hero"></div>
-    <header style="background-color: #e40046; padding-top: 0px; box-shadow: 0px -3px 3px rgba(0, 0, 288, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
+    <header> <!--initial-red=#e40046 || blue=#2196f3;-->
         <div class="container">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -171,7 +175,7 @@
         <div class="profile-header">
             <div class="profile-img">
                 <!-- <img src="../img/user.png" width="200px" alt=""> -->
-                <img src="../uploads/<?php echo $user['avatar']; ?>" width="200px" alt="No image record. Enter New image">
+                <img src="../uploads/<?php echo $user['avatar']; ?>" width="200px" alt="No image record. Upload New image">
             </div>
             <div class="profile-nav-info">
                 <h3 class="user-name"><?php echo $username; ?></h3>
@@ -180,7 +184,7 @@
                     <span class="country"><?php echo $user['country']; ?></span>
                 </div>
             </div>
-            <div class="profile-option">
+            <div class="profile-option" title="One new message">
                 <div class="notification">
                     <i class="fa fa-bell"></i>
                     <span class="alert-msg">1</span> <!-- function to return chat msg_numbers -->
@@ -396,9 +400,7 @@
       
         image.addEventListener('change', () => {
             // console.log(image.value);
-
-            validateImage();
-            
+            validateImage();       
         });
 
         function validateImage() {
@@ -424,7 +426,6 @@
                 msg.innerHTML = '<span class="fa fa-check"></span>   Image is Valid. ';
             return true;
         }
-
         // show_hide password here
         let showEye = document.querySelector('.fa-eye');
         let pwd = document.querySelector('#pwd');
@@ -435,8 +436,7 @@
 
         showEye.addEventListener('mouseup', () => {
             pwd.setAttribute('type', 'password');
-        });
-        
+        });    
     </script>
 </body>
 </html>

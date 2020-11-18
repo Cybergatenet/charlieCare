@@ -1,8 +1,27 @@
 // Init On DOM Load
 document.addEventListener('DOMContentLoaded', init);
-// Init App
+// Init All App
 function init(){
-    const txtElement = document.querySelector('.typeWriter');
+    tyingOne();
+    tyingTwo();
+    tyingThree();
+}
+function tyingOne(){
+    const txtElement = document.querySelector('.typeWriterOne');
+    const words = JSON.parse(txtElement.getAttribute('data-words'));
+    const wait = txtElement.getAttribute('data-wait');
+// Init TyperWritering
+    new TyperWriter(txtElement, words, wait);
+}
+function tyingTwo(){
+    const txtElement = document.querySelector('.typeWriterTwo');
+    const words = JSON.parse(txtElement.getAttribute('data-words'));
+    const wait = txtElement.getAttribute('data-wait');
+// Init TyperWritering
+    new TyperWriter(txtElement, words, wait);
+}
+function tyingThree(){
+    const txtElement = document.querySelector('.typeWriterThree');
     const words = JSON.parse(txtElement.getAttribute('data-words'));
     const wait = txtElement.getAttribute('data-wait');
 // Init TyperWritering

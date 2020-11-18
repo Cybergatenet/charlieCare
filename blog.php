@@ -31,7 +31,7 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = nl2br($resolution);
         $resolution = stripslashes($resolution);
         // $resolution = htmlentities($resolution);
-        $resolution = str_replace('rnrn',"",str_replace(' rn ',"",$resolution));
+        $resolution = str_replace('rnrn',"",str_replace(' rn',"",$resolution));
         $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
         $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
         $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
@@ -131,7 +131,7 @@ if(mysqli_num_rows($return_posts) > 0){
                         <a href="./index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./about.php" class="nav-link active">About Us</a>
+                        <a href="./about.html" class="nav-link active">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a href="./login_signup/login.php" class="nav-link">Log In</a>
@@ -148,11 +148,11 @@ if(mysqli_num_rows($return_posts) > 0){
                 <span class="first-letter">I</span>nventing
             </h2>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriter" data-wait="6000" data-words='["the life we deserve"]'></p>
+            <p style="color: #fff;" class="sub-headline typeWriterOne" data-wait="6000" data-words='["the life we deserve"]'></p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline " data-wait="6000" data-words='["through innovation and creativity"]'>through innovation</p>
+            <p style="color: #fff;" class="sub-headline typeWriterTwo" data-wait="8000" data-words='["through innovation"]'></p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline">and creativity</p>
+            <p style="color: #fff;" class="sub-headline typeWriterThree"  data-wait="10000" data-words='["and creativity"]'></p>
             <br><br><br>
             <h1 class="headline">Charly_Care_Cla$ic</h1>
             <div class="headline-description">

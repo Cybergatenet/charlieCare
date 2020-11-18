@@ -105,15 +105,15 @@ function formatText($resolution){
     <!-- ending here -->
     <section class="hero" id="hero">
         <div class="container">
-            <h2 class="sub-headline" style="margin-top: 20px;">
+            <h2 class="sub-headline" style="margin-top: 40px;">
                 <span class="first-letter">I</span>nventing
             </h2>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriter" data-wait="6000" data-words='["the life we deserve"]'></p>
+            <p style="color: #fff;" class="sub-headline typeWriterOne" data-wait="6000" data-words='["the life we deserve"]'></p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline " data-wait="6000" data-words='["through innovation and creativity"]'>through innovation</p>
+            <p style="color: #fff;" class="sub-headline typeWriterTwo" data-wait="8000" data-words='["through innovation"]'></p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline">and creativity</p>
+            <p style="color: #fff;" class="sub-headline typeWriterThree"  data-wait="10000" data-words='["and creativity"]'></p>
             <br><br><br>
             <h1 class="headline">Charly_Care_Cla$ic</h1>
             <div class="headline-description">
@@ -129,16 +129,6 @@ function formatText($resolution){
             </div>
         </div>
     </section>
-    <!-- hero ends here -->
-    <!-- type writer effer here -->
-    <!-- <section class="motto">
-        <div class="container">
-            <h3 style="color: black; font-size: large;" class="typeWriter" data-wait="1000"
-                data-words='["Inventing the life we deserve through innovation and creativity"]'>|</h3>
-            <a href="#" class="btn">Read More</a>
-        </div>
-    </section> -->
-    <!-- type writer effer ends here -->
 
     <section class="discover-our-story">
         <div class="container">

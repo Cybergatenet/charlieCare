@@ -37,8 +37,10 @@ section{
     overflow: hidden;
 }
 img{
-    /* width: 100%; */
-    max-width: 100%;
+    width: 100%;
+    /* max-width: 100%; */
+    min-width: 100%;
+    position: relative;
 }
 a{
     text-decoration: none;
@@ -84,6 +86,7 @@ header.sticky .container .nav .menu-toggle .new_menu .lin{
     justify-content: center;
     align-items: center;
     margin-left: -150px;
+    margin-top: 10px;
 }
 .main-header-title a{
     /* float: left; */
@@ -728,6 +731,35 @@ footer{
         display: inline-block;
         /* width: 25%; */
         border-radius: .4rem;
+    }
+}
+@media (max-width: 350px){
+    .headline{
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: .3rem;
+        margin-top: 0;
+    }
+    .sub-headline{
+        font-size: 2rem;
+        font-weight: 200;
+        line-height: 0.3px;
+        letter-spacing: 1.5px;
+        margin-top: -30px;
+    }
+    .header-title {
+        font-size: 1.2rem;
+        margin-left: 10px;
+    }
+    .main-header-title {
+        margin-left: 30px;
+        font-size: 85%;
+    }
+    .logo{
+        /* width: 100%; */
+        /* max-width: 100%; */
+        min-width: 100%!important;
+        margin-left: -100px!important;
     }
 }
 
