@@ -31,7 +31,7 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = nl2br($resolution);
         $resolution = stripslashes($resolution);
         // $resolution = htmlentities($resolution);
-        $resolution = str_replace('rnrn',"",str_replace('rn',"",$resolution));
+        $resolution = str_replace('rnrn',"",str_replace(' rn ',"",$resolution));
         $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
         $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
         $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
@@ -177,7 +177,7 @@ if(mysqli_num_rows($return_posts) > 0){
             <div class="card p-3">
                 <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" width="100%" alt="post image"></div>
                 <div class="content">
-                    <div class="title"><?php echo $blog['post_title']; ?></div>
+                    <center><div class="title"><?php echo $blog['post_title']; ?></div></center>
                     <p class="p-2" style="text-align: justify; white-space: pre-line;"><?php echo formatText($blog['post_body']); ?></p>
                     <small class="text-primary text-left float-left">Post Details: <?php echo $blog['post_time']; ?>   |  <?php echo $blog['country']; ?></small>
                     <div class="btn h6">
