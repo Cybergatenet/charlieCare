@@ -33,7 +33,7 @@ if(isset($_POST['contactMsg'])){
 				$body .= '</body></html>';
             try {
                 //Server settings
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->SMTPDebug = 0;
                 $mail->isSMTP();                      
                 $mail->Host       = 'ssl://smtp.gmail.com';
                 $mail->SMTPAuth   = true;                  

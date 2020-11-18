@@ -33,7 +33,8 @@ if(isset($_POST['contactMsg'])){
                 // Instantiation and passing `true` enables exceptions
                 $mail = new PHPMailer(true);
                 //Server settings
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->SMTPDebug = 0;
                 $mail->isSMTP();                      
                 $mail->Host       = 'ssl://smtp.gmail.com';
                 $mail->SMTPAuth   = true;                  
