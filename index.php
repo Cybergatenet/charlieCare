@@ -20,7 +20,7 @@ function formatText($resolution){
     $resolution = nl2br($resolution);
     $resolution = stripslashes($resolution);
     // $resolution = htmlentities($resolution);
-    $resolution = str_replace('rnrn',"",str_replace('rn',"",$resolution));
+    $resolution = str_replace('rnrn',"",str_replace('rn ',"",$resolution));
     $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
     $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
     $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
@@ -191,10 +191,9 @@ function formatText($resolution){
             </div>
             <div class="content">
                 <div class="serviceBx animate-left">
-                    <video class="video" src="" poster="" width="100%" controls></video>
-                    <h2>Download This Video</h2>
-                    <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <video class="video" src="./video/charlycareclacis.mp4" poster="" width="100%" controls></video>
+                    <h2>Charlycareclasic</h2>
+                    <p>﻿Welcome to Charlycareclasic. Where we invent the life we deserve through innovation and creativity.</p>
                 </div>
                 <!-- <div class="serviceBx animate-left">
                     <video class="video" src="" poster="" width="100%" controls></video>
