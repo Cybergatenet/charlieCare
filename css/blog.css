@@ -65,11 +65,11 @@
 }
 .card .content .btn{
     display: inline-block;
+    /* display: block; */
     line-height: 3px;
     font-size: 1.5rem;
     padding: 10px;
     font-weight: 700;
-    /* display: block; */
 }
 .card .content .btn button{
     background-color: #e74c3c;

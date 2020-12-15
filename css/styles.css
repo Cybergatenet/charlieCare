@@ -716,9 +716,9 @@ footer{
     .social-icons i{
         opacity: 1;
     }
-    .newsletter-btn{
+    /* .newsletter-btn{
         margin-left: 7.5rem;
-    }
+    } */
     .fas.fa-envelope{
         margin-left: -25px;
     }

@@ -30,10 +30,11 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = trim($resolution);
         $resolution = nl2br($resolution);
         $resolution = stripslashes($resolution);
-        // $resolution = htmlentities($resolution);
-        $resolution = str_replace('rnrn',"",str_replace('rn ',"",$resolution));
-        $resolution = str_replace('rnrn ',"",str_replace(' rn',"",$resolution));
-        $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
+        $resolution = htmlentities($resolution);
+        $resolution = htmlspecialchars($resolution);
+        $resolution = str_replace('rn ',"",str_replace('rn ',"",$resolution));
+        $resolution = str_replace('rnrn ',"", str_replace(' rn',"",$resolution));
+        $resolution = str_replace('r ',"\r", str_replace('n ',"\n",$resolution));
         $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
         $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
         $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
@@ -200,14 +201,14 @@ if(mysqli_num_rows($return_posts) > 0){
             <div class="content">
                 <div class="slider owl-carousel">
                     <?php foreach($posts as $post): ?>
-                        <div class="card" style="min-height: 400px; max-height: 400px; height: 400px;">
+                        <div class="card" style="min-height: 420px; max-height: 420px; height: 420px;">
                             <div class="img">
                                 <img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image">
                             </div>
                             <div class="content">
                                 <div class="title"><?php echo $post['post_title']; ?></div>
                                 <p><?php echo substr(formatText($post['post_body']), 0, 75); ?>...</p>
-                                <div class="btn" style="position: relative;">
+                                <div class="btn" style="position: absolute; bottom: -50px;">
                                     <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
                                 </div>
                             </div>

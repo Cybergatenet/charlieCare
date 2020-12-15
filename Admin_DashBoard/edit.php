@@ -82,6 +82,21 @@
         $msgClass = 'alert-success';
     }
   }
+############################# fn () => check text before edit
+function formatText($resolution){
+    $resolution = trim($resolution);
+    $resolution = nl2br($resolution);
+    $resolution = stripslashes($resolution);
+    $resolution = htmlentities($resolution);
+    $resolution = htmlspecialchars($resolution);
+    $resolution = str_replace('rnrn',"",str_replace('rn ',"",$resolution));
+    $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
+    $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
+    $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
+    $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
+    $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
+    return $resolution;
+}
 
 ?>
 <!doctype html>
@@ -213,7 +228,7 @@
                     <div class="form-group">
                         <label>Post Body</label>
                         <textarea name="post_body" id="editor1" class="form-control"
-                            placeholder="Post Body"><?php echo $edit['post_body']; ?></textarea>
+                            placeholder="Post Body"><?php echo formatText($edit['post_body']); ?></textarea>
                     </div>
                     <div class="checkbox">
                         <label>
