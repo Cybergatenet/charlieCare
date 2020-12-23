@@ -30,8 +30,6 @@
 //     $app['monolog']->addDebug('logging output.');
 //     return str_repeat('Hello', getenv('TIMES'));
 //   });
-    
-
 
 #####
 ##CLEARDB_DATABASE_URL:      mysql://bb2bad4130e48c:89dea8e7@us-cdbr-east-02.cleardb.com/heroku_4855ef7cc781658?reconnect=true
