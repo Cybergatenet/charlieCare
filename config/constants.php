@@ -20,6 +20,9 @@
     $username = $url["user"];
     $password = $url["pass"];
     $db = substr($url["path"], 1);
+
+    echo $server."the server".'<br>';
+    var_dump($url);
 ### ClearDb Config MAIN
 
 
