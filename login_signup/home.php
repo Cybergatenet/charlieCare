@@ -48,6 +48,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,25 +65,27 @@
     <link rel="stylesheet" href="../css/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <link rel="stylesheet" type="text/css" href="../css/login.css"> 
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
     <style>
-        body{
-            min-height: 100vh;
-        }
-        .container{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 3px solid rgba(0, 0, 0, 0.5);
-            padding: 20px 100px;
-            width: 400px;
-            border-radius: 5px;
-        }
+    body {
+        min-height: 100vh;
+    }
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 3px solid rgba(0, 0, 0, 0.5);
+        padding: 20px 100px;
+        width: 400px;
+        border-radius: 5px;
+    }
     </style>
 </head>
+
 <body>
-<header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;">
+    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;">
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -117,13 +120,14 @@
     </header>
     <!-- header ends here -->
     <br><br><br><br><br>
-            <br><br>
+    <br><br>
 
     <div class="container mt-5 p-4">
         <div class="row">
-            <div class="col-md-12 offset-md-12 form-div login" title="If you have issues verifying your account, Please us for assistance">
-            <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
-            <?php if(isset($_SESSION['msg'])): ?>
+            <div class="col-md-12 offset-md-12 form-div login"
+                title="If you have issues verifying your account, Please contact us for assistance">
+                <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
+                <?php if(isset($_SESSION['msg'])): ?>
                 <div class="alert <?php echo $_SESSION['alert-class']; ?>">
                     <?php 
                         echo $_SESSION['msg'];
@@ -131,21 +135,23 @@
                         unset($_SESSION['alert-class']);
                     ?>
                 </div>
-            <?php endif; ?>
+                <?php endif; ?>
 
                 <h3>Welcome, <?php echo ucfirst($_SESSION['username']); ?></h3>
 
                 <a href="./login.php?logout=1" class="btn btn-danger m-2">Log out</a>
 
                 <?php if(!$_SESSION['verified']): ?>
-                    <div class="alert alert-warning h4">
-                        You need to verify your account.
-                        Sign in to your email account and click on the verification link we just emailed to you at <strong><?php echo $_SESSION['email']; ?></strong>
-                    </div>
+                <div class="alert alert-warning h4">
+                    You need to verify your account.
+                    Sign in to your email account and click on the verification link we just emailed to you at
+                    <strong><?php echo $_SESSION['email']; ?></strong>
+                </div>
                 <?php endif; ?>
 
                 <?php if($_SESSION['verified']): ?>
-                    <a href="./login.php" class="btn btn-block btn-lg btn-primary" title="Click this button to continue">You are verified!</a>
+                <a href="./login.php" class="btn btn-block btn-lg btn-primary" title="Click this button to continue">You
+                    are verified!</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -155,4 +161,5 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
+
 </html>

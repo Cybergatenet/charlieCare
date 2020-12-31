@@ -9,8 +9,9 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="CharlyCareCla$ic is a single family office that thrives on the ideology of inventing the life we 
     deserve through innovation and creativity.">
@@ -25,8 +26,10 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/login.css">
 </head>
+
 <body>
-    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
+    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;">
+        <!--initial-red=#e40046 || blue=#2196f3;-->
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -50,18 +53,19 @@
                         <a href="../index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
+                        <a href="../about.html" onclick="alert('Oop!..offline for maintenance!');"
+                            class="nav-link">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./signup.php" onclick="alert('sorry, this app is under maintenance');" class="nav-link active">Sign Up</a>
+                        <a href="./signup.php" onclick="alert('sorry, this app is under maintenance');"
+                            class="nav-link active">Sign Up</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
     <!-- header ends here -->
-    <br><br><br><br><br>
-            <br><br>
+    <!-- <br><br><br> -->
     <section>
         <div class="wrapper">
             <div class="user signinBx">
@@ -71,17 +75,19 @@
                         <h2>Sign In</h2>
                         <!-- error msg here -->
                         <?php if(count($errors) > 0): ?>
-                            <div class="alert alert-danger">
-                                <?php foreach($errors as $error): ?>
-                                    <li><?php echo $error; ?></li>
-                                <?php endforeach; ?>
-                            </div>
+                        <div class="alert alert-danger">
+                            <?php foreach($errors as $error): ?>
+                            <li><?php echo $error; ?></li>
+                            <?php endforeach; ?>
+                        </div>
                         <?php endif; ?>
 
-                        <input type="text" name="username" placeholder="Username or Email" value="<?php echo $username; ?>">
+                        <input type="text" name="username" placeholder="Username or Email"
+                            value="<?php echo $username; ?>">
                         <input type="password" name="pwd" placeholder="Password">
                         <input type="submit" value="Login" name="login">
-                        <p class="signup">Don't have an account ? <a href="./signup.php">Sign Up</a><br><br><br><a href="../server/reset_pass.php">Forgot Password?</a></p>
+                        <p class="signup">Don't have an account ? <a href="./signup.php">Sign Up</a><br><br><br><a
+                                href="../server/reset_pass.php">Forgot Password?</a></p>
                     </form>
                 </div>
             </div>
@@ -95,4 +101,5 @@
     <script src="../js/main.js"></script>
     <script src="../js/login.js"></script>
 </body>
+
 </html>

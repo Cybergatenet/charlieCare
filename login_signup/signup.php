@@ -9,6 +9,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,14 +26,16 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/login.css">
     <style>
-        .error {
-            color: red;
-            font-size: 90%;
-        }
+    .error {
+        color: red;
+        font-size: 90%;
+    }
     </style>
 </head>
+
 <body>
-    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;"> <!--initial-red=#e40046 || blue=#2196f3;-->
+    <header style="background-color: #2196f3; padding-top: 0px; box-shadow: 0px -3px 5px rgba(0, 0, 0, .9) inset;">
+        <!--initial-red=#e40046 || blue=#2196f3;-->
         <div class="wrapper">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -56,7 +59,8 @@
                         <a href="../index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
+                        <a href="../about.html" onclick="alert('Oop!..offline for maintenance!');"
+                            class="nav-link">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a href="./login.php" class="nav-link active">Log In</a>
@@ -66,24 +70,24 @@
         </div>
     </header>
     <!-- header ends here -->
-    <br><br><br><br><br>
-            <br><br>
+    <!-- <br><br><br> -->
     <section>
         <div class="wrapper">
             <div class="user signupBx">
-                <div class="formBx">    
+                <div class="formBx">
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" name="signupForm" id="signupForm">
                         <h2>Create an account</h2>
                         <!-- error msg here -->
                         <?php if(count($errors) > 0): ?>
-                            <div class="alert alert-danger">
-                                <?php foreach($errors as $error): ?>
-                                    <li><?php echo $error; ?></li>
-                                <?php endforeach; ?>
-                            </div>
+                        <div class="alert alert-danger">
+                            <?php foreach($errors as $error): ?>
+                            <li><?php echo $error; ?></li>
+                            <?php endforeach; ?>
+                        </div>
                         <?php endif; ?>
 
-                        <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Enter Your Full Name" title="Surname First, then other Names">
+                        <input type="text" name="username" value="<?php echo $username; ?>"
+                            placeholder="Enter Your Full Name" title="Surname First, then other Names">
                         <div class="error" id="usernameErr"></div>
                         <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Enter Your Email">
                         <div class="error" id="emailErr"></div>
@@ -108,4 +112,5 @@
     <script src="../js/login.js"></script>
     <script src="../js/validation.js"></script>
 </body>
+
 </html>

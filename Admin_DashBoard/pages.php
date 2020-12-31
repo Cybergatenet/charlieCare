@@ -31,7 +31,8 @@
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="CharlyCareCla$ic is a single family office that thrives on the ideology of inventing the life we 
@@ -51,251 +52,303 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <!-- Add ck-editor cdn -->
     <script src="https://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
-      <a class="navbar-brand" href="../index.php">CharlyCareCla$ic</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <a class="navbar-brand" href="../index.php">CharlyCareCla$ic</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">DashBoard</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="./pages.php">Pages<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./posts.php">Posts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./users.php">Users</a>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">DashBoard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./pages.php">Pages<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./posts.php">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./users.php">Users</a>
+                </li>
+            </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Welcome, Admin<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./index.php?logout=true">Logout</a>
-          </li>
-          </ul>
-      </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Welcome, Admin<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.php?logout=true">Logout</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <header id="header">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Pages <small class="h6"> Manage Site Pages</small></h1>
-          </div>
-          <div class="col-md-2">
-            <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a class="dropdown-item" type="button" data-toggle="model" data-target="#addPage">Add Page</a></li>
-                <li><a class="dropdown-item" href="new_post.php">Add Post</a></li>
-                <li><a class="dropdown-item" href="users.php">Add User</a></li>
-              </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Pages <small class="h6"> Manage
+                            Site Pages</small></h1>
+                </div>
+                <div class="col-md-2">
+                    <div class="dropdown create">
+                        <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Content</button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a class="dropdown-item" type="button" data-toggle="model" data-target="#addPage">Add
+                                    Page</a></li>
+                            <li><a class="dropdown-item" href="new_post.php">Add Post</a></li>
+                            <li><a class="dropdown-item" href="users.php">Add User</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </header>
 
     <section id="breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb">
-            <li><a href="admin.php">DashBoard</a></li>
-          <li class="active">Pages</li>
-        </ol>
-      </div>
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="admin.php">DashBoard</a></li>
+                <li class="active">Pages</li>
+            </ol>
+        </div>
     </section>
 
     <section id="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-          <div class="list-group">
-              <a href="admin.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
-              <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
-              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
-              <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
-            </div>
-            <div class="well">
-              <h4 class="h6">Disk space Used</h4>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">loading...</div>
-              </div>
-              <h4 class="h6">BandWidth Used</h4>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">loading...</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-9">
-            <div class="panel panel-default">
-              <div class="panel-heading main-color-bg">
-                <h3 class="panel-title p-2">Pages</h3>
-              </div>
-              <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Filter Pages...">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <a href="admin.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs"
+                                aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
+                        <a href="pages.php" class="list-group-item"><span class="fa fa-list"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
+                        <a href="posts.php" class="list-group-item"><span class="fa fa-pen"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small
+                                    class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
+                        <a href="users.php" class="list-group-item"><span class="fa fa-user"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Users <span
+                                class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
+                    </div>
+                    <div class="well">
+                        <h4 class="h6">Disk space Used</h4>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                aria-valuemax="100" style="width: 60%;">loading...</div>
+                        </div>
+                        <h4 class="h6">BandWidth Used</h4>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                aria-valuemax="100" style="width: 40%;">loading...</div>
+                        </div>
                     </div>
                 </div>
-                <br>
-                <table class="table table-striped table-hover">
-                    <tr>
-                        <th>Title</th>
-                        <th>Published</th>
-                        <th>Created</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>Home Page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 15, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>About Page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 15, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Login Page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 15, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>User Page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 12, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>DashBoard page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 9, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Admin page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 9, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Posts page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 9, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>SignUp page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 1, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Users page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 1, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Edit_Post Page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 28, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Validate_Email Page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 28, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                    <tr>
-                        <td>Blog Page</td>
-                        <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
-                        <td>Sept 30, 2020</td>
-                        <td><a class="btn btn-default" href="#">Edit</a> <a class="btn btn-danger" onclick="alert('NOT working yet. Contact webmaster to complete request');" href="#">Delete</a> </td>
-                    </tr>
-                </table>
-              </div>
+                <div class="col-md-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading main-color-bg">
+                            <h3 class="panel-title p-2">Pages</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Filter Pages...">
+                                </div>
+                            </div>
+                            <br>
+                            <table class="table table-striped table-hover">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Published</th>
+                                    <th>Created</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td>Home Page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 15, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>About Page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 15, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Login Page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 15, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>User Page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 12, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>DashBoard page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 9, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Admin page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 9, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Posts page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 9, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>SignUp page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 1, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Users page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 1, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Edit_Post Page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 28, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Validate_Email Page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 28, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Blog Page</td>
+                                    <td class="text-primary"><span class="fa fa-check" aria-hidden="true"></span></td>
+                                    <td>Sept 30, 2020</td>
+                                    <td><a class="btn btn-default" href="#"
+                                            onclick="alert('Permission Denied');">Edit</a> <a class="btn btn-danger"
+                                            onclick="alert('NOT working yet. Contact webmaster to complete request');"
+                                            href="#">Delete</a> </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-      </div>
     </section>
     <!-- footer -->
     <footer id="footer">
-      <p>Copyright CharlyCareCla$ic, &copy; 2020</p>
+        <p>Copyright CharlyCareCla$ic, &copy; 2020</p>
     </footer>
 
     <!-- Add page Model -->
     <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <form>
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true"></span></button>
-            <h4 class="modal-title" id="myModalLabel">Add Page</h4>
-          </div>
-          <div class="modal-body">
-                <div class="form-group">
-                  <label>Page Title</label>
-                  <input type="text" class="form-control" placeholder="Page Title">
-              </div>
-              <div class="form-group">
-                <label>Page Title</label>
-                <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Published
-              </label>
-            </div>
-            <div class="form-group">
-              <label>Meta Tags</label>
-              <input type="text" class="form-control" placeholder="Add Some Tags...">
-            </div>
-            <div class="form-group">
-              <label>Meta Description</label>
-              <input type="text" class="form-control" placeholder="Add Meta Description...">
-            </div>
-          </div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span
+                                aria-hidden="true"></span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add Page</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Page Title</label>
+                            <input type="text" class="form-control" placeholder="Page Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Page Title</label>
+                            <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Published
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Meta Tags</label>
+                            <input type="text" class="form-control" placeholder="Add Some Tags...">
+                        </div>
+                        <div class="form-group">
+                            <label>Meta Description</label>
+                            <input type="text" class="form-control" placeholder="Add Meta Description...">
+                        </div>
+                    </div>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-          </div>
-        </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
 
-   
+
 
     <!-- ck Editor -->
     <script>
-      CKEDITOR.replace( 'editor1' );
+    CKEDITOR.replace('editor1');
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./js/jquery-slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="./js/jquery-slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
     <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/jquery-3.5.1.slim.min.js"></script>
     <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-  </body>
+</body>
+
 </html>

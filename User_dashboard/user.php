@@ -82,6 +82,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -102,42 +103,47 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/user.css">
     <style>
-        header{
-            background-color: #e40046;
-            padding-top: 0px;
-            padding-bottom: 0px;
-            box-shadow: 0px -3px 3px rgba(0, 0, 288, .9) inset;
-        }
-        .show{
-            position: relative;
-        }
-        .fa-eye{
-            position: relative;
-            top: -33px;
-            right: -40%;
-            font-size: 3rem;
-            font-weight: 900;
-            text-align: right;
-            cursor: pointer;
-        }
-        .fa-eye:active{
-            font-weight: 700;
-            transform: scale(0.92);
-        }
+    header {
+        background-color: #e40046;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        box-shadow: 0px -3px 3px rgba(0, 0, 288, .9) inset;
+    }
 
-        @meida (max-width: 500px){
-            .fa-eye{
-                top: -20px;
-                right: -40%;
-                font-size: 1.5rem;
-                font-weight: 700;
-            }
+    .show {
+        position: relative;
+    }
+
+    .fa-eye {
+        position: relative;
+        top: -33px;
+        right: -40%;
+        font-size: 3rem;
+        font-weight: 900;
+        text-align: right;
+        cursor: pointer;
+    }
+
+    .fa-eye:active {
+        font-weight: 700;
+        transform: scale(0.92);
+    }
+
+    @meida (max-width: 500px) {
+        .fa-eye {
+            top: -20px;
+            right: -40%;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
+    }
     </style>
 </head>
+
 <body>
     <div id="hero"></div>
-    <header> <!--initial-red=#e40046 || blue=#2196f3;-->
+    <header>
+        <!--initial-red=#e40046 || blue=#2196f3;-->
         <div class="container">
             <nav class="nav">
                 <div class="menu-toggle">
@@ -175,7 +181,8 @@
         <div class="profile-header">
             <div class="profile-img">
                 <!-- <img src="../img/user.png" width="200px" alt=""> -->
-                <img src="../uploads/<?php echo $user['avatar']; ?>" width="200px" alt="No image record. Upload New image">
+                <img src="../uploads/<?php echo $user['avatar']; ?>" width="200px"
+                    alt="No image record. Upload New image">
             </div>
             <div class="profile-nav-info">
                 <h3 class="user-name"><?php echo $username; ?></h3>
@@ -198,11 +205,14 @@
                     <p class="user-mail"><i class="fa fa-envelope"></i><?php echo $user['email']; ?></p>
                     <div class="user-bio">
                         <h3>Bio-Data</h3>
-                        <p class="bio" title="Go to the -Settings- tab to update your Bio-data"><?php echo $user['bio_data']; ?></p>
+                        <p class="bio" title="Go to the -Settings- tab to update your Bio-data">
+                            <?php echo $user['bio_data']; ?></p>
                     </div>
                     <div class="profile-btn">
-                        <button class="chatBtn" onclick="alert('Download our App to use this Feature');"><i class="fa fa-comment"></i>Chat</button>
-                        <button class="createBtn" onclick="alert('Download our App to use this Feature');"><i class="fa fa-plus"></i>Create</button>
+                        <button class="chatBtn" onclick="alert('Download our App to use this Feature');"><i
+                                class="fa fa-comment"></i>Chat</button>
+                        <button class="createBtn" onclick="alert('Download our App to use this Feature');"><i
+                                class="fa fa-plus"></i>Create</button>
                     </div>
                     <div class="user-rating">
                         <h3 class="rating">4.3</h3>
@@ -232,58 +242,74 @@
                 <div class="profile-body">
                     <div class="profile-posts tab">
                         <h1>Your Posts</h1>
-                        <p>There are no post yet. All Your posts will show here. Review Our terms of use to see how you can create your own posts</p>
-                        <button class="chatBtn" onclick="alert('NOT Allowed');"><i class="fa fa-plus"></i>Add Post</button>
+                        <p>There are no post yet. All Your posts will show here. Review Our terms of use to see how you
+                            can create your own posts</p>
+                        <button class="chatBtn" onclick="alert('Download our App to enable this feature');"><i
+                                class="fa fa-plus"></i>Add Post</button>
                     </div>
                     <div class="profile-review tab">
                         <h1>User Reviews</h1>
-                        <p>Your Reviews will be displayed here. Contact CharlyCareCla$ic Family Office for more details. Review Our terms of use to see how you can create your own posts</p>
-                        <button class="chatBtn" onclick="alert('Service not Available. Try Again');"><i class="fa fa-plus"></i>Add Review</button>
+                        <p>Your Reviews will be displayed here. Contact CharlyCareCla$ic Family Office for more details.
+                            Review Our terms of use to see how you can create your own posts</p>
+                        <button class="chatBtn" onclick="alert('SDownload our App to enable this feature');"><i
+                                class="fa fa-plus"></i>Add Review</button>
                     </div>
                     <div class="profile-setting tab">
                         <h1>Account Settings</h1>
-                        <p>Make changes to your profile. All changes made on your Dashboard are effected instantly. Also review Our terms of use to see how you can create your own posts. <em>Contact Admin for any help</em></p>
+                        <p>Make changes to your profile. All changes made on your Dashboard are effected instantly. Also
+                            review Our terms of use to see how you can create your own posts. <em>Contact Admin for any
+                                help</em></p>
                         <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
-                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-group" enctype="multipart/form-data">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="form-group"
+                            enctype="multipart/form-data">
                             <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
                             <input type="hidden" name="userPWD" value="<?php echo $user['pwd']; ?>">
                             <div class="form-div-div">
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
+                                <input type="tel" class="form-control" id="phone" name="phone"
+                                    placeholder="Enter Your Phone Number" value="<?php echo $user['phone']; ?>">
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter Your Contact Address" value="<?php echo $user['address']; ?>">
+                                <input type="text" class="form-control" id="address" name="address"
+                                    placeholder="Enter Your Contact Address" value="<?php echo $user['address']; ?>">
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" id="state" name="state" placeholder="Enter Your State" value="<?php echo $user['state']; ?>">
+                                <input type="text" class="form-control" id="state" name="state"
+                                    placeholder="Enter Your State" value="<?php echo $user['state']; ?>">
                             </div>
                             <div class="form-div-div">
-                                <input type="text" class="form-control" id="country" name="country" placeholder="Enter Your Country" value="<?php echo $user['country']; ?>">
+                                <input type="text" class="form-control" id="country" name="country"
+                                    placeholder="Enter Your Country" value="<?php echo $user['country']; ?>">
                             </div>
                             <div class="form-div-div">
-                                <textarea class="form-control" id="bio_data" name="bio_data" placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
+                                <textarea class="form-control" id="bio_data" name="bio_data"
+                                    placeholder="Update Your Bio-data"><?php echo $user['bio_data']; ?></textarea>
                             </div>
                             <div class="form-div-div">
-                                <input type="password" id="pwd" name="pwd" class="form-control show" placeholder="Enter Password" title="Also use the -FORGET PASSWORD PORTAL- to reset your password" value="">
+                                <input type="password" id="pwd" name="pwd" class="form-control show"
+                                    placeholder="Enter Password"
+                                    title="Also use the -FORGET PASSWORD PORTAL- to reset your password" value="">
                                 <span class="fa fa-eye"></span>
                             </div>
-                <!-- New image upload preview -->
-                    <div class="img_container">
-                        <div class="img_wrapper">
-                            <div class="image" title="select a profile image here">
-                                <img src="" alt="" id="img-preview">
+                            <!-- New image upload preview -->
+                            <div class="img_container">
+                                <div class="img_wrapper">
+                                    <div class="image" title="select a profile image here">
+                                        <img src="" alt="" id="img-preview">
+                                    </div>
+                                    <div class="img_content">
+                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                        <div class="class">No file chosen, yet!</div>
+                                    </div>
+                                    <div id="cancel-btn"><i class="fas fa-times"></i></div>
+                                    <div class="file-name">File name here</div>
+                                </div>
+                                <input id="default-btn" name="fileToUpload" type="file" hidden>
+                                <button type="button" onclick="defaultBtnActive()" id="custom-btn">choose a
+                                    file</button>
                             </div>
-                            <div class="img_content">
-                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                <div class="class">No file chosen, yet!</div>
-                            </div>
-                            <div id="cancel-btn"><i class="fas fa-times"></i></div>
-                            <div class="file-name">File name here</div>
-                        </div>
-                        <input id="default-btn" name="fileToUpload" type="file" hidden> 
-                        <button type="button" onclick="defaultBtnActive()" id="custom-btn">choose a file</button>
-                    </div>
-                    <br><br>
-                            <button type="submit" class="chatBtn" id="updateSettings" name="submit"><i class="fa fa-plus"></i>Update All</button>
+                            <br><br>
+                            <button type="submit" class="chatBtn" id="updateSettings" name="submit"><i
+                                    class="fa fa-plus"></i>Update All</button>
                         </form>
                     </div>
                 </div>
@@ -344,9 +370,12 @@
                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                                 <h3>Message Us</h3>
                                 <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
-                                <input type="text" name="contact_name" placeholder="Enter Full Name" value="<?php echo $contact_name; ?>">
-                                <input type="email" name="contact_email" placeholder="Enter Your Email" value="<?php echo $contact_email; ?>">
-                                <textarea name="contact_msg" placeholder="Your Message here"><?php echo $contact_msg; ?></textarea>
+                                <input type="text" name="contact_name" placeholder="Enter Full Name"
+                                    value="<?php echo $contact_name; ?>">
+                                <input type="email" name="contact_email" placeholder="Enter Your Email"
+                                    value="<?php echo $contact_email; ?>">
+                                <textarea name="contact_msg"
+                                    placeholder="Your Message here"><?php echo $contact_msg; ?></textarea>
                                 <input class="btn-block" type="submit" name="contactMsg" value="Send">
                             </form>
                         </div>
@@ -361,20 +390,24 @@
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i class="fab fa-facebook-square"></i></a>
+                                <a
+                                    href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i
+                                        class="fab fa-facebook-square"></i></a>
                             </li>
                             <li>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i
+                                        class="fab fa-linkedin-in"></i></a>
                             </li>
                         </ul>
                     </div>
                     <div class="newsletter-container">
                         <h4>Newsletter</h4>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="newsletter-form" method="POST">
-                            <input type="email" name="email" class="newsletter-input" placeholder="Your email address..." required>
+                            <input type="email" name="email" class="newsletter-input"
+                                placeholder="Your email address..." required>
                             <button type="submit" name="newsletter" class="newsletter-btn">
                                 <i class="fas fa-envelope"></i>
                             </button>
@@ -382,7 +415,8 @@
                     </div>
                 </div>
             </div>
-            <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All Rights Reserved.</p>
+            <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All
+                Rights Reserved.</p>
         </div>
     </footer>
     <!-- END including footer here -->
@@ -393,50 +427,52 @@
     <script src="../js/user.js"></script>
     <!-- Validating Image here -->
     <script>
-        let image = document.querySelector('#default-btn');
-        // let regex = '/\.(jpe?g|png|gif|bmp)$/gi';
-        // let regex = '/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i';
-        let msg = document.querySelector('.alert');
-      
-        image.addEventListener('change', () => {
-            // console.log(image.value);
-            validateImage();       
-        });
+    let image = document.querySelector('#default-btn');
+    // let regex = '/\.(jpe?g|png|gif|bmp)$/gi';
+    // let regex = '/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i';
+    let msg = document.querySelector('.alert');
 
-        function validateImage() {
-            let formData = new FormData();
+    image.addEventListener('change', () => {
+        // console.log(image.value);
+        validateImage();
+    });
 
-            let file = document.getElementById("default-btn").files[0];
+    function validateImage() {
+        let formData = new FormData();
 
-            formData.append("Filedata", file);
-            let t = file.type.split('/').pop().toLowerCase();
-            if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
-                msg.className += ' alert-danger';
-                msg.innerHTML = '<span title="Make Sure the file You delected is an Image file">Invalid File Type. Try Again</span>';
-                alert('Please select a valid image file');
-                document.getElementById("imageUploadID").value = '';
-                return false;
-            }
-            if (file.size > 1024000) {
-                alert('Max Upload size is 1MB only');
-                document.getElementById("imageUploadID").value = '';
-                return false;
-            }
-                msg.className += ' alert-info';
-                msg.innerHTML = '<span class="fa fa-check"></span>   Image is Valid. ';
-            return true;
+        let file = document.getElementById("default-btn").files[0];
+
+        formData.append("Filedata", file);
+        let t = file.type.split('/').pop().toLowerCase();
+        if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
+            msg.className += ' alert-danger';
+            msg.innerHTML =
+                '<span title="Make Sure the file You delected is an Image file">Invalid File Type. Try Again</span>';
+            alert('Please select a valid image file');
+            document.getElementById("imageUploadID").value = '';
+            return false;
         }
-        // show_hide password here
-        let showEye = document.querySelector('.fa-eye');
-        let pwd = document.querySelector('#pwd');
+        if (file.size > 1024000) {
+            alert('Max Upload size is 1MB only');
+            document.getElementById("imageUploadID").value = '';
+            return false;
+        }
+        msg.className += ' alert-info';
+        msg.innerHTML = '<span class="fa fa-check"></span>   Image is Valid. ';
+        return true;
+    }
+    // show_hide password here
+    let showEye = document.querySelector('.fa-eye');
+    let pwd = document.querySelector('#pwd');
 
-        showEye.addEventListener('mousedown', () => {
-            pwd.setAttribute('type', 'text');
-        });
+    showEye.addEventListener('mousedown', () => {
+        pwd.setAttribute('type', 'text');
+    });
 
-        showEye.addEventListener('mouseup', () => {
-            pwd.setAttribute('type', 'password');
-        });    
+    showEye.addEventListener('mouseup', () => {
+        pwd.setAttribute('type', 'password');
+    });
     </script>
 </body>
+
 </html>
