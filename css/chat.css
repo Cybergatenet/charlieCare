@@ -227,7 +227,16 @@ body {
   border-radius: 6px;
   font-size: 1.4rem;
 }
+#chat-form button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+#chat-form button:hover i {
+  filter: brightness(80%);
+}
 #chat-form i {
+  color: #0048aa;
   cursor: pointer;
 }
 /* ###################################### */
@@ -282,11 +291,26 @@ body {
   background: #efefef;
   font-weight: 600;
 }
-
 /* ###################################### */
 ::-webkit-scrollbar {
   display: none;
 }
-
 @media (max-width: 900px) {
+  #chat-title {
+    background: red;
+  }
+  #chat-container {
+    display: grid;
+    /* grid:
+      "search-container chat-title" 71px
+      "conversation-list chat-message-list" 1fr
+      "new-message-container chat-form" 78px
+      / 275px 1fr; */
+    grid-template-columns: 1fr 1fr;
+    min-width: 100vw;
+    max-width: 100vw;
+    width: 100vw;
+    min-height: 90vh;
+    height: 90vh;
+  }
 }
