@@ -5,21 +5,21 @@
 }
 html,
 body {
-  width: vw;
+  width: 100vw;
   height: 100%;
 }
 html {
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(to right, #57c1eb 0%, #246fa8 100%);
   font-size: 10px;
 }
 body {
   display: grid;
+  background: linear-gradient(to right, #57c1eb 0%, #246fa8 100%);
   place-items: center;
 }
 #chat-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 75px;
+  /* margin-bottom: 20px; */
   display: grid;
   grid:
     "search-container chat-title" 71px
@@ -28,9 +28,9 @@ body {
     / 275px 1fr;
   min-width: 800px;
   max-width: 1000px;
-  min-height: 800px;
   width: 100%;
-  height: 95vh;
+  min-height: 90vh;
+  height: 90vh;
   background: #fff;
   border-radius: 10px;
 }
@@ -41,11 +41,12 @@ body {
 }
 #search-container {
   display: grid;
+  justify-content: center;
   align-items: center;
   padding: 0 20px;
   grid-area: search-container;
   border-radius: 10px 0 0 0;
-  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75);
+  /* box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75); */
   z-index: 1;
 }
 #search-container input {
@@ -55,13 +56,14 @@ body {
   border-radius: 2px;
   height: 30px;
   border: 0;
+  margin-top: 20px;
   padding-left: 48px;
   padding-right: 20px;
   font-size: 1.4rem;
   background: url("../images/search.svg") no-repeat rgba(255, 255, 255, 0.3);
   background-position: 15px center;
   background-size: 20px 20px;
-  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75);
+  /* box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75); */
 }
 #search-container input::placeholder {
   color: #ddd;
@@ -206,7 +208,8 @@ body {
 }
 #chat-form {
   display: grid;
-  grid: 51px / 32px 1fr;
+  grid: (51px / 32px 1fr);
+  grid-template-columns: 12fr 1fr;
   align-content: center;
   align-items: center;
   grid-gap: 15px;
@@ -223,6 +226,9 @@ body {
   color: #330;
   border-radius: 6px;
   font-size: 1.4rem;
+}
+#chat-form i {
+  cursor: pointer;
 }
 /* ###################################### */
 #search-container .autocom-box {
@@ -249,16 +255,19 @@ body {
 }
 #search-container {
   position: relative;
-  box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.5); */
 }
-#search-container .icon {
+#search-container i {
   height: 20px;
   width: 20px;
+  color: whitesmoke;
+  max-width: 20px;
+  min-width: 20px;
   line-height: 20px;
   position: absolute;
   top: 0;
   right: 0;
-  margin: 5px;
+  margin: 25px 10px 5px;
   text-align: center;
   cursor: pointer;
 }
@@ -277,4 +286,7 @@ body {
 /* ###################################### */
 ::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 900px) {
 }

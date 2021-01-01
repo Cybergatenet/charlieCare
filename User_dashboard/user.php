@@ -25,8 +25,6 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
-
-
 ########################################
     // inserting and fetching image
     // check for submit
@@ -129,7 +127,7 @@
         transform: scale(0.92);
     }
 
-    @meida (max-width: 500px) {
+    @media (max-width: 500px) {
         .fa-eye {
             top: -20px;
             right: -40%;

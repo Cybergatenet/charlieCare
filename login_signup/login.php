@@ -20,10 +20,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Log In | CharlyCareCla$ic</title>
     <link rel="icon" href="../img/charlyLogo22.png">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <!-- fontAwesome -->
-    <link rel="stylesheet" href="../css/css/all.min.css">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/login.css">
 </head>
 

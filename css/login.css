@@ -98,6 +98,7 @@ section .wrapper .user .formBx form input {
   font-size: 14px;
   letter-spacing: 1px;
   font-weight: 300;
+  outline: none;
 }
 section .wrapper .user .formBx form input[type="submit"] {
   max-width: 100px;
