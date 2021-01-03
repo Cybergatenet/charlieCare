@@ -32,6 +32,7 @@ function formatText($resolution){
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -59,6 +60,7 @@ function formatText($resolution){
     <link rel="stylesheet" type="text/css" href="./css/blog.css">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -75,7 +77,7 @@ function formatText($resolution){
                     <a href="./index.php" class="logo"><img src="./img/charlyLogo22.png" alt="" width="70px"
                             height="50px"></a>
                     <div class="main-title">
-                        <h2 class="header-title">CharlyCareCla$ic</h2>
+                        <h2 class="header-title"> CharlyCareCla$ic</h2>
                         <small class="header-small">Family Office</small>
                     </div>
                 </div>
@@ -84,7 +86,8 @@ function formatText($resolution){
                         <a href="#" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About Us</a>
+                        <a href="./about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About
+                            Us</a>
                     </li>
                     <li class="nav-item">
                         <a href="./login_signup/login.php" class="nav-link">Log In</a>
@@ -110,11 +113,14 @@ function formatText($resolution){
                 <span class="first-letter">I</span>nventing
             </h2>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriterOne" data-wait="6000" data-words='["the life we deserve"]'></p>
+            <p style="color: #fff;" class="sub-headline typeWriterOne" data-wait="6000"
+                data-words='["the life we deserve"]'></p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriterTwo" data-wait="8000" data-words='["through innovation"]'></p>
+            <p style="color: #fff;" class="sub-headline typeWriterTwo" data-wait="8000"
+                data-words='["through innovation"]'></p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriterThree"  data-wait="10000" data-words='["and creativity"]'></p>
+            <p style="color: #fff;" class="sub-headline typeWriterThree" data-wait="10000"
+                data-words='["and creativity"]'></p>
             <br><br><br>
             <h1 class="headline">Charly_Care_Cla$ic</h1>
             <div class="headline-description">
@@ -165,19 +171,20 @@ function formatText($resolution){
             <div class="content">
                 <div class="slider owl-carousel">
                     <?php foreach($posts as $post): ?>
-                        <div class="card" style="min-height: 420px; max-height: 420px; height: 420px;">
-                            <div class="img">
-                                <img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image">
-                            </div>
-                            <div class="content">
-                                <div class="title"><?php echo $post['post_title']; ?></div>
-                                <!-- <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small> -->
-                                <p><?php echo substr(formatText($post['post_body']), 0, 100); ?>...</p>
-                                <div class="btn" style="position: absolute; bottom: 5%;">
-                                    <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
-                                </div>
+                    <div class="card" style="min-height: 420px; max-height: 420px; height: 420px;">
+                        <div class="img">
+                            <img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image">
+                        </div>
+                        <div class="content">
+                            <div class="title"><?php echo $post['post_title']; ?></div>
+                            <!-- <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small> -->
+                            <p><?php echo substr(formatText($post['post_body']), 0, 100); ?>...</p>
+                            <div class="btn" style="position: absolute; bottom: 5%;">
+                                <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read
+                                    More</a>
                             </div>
                         </div>
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -194,7 +201,8 @@ function formatText($resolution){
                 <div class="serviceBx animate-left">
                     <video class="video" src="./video/charlycareclacis.mp4" poster="" width="100%" controls></video>
                     <h2>Charlycareclasic</h2>
-                    <p>﻿Welcome to Charlycareclasic. Where we invent the life we deserve through innovation and creativity.</p>
+                    <p>﻿Welcome to Charlycareclasic. Where we invent the life we deserve through innovation and
+                        creativity.</p>
                 </div>
                 <!-- <div class="serviceBx animate-left">
                     <video class="video" src="" poster="" width="100%" controls></video>
@@ -224,7 +232,9 @@ function formatText($resolution){
                     <p>Not A Member?</p>
                 </div>
 
-                <a href="./login_signup/signup.php" style="background-color: #eee; padding: 7px; margin-bottom: 10px; border-radius: 5px; color: #222;" class="btn body-btn">Register</a>
+                <a href="./login_signup/signup.php"
+                    style="background-color: #eee; padding: 7px; margin-bottom: 10px; border-radius: 5px; color: #222;"
+                    class="btn body-btn">Register</a>
                 <!-- Add NEW here -->
                 <section class="contact" id="contact">
                     <div class="content">
@@ -264,9 +274,12 @@ function formatText($resolution){
                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                                 <h3>Message Us</h3>
                                 <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
-                                <input type="text" name="contact_name" placeholder="Enter Full Name" value="<?php echo $contact_name; ?>">
-                                <input type="email" name="contact_email" placeholder="Enter Your Email" value="<?php echo $contact_email; ?>">
-                                <textarea name="contact_msg" placeholder="Your Message here"><?php echo $contact_msg; ?></textarea>
+                                <input type="text" name="contact_name" placeholder="Enter Full Name"
+                                    value="<?php echo $contact_name; ?>">
+                                <input type="email" name="contact_email" placeholder="Enter Your Email"
+                                    value="<?php echo $contact_email; ?>">
+                                <textarea name="contact_msg"
+                                    placeholder="Your Message here"><?php echo $contact_msg; ?></textarea>
                                 <input class="btn-block" type="submit" name="contactMsg" value="Send">
                             </form>
                         </div>
@@ -281,20 +294,24 @@ function formatText($resolution){
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i class="fab fa-facebook-square"></i></a>
+                                <a
+                                    href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i
+                                        class="fab fa-facebook-square"></i></a>
                             </li>
                             <li>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i
+                                        class="fab fa-linkedin-in"></i></a>
                             </li>
                         </ul>
                     </div>
                     <div class="newsletter-container">
                         <h4>Newsletter</h4>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="newsletter-form" method="POST">
-                            <input type="email" name="email" class="newsletter-input" placeholder="Your email address..." required>
+                            <input type="email" name="email" class="newsletter-input"
+                                placeholder="Your email address..." required>
                             <button type="submit" name="newsletter" class="newsletter-btn">
                                 <i class="fas fa-envelope"></i>
                             </button>
@@ -302,7 +319,8 @@ function formatText($resolution){
                     </div>
                 </div>
             </div>
-            <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All Rights Reserved.</p>
+            <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All
+                Rights Reserved.</p>
         </div>
     </footer>
     <!-- scroll reveal -->
@@ -312,12 +330,13 @@ function formatText($resolution){
     <script src="./js/main.js"></script>
     <!-- OwlCarousel -->
     <script>
-        $(".slider").owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true
-        });
+    $(".slider").owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true
+    });
     </script>
 </body>
+
 </html>

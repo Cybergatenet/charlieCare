@@ -45,6 +45,7 @@ if(mysqli_num_rows($return_posts) > 0){
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -71,43 +72,47 @@ if(mysqli_num_rows($return_posts) > 0){
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <link rel="stylesheet" href="./css/blog.css">
     <style>
-        .hero{
-            width: 100%;
-            height: 100vh;
-            background: url('./img/globe.jpg') center no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            text-align: center;
+    .hero {
+        width: 100%;
+        height: 100vh;
+        background: url('./img/globe.jpg') center no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    .content {
+        display: inline-grid;
+        /* display: block; */
+        position: relative;
+        max-width: 90%;
+        margin: 10px auto;
+    }
+
+    pre {
+        display: inline-block;
+        /* font-size: 87.5%; */
+        /* color: #212529; */
+        margin-top: 0;
+        margin-bottom: 0;
+        overflow: scroll;
+
+    }
+
+    @media (min-width: 900px) {
+        .content .btn {
+            display: inline-block !important;
+            padding: 10px;
+            font-size: 1.5rem;
+            line-height: 2;
+            font-weight: 700;
         }
-        .content{
-            display: inline-grid;
-            /* display: block; */
-            position: relative;
-            max-width: 90%;
-            margin: 10px auto;
-        }
-        pre{
-            display: inline-block; 
-            /* font-size: 87.5%; */
-            /* color: #212529; */
-            margin-top: 0;
-            margin-bottom:0;
-            overflow: scroll;
-    
-        }
-        @media (min-width: 900px){
-            .content .btn{
-                display: inline-block!important;
-                padding: 10px;
-                font-size: 1.5rem;
-                line-height: 2;
-                font-weight: 700;
-            }
-        }
+    }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -124,7 +129,7 @@ if(mysqli_num_rows($return_posts) > 0){
                     <a href="./index.php" class="logo"><img src="./img/charlyLogo22.png" alt="" width="70px"
                             height="50px"></a>
                     <div class="main-title">
-                        <h2 class="header-title">CharlyCareCla$ic</h2>
+                        <h2 class="header-title"> CharlyCareCla$ic</h2>
                         <small class="header-small">Family Office</small>
                     </div>
                 </div>
@@ -150,11 +155,14 @@ if(mysqli_num_rows($return_posts) > 0){
                 <span class="first-letter">I</span>nventing
             </h2>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriterOne" data-wait="6000" data-words='["the life we deserve"]'></p>
+            <p style="color: #fff;" class="sub-headline typeWriterOne" data-wait="6000"
+                data-words='["the life we deserve"]'></p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriterTwo" data-wait="8000" data-words='["through innovation"]'></p>
+            <p style="color: #fff;" class="sub-headline typeWriterTwo" data-wait="8000"
+                data-words='["through innovation"]'></p>
             <br><br><br><br><br>
-            <p style="color: #fff;" class="sub-headline typeWriterThree"  data-wait="10000" data-words='["and creativity"]'></p>
+            <p style="color: #fff;" class="sub-headline typeWriterThree" data-wait="10000"
+                data-words='["and creativity"]'></p>
             <br><br><br>
             <h1 class="headline">Charly_Care_Cla$ic</h1>
             <div class="headline-description">
@@ -170,29 +178,36 @@ if(mysqli_num_rows($return_posts) > 0){
             </div>
         </div>
     </section>
-<!-- Blog Posts here -->
+    <!-- Blog Posts here -->
 
-<section class="culinary-delight">
-    <div class="container">
-        <div class="row p-3 text-justify">          
-        <?php foreach($blog_posts as $blog): ?>
-            <div class="card p-3">
-                <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" width="100%" alt="post image"></div>
-                <div class="content">
-                    <center><div class="title"><?php echo $blog['post_title']; ?></div></center>
-                    <p class="p-2" style="text-align: justify; white-space: pre-line;"><?php echo formatText($blog['post_body']); ?></p>
-                    <small class="text-primary text-left float-left">Post Details: <?php echo $blog['post_time']; ?>   |  <?php echo $blog['country']; ?></small>
-                    <div class="btn h6">
-                        <a href="./blog.php?post_id=<?php echo $blog['id']; ?>" class="btn btn-primary btn-md-block">Prev. Page</a>
-                        <a href="./blog.php?post_id=<?php echo $blog['id']; ?>" class="btn btn-primary btn-md-block">Next Page</a>
+    <section class="culinary-delight">
+        <div class="container">
+            <div class="row p-3 text-justify">
+                <?php foreach($blog_posts as $blog): ?>
+                <div class="card p-3">
+                    <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" width="100%" alt="post image">
+                    </div>
+                    <div class="content">
+                        <center>
+                            <div class="title"><?php echo $blog['post_title']; ?></div>
+                        </center>
+                        <p class="p-2" style="text-align: justify; white-space: pre-line;">
+                            <?php echo formatText($blog['post_body']); ?></p>
+                        <small class="text-primary text-left float-left">Post Details: <?php echo $blog['post_time']; ?>
+                            | <?php echo $blog['country']; ?></small>
+                        <div class="btn h6">
+                            <a href="./blog.php?post_id=<?php echo $blog['id']; ?>"
+                                class="btn btn-primary btn-md-block">Prev. Page</a>
+                            <a href="./blog.php?post_id=<?php echo $blog['id']; ?>"
+                                class="btn btn-primary btn-md-block">Next Page</a>
+                        </div>
                     </div>
                 </div>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
         </div>
-    </div>
-</section>
-<section class="services" id="services">
+    </section>
+    <section class="services" id="services">
         <div class="container">
             <div class="heading white animate-top">
                 <h2>Our Blog</h2>
@@ -201,25 +216,26 @@ if(mysqli_num_rows($return_posts) > 0){
             <div class="content">
                 <div class="slider owl-carousel">
                     <?php foreach($posts as $post): ?>
-                        <div class="card" style="min-height: 420px; max-height: 420px; height: 420px;">
-                            <div class="img">
-                                <img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image">
-                            </div>
-                            <div class="content">
-                                <div class="title"><?php echo $post['post_title']; ?></div>
-                                <p><?php echo substr(formatText($post['post_body']), 0, 75); ?>...</p>
-                                <div class="btn" style="position: absolute; bottom: -50px;">
-                                    <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read More</a>
-                                </div>
+                    <div class="card" style="min-height: 420px; max-height: 420px; height: 420px;">
+                        <div class="img">
+                            <img src="./uploads/<?php echo $post['avatar']; ?>" alt="post image">
+                        </div>
+                        <div class="content">
+                            <div class="title"><?php echo $post['post_title']; ?></div>
+                            <p><?php echo substr(formatText($post['post_body']), 0, 75); ?>...</p>
+                            <div class="btn" style="position: absolute; bottom: -50px;">
+                                <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read
+                                    More</a>
                             </div>
                         </div>
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- stop Blog Posts here -->
+    <!-- stop Blog Posts here -->
     <section class="culinary-delight">
         <div class="container">
             <div class="restaurant-info">
@@ -231,7 +247,11 @@ if(mysqli_num_rows($return_posts) > 0){
                         <h1 class="headline headline-dark">Care Cla$ic</h1>
                         <div class="asterisk"><i class="fas fa asterisk"></i></div>
                     </div>
-                    <p>CharlyCareCla$ic is a single family office that thrives on the ideology of inventing the life we deserve through innovation and creativity. its hard to be different in a world where most are conformist, indifferent and inconsistent. What if there could be a better way of living than the world currently know?, we are sure there are much better ways to live a fulfilled life than ever experienced. We do not conform to the status quo, even when status quo is working well.</p>
+                    <p>CharlyCareCla$ic is a single family office that thrives on the ideology of inventing the life we
+                        deserve through innovation and creativity. its hard to be different in a world where most are
+                        conformist, indifferent and inconsistent. What if there could be a better way of living than the
+                        world currently know?, we are sure there are much better ways to live a fulfilled life than ever
+                        experienced. We do not conform to the status quo, even when status quo is working well.</p>
                     <a href="./login_signup/signup.php" class="btn body-btn">Register</a>
                 </div>
                 <div class="image-group">
@@ -310,20 +330,24 @@ if(mysqli_num_rows($return_posts) > 0){
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i class="fab fa-facebook-square"></i></a>
+                                <a
+                                    href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i
+                                        class="fab fa-facebook-square"></i></a>
                             </li>
                             <li>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i
+                                        class="fab fa-linkedin-in"></i></a>
                             </li>
                         </ul>
                     </div>
                     <div class="newsletter-container">
                         <h4>Newsletter</h4>
                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="newsletter-form" method="POST">
-                            <input type="email" name="email" class="newsletter-input" placeholder="Your email address..." required>
+                            <input type="email" name="email" class="newsletter-input"
+                                placeholder="Your email address..." required>
                             <button type="submit" name="newsletter" class="newsletter-btn">
                                 <i class="fas fa-envelope"></i>
                             </button>
@@ -331,7 +355,8 @@ if(mysqli_num_rows($return_posts) > 0){
                     </div>
                 </div>
             </div>
-            <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All Rights Reserved.</p>
+            <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All
+                Rights Reserved.</p>
         </div>
     </footer>
     <!-- scroll reveal -->
@@ -341,27 +366,28 @@ if(mysqli_num_rows($return_posts) > 0){
     <script src="./js/main.js"></script>
     <!-- OwlCarousel -->
     <script>
-        $(".slider").owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true
-        });
+    $(".slider").owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true
+    });
     </script>
     <script>
-        // CKEDITOR.on('txtDescription', function (ev) {
-        // ev.editor.dataProcessor.writer.setRules('br',
-        //     {
-        //         indent: false,
-        //         breakBeforeOpen: false,
-        //         breakAfterOpen: false,
-        //         breakBeforeClose: false,
-        //         breakAfterClose: false
-        //     });
-        // });
+    // CKEDITOR.on('txtDescription', function (ev) {
+    // ev.editor.dataProcessor.writer.setRules('br',
+    //     {
+    //         indent: false,
+    //         breakBeforeOpen: false,
+    //         breakAfterOpen: false,
+    //         breakBeforeClose: false,
+    //         breakAfterClose: false
+    //     });
+    // });
 
-        // config.enterMode = CKEDITOR.ENTER_BR;
-        // config.shiftEnterMode = CKEDITOR.ENTER_BR;
+    // config.enterMode = CKEDITOR.ENTER_BR;
+    // config.shiftEnterMode = CKEDITOR.ENTER_BR;
     </script>
 </body>
+
 </html>
