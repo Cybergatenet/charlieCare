@@ -242,7 +242,8 @@ header.sticky .header-small {
   top: 50%;
   transform: translate(-5%, -50%);
   z-index: 2;
-  margin-top: -20px;
+  /* margin-top: -20px; */
+  margin-top: 0px;
 }
 .lin {
   width: 25px;
