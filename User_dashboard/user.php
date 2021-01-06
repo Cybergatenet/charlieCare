@@ -241,7 +241,7 @@
                     <div class="profile-posts tab">
                         <h1>Your Posts</h1>
                         <p>There are no post yet. All Your posts will show here. Review Our terms of use to see how you
-                            can create your own posts</p>
+                            can create your own posts and publish them to our website</p>
                         <button class="chatBtn" onclick="alert('Download our App to enable this feature');"><i
                                 class="fa fa-plus"></i>Add Post</button>
                     </div>
@@ -249,7 +249,7 @@
                         <h1>User Reviews</h1>
                         <p>Your Reviews will be displayed here. Contact CharlyCareCla$ic Family Office for more details.
                             Review Our terms of use to see how you can create your own posts</p>
-                        <button class="chatBtn" onclick="alert('SDownload our App to enable this feature');"><i
+                        <button class="chatBtn" onclick="alert('Download our App to enable this feature');"><i
                                 class="fa fa-plus"></i>Add Review</button>
                     </div>
                     <div class="profile-setting tab">

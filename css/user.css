@@ -239,6 +239,12 @@ button.createBtn i {
   /* grid-column-gap: 7px; */
   margin: 10px;
 }
+.form-div-div .fa-eye {
+  opacity: 0.5;
+}
+.form-div-div .fa-eye:hover {
+  opacity: 1;
+}
 .form-div-div input,
 .form-div-div textarea {
   padding: 10px;
