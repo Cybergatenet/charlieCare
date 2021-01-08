@@ -291,34 +291,102 @@ body {
   background: #efefef;
   font-weight: 600;
 }
+.fa-users {
+  display: none;
+}
 /* ###################################### */
 ::-webkit-scrollbar {
   display: none;
 }
 @media (max-width: 900px) {
-  #chat-title {
-    background: red;
+  .main-header-title .logo img {
+    max-width: 70px;
+    width: 60px;
+    min-width: 50px;
   }
   #chat-container {
     display: grid;
-    /* grid:
-      "search-container chat-title" 71px
+    grid:
+      "search-container chat-title" 70px
       "conversation-list chat-message-list" 1fr
-      "new-message-container chat-form" 78px
-      / 275px 1fr; */
+      "new-message-container chat-form" 70px
+      / 275px 1fr;
     grid-template-columns: 1fr 1fr;
     min-width: 100vw;
     max-width: 100vw;
     width: 100vw;
     min-height: 90vh;
     height: 90vh;
+    position: relative;
   }
-  #search-container,
+  #search-container {
+    position: relative;
+    width: 50vw;
+    /* display: none; */
+    z-index: 1;
+  }
+  #search-container input {
+    position: relative;
+    width: 70%;
+    height: 35px;
+    margin-top: 20px;
+    padding-left: 8px;
+    padding-right: 25px;
+    margin-left: 35px;
+  }
+  .fa-users {
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 1s ease;
+  }
+  .fa-users:hover {
+    transform: scale(1.09);
+  }
+  #chat-title {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 13px 8px;
+    width: 50vw;
+    cursor: pointer;
+    z-index: 1;
+  }
   #conversation-list {
+    position: relative;
+    width: 100vw;
+    /* background-color: #002c88; */
+    filter: brightness(85%);
     display: none;
   }
+  #chat-message-list {
+    position: relative;
+    left: 0;
+    width: 100vw;
+    min-width: 100vw !important;
+    /* grid-area: none; */
+    grid-area: conversation-list;
+    /* z-index: initial; */
+    display: inline-flex;
+  }
   #new-message-container {
+    position: fixed;
     grid: 40px / 40px;
-    border-radius: 0 0 0 10px;
+    border-radius: 0px;
+    width: 100vw;
+    height: 70px;
+    bottom: 0;
+    display: none;
+  }
+  #chat-form {
+    /* display: none; */
+    position: fixed;
+    /* grid: 40px / 40px; */
+    width: 100vw;
+    height: 70px;
+    bottom: 0;
+    z-index: 1;
   }
 }

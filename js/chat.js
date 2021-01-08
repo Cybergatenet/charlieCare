@@ -22,13 +22,13 @@ inputBox.onkeyup = (e) => {
         let allList = suggBox.querySelectorAll('li');
         for(let i = 0; i < allList.length; i++){
             // adding onclick attribute to all the li
-            allList[i].setAttribute('onclick', 'selectElement(this)');
+            allList[i].setAttribute('onclick', '_selectElement(this)');
         }
     }else{
         searchWrapper.classList.remove('active'); // hide auto complete box
     }
 }
-function selectElement(element){
+function _selectElement(element){
     let selectUserData = element.textContent;
     // console.log(selectUserData);
     inputBox.value = selectUserData; // adding user data into the search box
@@ -45,3 +45,33 @@ function showSuggestions(list){
     }
     suggBox.innerHTML = listData;
 }
+
+// chat responsiveness 
+const userClick = document.querySelector('#userIcon');
+const conversations = document.querySelectorAll('.conversation');
+const conversationList = document.querySelector('#conversation-list');
+const newMsgContainer = document.querySelector('#new-message-container');
+const chatMsgList = document.querySelector('#chat-message-list');
+const chatForm = document.querySelector('#chat-form');
+
+userClick.addEventListener('click', () => {
+    // chatMsgList.style.background = "red";
+    if(chatMsgList.style.display != "none"){
+        chatMsgList.style.display = 'none';
+        chatForm.style.display = 'none';
+        conversationList.style.display = 'block';
+        newMsgContainer.style.display = 'grid';
+    }
+});
+
+conversations.forEach((conversation, index) => {
+    conversation.addEventListener('click', () => {
+        // console.log(conversation);
+        if(conversationList.style.display != "none"){
+            chatMsgList.style.display = 'inline-flex';
+            chatForm.style.display = 'grid';
+            conversationList.style.display = 'none';
+            newMsgContainer.style.display = 'none';
+        }
+    });
+});
