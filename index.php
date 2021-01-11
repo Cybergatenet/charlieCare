@@ -38,7 +38,8 @@ function formatText($resolution){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="CharlyCareCla$ic is a single family office that thrives on the ideology of inventing the life we 
     deserve through innovation and creativity.">
-    <meta name="keywords" content="CharlyCareCla$ic, Forex, Online Trading, Investment, Foreign exchange">
+    <meta name="keywords"
+        content="Charly, CharlyCare, CharlyCareCla$ic, Forex, Online Trading, Investment, Foreign exchange">
     <meta name="author" content="Designed by cybergate communication network">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HomePage | CharlyCareCla$ic</title>
@@ -324,18 +325,18 @@ function formatText($resolution){
         </div>
     </footer>
     <!-- scroll reveal -->
-    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <!-- <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script> -->
     <!-- typewriter effect -->
     <script src="./js/typewriter.js"></script>
     <script src="./js/main.js"></script>
     <!-- OwlCarousel -->
     <script>
-    $(".slider").owlCarousel({
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true
-    });
+    // $(".slider").owlCarousel({
+    //     loop: true,
+    //     autoplay: true,
+    //     autoplayTimeout: 5000,
+    //     autoplayHoverPause: true
+    // });
     </script>
 </body>
 

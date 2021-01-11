@@ -1,87 +1,90 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-.culinary-delight .container{
-    display: grid;
-    width: 90%;
-    max-width: 90%;
-    height: 100%;
-    place-items: center;
-    text-align: center;
-    background-color: #f2f2f2;
+.culinary-delight .container {
+  display: grid;
+  width: 90%;
+  max-width: 90%;
+  height: 100%;
+  place-items: center;
+  text-align: center;
+  background-color: #f2f2f2;
 }
-.slider{
-    max-width: 1150px;
-    min-width: 1100px;
-    display: flex;
-    /* overflow: hidden; */
-    margin-top: 10px;
+.slider {
+  background: red;
+  max-width: 1150px;
+  min-width: 1100px;
+  display: block;
+  /* overflow: hidden; */
+  margin-top: 10px;
 }
-.slider .card{
-    flex: 1;
-    margin: 0 10px;
-    background-color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.2s;
-    /* height: max-content; */
-    /* height: min-content; */
-    height: fit-content;
+.slider .card {
+  /* display: block; */
+  flex: 1;
+  margin: 0 10px;
+  max-width: 270px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  /* height: max-content; */
+  /* height: min-content; */
+  height: fit-content;
 }
-.slider .card:hover{
-    box-shadow: 0px -20px 3px rgba(255, 255, 255, 0.9);
-    transform: scale(0.98);
+.slider .card:hover {
+  box-shadow: 0px -20px 3px rgba(255, 255, 255, 0.9);
+  transform: scale(0.98);
 }
-.slider .card .img{
-    height: 200px;
-    width: 100%;
+.slider .card .img {
+  height: 200px;
+  width: 100%;
 }
-.slider .card .img img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+.slider .card .img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
-.slider .card .content{
-    padding: 10px 20px;
-    display: block;
+.slider .card .content {
+  padding: 10px 20px;
+  display: block;
 }
-.card .content .title{
-    font-weight: 600;
-    font-size: 25px;
+.card .content .title {
+  font-weight: 600;
+  font-size: 25px;
 }
-.card .content .sub-title{
-    font-weight: 600;
-    font-size: 20px;
-    color: #e74c3c;
-    line-height: 20px;
+.card .content .sub-title {
+  font-weight: 600;
+  font-size: 20px;
+  color: #e74c3c;
+  line-height: 20px;
 }
-.card .content .p{
-    text-align: justify;
-    margin: 5px 0;
+.card .content .p {
+  text-align: justify;
+  margin: 5px 0;
 }
-.card .content .btn{
-    display: inline-block;
-    /* display: block; */
-    line-height: 3px;
-    font-size: 1.5rem;
-    padding: 10px;
-    font-weight: 700;
+.card .content .btn {
+  display: inline-block;
+  /* display: block; */
+  line-height: 3px;
+  font-size: 1.5rem;
+  padding: 10px;
+  font-weight: 700;
 }
-.card .content .btn button{
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    outline: none;
-    font-size: 17px;
-    padding: 5px 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s;
+.card .content .btn button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
 }
-.card .content .btn button:hover{
-    transform: scale(0.9);
+.card .content .btn button:hover {
+  transform: scale(0.9);
 }
