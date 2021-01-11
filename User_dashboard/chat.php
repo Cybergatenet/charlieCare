@@ -5,9 +5,22 @@
         header('location: ../login_signup/login.php');
         exit();
     }
+
+////////////////////////////////////////////////////////////
+    ##      Fetching all Users
+    $sql = 'SELECT * FROM charlycare_users';
+
+    $stmt = $conn->prepare($sql);
+    // $stmt->bind_param('ss', $username, $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $users = $result->fetch_all();
+
+///////////////////////////////////////////////////////////
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,41 +35,46 @@
     <link rel="stylesheet" href="../css/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <!-- linking all css files here --> 
+    <!-- linking all css files here -->
     <link rel="stylesheet" href="../css/chat.css">
     <style>
-        header {
-            background-color: #2196f3;
-            padding-top: 0px;
-            padding-bottom: 0px;
-            box-shadow: 0px -3px 3px rgba(0, 0, 288, .9) inset;
-        }
-        .show {
-            position: relative;
-        }
+    header {
+        background-color: #2196f3;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        box-shadow: 0px -3px 3px rgba(0, 0, 288, .9) inset;
+    }
+
+    .show {
+        position: relative;
+    }
+
+    .fa-eye {
+        position: relative;
+        top: -33px;
+        right: -40%;
+        font-size: 3rem;
+        font-weight: 900;
+        text-align: right;
+        cursor: pointer;
+    }
+
+    .fa-eye:active {
+        font-weight: 700;
+        transform: scale(0.92);
+    }
+
+    @media (max-width: 500px) {
         .fa-eye {
-            position: relative;
-            top: -33px;
+            top: -20px;
             right: -40%;
-            font-size: 3rem;
-            font-weight: 900;
-            text-align: right;
-            cursor: pointer;
-        }
-        .fa-eye:active {
+            font-size: 1.5rem;
             font-weight: 700;
-            transform: scale(0.92);
         }
-        @media (max-width: 500px) {
-            .fa-eye {
-                top: -20px;
-                right: -40%;
-                font-size: 1.5rem;
-                font-weight: 700;
-            }
-        }
+    }
     </style>
 </head>
+
 <body>
     <!-- adding header and Nav here -->
     <header>
@@ -95,7 +113,7 @@
     </header>
     <!-- header ends here -->
     <!-- adding header and Nav here -->
-    
+
     <div id="chat-container">
         <div id="search-container">
             <i class="fas fa-users fa-2x" id="userIcon"></i>
@@ -238,7 +256,9 @@
             <div class="message-row other-message">
                 <div class="message-content">
                     <img src="../uploads/defaultAvatar.png" alt="profilePic">
-                    <div class="message-text">I never belived that i will get this far in Coding and programming in general. But see how far we have gone and God has been faithful to me in all my dealings. Praise be to HIS Holy NAme forever, Amen</div>
+                    <div class="message-text">I never belived that i will get this far in Coding and programming in
+                        general. But see how far we have gone and God has been faithful to me in all my dealings. Praise
+                        be to HIS Holy NAme forever, Amen</div>
                     <div class="message-time">Dec 16</div>
                 </div>
             </div>
@@ -291,19 +311,19 @@
         </div>
         <img src="img/close.png" class="close" onclick="toggle();" alt="cybergate close">
     </div> -->
-    
+
     <script>
-        // fixing header on the top on scroll
+    // fixing header on the top on scroll
     // function scrollPage(){
     //     document.querySelector('.scroll').classList.toggle('scrollpage');
     // }
-// init alert box
-// function toggle(){
-//     var newsletter = document.querySelector('.newsletter');
-//     newsletter.classList.toggle('active');
-// }
+    // init alert box
+    // function toggle(){
+    //     var newsletter = document.querySelector('.newsletter');
+    //     newsletter.classList.toggle('active');
+    // }
 
-// init count down
+    // init count down
     // var countDate = new Date('Jan 1, 2021 00:00:00').getTime();
 
     // function newYear(){
@@ -324,13 +344,12 @@
     //     document.getElementById('hour').innerText = h;
     //     document.getElementById('minute').innerText = m;
     //     document.getElementById('second').innerText = s;
-        
+
     // }
 
     // setInterval(function(){
     //         newYear();
     //     },1000);
-
     </script>
     <!-- ######################################################### -->
 
@@ -343,4 +362,5 @@
     <script src="../js/chat_suggestions.js"></script>
     <script src="../js/chat.js"></script>
 </body>
+
 </html>

@@ -359,7 +359,8 @@ body {
     width: 100vw;
     /* background-color: #002c88; */
     filter: brightness(85%);
-    display: none;
+    /* display: none; */
+    display: block;
   }
   #chat-message-list {
     position: relative;
@@ -369,7 +370,8 @@ body {
     /* grid-area: none; */
     grid-area: conversation-list;
     /* z-index: initial; */
-    display: inline-flex;
+    /* display: inline-flex; */
+    display: none;
   }
   #new-message-container {
     position: fixed;
@@ -378,10 +380,10 @@ body {
     width: 100vw;
     height: 70px;
     bottom: 0;
-    display: none;
+    /* display: none; */
   }
   #chat-form {
-    /* display: none; */
+    display: none;
     position: fixed;
     /* grid: 40px / 40px; */
     width: 100vw;

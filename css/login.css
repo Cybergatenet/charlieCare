@@ -174,3 +174,29 @@ section .wrapper .user .imgBx {
     width: 100%;
   }
 }
+@media (max-width: 350px) {
+  section .wrapper .user .formBx {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 420px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 10px 5px;
+  }
+  section .wrapper .user.signinBx .formBx {
+    padding: 10px 20px;
+  }
+  section .wrapper .user .formBx form h2 {
+    font-size: 1.2rem;
+  }
+  section .wrapper .user .formBx form input {
+    padding: 10px 5px;
+  }
+  section .wrapper .user .formBx form input[type="submit"] {
+    display: block;
+    width: 100%;
+  }
+}

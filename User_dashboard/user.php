@@ -67,6 +67,26 @@
             $msgClass = 'alert-danger';
         }
     }
+////////////////////////////////////////////////////////////
+##      Fetching all Users
+    $sql = 'SELECT * FROM charlycare_users';
+
+    $stmt = $conn->prepare($sql);
+    // $stmt->bind_param('ss', $username, $username);
+    $stmt->execute();
+    $user_result = $stmt->get_result();
+    $users = $user_result->fetch_all();
+    
+##      Fetching all Posts
+    $sql = 'SELECT * FROM charlycare_posts';
+
+    $stmt = $conn->prepare($sql);
+    // $stmt->bind_param('ss', $username, $username);
+    $stmt->execute();
+    $post_result = $stmt->get_result();
+    $posts = $post_result->fetch_all();
+    
+///////////////////////////////////////////////////////////
 ######################################
     //  mysql --host=us-cdbr-east.cleardb.com --user=b280ac36b578f6 --password=eaa82564 --reconnect heroku_4046d464e26fbe3 < charlycare_users.sql 
 
@@ -153,7 +173,7 @@
                     <a href="#"><i class="fas fa-times"></i></a>
                 </div>
                 <div class="main-header-title">
-                    <a href="../index.html" class="logo"><img src="../img/charlyLogo22.png" alt="" width="70px"
+                    <a href="../index.php" class="logo"><img src="../img/charlyLogo22.png" alt="logo" width="70px"
                             height="50px"></a>
                     <div class="main-title">
                         <h2 class="header-title">CharlyCareCla$ic</h2>
@@ -162,7 +182,7 @@
                 </div>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="../index.html" class="nav-link">Home</a>
+                        <a href="../index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="../about.html" class="nav-link">About Us</a>
@@ -207,9 +227,8 @@
                             <?php echo $user['bio_data']; ?></p>
                     </div>
                     <div class="profile-btn">
-                        <button class="chatBtn" onclick="alert('Download our App to use this Feature');"><i
-                                class="fa fa-comment"></i>Chat</button>
-                        <button class="createBtn" onclick="alert('Download our App to use this Feature');"><i
+                        <button class="chatBtn" onclick="chatApp();"><i class="fa fa-comment"></i>Chat</button>
+                        <button class="createBtn" onclick="alert('contact Admin to activate this feature');"><i
                                 class="fa fa-plus"></i>Create</button>
                     </div>
                     <div class="user-rating">
@@ -223,7 +242,7 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <span class="no-user">
-                                <span>2</span>&nbsp;&nbsp;Reviews
+                                <span><?php echo count($users); ?></span>&nbsp;&nbsp;Reviews
                             </span>
                         </div>
                     </div>
@@ -239,17 +258,24 @@
                 </div>
                 <div class="profile-body">
                     <div class="profile-posts tab">
-                        <h1>Your Posts</h1>
-                        <p>There are no post yet. All Your posts will show here. Review Our terms of use to see how you
-                            can create your own posts and publish them to our website</p>
-                        <button class="chatBtn" onclick="alert('Download our App to enable this feature');"><i
-                                class="fa fa-plus"></i>Add Post</button>
+                        <h1>Blog Posts</h1>
+
+                        <?php
+                            if(count($posts) < 1){
+                                echo "<p>There are no post yet. All Your posts will show here. Review Our terms of use to see how you can create your own posts and publish them to our website</p>";
+                            }else{
+                                echo "loading...";
+                            }
+                        ?>
+                        <button class="chatBtn" onclick="alert('You are not an Admin Yet');"><i
+                                class="fa fa-plus"></i>Add
+                            Post</button>
                     </div>
                     <div class="profile-review tab">
                         <h1>User Reviews</h1>
                         <p>Your Reviews will be displayed here. Contact CharlyCareCla$ic Family Office for more details.
-                            Review Our terms of use to see how you can create your own posts</p>
-                        <button class="chatBtn" onclick="alert('Download our App to enable this feature');"><i
+                            Checkout Our terms of use to see how you can create your own posts</p>
+                        <button class="chatBtn" onclick="alert('Bad request, Permission not granted');"><i
                                 class="fa fa-plus"></i>Add Review</button>
                     </div>
                     <div class="profile-setting tab">
@@ -470,6 +496,10 @@
     showEye.addEventListener('mouseup', () => {
         pwd.setAttribute('type', 'password');
     });
+    // chat app redirect
+    function chatApp() {
+        window.location.href = "./chat.php";
+    }
     </script>
 </body>
 
