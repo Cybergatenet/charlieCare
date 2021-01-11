@@ -764,6 +764,9 @@ footer {
     letter-spacing: 1.5px;
     margin-top: -30px;
   }
+  header.sticky {
+    padding: 0 100px;
+  }
   .header-title {
     font-size: 1.2rem;
     margin-left: 10px;
@@ -777,6 +780,27 @@ footer {
     /* max-width: 100%; */
     min-width: 100% !important;
     margin-left: -100px !important;
+    margin-top: 10px;
+  }
+  .logo > img {
+    max-width: 40px;
+    min-width: 40px;
+    width: 40px;
+  }
+  .main-header-title .main-title {
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+  .container .clip .content {
+    bottom: -100%;
+    width: 80vw;
+    padding: 10px;
+  }
+  .container .clip .content h2 {
+    font-size: 95%;
+  }
+  .container .clip .content p {
+    font-size: 80%;
   }
 }
 

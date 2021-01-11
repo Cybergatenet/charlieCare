@@ -75,8 +75,8 @@ function formatText($resolution){
                     <a href="#"><i class="fas fa-times"></i></a>
                 </div>
                 <div class="main-header-title">
-                    <a href="./index.php" class="logo"><img src="./img/charlyLogo22.png" alt="" width="70px"
-                            height="50px"></a>
+                    <a href="./index.php" class="logo"><img src="./img/charlyLogo22.png" alt="logo" width="20px"
+                            height="40px"></a>
                     <div class="main-title">
                         <h2 class="header-title"> CharlyCareCla$ic</h2>
                         <small class="header-small">Family Office</small>
@@ -103,7 +103,7 @@ function formatText($resolution){
         <div class="clip clip1">
             <div class="content">
                 <h2>Our Mission</h2>
-                <p>Inventing the life we deserve through innovation and creativity</p>
+                <p>Inventing the life we deserve <br> through innovation and creativity</p>
             </div>
         </div>
     </div>
@@ -178,7 +178,6 @@ function formatText($resolution){
                         </div>
                         <div class="content">
                             <div class="title"><?php echo $post['post_title']; ?></div>
-                            <!-- <small class="sub-title h6">Posted By <?php echo $post['user_username']; ?></small> -->
                             <p><?php echo substr(formatText($post['post_body']), 0, 100); ?>...</p>
                             <div class="btn" style="position: absolute; bottom: 5%;">
                                 <a href="./blog.php?post_id=<?php echo $post['id']; ?>" class="btn btn-danger">Read
