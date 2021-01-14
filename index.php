@@ -211,7 +211,12 @@ function formatText($resolution){
                 </div> -->
             </div>
             <div class="heading">
-                <a href="#" class="btn">View More</a>
+                <a href="#" class="btn">View More Contents <i class="fa fa-arrow-down"></i> </a>
+                <div class="btn">
+                    <a href="https://m.facebook.com/Valid-Relationship-342407303221634/?ref=bookmarks" target="_blank"
+                        rel="noopener noreferrer" class="btn btn-primary"><i class="fas fa-users"></i>Valid Relationship
+                    </a>
+                </div>
             </div>
         </div>
     </section>
