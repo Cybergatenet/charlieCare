@@ -75,3 +75,34 @@ conversations.forEach((conversation, index) => {
         }
     });
 });
+
+               /////     ///       ///       ////    ////////////// 
+            ///     ///  ///       ///     ///  ///       ///
+        ///              ///       ///    ///   ///       ///
+        ///              /////////////   ///////////      ///
+        ///              ///       ///  ///      ///      ///
+         ///       //    ///       /// ///       ///      ///
+          /////////      ///       //////        ///      ///
+
+$(document).ready(() => {
+   $('#sendData').click((e) => { // if e.target.keycode == 13
+    e.preventDefault();
+      /* Get from elements values */
+    let msgData = $('#msgdata').val();
+    // msgData.serialize;
+    // console.log(msgData)
+    $.ajax({
+            url: "../server/chatMsg.php",
+            type: "post",
+            data: msgData,
+            success: function (response) {
+                console.log(response);
+                return;
+                $('.chat-message-text').html(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+            }
+        });
+   });
+});

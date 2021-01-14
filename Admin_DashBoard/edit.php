@@ -46,7 +46,7 @@
   if(isset($_POST['edit_post'])){
       $postId = mysqli_real_escape_string($conn, $_POST['post_id']);
       $post_title = mysqli_real_escape_string($conn, $_POST['post_title']);
-      $post_body = mysqli_real_escape_string($conn, $_POST['post_body']);
+      $post_body = mysqli_real_escape_string($conn, trim($_POST['post_body']));
       $imageUpload = $_FILES['imageUpload']['name'];
 
       $date = date('Y/m/d H:i:s');
@@ -163,7 +163,8 @@ function formatText($resolution){
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
-                    <h1><span class="fa fa-cogs" aria-hidden="true"></span> Edit <small class="h6"> Edit Content</small></h1>
+                    <h1><span class="fa fa-cogs" aria-hidden="true"></span> Edit <small class="h6"> Edit Content</small>
+                    </h1>
                 </div>
                 <div class="col-md-2">
                     <div class="dropdown create">
@@ -191,62 +192,75 @@ function formatText($resolution){
     </section>
 
     <section id="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-          <div class="list-group">
-              <a href="admin.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
-              <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
-              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
-              <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <a href="admin.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs"
+                                aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
+                        <a href="pages.php" class="list-group-item"><span class="fa fa-list"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
+                        <a href="posts.php" class="list-group-item"><span class="fa fa-pen"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small
+                                    class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
+                        <a href="users.php" class="list-group-item"><span class="fa fa-user"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Users <span
+                                class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
+                    </div>
+                    <div class="well">
+                        <h4 class="h6">Disk space Used</h4>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                aria-valuemax="100" style="width: 60%;">loading...</div>
+                        </div>
+                        <h4 class="h6">BandWidth Used</h4>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                aria-valuemax="100" style="width: 40%;">loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading main-color-bg">
+                            <h3 class="panel-title p-2">
+                                <?php echo isset($_GET['delete']) ? 'Delete Post' : 'Edit Post'; ?></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"
+                                enctype="multipart/form-data">
+                                <?php foreach ($edit_post as $edit): ?>
+                                <div class="form-group">
+                                    <label>Post Title</label>
+                                    <input type="text" class="form-control" name="post_title"
+                                        value="<?php echo $edit['post_title']; ?>" placeholder="Post Title">
+                                </div>
+                                <div class="form-group">
+                                    <label>Post Body</label>
+                                    <textarea name="post_body" id="editor1" class="form-control"
+                                        placeholder="Post Body"><?php echo formatText($edit['post_body']); ?></textarea>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked> Published
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Add Cover Image</label>
+                                    <input type="file" name="imageUpload" class="form-control">
+                                </div>
+                                <input type="hidden" name="post_id" value="<?php echo $edit['id']; ?>">
+                                <input type="submit"
+                                    name="<?php echo isset($_GET['delete']) ? 'delete_post' : 'edit_post'; ?>"
+                                    class="btn btn-danger"
+                                    value="<?php echo isset($_GET['delete']) ? 'Delete Post' : 'Update Post'; ?>">
+                                <?php endforeach; ?>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="well">
-              <h4 class="h6">Disk space Used</h4>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">loading...</div>
-              </div>
-              <h4 class="h6">BandWidth Used</h4>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">loading...</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-9">
-            <div class="panel panel-default">
-              <div class="panel-heading main-color-bg">
-                <h3 class="panel-title p-2"><?php echo isset($_GET['delete']) ? 'Delete Post' : 'Edit Post'; ?></h3>
-              </div>
-              <div class="panel-body">
-                <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
-                    <?php foreach ($edit_post as $edit): ?>
-                    <div class="form-group">
-                        <label>Post Title</label>
-                        <input type="text" class="form-control" name="post_title" value="<?php echo $edit['post_title']; ?>"
-                            placeholder="Post Title">
-                    </div>
-                    <div class="form-group">
-                        <label>Post Body</label>
-                        <textarea name="post_body" id="editor1" class="form-control"
-                            placeholder="Post Body"><?php echo formatText($edit['post_body']); ?></textarea>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" checked> Published
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label>Add Cover Image</label>
-                        <input type="file" name="imageUpload" class="form-control">
-                    </div>
-                    <input type="hidden" name="post_id" value="<?php echo $edit['id']; ?>">
-                    <input type="submit" name="<?php echo isset($_GET['delete']) ? 'delete_post' : 'edit_post'; ?>" class="btn btn-danger" value="<?php echo isset($_GET['delete']) ? 'Delete Post' : 'Update Post'; ?>">
-                    <?php endforeach; ?>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
     </section>
     <!-- footer -->
     <footer id="footer">
@@ -257,7 +271,7 @@ function formatText($resolution){
 
     <!-- ck Editor -->
     <script>
-        CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor1');
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->

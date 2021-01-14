@@ -78,13 +78,15 @@
     $users = $user_result->fetch_all();
     
 ##      Fetching all Posts
-    $sql = 'SELECT * FROM charlycare_posts';
+    $query_post = 'SELECT * FROM charlycare_posts ORDER BY post_time DESC';
+    $post_result = mysqli_query($conn, $query_post);
+    $posts = array();
 
-    $stmt = $conn->prepare($sql);
-    // $stmt->bind_param('ss', $username, $username);
-    $stmt->execute();
-    $post_result = $stmt->get_result();
-    $posts = $post_result->fetch_all();
+    if(mysqli_num_rows($post_result) > 0){
+        while($row = mysqli_fetch_assoc($post_result)){
+            $posts[] = $row;
+        }
+    }
     
 ///////////////////////////////////////////////////////////
 ######################################
@@ -145,6 +147,15 @@
     .fa-eye:active {
         font-weight: 700;
         transform: scale(0.92);
+    }
+
+    .box-img img {
+        min-width: 50px;
+        max-width: 50px;
+        width: 50px;
+        min-height: 50px;
+        max-height: 50px;
+        height: 50px;
     }
 
     @media (max-width: 500px) {
@@ -227,7 +238,8 @@
                             <?php echo $user['bio_data']; ?></p>
                     </div>
                     <div class="profile-btn">
-                        <button class="chatBtn" onclick="chatApp();"><i class="fa fa-comment"></i>Chat</button>
+                        <button class="chatBtn" onclick="alert('Download our mobile app to enable this feature.');"><i
+                                class="fa fa-comment"></i>Chat</button>
                         <button class="createBtn" onclick="alert('contact Admin to activate this feature');"><i
                                 class="fa fa-plus"></i>Create</button>
                     </div>
@@ -264,7 +276,22 @@
                             if(count($posts) < 1){
                                 echo "<p>There are no post yet. All Your posts will show here. Review Our terms of use to see how you can create your own posts and publish them to our website</p>";
                             }else{
-                                echo "loading...";
+                                foreach($posts as $post){
+                        ?>
+                        <div
+                            class="box border bg-primary p-3 text-white d-flex align-items-center justify-content-around">
+                            <div class="box-content">
+                                <h5><?php echo($post['post_title']); ?></h5>
+                                <h6><?php echo substr($post['post_body'], 0, 75); ?>...</h6>
+                                <small><?php echo($post['post_time']); ?></small>
+                            </div>
+                            <div class="box-img">
+                                <img src="../uploads/<?php echo $post['avatar']; ?>" alt="post image" width="
+                                100px" height="100px">
+                            </div>
+                        </div>
+                        <?php
+                                }
                             }
                         ?>
                         <button class="chatBtn" onclick="alert('You are not an Admin Yet');"><i

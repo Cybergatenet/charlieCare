@@ -17,6 +17,8 @@
     $users = $result->fetch_all();
 
 ///////////////////////////////////////////////////////////
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -288,10 +290,18 @@
                     <div class="message-time">Dec 16</div>
                 </div>
             </div>
+            <!-- Ajax call fetch and dump data -->
+            <!-- <div class="message-row other-message">
+                <div class="message-content">
+                    <img src="../uploads/defaultAvatar.png" alt="profilePic" class="chat-image">
+                    <div class="chat-message-text"></div>
+                    <div class="chat-message-time">1m ago</div>
+                </div>
+            </div> -->
         </div>
         <div id="chat-form">
-            <input type="text" placeholder="Type a message">
-            <button><i class="fas fa-paper-plane fa-3x"></i></button>
+            <input type="text" id="msgdata" placeholder="Type a message" autofocus>
+            <button type="submit" id="sendData" name="send"><i class="fas fa-paper-plane fa-3x"></i></button>
         </div>
     </div>
 

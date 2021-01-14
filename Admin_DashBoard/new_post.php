@@ -59,7 +59,7 @@ if(isset($_POST['publish_post'])){
     $user_username = 'Charly_Admin';
     $country = 'Accra, Ghana';
     $post_title = mysqli_real_escape_string($conn, $_POST['post_title']);
-    $post_body = mysqli_real_escape_string($conn, $_POST['post_body']);
+    $post_body = mysqli_real_escape_string($conn, trim($_POST['post_body']));
     $avatar = $_FILES['imageUpload']['name'];
     $target = "../uploads/".basename($avatar);
 
@@ -163,7 +163,8 @@ if(isset($_POST['publish_post'])){
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
-                    <h1><span class="fa fa-cogs" aria-hidden="true"></span> Post <small class="h6"> Blog Content</small></h1>
+                    <h1><span class="fa fa-cogs" aria-hidden="true"></span> Post <small class="h6"> Blog Content</small>
+                    </h1>
                 </div>
                 <div class="col-md-2">
                     <div class="dropdown create">
@@ -191,60 +192,69 @@ if(isset($_POST['publish_post'])){
     </section>
 
     <section id="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-          <div class="list-group">
-              <a href="admin.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs" aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
-              <a href="pages.php" class="list-group-item"><span class="fa fa-list" aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
-              <a href="posts.php" class="list-group-item"><span class="fa fa-pen" aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
-              <a href="users.php" class="list-group-item"><span class="fa fa-user" aria-hidden="true"></span>&nbsp;&nbsp;Users <span class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <a href="admin.php" class="list-group-item active main-color-bg"><span class="fa fa-cogs"
+                                aria-hidden="true"></span>&nbsp;&nbsp;DashBoard</a>
+                        <a href="pages.php" class="list-group-item"><span class="fa fa-list"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Pages <span class="badge">12</span></a>
+                        <a href="posts.php" class="list-group-item"><span class="fa fa-pen"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Posts <span class="badge"><small
+                                    class="h6 text-primary"><?php echo mysqli_num_rows($return_posts); ?></small></span></a>
+                        <a href="users.php" class="list-group-item"><span class="fa fa-user"
+                                aria-hidden="true"></span>&nbsp;&nbsp;Users <span
+                                class="badge"><?php echo mysqli_num_rows($result); ?></span></a>
+                    </div>
+                    <div class="well">
+                        <h4 class="h6">Disk space Used</h4>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                aria-valuemax="100" style="width: 60%;">loading...</div>
+                        </div>
+                        <h4 class="h6">BandWidth Used</h4>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                                aria-valuemax="100" style="width: 40%;">loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading main-color-bg">
+                            <h3 class="panel-title p-2">Publish New Post</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"
+                                enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Post Title</label>
+                                    <input type="text" class="form-control" name="post_title"
+                                        value="<?php echo $post_title; ?>" placeholder="Post Title">
+                                </div>
+                                <div class="form-group">
+                                    <label>Post Body</label>
+                                    <textarea name="post_body" id="editor1" class="form-control"
+                                        placeholder="Post Body"><?php echo $post_body; ?></textarea>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked> Published
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Add Cover Image</label>
+                                    <input type="file" name="imageUpload" id="imageUploadID" class="form-control">
+                                </div>
+                                <!-- <input type="hidden" name="post_id" value=""> -->
+                                <input type="submit" name="publish_post" class="btn btn-primary" value="Publish Post">
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="well">
-              <h4 class="h6">Disk space Used</h4>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">loading...</div>
-              </div>
-              <h4 class="h6">BandWidth Used</h4>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">loading...</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-9">
-            <div class="panel panel-default">
-              <div class="panel-heading main-color-bg">
-                <h3 class="panel-title p-2">Publish New Post</h3>
-              </div>
-              <div class="panel-body">
-                <div class="alert <?php echo $msgClass; ?>"><?php echo $msg; ?></div>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label>Post Title</label>
-                        <input type="text" class="form-control" name="post_title" value="<?php echo $post_title; ?>"
-                            placeholder="Post Title">
-                    </div>
-                    <div class="form-group">
-                        <label>Post Body</label>
-                        <textarea name="post_body" id="editor1" class="form-control"
-                            placeholder="Post Body"><?php echo $post_body; ?></textarea>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" checked> Published
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label>Add Cover Image</label>
-                        <input type="file" name="imageUpload" id="imageUploadID" class="form-control">
-                    </div>
-                    <!-- <input type="hidden" name="post_id" value=""> -->
-                    <input type="submit" name="publish_post" class="btn btn-primary" value="Publish Post">
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
     </section>
     <!-- footer -->
     <footer id="footer">
@@ -255,7 +265,7 @@ if(isset($_POST['publish_post'])){
 
     <!-- ck Editor -->
     <script>
-        CKEDITOR.replace('editor1');
+    CKEDITOR.replace('editor1');
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -268,43 +278,43 @@ if(isset($_POST['publish_post'])){
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script>
-        let image = document.querySelector('#imageUploadID');
-        // let regex = '/\.(jpe?g|png|gif|bmp)$/gi';
-        // let regex = '/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i';
-        let msg = document.querySelector('.alert');
-      
-        image.addEventListener('change', () => {
-            // console.log(image.value);
+    let image = document.querySelector('#imageUploadID');
+    // let regex = '/\.(jpe?g|png|gif|bmp)$/gi';
+    // let regex = '/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i';
+    let msg = document.querySelector('.alert');
 
-            validateImage();
-            
-        });
+    image.addEventListener('change', () => {
+        // console.log(image.value);
 
-        function validateImage() {
-            let formData = new FormData();
-            // console.log(formData);
+        validateImage();
 
-            let file = document.getElementById("imageUploadID").files[0];
+    });
 
-            formData.append("Filedata", file);
-            let t = file.type.split('/').pop().toLowerCase();
-            if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
-                msg.className += ' alert-danger';
-                msg.innerHTML = '<span title="Make Sure the file You delected is an Image file">Invalid File Type. Try Again</span>';
-                alert('Please select a valid image file');
-                document.getElementById("imageUploadID").value = '';
-                return false;
-            }
-            if (file.size > 1024000) {
-                alert('Max Upload size is 1MB only');
-                document.getElementById("imageUploadID").value = '';
-                return false;
-            }
-                msg.className += ' alert-info';
-                msg.innerHTML = '<span class="fa fa-check"></span>   Image is Valid. ';
-            return true;
+    function validateImage() {
+        let formData = new FormData();
+        // console.log(formData);
+
+        let file = document.getElementById("imageUploadID").files[0];
+
+        formData.append("Filedata", file);
+        let t = file.type.split('/').pop().toLowerCase();
+        if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
+            msg.className += ' alert-danger';
+            msg.innerHTML =
+                '<span title="Make Sure the file You delected is an Image file">Invalid File Type. Try Again</span>';
+            alert('Please select a valid image file');
+            document.getElementById("imageUploadID").value = '';
+            return false;
         }
-        
+        if (file.size > 1024000) {
+            alert('Max Upload size is 1MB only');
+            document.getElementById("imageUploadID").value = '';
+            return false;
+        }
+        msg.className += ' alert-info';
+        msg.innerHTML = '<span class="fa fa-check"></span>   Image is Valid. ';
+        return true;
+    }
     </script>
 </body>
 
