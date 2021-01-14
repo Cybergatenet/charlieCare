@@ -336,12 +336,12 @@ function formatText($resolution){
     <script src="./js/main.js"></script>
     <!-- OwlCarousel -->
     <script>
-    // $(".slider").owlCarousel({
-    //     loop: true,
-    //     autoplay: true,
-    //     autoplayTimeout: 5000,
-    //     autoplayHoverPause: true
-    // });
+    $(".slider").owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true
+    });
     </script>
 </body>
 
