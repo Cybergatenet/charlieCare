@@ -446,6 +446,9 @@ button.createBtn i {
   body {
     margin: 0;
   }
+  .wrapper {
+    padding: 5px 15px;
+  }
   .profile-header h3 {
     font-size: 0.9rem;
   }
