@@ -1,0 +1,21 @@
+let suggestions = [
+    "cybergate",
+    "Abel",
+    "Chinedu",
+    "Abraham",
+    "Charly",
+    "CharlyCare",
+    "Innovation",
+    "Creativity",
+    "Investment",
+    "Communication",
+    "Unity",
+    "Abraham Isreal",
+    "Abraham Isreal",
+    "Cybergate Abel",
+    "Cybergatenet Chinedu",
+    "Cybergatenet Chinedu",
+    "Vania Priceness",
+    "Favour Cindy",
+    "Praise Nwaoke"
+];
