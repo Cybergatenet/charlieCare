@@ -201,7 +201,7 @@ function formatText($resolution){
                 <div class="serviceBx animate-left">
                     <video class="video" src="./video/charlycareclacis.mp4" poster="" width="100%" controls></video>
                     <h2>Charlycareclasic</h2>
-                    <p>﻿Welcome to Charlycareclasic. Where we invent the life we deserve through innovation and
+                    <p>Welcome to Charlycareclasic. Where we invent the life we deserve through innovation and
                         creativity.</p>
                 </div>
                 <!-- <div class="serviceBx animate-left">
@@ -212,7 +212,7 @@ function formatText($resolution){
             </div>
             <div class="heading" id="sponsor">
                 <a href="#sponsor" class="btn">View More Contents <i class="fa fa-arrow-down"></i> </a>
-                <div class="btn">
+                <div class="btn animateBtn" title="Click here to view valid relationship on facebook">
                     <a href="https://m.facebook.com/Valid-Relationship-342407303221634/?ref=bookmarks" target="_blank"
                         rel="noopener noreferrer" class="btn btn-primary font-weight-bold"><i class="fas fa-users"></i>
                         &nbsp; Valid Relationship

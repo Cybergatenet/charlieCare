@@ -473,6 +473,15 @@ header.sticky .header-small {
 .body.btn:focus::before {
   background-color: var(--main-font-color-dark);
 }
+/* Valid Relationship */
+.btn.animateBtn {
+  margin: auto;
+  border: var(--fb-dark-blue) solid 2px;
+  animation: changLow 3s ease-in-out 0.1s infinite;
+}
+.btn.animateBtn a {
+  width: 340px;
+}
 /* Tastefull recipes */
 .tasteful-recipes {
   background: url("../img/nature4.jpg") center no-repeat;
