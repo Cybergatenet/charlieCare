@@ -8,6 +8,14 @@
       header("location: ./index.php");
       exit();
   }
+  ###########
+  function checkInput($element){
+    $element = trim($element);
+    $element = htmlspecialchars($element);
+    $element = htmlentities($element);
+    return $element;
+  }
+  ##########
   $msg = '';
   $msgClass = '';
   $query = 'SELECT * FROM charlycare_users ORDER BY userTime DESC';
@@ -58,8 +66,8 @@ if(isset($_POST['publish_post'])){
     $user_id = '2';
     $user_username = 'Charly_Admin';
     $country = 'Accra, Ghana';
-    $post_title = mysqli_real_escape_string($conn, $_POST['post_title']);
-    $post_body = mysqli_real_escape_string($conn, trim($_POST['post_body']));
+    $post_title = mysqli_real_escape_string($conn, checkInput($_POST['post_title']));
+    $post_body = mysqli_real_escape_string($conn, checkInput($_POST['post_body']));
     $avatar = $_FILES['imageUpload']['name'];
     $target = "../uploads/".basename($avatar);
 

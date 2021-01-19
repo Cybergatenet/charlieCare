@@ -8,6 +8,15 @@
       header("location: ./index.php");
       exit();
   }
+  ###########
+  function checkInput($element){
+    $element = trim($element);
+    $element = htmlspecialchars($element);
+    $element = htmlentities($element);
+    $element = stripslashes($element);
+    return $element;
+  }
+  ###########
   $msg = '';
   $msgClass = '';
   $query = 'SELECT * FROM charlycare_users ORDER BY userTime DESC';
@@ -44,9 +53,9 @@
   }
 ######################################## EDITNG POST HERE
   if(isset($_POST['edit_post'])){
-      $postId = mysqli_real_escape_string($conn, $_POST['post_id']);
-      $post_title = mysqli_real_escape_string($conn, $_POST['post_title']);
-      $post_body = mysqli_real_escape_string($conn, trim($_POST['post_body']));
+      $postId = mysqli_real_escape_string($conn, checkInput($_POST['post_id']));
+      $post_title = mysqli_real_escape_string($conn, checkInput($_POST['post_title']));
+      $post_body = mysqli_real_escape_string($conn, checkInput($_POST['post_body']));
       $imageUpload = $_FILES['imageUpload']['name'];
 
       $date = date('Y/m/d H:i:s');
@@ -84,17 +93,17 @@
   }
 ############################# fn () => check text before edit
 function formatText($resolution){
-    $resolution = trim($resolution);
+    // $resolution = trim($resolution);
     $resolution = nl2br($resolution);
-    $resolution = stripslashes($resolution);
+    // $resolution = stripslashes($resolution);
     // $resolution = htmlentities($resolution);
     // $resolution = htmlspecialchars($resolution);
-    $resolution = str_replace('rnrn',"",str_replace('rn ',"",$resolution));
-    $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
-    $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
-    $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
-    $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
-    $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
+    // $resolution = str_replace('rnrn',"",str_replace('rn ',"",$resolution));
+    // $resolution = str_replace('\r',"\r",str_replace('\n',"\n",$resolution));
+    // $resolution = str_replace('\\r',"\r",str_replace('\\n',"\n",$resolution));
+    // $resolution = str_replace('\\\r',"\r",str_replace('\\\n',"\n",$resolution));
+    // $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
+    // $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
     return $resolution;
 }
 

@@ -27,15 +27,15 @@ if(mysqli_num_rows($return_posts) > 0){
     }
 
     function formatText($resolution){
-        $resolution = trim($resolution);
+        // $resolution = trim($resolution);
         $resolution = nl2br($resolution);
-        $resolution = stripslashes($resolution);
+        // $resolution = stripslashes($resolution);
         // $resolution = htmlentities($resolution);
         // $resolution = htmlspecialchars($resolution);
         // $resolution = str_replace(' r ',"", str_replace(' n ',"",$resolution));
         $resolution = str_replace('rnrn',"", str_replace(' rn ',"",$resolution));
         $resolution = str_replace(' r ',"\r", str_replace(' n ',"\n",$resolution));
-        $resolution = str_replace('\\r',"\r", str_replace('\\n',"\n",$resolution));
+        // $resolution = str_replace('\\r',"\r", str_replace('\\n',"\n",$resolution));
         $resolution = str_replace('\\\r',"\r", str_replace('\\\n',"\n",$resolution));
         $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
         $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
@@ -193,14 +193,15 @@ if(mysqli_num_rows($return_posts) > 0){
                         </center>
                         <p class="p-2" style="text-align: justify; white-space: pre-line;">
                             <?php echo formatText($blog['post_body']); ?></p>
-                        <small class="text-primary text-left float-left">Post Details: <?php echo $blog['post_time']; ?>
+                        <small class="text-primary text-left float-left">Post Details:
+                            <?php echo date("F jS, Y", strtotime($blog['post_time'])); ?>
                             | <?php echo $blog['country']; ?></small>
-                        <div class="btn h6">
+                        <!-- <div class="btn h6">
                             <a href="./blog.php?post_id=<?php echo $blog['id']; ?>"
                                 class="btn btn-primary btn-md-block">Prev. Page</a>
                             <a href="./blog.php?post_id=<?php echo $blog['id']; ?>"
                                 class="btn btn-primary btn-md-block">Next Page</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <?php endforeach; ?>
