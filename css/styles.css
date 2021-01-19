@@ -70,7 +70,7 @@ header {
 
 /* start sticky nav bar */
 header.sticky {
-  padding: 5px 100px;
+  padding: 0px 100px;
   background: #fff;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5);
   /* margin: 10px;
@@ -93,12 +93,14 @@ header.sticky .container .nav .menu-toggle .new_menu .lin {
 .main-header-title a {
   /* float: left; */
   margin-left: -30px;
+  margin-top: 15px;
   width: 70px;
   /* max-width: 100%; */
   /* min-width: 100%; */
 }
 .main-header-title .main-title {
   margin-left: 0;
+  margin-top: 15px;
 }
 .header-title {
   font-size: 1.6rem;
@@ -584,29 +586,36 @@ footer {
   justify-content: center;
 }
 .newsletter-input {
+  /* background: red; */
   width: 100%;
   max-width: 25rem;
-  padding: 1rem;
+  padding: 0.8rem;
+  font-size: 2rem;
+  line-height: 1rem;
   border-radius: 0.4rem;
 }
 .newsletter-btn {
   background-color: transparent;
   border: none;
+  border-radius: 3px;
   color: var(--main-font-color-dark);
   cursor: pointer;
-  font-size: 1.6rem;
+  font-size: 2rem;
   /* padding: 1px 0.6rem; */
   /* position: absolute; */
   /* top: 50%; */
   /* transform: translateY(-50%); */
   /* margin-left: 10.5rem; */
   /* new */
-  padding: 1px 0.3rem;
+  padding: 0.5rem 0.6rem;
+  /* padding: 1.3px 0.22rem; */
+  background-color: whitesmoke;
   position: absolute;
   top: 50%;
   transform: translate(500%, -50%);
   right: 50%;
   margin-left: 0;
+  z-index: 2;
 }
 /* media qureies start here */
 @media screen and (min-width: 900px) {
@@ -744,6 +753,7 @@ footer {
     transform: translateY(-50%);
     right: 12%;
     margin-left: 6rem;
+    z-index: 2;
   }
   .fas.fa-envelope {
     margin-left: -25px;
@@ -797,7 +807,8 @@ footer {
     width: 40px;
   }
   .main-header-title .main-title {
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    margin-top: 15px;
     margin-right: 20px;
   }
   .container .clip .content {

@@ -210,9 +210,11 @@ function formatText($resolution){
                     <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div> -->
             </div>
+            <hr>
             <div class="heading" id="sponsor">
                 <a href="#sponsor" class="btn">View More Contents <i class="fa fa-arrow-down"></i> </a>
-                <div class="btn animateBtn" title="Click here to view valid relationship on facebook">
+                <br>
+                <div class="btn animateBtn animate-left" title="Click here to view valid relationship on facebook">
                     <a href="https://m.facebook.com/Valid-Relationship-342407303221634/?ref=bookmarks" target="_blank"
                         rel="noopener noreferrer" class="btn btn-primary font-weight-bold"><i class="fas fa-users"></i>
                         &nbsp; Valid Relationship
