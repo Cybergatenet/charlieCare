@@ -33,7 +33,7 @@ if(mysqli_num_rows($return_posts) > 0){
         // $resolution = htmlentities($resolution);
         // $resolution = htmlspecialchars($resolution);
         // $resolution = str_replace(' r ',"", str_replace(' n ',"",$resolution));
-        $resolution = str_replace('rnrn',"_-_", str_replace('rn',"_",$resolution));
+        $resolution = str_replace('rnrn',"", str_replace('rn ',"",$resolution));
         $resolution = str_replace(' r',"\r", str_replace('n ',"\n",$resolution));
         $resolution = str_replace('\\r',"\r", str_replace('\\n',"\n",$resolution));
         $resolution = str_replace('\\\r',"\r", str_replace('\\\n',"\n",$resolution));
