@@ -174,7 +174,7 @@ section .wrapper .user .imgBx {
     width: 100%;
   }
 }
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   section .wrapper .user .formBx {
     position: absolute;
     top: 50%;
@@ -187,6 +187,8 @@ section .wrapper .user .imgBx {
     padding: 10px 5px;
   }
   section .wrapper .user.signinBx .formBx {
+    margin-top: 30px;
+    max-height: 95vw;
     padding: 10px 20px;
   }
   section .wrapper .user .formBx form h2 {

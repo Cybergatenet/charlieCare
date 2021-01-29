@@ -111,6 +111,12 @@ if(mysqli_num_rows($return_posts) > 0){
             font-weight: 700;
         }
     }
+
+    @media (max-width: 400px) {
+        .content.setMobile {
+            margin: 0px;
+        }
+    }
     </style>
 </head>
 
@@ -185,14 +191,14 @@ if(mysqli_num_rows($return_posts) > 0){
         <div class="container">
             <div class="row p-3 text-justify">
                 <?php foreach($blog_posts as $blog): ?>
-                <div class="card p-3">
+                <div class="card p-3 pl-0">
                     <div class="img"><img src="./uploads/<?php echo $blog['avatar']; ?>" width="100%" alt="post image">
                     </div>
-                    <div class="content">
+                    <div class="content setMobile">
                         <center>
                             <div class="title"><?php echo $blog['post_title']; ?></div>
                         </center>
-                        <p class="p-2" style="text-align: justify; white-space: pre-line;">
+                        <p class="m-3" style="text-align: justify; white-space: pre-line;">
                             <?php echo formatText($blog['post_body']); ?></p>
                         <small class="text-primary text-left float-left">Post Details:
                             <?php echo date("F jS, Y", strtotime($blog['post_time'])); ?>

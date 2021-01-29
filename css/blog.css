@@ -68,6 +68,8 @@
 .card .content .p {
   text-align: justify;
   margin: 5px 0;
+  position: relative;
+  position: relative;
 }
 .card .content .btn {
   display: inline-block;
