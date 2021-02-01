@@ -30,11 +30,11 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = trim($resolution);
         $resolution = nl2br($resolution);
         // $resolution = stripslashes($resolution);
-        // $resolution = htmlentities($resolution);
-        // $resolution = htmlspecialchars($resolution);
+        $resolution = htmlentities($resolution);
+        $resolution = htmlspecialchars($resolution);
 
-        // $resolution = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;", "&nbsp;"), array(">", "<", "\"", "&", ""), $resolution);
-        $resolution = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;", "&nbsp;"), array(" ", " ", " ", " ", " "), $resolution);
+        $resolution = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;", "&nbsp;"), array(">", "<", "\"", "&", ""), $resolution);
+        // $resolution = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;", "&nbsp;"), array(" ", " ", " ", " ", " "), $resolution);
 
         $resolution = html_entity_decode($resolution);
 
@@ -215,6 +215,16 @@ if(mysqli_num_rows($return_posts) > 0){
                             <a href="./blog.php?post_id=<?php echo $blog['id']; ?>"
                                 class="btn btn-primary btn-md-block">Next Page</a>
                         </div> -->
+                        <div class="like-div">
+                            <a href="#"><i class="fa fa-thumbs-up fa-3x"></i></a>
+                            <a href="#"><i class="fa fa-thumbs-down fa-3x"></i></a>
+                            <span>301 likes</span>
+                            <span>36 comments</span>
+                        </div>
+                        <form action="">
+                            <textarea name="" id="" cols="30" rows="5" placeholder="Comment..."></textarea>
+                            <button type="submit">Post</button>
+                        </form>
                     </div>
                 </div>
                 <?php endforeach; ?>
