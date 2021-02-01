@@ -27,11 +27,12 @@ if(mysqli_num_rows($return_posts) > 0){
     }
 
     function formatText($resolution){
-        // $resolution = trim($resolution);
+        $resolution = trim($resolution);
         $resolution = nl2br($resolution);
         // $resolution = stripslashes($resolution);
         // $resolution = htmlentities($resolution);
         // $resolution = htmlspecialchars($resolution);
+        $resolution = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;"), array(">", "<", "\"", "&"), $resolution);
         // $resolution = str_replace(' r ',"", str_replace(' n ',"",$resolution));
         $resolution = str_replace('rnrn',"", str_replace('rn ',"",$resolution));
         // $resolution = str_replace(' r',"\r", str_replace('n ',"\n",$resolution));
