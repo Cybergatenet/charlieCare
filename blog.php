@@ -34,7 +34,7 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = htmlspecialchars($resolution);
 
         $resolution = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;", "&nbsp;"), array(">", "<", "\"", "&", ""), $resolution);
-        // $resolution = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;", "&nbsp;"), array(" ", " ", " ", " ", " "), $resolution);
+        $resolution = html_entity_decode($resolution, ENT_QUOTES | ENT_XML1, 'UTF-8');
 
         $resolution = html_entity_decode($resolution);
 
@@ -215,16 +215,34 @@ if(mysqli_num_rows($return_posts) > 0){
                             <a href="./blog.php?post_id=<?php echo $blog['id']; ?>"
                                 class="btn btn-primary btn-md-block">Next Page</a>
                         </div> -->
-                        <div class="like-div">
-                            <a href="#"><i class="fa fa-thumbs-up fa-3x"></i></a>
-                            <a href="#"><i class="fa fa-thumbs-down fa-3x"></i></a>
-                            <span>301 likes</span>
-                            <span>36 comments</span>
+                        <div class="border rounded comment-area">
+                            <button onclick="alert('You are not logged in!');" class="btn btn-sm"><i
+                                    class="fa fa-thumbs-up"></i>
+                                <span>0</span></button>
+                            <button onclick="alert('You are not logged in!');" class="btn btn-sm"><i
+                                    class="fa fa-thumbs-down"></i>
+                                <span>0</span></button>
+                            <button onclick="alert('You are not logged in!');" class="btn btn-sm" disable><i
+                                    class="fa fa-comment"></i>
+                                <span>0</span></button>
                         </div>
-                        <form action="">
-                            <textarea name="" id="" cols="30" rows="5" placeholder="Comment..."></textarea>
-                            <button type="submit">Post</button>
+                        <form action="" class="form-group">
+                            <textarea class="form-control mt-2" name="" id="" cols="30" rows="3"
+                                placeholder="Write a comment..."></textarea>
+                            <button class="btn btn-primary btn-md float-right mt-3" type="submit">Post</button>
                         </form>
+                        <div class="comment-box">
+                            <div class="row">
+                                <div class="col-2 div-image">
+                                    <img src="./uploads/defaultAvatar.png" alt="">
+                                </div>
+                                <div class="col-8 comment-text p-2">
+                                    The year 2020 may had given you uncooked seed but you blew it,the year 2021 is
+                                    giving you a cooked seed to be consistent in growing it,so it could give you a
+                                    garden
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
