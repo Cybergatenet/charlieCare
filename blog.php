@@ -228,7 +228,7 @@ if(mysqli_num_rows($return_posts) > 0){
                                 <span>0</span></button>
                             <button onclick="alert('You are not logged in!');" class="btn btn-sm" disable><i
                                     class="fa fa-comment"></i>
-                                <span>0</span></button>
+                                <span>1</span></button>
                         </div>
                         <form action="" class="form-group">
                             <textarea class="form-control mt-2" name="" id="" cols="30" rows="3"
