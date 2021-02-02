@@ -10,10 +10,9 @@
   }
   ###########
   function checkInput($element){
-    $element = trim($element);
+    $element = trim($element, ENT_NOQUOTES);
     $element = htmlspecialchars($element);
-    $element = htmlentities($element);
-    $element = mysqli_real_escape_string($conn, $element);
+    // $element = htmlentities($element);
     return $element;
   }
 //   function fixtags($text){

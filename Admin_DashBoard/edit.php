@@ -95,7 +95,7 @@
 function formatText($resolution){
     // $resolution = trim($resolution);
     $resolution = nl2br($resolution);
-    // $resolution = stripslashes($resolution);
+    $resolution = stripslashes($resolution);
     // $resolution = htmlentities($resolution);
     // $resolution = htmlspecialchars($resolution);
     // $resolution = str_replace('rnrn',"",str_replace('rn ',"",$resolution));
