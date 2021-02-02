@@ -34,6 +34,7 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = htmlspecialchars($resolution);
 
         $resolution = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;", "&nbsp;"), array(">", "<", "\"", "&", ""), $resolution);
+        $resolution = str_replace(array("<p>", "</p>", "<p>&nbsp;</p>", "<strong><p>", "</strong></p>"), array("", "", "", "", ""), $resolution);
         $resolution = html_entity_decode($resolution, ENT_QUOTES | ENT_XML1, 'UTF-8');
 
         $resolution = html_entity_decode($resolution);
