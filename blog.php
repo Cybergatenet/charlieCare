@@ -231,7 +231,7 @@ if(mysqli_num_rows($return_posts) > 0){
                                 placeholder="Write a comment..."></textarea>
                             <button class="btn btn-primary btn-md float-right mt-3" type="submit">Post</button>
                         </form>
-                        <div class="comment-box">
+                        <div class="comment-box m-3">
                             <div class="row">
                                 <div class="col-2 div-image">
                                     <img src="./uploads/defaultAvatar.png" alt="">
