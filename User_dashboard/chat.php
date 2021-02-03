@@ -135,7 +135,7 @@
             <div class="conversation active">
                 <img src="../uploads/defaultAvatar.png" alt="Cybergate Abel">
                 <div class="title-text">
-                    Cyergate Communication Network
+                    Cybergate Communication Network
                 </div>
                 <div class="created-date">
                     Mar 18

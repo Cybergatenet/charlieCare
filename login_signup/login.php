@@ -1,10 +1,10 @@
 <?php 
 
     require_once 'controllers/authcontroller.php'; 
-    // if(!isset($_SESSION['id'])){
-    //     header('location: ../index.html');
-    //     exit();
-    // }
+    if(isset($_SESSION['username'])){
+        header('location: ./home.php');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
