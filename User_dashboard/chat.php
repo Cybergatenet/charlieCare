@@ -1,10 +1,10 @@
 <?php
     require_once '../login_signup/controllers/authcontroller.php';
 
-    if(!$_SESSION){
-        header('location: ../login_signup/login.php');
-        exit();
-    }
+    // if(!$_SESSION){
+    //     header('location: ../login_signup/login.php');
+    //     exit();
+    // }
 
 ////////////////////////////////////////////////////////////
     ##      Fetching all Users

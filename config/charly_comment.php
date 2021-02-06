@@ -28,10 +28,10 @@
     PRIMARY KEY (`id`)
   ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1";
 
-	//  if(mysqli_query($conn, $table) === false){
-  //       echo "CONNECTIOIN LOST: CONTACT ADMIN";
-  //   }else{
-  //       echo 'created successfully';
-  //   }
+	 if(mysqli_query($conn, $table) === false){
+        echo "CONNECTIOIN LOST: CONTACT ADMIN";
+    }else{
+        echo 'created successfully';
+    }
 
 ?>

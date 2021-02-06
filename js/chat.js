@@ -89,16 +89,21 @@ $(document).ready(() => {
     e.preventDefault();
       /* Get from elements values */
     let msgData = $('#msgdata').val();
-    // msgData.serialize;
-    // console.log(msgData)
+    msgData.serialize;
+    // console.log(msgData);
     $.ajax({
             url: "../server/chatMsg.php",
             type: "post",
-            data: msgData,
+            data: {
+                'send': 1,
+                'msgData': msgData
+            },
             success: function (response) {
+                // response = JSON.stringify(response);
                 console.log(response);
+                // $('.chat-message-text').html(response);
+                $('#msgdata').html('');
                 return;
-                $('.chat-message-text').html(response);
             },
             error: function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);

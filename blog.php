@@ -210,9 +210,9 @@ if(mysqli_num_rows($return_posts) > 0){
                         </center>
                         <p class="m-3" style="text-align: justify; white-space: pre-line;">
                             <?php echo formatText($blog['post_body']); ?></p>
-                        <small class="text-primary text-left float-left">Post Details:
+                        <h5 class="text-primary text-left float-left">Post Details:
                             <?php echo date("F jS, Y", strtotime($blog['post_time'])); ?>
-                            | <?php echo $blog['country']; ?></small>
+                            | <?php echo $blog['country']; ?></h5>
                         <!-- <div class="btn h6">
                             <a href="./blog.php?post_id=<?php echo $blog['id']; ?>"
                                 class="btn btn-primary btn-md-block">Prev. Page</a>
@@ -237,10 +237,11 @@ if(mysqli_num_rows($return_posts) > 0){
                         </form>
                         <div class="comment-box m-3">
                             <div class="row">
-                                <div class="col-2 div-image">
+                                <div class="col-4 col-md-2 div-image">
                                     <img src="./uploads/defaultAvatar.png" alt="">
+                                    <h5 class="ml-4">Username User</h5>
                                 </div>
-                                <div class="col-8 comment-text p-2">
+                                <div class="col-7 col-md-7 comment-text p-2">
                                     The year 2020 may had given you uncooked seed but you blew it,the year 2021 is
                                     giving you a cooked seed to be consistent in growing it,so it could give you a
                                     garden

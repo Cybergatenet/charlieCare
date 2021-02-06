@@ -99,8 +99,12 @@
   justify-content: center;
   align-items: center;
 }
-.comment-area > button:active {
+.comment-area > button:hover {
   background-color: #2196f3;
+  color: whitesmoke;
+}
+.comment-area > button:active i.fa {
+  transform: scale(1.2);
 }
 .comment-box {
   background-color: #f2f2f2;

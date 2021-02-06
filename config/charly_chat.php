@@ -19,10 +19,10 @@
 
 	$table = "CREATE TABLE IF NOT EXISTS `charlycare_chat` (
     `msg_id` int(11) NOT NULL AUTO_INCREMENT,
-    `user_id` varchar(255) NOT NULL,
+    `user_id` int(11) NOT NULL,
     `msg` varchar(255) NOT NULL,
-    `timestamp` varchar(255) NOT NULL,
-    PRIMARY KEY (`id`)
+    `timestamp` int(11) NOT NULL,
+    PRIMARY KEY (`msg_id`)
   ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1";
 
 	 if(mysqli_query($conn, $table) === false){
