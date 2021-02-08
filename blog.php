@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once './config/db.php'; // connection here
     require_once './server/newletter.php';
 
@@ -233,7 +234,8 @@ if(mysqli_num_rows($return_posts) > 0){
                         <form action="" class="form-group">
                             <textarea class="form-control mt-2" name="" id="" cols="30" rows="3"
                                 placeholder="Write a comment..."></textarea>
-                            <button class="btn btn-primary btn-md float-right mt-3" type="submit">Post</button>
+                            <button class="btn btn-primary btn-md float-right mt-3"
+                                type="submit"><?php echo isset($_SESSION['username']) ? 'Post' : 'log in to comment'; ?></button>
                         </form>
                         <div class="comment-box m-3">
                             <div class="row">

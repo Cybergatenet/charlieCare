@@ -608,8 +608,8 @@ footer {
   /* transform: translateY(-50%); */
   /* margin-left: 10.5rem; */
   /* new */
-  padding: 0.5rem 0.6rem;
-  /* padding: 1.3px 0.22rem; */
+  /* padding: 0.5rem 0.6rem; */
+  padding: 1.3px 0.22rem;
   background-color: whitesmoke;
   position: absolute;
   top: 50%;
