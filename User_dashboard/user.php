@@ -158,6 +158,26 @@
         height: 50px;
     }
 
+    .whatsapp_link {
+        position: fixed;
+        top: 90%;
+        right: 20px;
+        z-index: 100;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        opacity: 0.6;
+    }
+
+    .whatsapp_link a i {
+        font-size: 5rem;
+        color: whitesmoke;
+    }
+
+    .whatsapp_link:hover {
+        opacity: 1;
+    }
+
     @media (max-width: 500px) {
         .fa-eye {
             top: -20px;
@@ -367,6 +387,10 @@
             </div>
         </div>
     </div>
+    <!-- WhatsApp Chat Connent Here! -->
+    <div class="whatsapp_link bg-success p-2 rounded bordered"><a
+            href="https://api.whatsapp.com/send?phone=233238651493&text=Hi%20CharlyCareCla$ic"><i
+                class="fab fa-whatsapp fa-4x"></i></a></div>
 
     <!-- including footer here -->
     <footer style="margin-top: 50px;">

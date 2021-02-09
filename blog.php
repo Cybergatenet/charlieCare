@@ -113,6 +113,26 @@ if(mysqli_num_rows($return_posts) > 0){
 
     }
 
+    .whatsapp_link {
+        position: fixed;
+        top: 90%;
+        right: 20px;
+        z-index: 100;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        opacity: 0.6;
+    }
+
+    .whatsapp_link a i {
+        font-size: 5rem;
+        color: whitesmoke;
+    }
+
+    .whatsapp_link:hover {
+        opacity: 1;
+    }
+
     @media (min-width: 900px) {
         .content .btn {
             display: inline-block !important;
@@ -232,9 +252,9 @@ if(mysqli_num_rows($return_posts) > 0){
                                 <span>1</span></button>
                         </div>
                         <form action="" class="form-group">
-                            <textarea class="form-control mt-2" name="" id="" cols="30" rows="3"
+                            <textarea class="form-control mt-2" name="" id="comment" cols="30" rows="3"
                                 placeholder="Write a comment..."></textarea>
-                            <button class="btn btn-primary btn-md float-right mt-3"
+                            <button class="btn btn-primary btn-md float-right mt-3" id="comment_btn"
                                 type="submit"><?php echo isset($_SESSION['username']) ? 'Post' : 'log in to comment'; ?></button>
                         </form>
                         <div class="comment-box m-3">
@@ -283,6 +303,10 @@ if(mysqli_num_rows($return_posts) > 0){
             </div>
         </div>
     </section>
+    <!-- WhatsApp Chat Connent Here! -->
+    <div class="whatsapp_link bg-success p-2 rounded bordered"><a
+            href="https://api.whatsapp.com/send?phone=233238651493&text=Hi%20CharlyCareCla$ic"><i
+                class="fab fa-whatsapp fa-4x"></i></a></div>
 
     <!-- stop Blog Posts here -->
     <section class="culinary-delight">
@@ -413,6 +437,7 @@ if(mysqli_num_rows($return_posts) > 0){
     <!-- typewriter effect -->
     <script src="./js/typewriter.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/comment_like.js"></script>
     <!-- OwlCarousel -->
     <script>
     $(".slider").owlCarousel({
