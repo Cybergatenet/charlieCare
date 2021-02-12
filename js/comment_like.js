@@ -1,9 +1,14 @@
 $(document).ready(function() {
     // save comment to database
-    $('#comment_btn').on('click', function(e) {
+    $(document).on('click', '#comment_btn', function(e) {
         e.preventDefault();
         // let name = $('#name').val();
         let comment = $('#comment').val();
+        if(comment == ''){
+            $('#comment_btn').disable();
+            $('#comment_btn').css(backgroundColor, 'red');
+            $('#comment').css(border, '1px solid red');
+        }
         $.ajax({
             url: '../server/comment_like.php',
             type: 'POST',
@@ -13,8 +18,9 @@ $(document).ready(function() {
             },
             success: function(response) {
                 $('#comment').val('');
-                // $('#display_area').append(response);
-                console.log(response);
+                $('.comment-box').html('');
+                $('.comment-box').append(response);
+                // console.log(response);
             }
         });
     });
@@ -73,4 +79,22 @@ $(document).ready(function() {
     //         }
     //     });
     // });
+});
+
+$(document).ready(function() {
+    // fetch comments to database on page load
+        // let comment = $('#comment').val();
+        $.ajax({
+            url: '../server/comment_like.php',
+            type: 'GET',
+            data: {
+                'fetch': 1
+            },
+            success: function(response) {
+                $('#comment').val('');
+                $('.comment-box').append(response);
+                // $('.comment-box').html(response);
+                // console.log(response);
+            }
+    });
 });

@@ -17,6 +17,7 @@ if(mysqli_num_rows($return_posts) > 0){
 
 #### Fetching single post
     $post_id = mysqli_real_escape_string($conn, htmlspecialchars($_GET['post_id']));
+    $_SESSION['post_id'] = $post_id;
     $query_post = "SELECT * FROM charlycare_posts WHERE `id`='$post_id' LIMIT 1";
     $result = mysqli_query($conn, $query_post);
     $blog_posts = array();
@@ -52,6 +53,25 @@ if(mysqli_num_rows($return_posts) > 0){
         $resolution = str_replace('\\\\', "\r", str_replace('\\\\',"\n",$resolution));
         $resolution = str_replace('\\ \\', "\r", str_replace('\\ \\',"\n",$resolution));
         return $resolution;
+    }
+
+    // fetching comments, likes and unlike here
+    $query_comments = 'SELECT * FROM `charlycare_comment` ORDER BY `timestamp` DESC';
+    $return_comments = mysqli_query($conn, $query_comments);
+    $comments = array();
+
+    if(mysqli_num_rows($return_comments) > 0){
+        while($row = mysqli_fetch_all($return_comments)){
+            $comments[] = $row;
+        }
+        // print_r($comments);
+        // echo count($comments);
+        // echo mysqli_num_rows($return_comments);
+
+        // foreach ($comments as $comment) {
+        //     // if(count($comment['like']) > 0);
+        //     echo count($comment['like'] == 0);
+        // }
     }
 
 ?>
@@ -241,24 +261,28 @@ if(mysqli_num_rows($return_posts) > 0){
                                 class="btn btn-primary btn-md-block">Next Page</a>
                         </div> -->
                         <div class="border rounded comment-area">
-                            <button onclick="alert('You are not logged in!');" class="btn btn-sm"><i
-                                    class="fa fa-thumbs-up"></i>
-                                <span>0</span></button>
+                            <?php foreach ($comments as $comment) { ?>
+
+                            <button
+                                onclick="alert('<?php echo isset($_SESSION['username']) ? 'yes' : 'You are not logged in'; ?>');"
+                                class="btn btn-sm"><i class="fa fa-thumbs-up"></i>
+                                <span><?php echo count($comment[3]) > 0; ?></span></button>
                             <button onclick="alert('You are not logged in!');" class="btn btn-sm"><i
                                     class="fa fa-thumbs-down"></i>
-                                <span>0</span></button>
-                            <button onclick="alert('You are not logged in!');" class="btn btn-sm" disable><i
-                                    class="fa fa-comment"></i>
-                                <span>1</span></button>
+                                <span><?php echo count($comment[4] != 0); ?></span></button>
+                            <button class="btn btn-sm"><i class="fa fa-comment"></i>
+                                <span><?php echo count($comment[5] != ''); ?></span></button>
+                            <?php } ?>
                         </div>
                         <form action="" class="form-group">
                             <textarea class="form-control mt-2" name="" id="comment" cols="30" rows="3"
-                                placeholder="Write a comment..."></textarea>
-                            <button class="btn btn-primary btn-md float-right mt-3" id="comment_btn"
-                                type="submit"><?php echo isset($_SESSION['username']) ? 'Post' : 'log in to comment'; ?></button>
+                                placeholder="Write a comment..." required></textarea>
+                            <?php echo isset($_SESSION['username']) ? '<button class="btn btn-primary btn-md float-right mt-3" id="comment_btn"
+                                type="submit">Post</button>' : '<button class="btn btn-primary btn-md float-right mt-3" id="comment_btn"
+                                type="submit" disabled>Log in to comment</button>'; ?>
                         </form>
                         <div class="comment-box m-3">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-4 col-md-2 div-image">
                                     <img src="./uploads/defaultAvatar.png" alt="">
                                     <h5 class="ml-4">Username User</h5>
@@ -268,7 +292,7 @@ if(mysqli_num_rows($return_posts) > 0){
                                     giving you a cooked seed to be consistent in growing it,so it could give you a
                                     garden
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
