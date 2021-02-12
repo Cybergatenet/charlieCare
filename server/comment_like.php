@@ -29,7 +29,7 @@
                 foreach($users as $user){
                     $_edit_btn = '';
                     if($_SESSION['id'] == $user['id']){
-                        $_edit_btn = '<span class="mx-3 text-primary" data-id="' . $comment['id'] . '">Edit</span> | <span class="mx-3 text-danger" data-id="' . $comment['id'] . '">Delete</span>';
+                        $_edit_btn = '<span class="mx-3 text-primary edit" data-id="' . $comment['id'] . '">Edit</span> | <span class="mx-3 text-danger delete" data-id="' . $comment['id'] . '">Delete</span>';
                     }
                     $saved_comment = '<div class="row mt-4">
                         <div class="col-4 col-md-2 div-image">
@@ -40,9 +40,7 @@
                         ' . validateOutput($comment['comment']) . '
                         </div>
                         <h6 class="ml-4 text-primary">"' . date("F jS, Y", strtotime($comment['timestamp'])) . '"</h6>
-                        <h6>
                             '.$_edit_btn .'
-                        </h6>
                     </div>';
                     echo $saved_comment;
                 }
@@ -90,7 +88,7 @@
                 foreach($users as $user){
                     $_edit_btn = '';
                     if($_SESSION['id'] == $user['id']){
-                        $_edit_btn = '<span class="mx-3 text-primary" data-id="' . $comment['id'] . '">Edit</span> | <span class="mx-3 text-danger" data-id="' . $comment['id'] . '">Delete</span>';
+                        $_edit_btn = '<span class="mx-3 text-primary edit" data-id="' . $comment['id'] . '">Edit</span> | <span class="mx-3 text-danger delete" data-id="' . $comment['id'] . '">Delete</span>';
                     }
                     $saved_comment = '<div class="row mt-4">
                         <div class="col-4 col-md-2 div-image">
@@ -101,9 +99,7 @@
                         ' . $comment['comment'] . '
                         </div>
                         <h6 class="ml-4 text-primary">"' . date("F jS, Y", strtotime($comment['timestamp'])) . '"</h6>
-                        <h6>
                             '.$_edit_btn .'
-                        </h6>
                     </div>';
                     echo $saved_comment;
                 }
@@ -118,6 +114,38 @@
         
         exit();
     }
+/////////// Deleting a comment
+// delete comment fromd database
+if (isset($_GET['delete'])) {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM charlycare_comment WHERE id=" . $id;
+    mysqli_query($conn, $sql);
+    exit();
+}
+
+//////////// Editing post
+// if (isset($_POST['update'])) {
+//     $id = $_POST['id'];
+//     $comment = $_POST['comment'];
+//     ///////////////////
+//     $sql = "INSERT INTO `charlycare_comment` (`user_id`,`post_id`, `like`, `unlike`, `comment`, `timestamp`) VALUES ('$user_id', '$post_id', '$like', '$unlike', '$comment', '$timestamp')";
+
+//     /////////
+//     $sql = "UPDATE `charlycare_comment` SET `comment`='$comment' WHERE `id`=".$id;
+//     if (mysqli_query($conn, $sql)) {
+//         $id = mysqli_insert_id($conn);
+//         $saved_comment = '<div class="comment_box">
+//           <span class="delete" data-id="' . $id . '" >delete</span>
+//           <span class="edit" data-id="' . $id . '">edit</span>
+//           <div class="display_name">'. $name .'</div>
+//           <div class="comment_text">'. $comment .'</div>
+//       </div>';
+//       echo $saved_comment;
+//     }else {
+//       echo "Error: ". mysqli_error($conn);
+//     }
+//     exit();
+// }
 
     // validation of output
     function validateOutput($resolution){
@@ -125,16 +153,5 @@
         $resolution = nl2br($resolution);
         return $resolution;
     }
-    //   if (mysqli_query($conn, $sql)) {
-        //     $id = mysqli_insert_id($conn);
-        //   $saved_comment = '<div class="comment_box">
-        //           <span class="delete" data-id="' . $id . '" >delete</span>
-        //           <span class="edit" data-id="' . $id . '">edit</span>
-        //           <div class="display_name">'. $name .'</div>
-        //           <div class="comment_text">'. $comment .'</div>
-        //       </div>';
-        //     echo $saved_comment;
-        //   }else {
-        //     echo "Error: ". mysqli_error($conn);
-        //   }
+    
 ?>

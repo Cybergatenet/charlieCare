@@ -153,6 +153,16 @@ if(mysqli_num_rows($return_posts) > 0){
         opacity: 1;
     }
 
+    #update_btn {
+        padding: 8px 15px;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        margin-top: 10px;
+        font-weight: 700;
+        background: #1c7600;
+    }
+
     @media (min-width: 900px) {
         .content .btn {
             display: inline-block !important;
@@ -280,6 +290,7 @@ if(mysqli_num_rows($return_posts) > 0){
                             <?php echo isset($_SESSION['username']) ? '<button class="btn btn-primary btn-md float-right mt-3" id="comment_btn"
                                 type="submit">Post</button>' : '<button class="btn btn-primary btn-md float-right mt-3" id="comment_btn"
                                 type="submit" disabled>Log in to comment</button>'; ?>
+                            <button type="button" id="update_btn" style="display: none;">UPDATE</button>
                         </form>
                         <div class="comment-box m-3">
                             <!-- <div class="row">
