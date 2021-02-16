@@ -48,10 +48,12 @@ $(document).ready(function() {
         edit_id = $(this).data('id');
         $edit_comment = $(this).parent();
         // grab the comment to be editted
-        let comment = $(this).siblings('.comment_text').text();
+        let comment = $(this).parent().siblings('.comment-text').text();
         // place comment in form
-        $('#comment').val(comment);
+        console.log($edit_comment);
+        $('#comment').val(comment.trim());
         $('#comment_btn').hide();
+        $('.right').hide();
         $('#update_btn').show();
     });
     $(document).on('click', '#update_btn', function() {

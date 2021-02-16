@@ -163,6 +163,25 @@ if(mysqli_num_rows($return_posts) > 0){
         background: #1c7600;
     }
 
+    #comment_box {}
+
+    .edit,
+    .delete {
+        pointer-events: all;
+        cursor: pointer;
+    }
+
+    .row {
+        position: relative;
+    }
+
+    .right {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        text-align: right;
+    }
+
     @media (min-width: 900px) {
         .content .btn {
             display: inline-block !important;
@@ -276,12 +295,15 @@ if(mysqli_num_rows($return_posts) > 0){
                             <button
                                 onclick="alert('<?php echo isset($_SESSION['username']) ? 'yes' : 'You are not logged in'; ?>');"
                                 class="btn btn-sm"><i class="fa fa-thumbs-up"></i>
-                                <span><?php echo count($comment[3]) > 0; ?></span></button>
+                                <span><?php echo count($comment[3]) > 0; ?></span>
+                            </button>
                             <button onclick="alert('You are not logged in!');" class="btn btn-sm"><i
                                     class="fa fa-thumbs-down"></i>
-                                <span><?php echo count($comment[4] != 0); ?></span></button>
+                                <span><?php echo count($comment[4] != 0); ?></span>
+                            </button>
                             <button class="btn btn-sm"><i class="fa fa-comment"></i>
-                                <span><?php echo count($comment[5] != ''); ?></span></button>
+                                <span><?php echo count($comment[5] != ''); ?></span>
+                            </button>
                             <?php } ?>
                         </div>
                         <form action="" class="form-group">
