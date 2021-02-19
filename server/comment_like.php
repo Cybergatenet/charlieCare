@@ -134,7 +134,7 @@ if (isset($_POST['update'])) {
     
     $sql = "UPDATE `charlycare_comment` SET `user_id`=?, `post_id`=?,`like`=?, `unlike`=?, `comment`=?,`timestamp`=? WHERE `id`=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('iiiiss', $user_id, $post_id, $like, $unlike, $comment, $timestamp);
+    $stmt->bind_param('ssssss', $user_id, $post_id, $like, $unlike, $comment, $timestamp);
     
     if ($stmt->execute()) {
         // fetching posts here

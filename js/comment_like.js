@@ -69,6 +69,7 @@ $(document).ready(function() {
             },
             success: function(response) {
                 $('#comment').val('');
+                $('.right').show();
                 $('#comment_btn').show();
                 $('#update_btn').hide();
                 $edit_comment.replaceWith(response);

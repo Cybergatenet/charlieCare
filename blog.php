@@ -17,6 +17,9 @@ if(mysqli_num_rows($return_posts) > 0){
 
 #### Fetching single post
     $post_id = mysqli_real_escape_string($conn, htmlspecialchars($_GET['post_id']));
+    if(!$post_id){
+        header('location: ./index.php');
+    }
     $_SESSION['post_id'] = $post_id;
     $query_post = "SELECT * FROM charlycare_posts WHERE `id`='$post_id' LIMIT 1";
     $result = mysqli_query($conn, $query_post);
@@ -297,8 +300,9 @@ if(mysqli_num_rows($return_posts) > 0){
                                 class="btn btn-sm"><i class="fa fa-thumbs-up"></i>
                                 <span><?php echo count($comment[3]) > 0; ?></span>
                             </button>
-                            <button onclick="alert('You are not logged in!');" class="btn btn-sm"><i
-                                    class="fa fa-thumbs-down"></i>
+                            <button
+                                onclick="alert('<?php echo isset($_SESSION['username']) ? 'yes' : 'You are not logged in'; ?>');"
+                                class="btn btn-sm"><i class="fa fa-thumbs-down"></i>
                                 <span><?php echo count($comment[4] != 0); ?></span>
                             </button>
                             <button class="btn btn-sm"><i class="fa fa-comment"></i>
