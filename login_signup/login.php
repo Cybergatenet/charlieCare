@@ -2,6 +2,10 @@
 
     require_once 'controllers/authcontroller.php'; 
     if(isset($_SESSION['username'])){
+        session_destroy();
+        unset($_SESSION['username']);
+        unset($_SESSION['email']);
+        unset($_SESSION['pwd']);
         header('location: ./home.php');
         exit();
     }

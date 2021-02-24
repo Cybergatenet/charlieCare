@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     require_once './config/db.php'; // connection here
     require_once './server/sendEmail.php';
     require_once './server/newletter.php';
@@ -116,7 +118,9 @@ function formatText($resolution){
                             Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./login_signup/login.php" class="nav-link">Log In</a>
+                        <a href="./login_signup/login.php"
+                            class="nav-link"><?php echo isset($_SESSION['username']) ? 'Log Out' : 'Log In'; ?>
+                        </a>
                     </li>
                 </ul>
             </nav>

@@ -231,7 +231,9 @@ if(mysqli_num_rows($return_posts) > 0){
                         <a href="./about.html" class="nav-link active">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./login_signup/login.php" class="nav-link">Log In</a>
+                        <a href="./login_signup/login.php"
+                            class="nav-link"><?php echo isset($_SESSION['username']) ? 'Log Out' : 'Log In'; ?>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -296,12 +298,12 @@ if(mysqli_num_rows($return_posts) > 0){
                             <?php foreach ($comments as $comment) { ?>
 
                             <button
-                                onclick="alert('<?php echo isset($_SESSION['username']) ? 'yes' : 'You are not logged in'; ?>');"
+                                onclick="<?php echo isset($_SESSION['username']) ? '' : 'alert(`You are NOT logged in`);'; ?>"
                                 class="btn btn-sm"><i class="fa fa-thumbs-up"></i>
                                 <span><?php echo count($comment[3]) > 0; ?></span>
                             </button>
                             <button
-                                onclick="alert('<?php echo isset($_SESSION['username']) ? 'yes' : 'You are not logged in'; ?>');"
+                                onclick="<?php echo isset($_SESSION['username']) ? '' : 'alert(`You are NOT logged in`);'; ?>"
                                 class="btn btn-sm"><i class="fa fa-thumbs-down"></i>
                                 <span><?php echo count($comment[4] != 0); ?></span>
                             </button>
