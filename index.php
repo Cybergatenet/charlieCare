@@ -87,6 +87,27 @@ function formatText($resolution){
     <link rel="stylesheet" type="text/css" href="./css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="./css/blog.css">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <style type="text/css">
+    .whatsapp_link {
+        position: fixed;
+        top: 90%;
+        right: 20px;
+        z-index: 100;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        opacity: 0.6;
+    }
+
+    .whatsapp_link a i {
+        font-size: 5rem;
+        color: whitesmoke;
+    }
+
+    .whatsapp_link:hover {
+        opacity: 1;
+    }
+    </style>
 </head>
 
 <body>
@@ -272,6 +293,10 @@ function formatText($resolution){
                 <a href="./login_signup/signup.php"
                     style="background-color: #eee; padding: 7px; margin-bottom: 10px; border-radius: 5px; color: #222;"
                     class="btn body-btn">Register</a>
+                <!-- WhatsApp Chat Connent Here! -->
+                <div class="whatsapp_link bg-success p-2 rounded bordered"><a
+                        href="https://api.whatsapp.com/send?phone=233238651493&text=Hi%20CharlyCareCla$ic"><i
+                            class="fab fa-whatsapp fa-4x"></i></a></div>
                 <!-- Add NEW here -->
                 <section class="contact" id="contact">
                     <div class="content">
