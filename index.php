@@ -264,7 +264,7 @@ function formatText($resolution){
             </div>
             <div class="content">
                 <div class="serviceBx animate-left">
-                    <video class="video" src="./video/charlycareintro.mpg" poster="" width="100%" controls></video>
+                    <video class="video" src="./video/charlycareclacis.mp4" poster="" width="100%" controls></video>
                     <h2>Charlycareclasic</h2>
                     <p>Welcome to Charlycareclasic. Where we invent the life we deserve through innovation and
                         creativity.</p>

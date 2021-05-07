@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once './config/db.php'; // connection here
+    // require_once './config/db.php'; // connection here
     // require_once './server/newletter.php';
 
     // require_once './server/sendEmail.php';
