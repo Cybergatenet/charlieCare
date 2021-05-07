@@ -580,6 +580,26 @@ footer {
 .social-icons i:focus {
   color: var(--love-color);
 }
+/* mobile App download styles here */
+.mobile {
+  width: 200px;
+  padding: 0px 20px 10px;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+}
+.mobile a {
+  position: relative;
+  top: 0;
+  left: auto;
+  /* margin: 0 auto; */
+  /* transform: translate(50%, -50px); */
+}
+.mobile a img {
+  width: 70px;
+  height: 35px;
+  margin: 10px;
+}
 .newsletter-form {
   width: 100%;
   position: relative;

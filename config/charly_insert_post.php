@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require('./db.php');
+    // require('./db.php');
 
     if($_SESSION){
 		session_destroy();
@@ -20,7 +20,7 @@
     $user_id = "2";
     $user_username = "charly_Admin";
     $country = 'Accra, Ghana';
-    $avatar = 'nature4.jpg'; // sanitize pics before uplaod
+    $avatar = 'user.jpg'; // sanitize pics before uplaod
     $post_title = 'In A glance';
     $post_body = 'We believe in building the life we deserve through innovation and creativity. This is a welcome message to all our users. Thank you for signing in the our site. We promise to bring you amazing contents that will improve and educate your life. Stay tune for much more. Or visit our about us page for more information.';
     $date = date('Y/m/d H:i:s');
@@ -38,4 +38,3 @@
     // }
 
 ?>
-

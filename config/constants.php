@@ -7,19 +7,19 @@
     // define('DB_NAME', 'cyber_user');
     define('DB_NAME', 'cybergate_user');
 
-    // $username = 'b280ac36b578f6';
-    // $passwrod = 'eaa82564';
-    // $server = ' heroku_4046d464e26fbe3';
-    // $db = 'us-cdbr-east-02.cleardb.com';
+    $username = 'epiz_28487312';
+    $password = 'Q5nmrC4mEC';
+    $server = 'sql310.epizy.com';
+    $db = 'epiz_28487312_charlycareclasic';
 
 ### ClearDb Config MAIN ###)()()()()()({}{}{)(){}###
     // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $url = parse_url(getenv("CLEARDB_AMBER_URL"));
+    // $url = parse_url(getenv("CLEARDB_AMBER_URL"));
 
-    $server = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $db = substr($url["path"], 1);
+    // $server = $url["host"];
+    // $username = $url["user"];
+    // $password = $url["pass"];
+    // $db = substr($url["path"], 1);
 
     // echo $server."the server".'<br>';
     // var_dump($url);

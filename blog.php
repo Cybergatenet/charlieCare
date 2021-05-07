@@ -1,9 +1,9 @@
 <?php
     session_start();
     require_once './config/db.php'; // connection here
-    require_once './server/newletter.php';
+    // require_once './server/newletter.php';
 
-    require_once './server/sendEmail.php';
+    // require_once './server/sendEmail.php';
 // fetching posts here
 $query_posts = 'SELECT * FROM charlycare_posts ORDER BY post_time DESC';
 $return_posts = mysqli_query($conn, $query_posts);
@@ -397,104 +397,8 @@ if(mysqli_num_rows($return_posts) > 0){
         </div>
     </section>
     <!-- culinary-delight ends -->
-    <footer>
-        <div class="container">
-            <div class="back-to-top">
-                <a href="#hero"><i class="fas fa-chevron-up"></i></a>
-            </div>
-            <div class="footer-content">
-                <div class="footer-content-about animate-top">
-                    <h4>About Charly Care Cla$ic</h4>
-                    <div class="asterisk"><i class="fas fa-asterisk"></i></div>
-                    <p>We drive our mission through a culture of excellence, constantly improving and winning with
-                        integrity. Our approach and process is aimed at inventing the life we deserve through innovation
-                        and creativity coupled with radical truthfulness and radical transparency.</p>
-                </div>
-                <!-- Add NEW here -->
-                <section class="contact" id="contact">
-                    <div class="content">
-                        <div class="contactInfo animate-right">
-                            <h3>Contact Us</h3>
-                            <div class="contactInfoBx">
-                                <div class="box">
-                                    <div class="icon">
-                                        <i class="fa fa-map-marker"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h3>Address</h3>
-                                        <p>190/B Castle Road<br>Accra | Ghana</p>
-                                    </div>
-                                </div>
-                                <div class="box">
-                                    <div class="icon">
-                                        <i class="fa fa-phone"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h3>Phone</h3>
-                                        <p>+23323-865-1493</p>
-                                    </div>
-                                </div>
-                                <div class="box">
-                                    <div class="icon">
-                                        <i class="fa fa-envelope"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h3>Email</h3>
-                                        <p>charlycareclasic@gmail.com</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="formBx animate-top">
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                                <h3>Message Us</h3>
-                                <div class="alert <?php echo $errMsgClass; ?>"><?php echo $errMsg; ?></div>
-                                <input type="text" name="contact_name" placeholder="Enter Full Name">
-                                <input type="email" name="contact_email" placeholder="Enter Your Email">
-                                <textarea name="contact_msg" placeholder="Your Message here"></textarea>
-                                <input class="btn-block" type="submit" name="contactMsg" value="Send">
-                            </form>
-                        </div>
-                    </div>
-                </section>
-                <!-- ended here -->
-                <div class="footer-content-divider animate-bottom">
-                    <div class="social-media">
-                        <h4>follow along</h4>
-                        <ul class="social-icons">
-                            <li>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.facebook.com/107870477747419/posts/107872007747266/?substory_index=0&app=fbl"><i
-                                        class="fab fa-facebook-square"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://gh.linkedin.com/in/charles-timothy-3998631a5"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="newsletter-container">
-                        <h4>Newsletter</h4>
-                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="newsletter-form" method="POST">
-                            <input type="email" name="email" class="newsletter-input"
-                                placeholder="Your email address..." required>
-                            <button type="submit" name="newsletter" class="newsletter-btn">
-                                <i class="fas fa-envelope"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <p style="color: #fff; font-weight:700; margin-top: 20px;">&copy; &nbsp;2020 charlycareclasic.com. All
-                Rights Reserved.</p>
-        </div>
-    </footer>
+    <?php include_once('./inc/footer_home.php'); ?>
+
     <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <!-- typewriter effect -->
