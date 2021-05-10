@@ -122,6 +122,10 @@ function formatText($resolution){
             0px 7px 7px rgba(0, 0, 0, 0.7);
         border-radius: 4px;
     }
+
+    .book_cover div.hover_man img {
+        display: none;
+    }
     </style>
 </head>
 
@@ -269,34 +273,31 @@ function formatText($resolution){
                     <p>Welcome to Charlycareclasic. Where we invent the life we deserve through innovation and
                         creativity.</p>
                 </div>
-                <!-- <div class="serviceBx animate-left">
-                    <video class="video" src="" poster="" width="100%" controls></video>
-                    <h2>Watch Demo Video</h2>
-                    <p>This Post will be updated by the admin soon. consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div> -->
             </div>
             <hr>
             <div class="heading d-grid" id="sponsor">
                 <a href="#sponsor" class="btn">View More Contents <i class="fa fa-arrow-down"></i> </a>
                 <br>
-                <div class="btn animateBtn animate-left" title="Click here to view valid relationship on facebook">
-                    <a href="https://m.facebook.com/Valid-Relationship-342407303221634/?ref=bookmarks" target="_blank"
-                        rel="noopener noreferrer" class="btn btn-primary font-weight-bold">
-                        <img src="./img/validRelationship.png" alt="The Flipped Mind">
-                        <div>
-                            <i class="fas fa-users"></i>
-                            &nbsp; Valid Relationship
-                        </div>
-                    </a>
-                </div>
-                <div class="hover_book animateBtn animate-right m-4"
-                    title="Click here to view download The Flipped Mind">
-                    <img src="./img/onlineBook.png" alt="The Flipped Mind">
-                    <div>
-                        <a href="./books/THE FLIPPED MIND.pdf" target="_blank">
-                            <button class="btn btn-primary m-3">Download</button>
+                <div class="book_cover">
+                    <div class="btn animateBtn animate-left" title="Click here to view valid relationship on facebook">
+                        <a href="https://m.facebook.com/Valid-Relationship-342407303221634/?ref=bookmarks"
+                            target="_blank" rel="noopener noreferrer" class="btn btn-primary font-weight-bold">
+                            <img src="./img/validRelationship3.jpeg" alt="The Flipped Mind">
+                            <div>
+                                <i class="fas fa-users"></i>
+                                &nbsp; Valid Relationship
+                            </div>
                         </a>
-                        <button onclick="ratingApp();" class="btn btn-info m-3">Rate This Book</button>
+                    </div>
+                    <div class="hover_book animateBtn animate-right m-4"
+                        title="Click here to view download The Flipped Mind">
+                        <img src="./img/1_FRontCover_compressed_2.jpg" alt="The Flipped Mind">
+                        <div>
+                            <a href="./books/THE FLIPPED MIND.pdf" target="_blank">
+                                <button class="btn btn-primary m-3">Download</button>
+                            </a>
+                            <button onclick="ratingApp();" class="btn btn-info m-3">Rate This Book</button>
+                        </div>
                     </div>
                 </div>
             </div>
