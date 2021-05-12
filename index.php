@@ -1,9 +1,9 @@
 <?php
     session_start();
     
-    // require_once './config/db.php'; // connection here
+    require_once './config/db.php'; // connection here
     // require_once './server/sendEmail.php';
-    // require_once './server/newletter.php';
+    require_once './server/newletter.php';
 
 ###############################################
 // fetching posts here
@@ -157,11 +157,11 @@ function formatText($resolution){
                         <a href="./about.html" onclick="alert('Oop!..offline for maintenance!');" class="nav-link">About
                             Us</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="./login_signup/login.php"
                             class="nav-link"><?php echo isset($_SESSION['username']) ? 'Log Out' : 'Log In'; ?>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
         </div>

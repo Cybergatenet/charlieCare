@@ -11,12 +11,12 @@
                     integrity. Our approach and process is aimed at inventing the life we deserve through innovation
                     and creativity coupled with radical truthfulness and radical transparency.</p>
                 <br><br><br>
-                <p>Not A Member?</p>
+                <!-- <p>Not A Member?</p> -->
             </div>
 
-            <a href="./login_signup/signup.php"
+            <!-- <a href="./login_signup/signup.php"
                 style="background-color: #eee; padding: 7px; margin-bottom: 10px; border-radius: 5px; color: #222;"
-                class="btn body-btn">Register</a>
+                class="btn body-btn">Register</a> -->
 
             <!-- WhatsApp Chat Connent Here! -->
             <div class="whatsapp_link bg-success p-2 rounded bordered"><a

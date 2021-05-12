@@ -9,8 +9,9 @@
 // $url_clear = 'us-cdbr-east-02.cleardb.com';
 
     // $conn = new mysqli($server, $username, $password, $db);
+    $conn = new mysqli($hostinger_host, $hostinger_username, $hostinger_password, $hostinger_db);
 
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    // $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     // $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     // if(!$conn){
@@ -21,7 +22,7 @@
     // }
 
     if($conn->connect_error) {
-        die('Database error-:)= offline for maintenance');
+        die('Database Disconnected-:)= offline for maintenance');
         // .$conn->connect_error);
         header('location: ../../errors/404.php');
     }

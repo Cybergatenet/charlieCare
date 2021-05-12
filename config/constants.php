@@ -12,6 +12,12 @@
     $server = 'sql310.epizy.com';
     $db = 'epiz_28487312_charlycareclasic';
 
+    #################
+    $hostinger_username = 'u639862354_cybergate';
+    $hostinger_password = 'cybergateCharlycareclasic_2020';
+    $hostinger_host = 'localhost';
+    $hostinger_db = 'u639862354_charly_tables';
+
 ### ClearDb Config MAIN ###)()()()()()({}{}{)(){}###
     // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     // $url = parse_url(getenv("CLEARDB_AMBER_URL"));
