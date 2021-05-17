@@ -16,7 +16,12 @@ if(mysqli_num_rows($return_posts) > 0){
         $posts[] = $row;
     }
 }
-
+############################################
+// Ratings Settings
+if(isset($_POST['rate'])){
+    echo '<script>alert("Your Rating will be recorded soon", "'.$_POST['rate'].'")</script>';
+}
+###########################################
 function formatText($resolution){
     // $resolution = trim($resolution);
     // $resolution = nl2br($resolution);
@@ -87,6 +92,7 @@ function formatText($resolution){
     <link rel="stylesheet" type="text/css" href="./css/new_styles.css">
     <link rel="stylesheet" type="text/css" href="./css/blog.css">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/rating.css">
     <style type="text/css">
     .whatsapp_link {
         position: fixed;
@@ -106,25 +112,6 @@ function formatText($resolution){
 
     .whatsapp_link:hover {
         opacity: 1;
-    }
-
-    .hover_book {
-        transition: 0.7s linear all;
-    }
-
-    .hover_book img {
-        position: relative;
-    }
-
-    .hover_book:hover {
-        border: 3px solid #2196f3;
-        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.7),
-            0px 7px 7px rgba(0, 0, 0, 0.7);
-        border-radius: 4px;
-    }
-
-    .book_cover div.hover_man img {
-        display: none;
     }
     </style>
 </head>
@@ -291,12 +278,23 @@ function formatText($resolution){
                     </div>
                     <div class="hover_book animateBtn animate-right m-4"
                         title="Click here to view download The Flipped Mind">
-                        <img src="./img/1_FRontCover_compressed_2.jpg" alt="The Flipped Mind">
-                        <div>
-                            <a href="./books/THE FLIPPED MIND.pdf" target="_blank">
-                                <button class="btn btn-primary m-3">Download</button>
-                            </a>
-                            <button onclick="ratingApp();" class="btn btn-info m-3">Rate This Book</button>
+                        <img id="bookCover" src="./img/bookCompress.jpg" alt="The Flipped Mind">
+                        <div class="d-flex flex-row mb-3">
+                            <div class="d-flex flex-column">
+                                <a href="./books/THE FLIPPED MIND.pdf" target="_blank">
+                                    <button class="btn btn-primary m-3">Download</button>
+                                </a>
+                                <h5 class="text-white font-weight-bold pl-4"><span id="review">1000</span>+ Downloads
+                                </h5>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <button onclick="toggle();" class="btn btn-info m-3">Rate This Book</button>
+                                <h5 class="text-white font-weight-bold pl-4"><span id="review">1000</span>+ Reviews</h5>
+                                <div class="stars-outer ml-4">
+                                    <div class="stars-inner"></div>
+                                    <span class="number-rating text-white pl-5">4.7</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -304,6 +302,22 @@ function formatText($resolution){
         </div>
     </section>
     <!-- Ended here -->
+    <!-- #@##############################  NewsLetter ########################## -->
+    <div class="newsletter">
+        <h2>Rate this Book</h2>
+        <p>Take a quick Review</p>
+        <div class="inputBox">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-group" method="POST">
+                <input type="number" id="rating-control" class="form-control" step="0.1" max="5"
+                    placeholder="Rate 1 - 5" disable="false">
+
+                <input type="submit" id="rate" name="rate" class="btn btn-primary rounded font-weight-bold p-2"
+                    value="Rate">
+            </form>
+        </div>
+        <img src="./img/close.png" class="close" onclick="toggle();" alt="close icon">
+    </div>
+    <!-- #@##############################  NewsLetter ########################## -->
     <!-- Adding Footer -->
     <?php include_once('./inc/footer_home.php'); ?>
 
@@ -312,6 +326,14 @@ function formatText($resolution){
     <!-- typewriter effect -->
     <script src="./js/typewriter.js"></script>
     <script src="./js/main.js"></script>
+    <script>
+    // init alert box
+    function toggle() {
+        var newsletter = document.querySelector('.newsletter');
+        newsletter.classList.toggle('active');
+    }
+    </script>
+    <script src="./js/rating.js"></script>
     <!-- OwlCarousel -->
     <script>
     $(".slider").owlCarousel({
@@ -320,10 +342,6 @@ function formatText($resolution){
         autoplayTimeout: 5000,
         autoplayHoverPause: true
     });
-
-    function ratingApp() {
-        alert('rate this app?')
-    }
     </script>
 </body>
 
