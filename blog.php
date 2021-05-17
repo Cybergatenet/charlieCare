@@ -307,21 +307,21 @@ if(mysqli_num_rows($return_posts) > 0){
                                 class="btn btn-sm"><i class="fa fa-thumbs-down"></i>
                                 <span><?php echo count($comment[4] != 0); ?></span>
                             </button>
-                            <button class="btn btn-sm"><i class="fa fa-comment"></i>
+                            <!-- <button class="btn btn-sm"><i class="fa fa-comment"></i>
                                 <span><?php echo count($comment[5] != ''); ?></span>
-                            </button>
+                            </button> -->
                             <?php } ?>
                         </div>
-                        <form action="" class="form-group">
+                        <!-- <form action="" class="form-group">
                             <textarea class="form-control mt-2" name="" id="comment" cols="30" rows="3"
                                 placeholder="Write a comment..." required></textarea>
                             <?php echo isset($_SESSION['username']) ? '<button class="btn btn-primary btn-md float-right mt-3" id="comment_btn"
                                 type="submit">Post</button>' : '<button class="btn btn-primary btn-md float-right mt-3" id="comment_btn"
                                 type="submit" disabled>Log in to comment</button>'; ?>
                             <button type="button" id="update_btn" style="display: none;">UPDATE</button>
-                        </form>
-                        <div class="comment-box m-3">
-                            <!-- <div class="row">
+                        </form> -->
+                        <!-- <div class="comment-box m-3"> -->
+                        <!-- <div class="row">
                                 <div class="col-4 col-md-2 div-image">
                                     <img src="./uploads/defaultAvatar.png" alt="">
                                     <h5 class="ml-4">Username User</h5>
@@ -332,11 +332,11 @@ if(mysqli_num_rows($return_posts) > 0){
                                     garden
                                 </div>
                             </div> -->
-                        </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
             </div>
+            <?php endforeach; ?>
+        </div>
         </div>
     </section>
     <section class="services" id="services">

@@ -11,10 +11,12 @@
     // Form Elements
     const ratingControl = document.getElementById('rating-control');
     const submitRate = document.getElementById('rate');
-    if(ratingControl.value != ''){
+    if(ratingControl.value == ''){
         submitRate.disabled = true;
     }else{
-        submitRate.disabled = false;
+        ratingControl.addEventListener('change', () => {
+            submitRate.disabled = false;
+        })
     }
 
     // Product select change
