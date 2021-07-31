@@ -19,7 +19,7 @@ if(mysqli_num_rows($return_posts) > 0){
 ############################################
 // Ratings Settings
 if(isset($_POST['rate'])){
-    echo '<script>alert("Your Rating will be recorded soon", "'.$_POST['rate'].'")</script>';
+    echo '<script>alert("Your Rating have been recorded", "'.$_POST['rate'].'")</script>';
 }
 ###########################################
 function formatText($resolution){
@@ -282,17 +282,20 @@ function formatText($resolution){
                         <div class="d-flex flex-row mb-3">
                             <div class="d-flex flex-column">
                                 <a href="./books/THE FLIPPED MIND.pdf" target="_blank">
-                                    <button class="btn btn-primary m-3">Download</button>
+                                    <button type="submit" onclick="countInc();"
+                                        class="btn btn-primary m-3">Download</button>
                                 </a>
-                                <h5 class="text-white font-weight-bold pl-4"><span id="review">1000</span>+ Downloads
+                                <h5 class="text-white font-weight-bold pl-4"><span id="reviewDownload"></span>+
+                                    Downloads
                                 </h5>
                             </div>
                             <div class="d-flex flex-column">
                                 <button onclick="toggle();" class="btn btn-info m-3">Rate This Book</button>
-                                <h5 class="text-white font-weight-bold pl-4"><span id="review">1000</span>+ Reviews</h5>
+                                <h5 class="text-white font-weight-bold pl-4"><span id="reviewRate"></span>+ Reviews
+                                </h5>
                                 <div class="stars-outer ml-4">
                                     <div class="stars-inner"></div>
-                                    <span class="number-rating text-white pl-5">4.7</span>
+                                    <span id="rated" class="number-rating text-white pl-5 h3"></span>
                                 </div>
                             </div>
                         </div>
@@ -307,12 +310,12 @@ function formatText($resolution){
         <h2>Rate this Book</h2>
         <p>Take a quick Review</p>
         <div class="inputBox">
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-group" method="POST">
-                <input type="number" id="rating-control" class="form-control" step="0.1" max="5"
+            <form action="" class="form-group">
+                <input type="number" id="rating-control" class="form-control" step="0.5" max="5" max-length="5"
                     placeholder="Rate 1 - 5" disable="false">
 
-                <input type="submit" id="rate" name="rate" class="btn btn-primary rounded font-weight-bold p-2"
-                    value="Rate">
+                <input type="button" id="rate" onclick="ratebook();" name="rate"
+                    class="btn btn-primary rounded font-weight-bold p-2" value="Rate">
             </form>
         </div>
         <img src="./img/close.png" class="close" onclick="toggle();" alt="close icon">
@@ -329,10 +332,11 @@ function formatText($resolution){
     <script>
     // init alert box
     function toggle() {
-        var newsletter = document.querySelector('.newsletter');
+        let newsletter = document.querySelector('.newsletter');
         newsletter.classList.toggle('active');
     }
     </script>
+    <!-- Rating -->
     <script src="./js/rating.js"></script>
     <!-- OwlCarousel -->
     <script>
